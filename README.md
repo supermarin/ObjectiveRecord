@@ -2,6 +2,10 @@
 This is a lightweight ActiveRecord way of accessing Core Data objects.
 The syntax is borrowed from Ruby on Rails.
 
+### Usage
+1. Copy the ActiveRecord folder in your project.
+2. #import "NSManagedObject+ActiveRecord.h" in your model or .pch file.
+
 ### Example
 ``` objc
 
@@ -11,8 +15,6 @@ john.save;
 
 Person *john = [Person where:@"name == John"];
 john.delete;
-
-NSArray *allPersons = [Person all];
 
 for(Person *person in [Person all]) {
   NSLog(@"Person: %@", person);
@@ -32,5 +34,5 @@ NSArray *allPersons = [Person allInContext:newContext];
 
 
 ####ToDo
-Try to make where:(NSString *)condition take va_args like NSLog().
+Try to make ```where:(NSString *)condition``` take va_args like NSLog().
 That way you wouldn't have to use -stringWithFormat, and it would look cleaner.
