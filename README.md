@@ -1,5 +1,5 @@
 ## Intro
-This is a lightweight ActiveRecord way of accessing Core Data objects.
+This is a lightweight ActiveRecord way of managing Core Data objects.
 The syntax is borrowed from Ruby on Rails.
 
 ### Usage
