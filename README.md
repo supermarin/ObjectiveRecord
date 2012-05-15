@@ -3,8 +3,13 @@ This is a lightweight ActiveRecord way of managing Core Data objects.
 The syntax is borrowed from Ruby on Rails.
 
 ### Usage
-1. Copy the ActiveRecord folder in your project.
+1. Clone the repository in your project, and add it to the XCode
 2. #import "NSManagedObject+ActiveRecord.h" in your model or .pch file.
+3. If you've added the Core Data manually, you can change the custom model and database name in  CoreDataManager
+``` objc
+static NSString *CUSTOM_MODEL_NAME = @"Database";
+static NSString *CUSTOM_DATABASE_NAME = nil;
+```
 
 ### Example
 ``` objc

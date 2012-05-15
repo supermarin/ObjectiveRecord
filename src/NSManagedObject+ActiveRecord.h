@@ -7,7 +7,12 @@
 //
 
 #import <CoreData/CoreData.h>
+#import "CoreDataManager.h"
 #import "NSArray+Accessors.h"
+
+@interface NSManagedObjectContext (ActiveRecord)
++ (NSManagedObjectContext *)defaultContext;
+@end
 
 @interface NSManagedObject (ActiveRecord)
 
