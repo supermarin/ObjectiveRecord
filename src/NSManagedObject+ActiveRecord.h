@@ -23,13 +23,13 @@
 
 + (id)create;
 + (NSArray *)all;
-+ (NSArray *)where:(NSString *)condition;
++ (NSArray *)where:(id)condition;
 
 
 
 #pragma mark - Custom Context
 + (id)createInContext:(NSManagedObjectContext *)context;
 + (NSArray *)allInContext:(NSManagedObjectContext *)context;
-+ (NSArray *)where:(NSString *)condition inContext:(NSManagedObjectContext *)context;    
++ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context;    
 
 @end
