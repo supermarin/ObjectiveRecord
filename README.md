@@ -44,7 +44,7 @@ NSManagedObjectContext *newContext = [NSManagedObjectContext new];
 
 Person *john = [Person createInContext:newContext];
 Person *john = [Person where:@"name == 'John'" inContext:newContext].first;
-NSArray *allPersons = [Person allInContext:newContext];
+NSArray *people = [Person allInContext:newContext];
 ```
 
 ### Custom CoreData model or .sqlite database
