@@ -34,6 +34,7 @@ NSArray *people = [Person where:@{ @"age" : @18,
 
 Person *john = [Person create:@{ @"name" : @"John", @"age" : @12, @"member" : @NO }];
 ```
+<br><br>
 
 ### Custom ManagedObjectContext
 You can also use your own ManagedObjectContext while fetching.

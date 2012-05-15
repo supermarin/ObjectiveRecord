@@ -1,1 +1,1 @@
-#import "NSManagedObject+CoreData.h"
+#import "NSManagedObject+ActiveRecord.h"
