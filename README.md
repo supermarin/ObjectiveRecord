@@ -22,7 +22,7 @@ Person *john = [Person create];
 john.name = @"John";
 john.save;
 
-Person *john = [Person where:@"name == John"].first;
+Person *john = [Person where:@"name == 'John'"].first;
 john.delete;
 
 for(Person *person in [Person all]) {
@@ -37,10 +37,9 @@ This is great if you have to do lots of changes, but don't want to notify anyone
 NSManagedObjectContext *newContext = [NSManagedObjectContext new];
 
 Person *john = [Person createInContext:newContext];
-Person *john = [Person where:@"name == John" inContext:newContext].first;
+Person *john = [Person where:@"name == 'John'" inContext:newContext].first;
 NSArray *allPersons = [Person allInContext:newContext];
 ```
-
 
 ####ToDo
 Try to make ```where:(NSString *)condition``` take va_args like NSLog().
