@@ -5,13 +5,7 @@ The syntax is borrowed from Ruby on Rails.
 ### Usage
 1. Clone the repository in your project, and add it to the XCode
 2. #import "ObjectiveRecord.h" in your model or .pch file.
-3. If you've added the Core Data manually, you can change the custom model and database name in CoreDataManager.m
 
-``` objc
-
-static NSString *CUSTOM_MODEL_NAME = @"Database";
-static NSString *CUSTOM_DATABASE_NAME = nil;
-```
 #### CocoaPods
 Coming soon.
 
@@ -29,6 +23,17 @@ for(Person *person in [Person all]) {
   NSLog(@"Person: %@", person);
 }
 ```
+With new Objective-C literals, you'll be able to do:
+``` objc
+NSArray *people = [Person where:@{ @"age" : @18 }];
+
+NSArray *people = [Person where:@{ @"age" : @18,
+                  @"member" : @YES,
+                  @"state" : @"NY"
+                  }];
+
+Person *john = [Person create:@{ @"name" : @"John", @"age" : @12, @"member" : @NO }];
+```
 
 ### Custom ManagedObjectContext
 You can also use your own ManagedObjectContext while fetching.
@@ -39,6 +44,14 @@ NSManagedObjectContext *newContext = [NSManagedObjectContext new];
 Person *john = [Person createInContext:newContext];
 Person *john = [Person where:@"name == 'John'" inContext:newContext].first;
 NSArray *allPersons = [Person allInContext:newContext];
+```
+
+### Custom CoreData model or .sqlite database
+If you've added the Core Data manually, you can change the custom model and database name in CoreDataManager.m
+``` objc
+
+static NSString *CUSTOM_MODEL_NAME = @"Database";
+static NSString *CUSTOM_DATABASE_NAME = nil;
 ```
 
 ####ToDo
