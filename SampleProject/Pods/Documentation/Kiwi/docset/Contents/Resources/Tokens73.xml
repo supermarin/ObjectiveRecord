@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/KWExampleNodeVisitor.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/KWExampleNodeVisitor</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleNodeVisitor.h</DeclaredIn>
+			
+			<NodeRef refid="73"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KWExampleNodeVisitor/visitContextNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleNodeVisitor.h</DeclaredIn>			
+			
+			<Declaration>- (void)visitContextNode:(KWContextNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/visitContextNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KWExampleNodeVisitor/visitRegisterMatchersNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleNodeVisitor.h</DeclaredIn>			
+			
+			<Declaration>- (void)visitRegisterMatchersNode:(KWRegisterMatchersNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/visitRegisterMatchersNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KWExampleNodeVisitor/visitBeforeAllNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleNodeVisitor.h</DeclaredIn>			
+			
+			<Declaration>- (void)visitBeforeAllNode:(KWBeforeAllNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/visitBeforeAllNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KWExampleNodeVisitor/visitAfterAllNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleNodeVisitor.h</DeclaredIn>			
+			
+			<Declaration>- (void)visitAfterAllNode:(KWAfterAllNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/visitAfterAllNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KWExampleNodeVisitor/visitBeforeEachNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleNodeVisitor.h</DeclaredIn>			
+			
+			<Declaration>- (void)visitBeforeEachNode:(KWBeforeEachNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/visitBeforeEachNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KWExampleNodeVisitor/visitAfterEachNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleNodeVisitor.h</DeclaredIn>			
+			
+			<Declaration>- (void)visitAfterEachNode:(KWAfterEachNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/visitAfterEachNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KWExampleNodeVisitor/visitItNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleNodeVisitor.h</DeclaredIn>			
+			
+			<Declaration>- (void)visitItNode:(KWItNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/visitItNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KWExampleNodeVisitor/visitPendingNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleNodeVisitor.h</DeclaredIn>			
+			
+			<Declaration>- (void)visitPendingNode:(KWPendingNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/visitPendingNode:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>Kiwi 1.0.0</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				<Node type="folder">
+					<Name>Classes</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						<NodeRef refid="2"/>
+						<NodeRef refid="3"/>
+						<NodeRef refid="4"/>
+						<NodeRef refid="5"/>
+						<NodeRef refid="6"/>
+						<NodeRef refid="7"/>
+						<NodeRef refid="8"/>
+						<NodeRef refid="9"/>
+						<NodeRef refid="10"/>
+						<NodeRef refid="11"/>
+						<NodeRef refid="12"/>
+						<NodeRef refid="13"/>
+						<NodeRef refid="14"/>
+						<NodeRef refid="15"/>
+						<NodeRef refid="16"/>
+						<NodeRef refid="17"/>
+						<NodeRef refid="18"/>
+						<NodeRef refid="19"/>
+						<NodeRef refid="20"/>
+						<NodeRef refid="21"/>
+						<NodeRef refid="22"/>
+						<NodeRef refid="23"/>
+						<NodeRef refid="24"/>
+						<NodeRef refid="25"/>
+						<NodeRef refid="26"/>
+						<NodeRef refid="27"/>
+						<NodeRef refid="28"/>
+						<NodeRef refid="29"/>
+						<NodeRef refid="30"/>
+						<NodeRef refid="31"/>
+						<NodeRef refid="32"/>
+						<NodeRef refid="33"/>
+						<NodeRef refid="34"/>
+						<NodeRef refid="35"/>
+						<NodeRef refid="36"/>
+						<NodeRef refid="37"/>
+						<NodeRef refid="38"/>
+						<NodeRef refid="39"/>
+						<NodeRef refid="40"/>
+						<NodeRef refid="41"/>
+						<NodeRef refid="42"/>
+						<NodeRef refid="43"/>
+						<NodeRef refid="44"/>
+						<NodeRef refid="45"/>
+						<NodeRef refid="46"/>
+						<NodeRef refid="47"/>
+						<NodeRef refid="48"/>
+						<NodeRef refid="49"/>
+						<NodeRef refid="50"/>
+						<NodeRef refid="51"/>
+						<NodeRef refid="52"/>
+						<NodeRef refid="53"/>
+						<NodeRef refid="54"/>
+						<NodeRef refid="55"/>
+						<NodeRef refid="56"/>
+						<NodeRef refid="57"/>
+						<NodeRef refid="58"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+				<Node type="folder">
+					<Name>Categories</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="59"/>
+						<NodeRef refid="60"/>
+						<NodeRef refid="61"/>
+						<NodeRef refid="62"/>
+						<NodeRef refid="63"/>
+						<NodeRef refid="64"/>
+						<NodeRef refid="65"/>
+						<NodeRef refid="66"/>
+						<NodeRef refid="67"/>
+						<NodeRef refid="68"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+				<Node type="folder">
+					<Name>Protocols</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="69"/>
+						<NodeRef refid="70"/>
+						<NodeRef refid="71"/>
+						<NodeRef refid="72"/>
+						<NodeRef refid="73"/>
+						<NodeRef refid="74"/>
+						<NodeRef refid="75"/>
+						<NodeRef refid="76"/>
+						<NodeRef refid="77"/>
+						<NodeRef refid="78"/>
+						<NodeRef refid="79"/>
+						
+					</Subnodes>
+				</Node>
+				
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		<Node id="1">
+			<Name>KWAfterAllNode</Name>
+			<Path>Classes/KWAfterAllNode.html</Path>
+		</Node>
+		<Node id="2">
+			<Name>KWAfterEachNode</Name>
+			<Path>Classes/KWAfterEachNode.html</Path>
+		</Node>
+		<Node id="3">
+			<Name>KWAsyncMatcherProbe</Name>
+			<Path>Classes/KWAsyncMatcherProbe.html</Path>
+		</Node>
+		<Node id="4">
+			<Name>KWAsyncVerifier</Name>
+			<Path>Classes/KWAsyncVerifier.html</Path>
+		</Node>
+		<Node id="5">
+			<Name>KWBeBetweenMatcher</Name>
+			<Path>Classes/KWBeBetweenMatcher.html</Path>
+		</Node>
+		<Node id="6">
+			<Name>KWBeEmptyMatcher</Name>
+			<Path>Classes/KWBeEmptyMatcher.html</Path>
+		</Node>
+		<Node id="7">
+			<Name>KWBeIdenticalToMatcher</Name>
+			<Path>Classes/KWBeIdenticalToMatcher.html</Path>
+		</Node>
+		<Node id="8">
+			<Name>KWBeKindOfClassMatcher</Name>
+			<Path>Classes/KWBeKindOfClassMatcher.html</Path>
+		</Node>
+		<Node id="9">
+			<Name>KWBeMemberOfClassMatcher</Name>
+			<Path>Classes/KWBeMemberOfClassMatcher.html</Path>
+		</Node>
+		<Node id="10">
+			<Name>KWBeNilMatcher</Name>
+			<Path>Classes/KWBeNilMatcher.html</Path>
+		</Node>
+		<Node id="11">
+			<Name>KWBeNonNilMatcher</Name>
+			<Path>Classes/KWBeNonNilMatcher.html</Path>
+		</Node>
+		<Node id="12">
+			<Name>KWBeTrueMatcher</Name>
+			<Path>Classes/KWBeTrueMatcher.html</Path>
+		</Node>
+		<Node id="13">
+			<Name>KWBeWithinMatcher</Name>
+			<Path>Classes/KWBeWithinMatcher.html</Path>
+		</Node>
+		<Node id="14">
+			<Name>KWBeZeroMatcher</Name>
+			<Path>Classes/KWBeZeroMatcher.html</Path>
+		</Node>
+		<Node id="15">
+			<Name>KWBeforeAllNode</Name>
+			<Path>Classes/KWBeforeAllNode.html</Path>
+		</Node>
+		<Node id="16">
+			<Name>KWBeforeEachNode</Name>
+			<Path>Classes/KWBeforeEachNode.html</Path>
+		</Node>
+		<Node id="17">
+			<Name>KWBlock</Name>
+			<Path>Classes/KWBlock.html</Path>
+		</Node>
+		<Node id="18">
+			<Name>KWBlockNode</Name>
+			<Path>Classes/KWBlockNode.html</Path>
+		</Node>
+		<Node id="19">
+			<Name>KWBlockRaiseMatcher</Name>
+			<Path>Classes/KWBlockRaiseMatcher.html</Path>
+		</Node>
+		<Node id="20">
+			<Name>KWCallSite</Name>
+			<Path>Classes/KWCallSite.html</Path>
+		</Node>
+		<Node id="21">
+			<Name>KWConformToProtocolMatcher</Name>
+			<Path>Classes/KWConformToProtocolMatcher.html</Path>
+		</Node>
+		<Node id="22">
+			<Name>KWContainMatcher</Name>
+			<Path>Classes/KWContainMatcher.html</Path>
+		</Node>
+		<Node id="23">
+			<Name>KWContextNode</Name>
+			<Path>Classes/KWContextNode.html</Path>
+		</Node>
+		<Node id="24">
+			<Name>KWDeviceInfo</Name>
+			<Path>Classes/KWDeviceInfo.html</Path>
+		</Node>
+		<Node id="25">
+			<Name>KWEqualMatcher</Name>
+			<Path>Classes/KWEqualMatcher.html</Path>
+		</Node>
+		<Node id="26">
+			<Name>KWExampleGroup</Name>
+			<Path>Classes/KWExampleGroup.html</Path>
+		</Node>
+		<Node id="27">
+			<Name>KWExampleGroupBuilder</Name>
+			<Path>Classes/KWExampleGroupBuilder.html</Path>
+		</Node>
+		<Node id="28">
+			<Name>KWExistVerifier</Name>
+			<Path>Classes/KWExistVerifier.html</Path>
+		</Node>
+		<Node id="29">
+			<Name>KWFailure</Name>
+			<Path>Classes/KWFailure.html</Path>
+		</Node>
+		<Node id="30">
+			<Name>KWFormatter</Name>
+			<Path>Classes/KWFormatter.html</Path>
+		</Node>
+		<Node id="31">
+			<Name>KWFutureObject</Name>
+			<Path>Classes/KWFutureObject.html</Path>
+		</Node>
+		<Node id="32">
+			<Name>KWHamcrestMatcher</Name>
+			<Path>Classes/KWHamcrestMatcher.html</Path>
+		</Node>
+		<Node id="33">
+			<Name>KWHaveMatcher</Name>
+			<Path>Classes/KWHaveMatcher.html</Path>
+		</Node>
+		<Node id="34">
+			<Name>KWHaveValueMatcher</Name>
+			<Path>Classes/KWHaveValueMatcher.html</Path>
+		</Node>
+		<Node id="35">
+			<Name>KWInequalityMatcher</Name>
+			<Path>Classes/KWInequalityMatcher.html</Path>
+		</Node>
+		<Node id="36">
+			<Name>KWInvocationCapturer</Name>
+			<Path>Classes/KWInvocationCapturer.html</Path>
+		</Node>
+		<Node id="37">
+			<Name>KWItNode</Name>
+			<Path>Classes/KWItNode.html</Path>
+		</Node>
+		<Node id="38">
+			<Name>KWMatchVerifier</Name>
+			<Path>Classes/KWMatchVerifier.html</Path>
+		</Node>
+		<Node id="39">
+			<Name>KWMatcher</Name>
+			<Path>Classes/KWMatcher.html</Path>
+		</Node>
+		<Node id="40">
+			<Name>KWMatcherFactory</Name>
+			<Path>Classes/KWMatcherFactory.html</Path>
+		</Node>
+		<Node id="41">
+			<Name>KWMatchers</Name>
+			<Path>Classes/KWMatchers.html</Path>
+		</Node>
+		<Node id="42">
+			<Name>KWMessagePattern</Name>
+			<Path>Classes/KWMessagePattern.html</Path>
+		</Node>
+		<Node id="43">
+			<Name>KWMessageTracker</Name>
+			<Path>Classes/KWMessageTracker.html</Path>
+		</Node>
+		<Node id="44">
+			<Name>KWMock</Name>
+			<Path>Classes/KWMock.html</Path>
+		</Node>
+		<Node id="45">
+			<Name>KWNull</Name>
+			<Path>Classes/KWNull.html</Path>
+		</Node>
+		<Node id="46">
+			<Name>KWPendingNode</Name>
+			<Path>Classes/KWPendingNode.html</Path>
+		</Node>
+		<Node id="47">
+			<Name>KWProbePoller</Name>
+			<Path>Classes/KWProbePoller.html</Path>
+		</Node>
+		<Node id="48">
+			<Name>KWRaiseMatcher</Name>
+			<Path>Classes/KWRaiseMatcher.html</Path>
+		</Node>
+		<Node id="49">
+			<Name>KWReceiveMatcher</Name>
+			<Path>Classes/KWReceiveMatcher.html</Path>
+		</Node>
+		<Node id="50">
+			<Name>KWRegisterMatchersNode</Name>
+			<Path>Classes/KWRegisterMatchersNode.html</Path>
+		</Node>
+		<Node id="51">
+			<Name>KWRespondToSelectorMatcher</Name>
+			<Path>Classes/KWRespondToSelectorMatcher.html</Path>
+		</Node>
+		<Node id="52">
+			<Name>KWSpec</Name>
+			<Path>Classes/KWSpec.html</Path>
+		</Node>
+		<Node id="53">
+			<Name>KWStub</Name>
+			<Path>Classes/KWStub.html</Path>
+		</Node>
+		<Node id="54">
+			<Name>KWTestCase</Name>
+			<Path>Classes/KWTestCase.html</Path>
+		</Node>
+		<Node id="55">
+			<Name>KWUserDefinedMatcher</Name>
+			<Path>Classes/KWUserDefinedMatcher.html</Path>
+		</Node>
+		<Node id="56">
+			<Name>KWUserDefinedMatcherBuilder</Name>
+			<Path>Classes/KWUserDefinedMatcherBuilder.html</Path>
+		</Node>
+		<Node id="57">
+			<Name>KWValue</Name>
+			<Path>Classes/KWValue.html</Path>
+		</Node>
+		<Node id="58">
+			<Name>name</Name>
+			<Path>Classes/name.html</Path>
+		</Node>
+		
+		<Node id="59">
+			<Name>NSArray(KiwiHamcrestAdditions)</Name>
+			<Path>Categories/NSArray+KiwiHamcrestAdditions.html</Path>
+		</Node>
+		<Node id="60">
+			<Name>NSInvocation(KiwiAdditions)</Name>
+			<Path>Categories/NSInvocation+KiwiAdditions.html</Path>
+		</Node>
+		<Node id="61">
+			<Name>NSMethodSignature(KiwiAdditions)</Name>
+			<Path>Categories/NSMethodSignature+KiwiAdditions.html</Path>
+		</Node>
+		<Node id="62">
+			<Name>NSNumber(KiwiAdditions)</Name>
+			<Path>Categories/NSNumber+KiwiAdditions.html</Path>
+		</Node>
+		<Node id="63">
+			<Name>NSObject(KWUserDefinedMatchersDefinitions)</Name>
+			<Path>Categories/NSObject+KWUserDefinedMatchersDefinitions.html</Path>
+		</Node>
+		<Node id="64">
+			<Name>NSObject(KiwiHamcrestAdditions)</Name>
+			<Path>Categories/NSObject+KiwiHamcrestAdditions.html</Path>
+		</Node>
+		<Node id="65">
+			<Name>NSObject(KiwiMockAdditions)</Name>
+			<Path>Categories/NSObject+KiwiMockAdditions.html</Path>
+		</Node>
+		<Node id="66">
+			<Name>NSObject(KiwiStubAdditions)</Name>
+			<Path>Categories/NSObject+KiwiStubAdditions.html</Path>
+		</Node>
+		<Node id="67">
+			<Name>NSObject(KiwiVerifierAdditions)</Name>
+			<Path>Categories/NSObject+KiwiVerifierAdditions.html</Path>
+		</Node>
+		<Node id="68">
+			<Name>NSValue(KiwiAdditions)</Name>
+			<Path>Categories/NSValue+KiwiAdditions.html</Path>
+		</Node>
+		
+		<Node id="69">
+			<Name>HCMatcher</Name>
+			<Path>Protocols/HCMatcher.html</Path>
+		</Node>
+		<Node id="70">
+			<Name>KWContainmentCountMatcherTerminals</Name>
+			<Path>Protocols/KWContainmentCountMatcherTerminals.html</Path>
+		</Node>
+		<Node id="71">
+			<Name>KWExampleGroupDelegate</Name>
+			<Path>Protocols/KWExampleGroupDelegate.html</Path>
+		</Node>
+		<Node id="72">
+			<Name>KWExampleNode</Name>
+			<Path>Protocols/KWExampleNode.html</Path>
+		</Node>
+		<Node id="73">
+			<Name>KWExampleNodeVisitor</Name>
+			<Path>Protocols/KWExampleNodeVisitor.html</Path>
+		</Node>
+		<Node id="74">
+			<Name>KWInvocationCapturerDelegate</Name>
+			<Path>Protocols/KWInvocationCapturerDelegate.html</Path>
+		</Node>
+		<Node id="75">
+			<Name>KWMatching</Name>
+			<Path>Protocols/KWMatching.html</Path>
+		</Node>
+		<Node id="76">
+			<Name>KWMessageSpying</Name>
+			<Path>Protocols/KWMessageSpying.html</Path>
+		</Node>
+		<Node id="77">
+			<Name>KWProbe</Name>
+			<Path>Protocols/KWProbe.html</Path>
+		</Node>
+		<Node id="78">
+			<Name>KWReporting</Name>
+			<Path>Protocols/KWReporting.html</Path>
+		</Node>
+		<Node id="79">
+			<Name>KWVerifying</Name>
+			<Path>Protocols/KWVerifying.html</Path>
+		</Node>
+		
+	</Library>
+</DocSetNodes>

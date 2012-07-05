@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSObject+KiwiMockAdditions.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSObject(KiwiMockAdditions)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiMockAdditions.h</DeclaredIn>
+			
+			<NodeRef refid="65"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiMockAdditions)/mock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiMockAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (id)mock</Declaration>
+			
+			
+			<Anchor>//api/name/mock</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiMockAdditions)/mockWithName:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiMockAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (id)mockWithName:(NSString *)aName</Declaration>
+			
+			
+			<Anchor>//api/name/mockWithName:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiMockAdditions)/nullMock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiMockAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (id)nullMock</Declaration>
+			
+			
+			<Anchor>//api/name/nullMock</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiMockAdditions)/nullMockWithName:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiMockAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (id)nullMockWithName:(NSString *)aName</Declaration>
+			
+			
+			<Anchor>//api/name/nullMockWithName:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

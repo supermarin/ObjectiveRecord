@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSObject+KiwiStubAdditions.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSObject(KiwiStubAdditions)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>
+			
+			<NodeRef refid="66"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiStubAdditions)/stub:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (void)stub:(SEL)aSelector</Declaration>
+			
+			
+			<Anchor>//api/name/stub:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiStubAdditions)/stub:withArguments:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (void)stub:(SEL)aSelector withArguments:(id)firstArgument, ...</Declaration>
+			
+			
+			<Anchor>//api/name/stub:withArguments:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiStubAdditions)/stub:andReturn:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (void)stub:(SEL)aSelector andReturn:(id)aValue</Declaration>
+			
+			
+			<Anchor>//api/name/stub:andReturn:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiStubAdditions)/stub:andReturn:withArguments:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (void)stub:(SEL)aSelector andReturn:(id)aValue withArguments:(id)firstArgument, ...</Declaration>
+			
+			
+			<Anchor>//api/name/stub:andReturn:withArguments:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiStubAdditions)/stub</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (id)stub</Declaration>
+			
+			
+			<Anchor>//api/name/stub</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiStubAdditions)/stubAndReturn:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (id)stubAndReturn:(id)aValue</Declaration>
+			
+			
+			<Anchor>//api/name/stubAndReturn:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiStubAdditions)/stubMessagePattern:andReturn:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (void)stubMessagePattern:(KWMessagePattern *)aMessagePattern andReturn:(id)aValue</Declaration>
+			
+			
+			<Anchor>//api/name/stubMessagePattern:andReturn:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiStubAdditions)/clearStubs</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (void)clearStubs</Declaration>
+			
+			
+			<Anchor>//api/name/clearStubs</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiStubAdditions)/addMessageSpy:forMessagePattern:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (void)addMessageSpy:(id&lt;KWMessageSpying&gt;)aSpy forMessagePattern:(KWMessagePattern *)aMessagePattern</Declaration>
+			
+			
+			<Anchor>//api/name/addMessageSpy:forMessagePattern:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiStubAdditions)/removeMessageSpy:forMessagePattern:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiStubAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (void)removeMessageSpy:(id&lt;KWMessageSpying&gt;)aSpy forMessagePattern:(KWMessagePattern *)aMessagePattern</Declaration>
+			
+			
+			<Anchor>//api/name/removeMessageSpy:forMessagePattern:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

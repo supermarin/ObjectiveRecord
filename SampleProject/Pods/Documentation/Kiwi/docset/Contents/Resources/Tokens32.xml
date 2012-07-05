@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWHamcrestMatcher.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWHamcrestMatcher</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWHamcrestMatcher.h</DeclaredIn>
+			
+			<NodeRef refid="32"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHamcrestMatcher/match:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWHamcrestMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)match:(id&lt;HCMatcher&gt;)aMatcher</Declaration>
+			
+			
+			<Anchor>//api/name/match:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

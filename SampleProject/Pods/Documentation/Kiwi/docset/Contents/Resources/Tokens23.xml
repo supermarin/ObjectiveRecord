@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWContextNode.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWContextNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>
+			
+			<NodeRef refid="23"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/initWithCallSite:description:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithCallSite:(KWCallSite *)aCallSite description:(NSString *)aDescription</Declaration>
+			
+			
+			<Anchor>//api/name/initWithCallSite:description:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWContextNode/contextNodeWithCallSite:description:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>+ (id)contextNodeWithCallSite:(KWCallSite *)aCallSite description:(NSString *)aDescription</Declaration>
+			
+			
+			<Anchor>//api/name/contextNodeWithCallSite:description:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/setCallSite:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) KWCallSite *callSite</Declaration>
+			
+			
+			<Anchor>//api/name/callSite</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWContextNode/callSite</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) KWCallSite *callSite</Declaration>
+			
+			
+			<Anchor>//api/name/callSite</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/setDescription:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSString *description</Declaration>
+			
+			
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWContextNode/description</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSString *description</Declaration>
+			
+			
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/setRegisterMatchersNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readwrite, retain) KWRegisterMatchersNode *registerMatchersNode</Declaration>
+			
+			
+			<Anchor>//api/name/registerMatchersNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWContextNode/registerMatchersNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readwrite, retain) KWRegisterMatchersNode *registerMatchersNode</Declaration>
+			
+			
+			<Anchor>//api/name/registerMatchersNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/setBeforeAllNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readwrite, retain) KWBeforeAllNode *beforeAllNode</Declaration>
+			
+			
+			<Anchor>//api/name/beforeAllNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWContextNode/beforeAllNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readwrite, retain) KWBeforeAllNode *beforeAllNode</Declaration>
+			
+			
+			<Anchor>//api/name/beforeAllNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/setAfterAllNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readwrite, retain) KWAfterAllNode *afterAllNode</Declaration>
+			
+			
+			<Anchor>//api/name/afterAllNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWContextNode/afterAllNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readwrite, retain) KWAfterAllNode *afterAllNode</Declaration>
+			
+			
+			<Anchor>//api/name/afterAllNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/setBeforeEachNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readwrite, retain) KWBeforeEachNode *beforeEachNode</Declaration>
+			
+			
+			<Anchor>//api/name/beforeEachNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWContextNode/beforeEachNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readwrite, retain) KWBeforeEachNode *beforeEachNode</Declaration>
+			
+			
+			<Anchor>//api/name/beforeEachNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/setAfterEachNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readwrite, retain) KWAfterEachNode *afterEachNode</Declaration>
+			
+			
+			<Anchor>//api/name/afterEachNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWContextNode/afterEachNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readwrite, retain) KWAfterEachNode *afterEachNode</Declaration>
+			
+			
+			<Anchor>//api/name/afterEachNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/setNodes:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *nodes</Declaration>
+			
+			
+			<Anchor>//api/name/nodes</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWContextNode/nodes</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *nodes</Declaration>
+			
+			
+			<Anchor>//api/name/nodes</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/addContextNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>- (void)addContextNode:(KWContextNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/addContextNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/addItNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>- (void)addItNode:(KWItNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/addItNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/addPendingNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>- (void)addPendingNode:(KWPendingNode *)aNode</Declaration>
+			
+			
+			<Anchor>//api/name/addPendingNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContextNode/acceptExampleNodeVisitor:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContextNode.h</DeclaredIn>			
+			
+			<Declaration>- (void)acceptExampleNodeVisitor:(id&lt;KWExampleNodeVisitor&gt;)aVisitor</Declaration>
+			
+			
+			<Anchor>//api/name/acceptExampleNodeVisitor:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/KWProbe.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/KWProbe</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWProbe.h</DeclaredIn>
+			
+			<NodeRef refid="77"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KWProbe/isSatisfied</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWProbe.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)isSatisfied</Declaration>
+			
+			
+			<Anchor>//api/name/isSatisfied</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KWProbe/sample</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWProbe.h</DeclaredIn>			
+			
+			<Declaration>- (void)sample</Declaration>
+			
+			
+			<Anchor>//api/name/sample</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

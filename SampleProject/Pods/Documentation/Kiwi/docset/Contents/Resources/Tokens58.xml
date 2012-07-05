@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/name.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/name</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KiwiMacros.h</DeclaredIn>
+			
+			<NodeRef refid="58"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/name/buildExampleGroups</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KiwiMacros.h</DeclaredIn>			
+			
+			<Declaration>+ (void)buildExampleGroups</Declaration>
+			
+			
+			<Anchor>//api/name/buildExampleGroups</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

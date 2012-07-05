@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWRaiseMatcher.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWRaiseMatcher</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRaiseMatcher.h</DeclaredIn>
+			
+			<NodeRef refid="48"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWRaiseMatcher/raiseWhenSent:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRaiseMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)raiseWhenSent:(SEL)aSelector</Declaration>
+			
+			
+			<Anchor>//api/name/raiseWhenSent:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWRaiseMatcher/raiseWithName:whenSent:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRaiseMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)raiseWithName:(NSString *)aName whenSent:(SEL)aSelector</Declaration>
+			
+			
+			<Anchor>//api/name/raiseWithName:whenSent:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWRaiseMatcher/raiseWithReason:whenSent:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRaiseMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)raiseWithReason:(NSString *)aReason whenSent:(SEL)aSelector</Declaration>
+			
+			
+			<Anchor>//api/name/raiseWithReason:whenSent:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWRaiseMatcher/raiseWithName:reason:whenSent:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRaiseMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)raiseWithName:(NSString *)aName reason:(NSString *)aReason whenSent:(SEL)aSelector</Declaration>
+			
+			
+			<Anchor>//api/name/raiseWithName:reason:whenSent:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>
