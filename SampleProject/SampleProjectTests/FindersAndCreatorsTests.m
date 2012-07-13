@@ -7,6 +7,7 @@
 //
 
 #import "FindersAndCreatorsTests.h"
+#import "NSArray+Accessors.h"
 #import "Kiwi.h"
 #import "Person.h"
 
@@ -23,6 +24,7 @@ Person *(^fetchUniquePerson)(void) = ^Person *(void) {
 };
 
 void (^createSomePeople)(void) = ^(void) {
+   
     NSArray *names = [NSArray arrayWithObjects:@"John", @"Steve", @"Neo", UNIQUE_NAME, nil];
     NSArray *surnames = [NSArray arrayWithObjects:@"Doe", @"Jobs", @"Anderson", UNIQUE_SURNAME, nil];
 
@@ -52,9 +54,26 @@ describe(@"Find / Create / Save / Delete specs", ^{
     
     context(@"Creating", ^{
         
+        it(@"creates without arguments", ^{
+            Person *person = [Person create];
+            person.name = @"marin";
+            person.surname = UNIQUE_SURNAME;            
+            [[[[Person where:@"name == 'marin'"].first surname] should] equal:UNIQUE_SURNAME];
+        });
+        
+        it(@"creates with string", ^{
+            
+        });
+        
+        it(@"creates with dict", ^{
+            
+        });
+        
     });
     
     context(@"Saving", ^{
+        
+        
         
     });
     
@@ -76,6 +95,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
     context(@"Finders", ^{
        
 //        it(@"should support the simple args like [NSString stringWithFormat:]", ^{
+//
 //            Person *unique = [Person where:@"name == '%@'", UNIQUE_NAME];
 //            [[unique.surname should] equal:UNIQUE_SURNAME];
 //        });

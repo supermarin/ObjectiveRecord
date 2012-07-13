@@ -19,4 +19,16 @@
     return [self lastObject];
 }
 
+- (void)each:(void (^)(id object))block {
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        block(obj); 
+    }];
+}
+
+- (void)eachWithIndex:(void (^)(id object, int index))block {
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        block(obj, idx); 
+    }];
+}
+
 @end

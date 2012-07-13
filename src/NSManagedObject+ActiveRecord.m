@@ -7,6 +7,7 @@
 //
 
 #import "NSManagedObject+ActiveRecord.h"
+#import "NSArray+Accessors.h"
 
 @implementation NSManagedObjectContext (ActiveRecord)
 
@@ -117,8 +118,8 @@
 }
 
 + (void)deleteAll {
-    [[self all] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [obj delete]; 
+    [[self all] each:^(id object) {
+        [object delete];
     }];
 }
 

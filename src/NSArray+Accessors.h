@@ -13,4 +13,7 @@
 @property(readonly) id first;
 @property(readonly) id last;
 
+- (void)each:(void (^)(id object))block;
+- (void)eachWithIndex:(void (^)(id object, int index))block;
+
 @end
