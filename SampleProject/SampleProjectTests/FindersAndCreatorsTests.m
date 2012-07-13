@@ -54,6 +54,9 @@ describe(@"Find / Create / Save / Delete specs", ^{
     
     context(@"Creating", ^{
         
+        NSArray *attributes = [NSArray arrayWithObjects:@"name", @"surname", @"age", nil];
+        NSArray *values = [NSArray arrayWithObjects:@"marin", @"usalj", [NSNumber numberWithInt:23], nil];
+        
         it(@"creates without arguments", ^{
             Person *person = [Person create];
             person.name = @"marin";
@@ -61,12 +64,13 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[[[Person where:@"name == 'marin'"].first surname] should] equal:UNIQUE_SURNAME];
         });
         
-        it(@"creates with string", ^{
-            
-        });
         
         it(@"creates with dict", ^{
-            
+            Person *person = [Person create:[NSDictionary dictionaryWithObjects:values 
+                                                                        forKeys:attributes]];
+            [[person.name should] equal:@"marin"];
+            [[person.surname should] equal:@"usalj"];
+            [[person.age should] equal:theValue(23)];
         });
         
     });

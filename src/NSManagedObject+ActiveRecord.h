@@ -22,6 +22,8 @@
 + (void)deleteAll;
 
 + (id)create;
++ (id)create:(NSDictionary *)attributes;
+
 + (NSArray *)all;
 + (NSArray *)where:(id)condition;
 
