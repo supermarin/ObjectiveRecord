@@ -20,6 +20,7 @@
 
 - (BOOL)save;
 - (void)delete;
++ (void)deleteAll;
 
 + (id)create;
 + (NSArray *)all;

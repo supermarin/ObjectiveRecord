@@ -112,8 +112,14 @@
 }
 
 - (void)delete {
-    
+
     [self.managedObjectContext deleteObject:self];
+}
+
++ (void)deleteAll {
+    [[self all] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj delete]; 
+    }];
 }
 
 @end
