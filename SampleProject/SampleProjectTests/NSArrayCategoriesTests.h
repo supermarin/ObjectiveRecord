@@ -1,5 +1,5 @@
 //
-//  NSArrayCategories.h
+//  NSArrayCategoriesTests.h
 //  SampleProject
 //
 //  Created by Marin Usalj on 7/13/12.
@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface NSArrayCategories : SenTestCase
+@interface NSArrayCategoriesTests : SenTestCase
 
 @end

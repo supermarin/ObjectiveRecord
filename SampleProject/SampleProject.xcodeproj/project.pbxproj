@@ -17,7 +17,7 @@
 		897D09FA15B0940A00722A8F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09F915B0940A00722A8F /* Person.m */; };
 		897D09FB15B0940A00722A8F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09F915B0940A00722A8F /* Person.m */; };
 		897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */; };
-		897D0A2415B0B07C00722A8F /* NSArrayCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D0A2315B0B07C00722A8F /* NSArrayCategories.m */; };
+		897D0A2415B0B07C00722A8F /* NSArrayCategoriesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D0A2315B0B07C00722A8F /* NSArrayCategoriesTests.m */; };
 		89F1EEA815A4C73B00AE4FB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */; };
 		89F1EEAA15A4C73B00AE4FB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA915A4C73B00AE4FB4 /* Foundation.framework */; };
 		89F1EEAC15A4C73B00AE4FB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEAB15A4C73B00AE4FB4 /* CoreGraphics.framework */; };
@@ -58,8 +58,8 @@
 		897D09F915B0940A00722A8F /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		897D09FC15B0945400722A8F /* FindersAndCreatorsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindersAndCreatorsTests.h; sourceTree = "<group>"; };
 		897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindersAndCreatorsTests.m; sourceTree = "<group>"; };
-		897D0A2215B0B07C00722A8F /* NSArrayCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayCategories.h; sourceTree = "<group>"; };
-		897D0A2315B0B07C00722A8F /* NSArrayCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayCategories.m; sourceTree = "<group>"; };
+		897D0A2215B0B07C00722A8F /* NSArrayCategoriesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayCategoriesTests.h; sourceTree = "<group>"; };
+		897D0A2315B0B07C00722A8F /* NSArrayCategoriesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayCategoriesTests.m; sourceTree = "<group>"; };
 		89F1EEA315A4C73B00AE4FB4 /* SampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		89F1EEA915A4C73B00AE4FB4 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -208,8 +208,8 @@
 				897D09FC15B0945400722A8F /* FindersAndCreatorsTests.h */,
 				897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */,
 				89F1EECC15A4C73B00AE4FB4 /* Supporting Files */,
-				897D0A2215B0B07C00722A8F /* NSArrayCategories.h */,
-				897D0A2315B0B07C00722A8F /* NSArrayCategories.m */,
+				897D0A2215B0B07C00722A8F /* NSArrayCategoriesTests.h */,
+				897D0A2315B0B07C00722A8F /* NSArrayCategoriesTests.m */,
 			);
 			path = SampleProjectTests;
 			sourceTree = "<group>";
@@ -393,7 +393,7 @@
 				897D09EA15B0926200722A8F /* NSManagedObject+ActiveRecord.m in Sources */,
 				897D09FB15B0940A00722A8F /* Person.m in Sources */,
 				897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */,
-				897D0A2415B0B07C00722A8F /* NSArrayCategories.m in Sources */,
+				897D0A2415B0B07C00722A8F /* NSArrayCategoriesTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

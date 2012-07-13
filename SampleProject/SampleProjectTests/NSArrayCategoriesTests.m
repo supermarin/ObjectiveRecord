@@ -1,12 +1,12 @@
 //
-//  NSArrayCategories.m
+//  NSArrayCategoriesTests.m
 //  SampleProject
 //
 //  Created by Marin Usalj on 7/13/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "NSArrayCategories.h"
+#import "NSArrayCategoriesTests.h"
 #import "NSArray+Accessors.h"
 #import "Kiwi.h"
 
