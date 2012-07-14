@@ -33,6 +33,7 @@ void (^createSomePeople)(void) = ^(void) {
         person.name = name;
         person.surname = [surnames objectAtIndex:idx];
         person.age = [NSNumber numberWithInt:idx];
+        person.isMember = [NSNumber numberWithBool:YES];
         [person save];
     }];
 };
@@ -50,12 +51,8 @@ describe(@"Find / Create / Save / Delete specs", ^{
     afterAll(^{
         [Person deleteAll];
     });
-
     
     context(@"Creating", ^{
-        
-        NSArray *attributes = [NSArray arrayWithObjects:@"name", @"surname", @"age", nil];
-        NSArray *values = [NSArray arrayWithObjects:@"marin", @"usalj", [NSNumber numberWithInt:23], nil];
         
         it(@"creates without arguments", ^{
             Person *person = [Person create];
@@ -64,8 +61,11 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[[[Person where:@"name == 'marin'"].first surname] should] equal:UNIQUE_SURNAME];
         });
         
-        
+
         it(@"creates with dict", ^{
+            NSArray *attributes = [NSArray arrayWithObjects:@"name", @"surname", @"age", nil];
+            NSArray *values = [NSArray arrayWithObjects:@"marin", @"usalj", [NSNumber numberWithInt:23], nil];
+
             Person *person = [Person create:[NSDictionary dictionaryWithObjects:values 
                                                                         forKeys:attributes]];
             [[person.name should] equal:@"marin"];
@@ -76,8 +76,6 @@ describe(@"Find / Create / Save / Delete specs", ^{
     });
     
     context(@"Saving", ^{
-        
-        
         
     });
     
@@ -112,8 +110,18 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
 
         it(@"Finds using [Entity where: DICTIONARY]", ^{
-            Person *unique = [Person where:[NSDictionary dictionaryWithObject:UNIQUE_SURNAME forKey:@"surname"]].first;
-            [[unique.name should] equal:UNIQUE_NAME];
+
+            NSArray *attributes = [NSArray arrayWithObjects:@"name", @"surname", @"age", @"isMember", nil];
+            NSArray *values =     [NSArray arrayWithObjects:@"John", @"Doe", [NSNumber numberWithInt:0], [NSNumber numberWithBool:YES], nil];
+
+            
+            Person *unique = [Person where:[NSDictionary dictionaryWithObjects:values 
+                                                                       forKeys:attributes]].first;
+
+            [[unique.name should] equal:@"John"];
+            [[unique.surname should] equal:@"Doe"];
+            [[unique.age should] equal:theValue(0)];
+            [[unique.isMember should] equal:theValue(YES)];
         });
         
     });

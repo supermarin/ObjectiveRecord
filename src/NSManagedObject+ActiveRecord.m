@@ -39,7 +39,7 @@
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
 
     return [self fetchWithPredicate:[self predicateFromStringOrDict:condition]
-                        inContext:context];
+                          inContext:context];
 }
 
 
@@ -88,15 +88,15 @@
 #pragma mark - Private
 
 + (NSString *)queryStringFromDictionary:(NSDictionary *)conditions {
-    
     NSMutableString *queryString = [NSMutableString new];
-    
-    for (NSString *condition in conditions.allKeys) {
-        [queryString appendFormat:@"%@ == '%@'", condition, [conditions valueForKey:condition]];
-        
-        if (condition == conditions.allKeys.last) continue;
-        [queryString appendString:@" AND "];
-    }
+
+    [conditions.allKeys each:^(id attribute) {
+        [queryString appendFormat:@"%@ == '%@'", 
+                                    attribute, [conditions valueForKey:attribute]];
+        if (attribute == conditions.allKeys.last) return;
+        [queryString appendString:@" AND "]; 
+    }];
+
     return queryString;
 }
 
@@ -105,8 +105,10 @@
     if ([condition isKindOfClass:[NSString class]]) 
         return [NSPredicate predicateWithFormat:condition];
     
-    return [NSPredicate predicateWithFormat:
-            [self queryStringFromDictionary:condition]];
+    else if ([condition isKindOfClass:[NSDictionary class]]) 
+        return [NSPredicate predicateWithFormat:[self queryStringFromDictionary:condition]];
+
+    return nil;
 }
 
 + (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {
