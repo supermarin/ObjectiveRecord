@@ -8,6 +8,7 @@
 
 #import <CoreData/CoreData.h>
 #import "CoreDataManager.h"
+#import "NSArray+Accessors.h"
 
 @interface NSManagedObjectContext (ActiveRecord)
 + (NSManagedObjectContext *)defaultContext;
@@ -32,7 +33,10 @@
 #pragma mark - Custom Context
 
 + (id)createInContext:(NSManagedObjectContext *)context;
++ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
+
 + (void)deleteAllInContext:(NSManagedObjectContext *)context;
+
 + (NSArray *)allInContext:(NSManagedObjectContext *)context;
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context;    
 

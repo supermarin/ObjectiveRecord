@@ -7,7 +7,6 @@
 //
 
 #import "NSManagedObject+ActiveRecord.h"
-#import "NSArray+Accessors.h"
 
 @implementation NSManagedObjectContext (ActiveRecord)
 
@@ -50,7 +49,12 @@
 }
 
 + (id)create:(NSDictionary *)attributes {
-    NSManagedObject *newEntity = [self create];
+    return [self create:attributes 
+              inContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
+    NSManagedObject *newEntity = [self createInContext:context];
     
     [newEntity setValuesForKeysWithDictionary:attributes];
     return newEntity;
