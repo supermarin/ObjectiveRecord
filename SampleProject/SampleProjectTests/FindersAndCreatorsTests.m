@@ -76,6 +76,28 @@ describe(@"Find / Create / Save / Delete specs", ^{
     });
     
     context(@"Saving", ^{
+
+        __block Person *person;
+
+        beforeEach(^{
+            person = fetchUniquePerson();
+            person.name = @"changed attribute for save";
+        });
+        
+        afterEach(^{
+            person.name = UNIQUE_NAME;
+            [person save];
+        });
+
+        it(@"uses the object's context", ^{
+            [[person.managedObjectContext should] receive:@selector(save:)];
+            [person save];
+        });
+        
+        it(@"returns YES if save succeeded and the object had changes", ^{
+            [[theValue([person save]) should] beTrue];
+            [[theValue([person save]) should] beFalse];
+        });
         
     });
     
