@@ -188,6 +188,16 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [Person createInContext:newContext];
         });
         
+        it(@"Creates in a separate context", ^{
+            [[NSEntityDescription should] 
+             receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:) 
+             andReturn:nil 
+             withArguments:@"Person", newContext];
+            
+            [Person create:[NSDictionary dictionary] inContext:newContext];
+        });
+        
+        
     });
     
 });
