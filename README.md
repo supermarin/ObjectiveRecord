@@ -38,9 +38,7 @@ NSArray *people = [Person where:@{ @"age" : @18,
                   }];
 ```
 <br><br>
-#### Custom ManagedObjectContext
-You can also use your own ManagedObjectContext while fetching.
-This is great if you have to do lots of changes, but don't want to notify anyone observing the default context until all the changes are made.
+### Custom ManagedObjectContext
 ``` objc
 NSManagedObjectContext *newContext = [NSManagedObjectContext new];
 
@@ -60,7 +58,7 @@ static NSString *CUSTOM_DATABASE_NAME = nil;
 #### NSArray helpers
 
 ``` objc
-NSArray array; // assume it's full of objects
+NSArray *array; // assume it's full of objects
 
 [array each:^(id object) {
     
@@ -98,7 +96,7 @@ john.surname = @"Wayne";
 john.save;
 
 // find / delete
-[[Person where: @{ isMember : @NO }] each:^(Person *person) {
+[[Person where: @{ "member" : @NO }] each:^(Person *person) {
   
   person.delete;
 }];
