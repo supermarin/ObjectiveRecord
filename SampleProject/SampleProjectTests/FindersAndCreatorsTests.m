@@ -151,6 +151,45 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
     });
     
+    context(@"All from above, in a separate context!", ^{
+
+        NSManagedObjectContext *newContext = [NSManagedObjectContext new]; 
+        newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
+        
+        beforeAll(^{
+            Person *newPerson = [Person createInContext:newContext];
+            newPerson.name = @"Joshua";
+            newPerson.age = [NSNumber numberWithInt:100];
+            [newPerson save];
+        });
+        
+        afterAll(^{
+            [Person deleteAllInContext:newContext];
+        });
+        
+        it(@"Finds in a separate context", ^{
+            [[newContext should] receive:@selector(executeFetchRequest:error:)];
+            Person *found = [Person where:@"name == 'Joshua'" inContext:newContext].first;
+            [[found.name should] equal:@"Joshua"];
+        });
+
+        it(@"Finds ALL! in a separate context", ^{
+            [[newContext should] receive:@selector(executeFetchRequest:error:)];
+            [Person allInContext:newContext];
+//TODO: NEED TO FIGURE THIS ONE OUT [[[Person allInContext:newContext] should] haveCountOf:[[Person all] count]+1];
+        });
+        
+        it(@"Creates in a separate context", ^{
+            [[NSEntityDescription should] 
+             receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:) 
+             andReturn:nil 
+             withArguments:@"Person", newContext];
+            
+            [Person createInContext:newContext];
+        });
+        
+    });
+    
 });
 
 SPEC_END

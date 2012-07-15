@@ -9,13 +9,11 @@
 /* Begin PBXBuildFile section */
 		197CA8AB5A4845B7B4174348 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B37C31BF7BE149339CB8C037 /* libPods-test.a */; };
 		897D09E515B0926200722A8F /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E015B0926200722A8F /* CoreDataManager.m */; };
-		897D09E615B0926200722A8F /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E015B0926200722A8F /* CoreDataManager.m */; };
 		897D09E715B0926200722A8F /* NSArray+Accessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E215B0926200722A8F /* NSArray+Accessors.m */; };
 		897D09E815B0926200722A8F /* NSArray+Accessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E215B0926200722A8F /* NSArray+Accessors.m */; };
 		897D09E915B0926200722A8F /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E415B0926200722A8F /* NSManagedObject+ActiveRecord.m */; };
 		897D09EA15B0926200722A8F /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E415B0926200722A8F /* NSManagedObject+ActiveRecord.m */; };
 		897D09FA15B0940A00722A8F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09F915B0940A00722A8F /* Person.m */; };
-		897D09FB15B0940A00722A8F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09F915B0940A00722A8F /* Person.m */; };
 		897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */; };
 		897D0A2415B0B07C00722A8F /* NSArrayCategoriesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D0A2315B0B07C00722A8F /* NSArrayCategoriesTests.m */; };
 		89F1EEA815A4C73B00AE4FB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */; };
@@ -388,10 +386,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				89F1EED315A4C73B00AE4FB4 /* SampleProjectTests.m in Sources */,
-				897D09E615B0926200722A8F /* CoreDataManager.m in Sources */,
 				897D09E815B0926200722A8F /* NSArray+Accessors.m in Sources */,
 				897D09EA15B0926200722A8F /* NSManagedObject+ActiveRecord.m in Sources */,
-				897D09FB15B0940A00722A8F /* Person.m in Sources */,
 				897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */,
 				897D0A2415B0B07C00722A8F /* NSArrayCategoriesTests.m in Sources */,
 			);

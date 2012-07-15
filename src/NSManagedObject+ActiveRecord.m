@@ -80,9 +80,15 @@
 }
 
 + (void)deleteAll {
-    [[self all] each:^(id object) {
+    
+    [self deleteAllInContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (void)deleteAllInContext:(NSManagedObjectContext *)context {
+    
+    [[self allInContext:context] each:^(id object) {
         [object delete];
-    }];
+    }];    
 }
 
 #pragma mark - Private

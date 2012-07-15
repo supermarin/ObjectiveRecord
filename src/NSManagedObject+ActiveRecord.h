@@ -30,7 +30,9 @@
 
 
 #pragma mark - Custom Context
+
 + (id)createInContext:(NSManagedObjectContext *)context;
++ (void)deleteAllInContext:(NSManagedObjectContext *)context;
 + (NSArray *)allInContext:(NSManagedObjectContext *)context;
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context;    
 
