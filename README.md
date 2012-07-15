@@ -13,23 +13,21 @@ It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
 ``` objc
 Person *john = [Person create];
 john.name = @"John";
+john.save;
+john.delete;
 
 NSDictionary *attributes; // assume it's populated with name = john, key = value,...
 [Person create:dictionary];
 
 [Person create:@{ @"name" : @"John", @"age" : @12, @"member" : @NO }]; // XCode >= 4.4
-
-john.save; // saved in the database
-john.delete; // deleted from the database
 ```
 
 #### Finders
 
 ``` objc
-[Person all]; // NSArray of people
-[Person where:@"name == 'John'"]; // NSArray of Johns
-[Person where:@"name == 'John' AND surname = 'Doe'"].first; // Person
-
+NSArray *people = [Person all];
+NSArray *johns = [Person where:@"name == 'John'"];
+Person *johnDoe = [Person where:@"name == 'John' AND surname = 'Doe'"].first;
 
 // XCode >= 4.4
 NSArray *people = [Person where:@{ @"age" : @18 }];
@@ -39,9 +37,7 @@ NSArray *people = [Person where:@{ @"age" : @18,
                   @"state" : @"NY"
                   }];
 ```
-
 <br><br>
-
 #### Custom ManagedObjectContext
 You can also use your own ManagedObjectContext while fetching.
 This is great if you have to do lots of changes, but don't want to notify anyone observing the default context until all the changes are made.
