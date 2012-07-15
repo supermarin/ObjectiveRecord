@@ -37,8 +37,9 @@ NSArray *people = [Person where:@{ @"age" : @18,
                   @"state" : @"NY"
                   }];
 ```
-<br><br>
+
 ### Custom ManagedObjectContext
+
 ``` objc
 NSManagedObjectContext *newContext = [NSManagedObjectContext new];
 
@@ -55,7 +56,7 @@ static NSString *CUSTOM_MODEL_NAME = @"Database";
 static NSString *CUSTOM_DATABASE_NAME = nil;
 ```
 
-#### NSArray helpers
+#### NSArray additions
 
 ``` objc
 NSArray *array; // assume it's full of objects
