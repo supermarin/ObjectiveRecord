@@ -14,24 +14,24 @@ It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
 Person *john = [Person create];
 john.name = @"John";
 
-NSDictionary *attributes; # assume it's populated with name = john, key = value,...
+NSDictionary *attributes; // assume it's populated with name = john, key = value,...
 [Person create:dictionary];
 
-[Person create:@{ @"name" : @"John", @"age" : @12, @"member" : @NO }]; # XCode >= 4.4
+[Person create:@{ @"name" : @"John", @"age" : @12, @"member" : @NO }]; // XCode >= 4.4
 
-john.save; # saved in the database
-john.delete; # deleted from the database
+john.save; // saved in the database
+john.delete; // deleted from the database
 ```
 
 #### Finders
 
 ``` objc
-[Person all]; # NSArray of people
-[Person where:@"name == 'John'"]; # NSArray of Johns
-[Person where:@"name == 'John' AND surname = 'Doe'"].first; # Person
+[Person all]; // NSArray of people
+[Person where:@"name == 'John'"]; // NSArray of Johns
+[Person where:@"name == 'John' AND surname = 'Doe'"].first; // Person
 
 
-# XCode >= 4.4
+// XCode >= 4.4
 NSArray *people = [Person where:@{ @"age" : @18 }];
 
 NSArray *people = [Person where:@{ @"age" : @18,
@@ -64,7 +64,7 @@ static NSString *CUSTOM_DATABASE_NAME = nil;
 #### NSArray helpers
 
 ``` objc
-NSArray array; # assume it's full of objects
+NSArray array; // assume it's full of objects
 
 [array each:^(id object) {
     
@@ -84,7 +84,7 @@ array.last
 #### Examples
 
 ``` objc
-# find
+// find
 [[Person all] each:^(Person *person) {
     
     person.isMember = @NO;
@@ -95,13 +95,13 @@ for(Person *person in [Person all]) {
     person.isMember = @YES;
 }
 
-# create / save
+// create / save
 Person *john = [Person create];
 john.name = @"John";
 john.surname = @"Wayne";
 john.save;
 
-# find / delete
+// find / delete
 [[Person where: @{ isMember : @NO }] each:^(Person *person) {
   
   person.delete;
