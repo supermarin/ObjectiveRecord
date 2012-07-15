@@ -16,6 +16,9 @@ static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
 
 SPEC_BEGIN(FindersAndCreators)
 
+NSArray *names = [NSArray arrayWithObjects:@"John", @"Steve", @"Neo", UNIQUE_NAME, nil];
+NSArray *surnames = [NSArray arrayWithObjects:@"Doe", @"Jobs", @"Anderson", UNIQUE_SURNAME, nil];
+
 #pragma mark - Helpers
 
 Person *(^fetchUniquePerson)(void) = ^Person *(void) {
@@ -24,10 +27,6 @@ Person *(^fetchUniquePerson)(void) = ^Person *(void) {
 };
 
 void (^createSomePeople)(void) = ^(void) {
-   
-    NSArray *names = [NSArray arrayWithObjects:@"John", @"Steve", @"Neo", UNIQUE_NAME, nil];
-    NSArray *surnames = [NSArray arrayWithObjects:@"Doe", @"Jobs", @"Anderson", UNIQUE_SURNAME, nil];
-
     [names enumerateObjectsUsingBlock:^(id name, NSUInteger idx, BOOL *stop) {
         Person *person = [Person create];
         person.name = name;
@@ -123,6 +122,10 @@ describe(@"Find / Create / Save / Delete specs", ^{
 //            Person *unique = [Person where:@"name == '%@'", UNIQUE_NAME];
 //            [[unique.surname should] equal:UNIQUE_SURNAME];
 //        });
+        
+        it(@"Finds ALL the entities!", ^{
+            [[[Person all] should] haveCountOf:[names count]];
+        });
         
         it(@"Finds using [Entity where: STRING]", ^{
             
