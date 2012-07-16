@@ -71,8 +71,8 @@ NSArray *array; // assume it's full of objects
     NSLog(@"Object: %@ idx: %i", object, index); 
 }];
 
-array.first
-array.last
+id object = array.first;
+id object = array.last;
 ```
 
 
@@ -82,12 +82,12 @@ array.last
 // find
 [[Person all] each:^(Person *person) {
     
-    person.isMember = @NO;
+    person.member = @NO;
 }];
 
 for(Person *person in [Person all]) {
   
-    person.isMember = @YES;
+    person.member = @YES;
 }
 
 // create / save
@@ -99,7 +99,7 @@ john.save;
 // find / delete
 [[Person where: @{ "member" : @NO }] each:^(Person *person) {
   
-  person.delete;
+  [person delete];
 }];
 ```
 
