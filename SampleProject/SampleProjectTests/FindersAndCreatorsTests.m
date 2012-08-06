@@ -104,11 +104,15 @@ describe(@"Find / Create / Save / Delete specs", ^{
        
         it(@"Deletes the object from database with -delete", ^{
             [fetchUniquePerson() shouldNotBeNil];
+            [[fetchUniquePerson().managedObjectContext should] receive:@selector(save:)];
             [fetchUniquePerson() delete];
             [fetchUniquePerson() shouldBeNil];
         });
         
         it(@"Deletes everything from database with +deleteAll", ^{
+            [[[NSManagedObjectContext defaultContext] should] receive:@selector(save:)
+                                                            andReturn:nil
+                                                            withCount:[Person all].count];
             [Person deleteAll];
             [[Person all] shouldBeNil];
         });

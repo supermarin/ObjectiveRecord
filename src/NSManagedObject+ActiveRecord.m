@@ -24,19 +24,19 @@
 }
 
 + (NSArray *)allInContext:(NSManagedObjectContext *)context {
-
+    
     return [self fetchWithPredicate:nil inContext:context];
 }
 
 
 + (NSArray *)where:(id)condition {
     
-    return [self where:condition 
+    return [self where:condition
              inContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
-
+    
     return [self fetchWithPredicate:[self predicateFromStringOrDict:condition]
                           inContext:context];
 }
@@ -49,7 +49,7 @@
 }
 
 + (id)create:(NSDictionary *)attributes {
-    return [self create:attributes 
+    return [self create:attributes
               inContext:[NSManagedObjectContext defaultContext]];
 }
 
@@ -61,26 +61,17 @@
 }
 
 + (id)createInContext:(NSManagedObjectContext *)context {
-    return [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass(self) 
+    return [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass(self)
                                          inManagedObjectContext:context];
 }
 
 - (BOOL)save {
-    if (self.managedObjectContext == nil) return NO;
-    if (![self.managedObjectContext hasChanges])return NO;
-    
-    NSError *error = nil;    
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Unresolved error in saving entity: %@!\n Error:%@", self, error);
-        return NO;
-    }
-    
-    return YES;
+    return [self saveTheContext];
 }
 
 - (void)delete {
-
     [self.managedObjectContext deleteObject:self];
+    [self saveTheContext];
 }
 
 + (void)deleteAll {
@@ -92,53 +83,66 @@
     
     [[self allInContext:context] each:^(id object) {
         [object delete];
-    }];    
+    }];
 }
 
 #pragma mark - Private
 
 + (NSString *)queryStringFromDictionary:(NSDictionary *)conditions {
     NSMutableString *queryString = [NSMutableString new];
-
+    
     [conditions.allKeys each:^(id attribute) {
-        [queryString appendFormat:@"%@ == '%@'", 
-                                    attribute, [conditions valueForKey:attribute]];
+        [queryString appendFormat:@"%@ == '%@'",
+         attribute, [conditions valueForKey:attribute]];
         if (attribute == conditions.allKeys.last) return;
-        [queryString appendString:@" AND "]; 
+        [queryString appendString:@" AND "];
     }];
-
+    
     return queryString;
 }
 
 + (NSPredicate *)predicateFromStringOrDict:(id)condition {
     
-    if ([condition isKindOfClass:[NSString class]]) 
+    if ([condition isKindOfClass:[NSString class]])
         return [NSPredicate predicateWithFormat:condition];
     
-    else if ([condition isKindOfClass:[NSDictionary class]]) 
+    else if ([condition isKindOfClass:[NSDictionary class]])
         return [NSPredicate predicateWithFormat:[self queryStringFromDictionary:condition]];
-
+    
     return nil;
 }
 
 + (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {
     
     NSFetchRequest *request = [NSFetchRequest new];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass(self) 
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass(self)
                                               inManagedObjectContext:context];
     [request setEntity:entity];
     return request;
 }
 
-+ (NSArray *)fetchWithPredicate:(NSPredicate *)predicate 
++ (NSArray *)fetchWithPredicate:(NSPredicate *)predicate
                       inContext:(NSManagedObjectContext *)context {
     
     NSFetchRequest *request = [self createFetchRequestInContext:context];
     [request setPredicate:predicate];
     
-    NSArray *fetchedObjects = [context executeFetchRequest:request error:nil];    
+    NSArray *fetchedObjects = [context executeFetchRequest:request error:nil];
     if (fetchedObjects.count > 0) return fetchedObjects;
     return nil;
+}
+
+- (BOOL)saveTheContext {
+    if (self.managedObjectContext == nil) return NO;
+    if (![self.managedObjectContext hasChanges])return NO;
+    
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error in saving entity: %@!\n Error:%@", self, error);
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end
