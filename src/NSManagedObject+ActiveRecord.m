@@ -133,11 +133,16 @@
 }
 
 - (BOOL)saveTheContext {
-    if (self.managedObjectContext == nil) return NO;
-    if (![self.managedObjectContext hasChanges])return NO;
+    /**
+     * If there are no ctx or changes return TRUE, because theere are no very errors.
+     */
+    if ( (self.managedObjectContext == nil) || (! [self.managedObjectContext hasChanges]) ) return TRUE;
+    
     
     NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
+    BOOL save = [self.managedObjectContext save:&error];
+
+    if (!save || error) {
         NSLog(@"Unresolved error in saving entity: %@!\n Error:%@", self, error);
         return NO;
     }
