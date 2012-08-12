@@ -93,8 +93,13 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [person save];
         });
         
-        it(@"returns YES if save succeeded and the object had changes", ^{
+        it(@"returns YES if save has succeeded", ^{
             [[theValue([person save]) should] beTrue];
+            [[theValue([person save]) should] beTrue];
+        });
+        
+        it(@"returns NO if save hasn't succeeded", ^{
+            [[person.managedObjectContext should] receive:@selector(save:) andReturn:theValue(NO)];
             [[theValue([person save]) should] beFalse];
         });
         
