@@ -17,8 +17,8 @@ john.save;
 john.delete;
 
 NSDictionary *attributes; // assume it's populated with name = john, key = value,...
-[Person create:dictionary];
-
+[Person create:attributes];
+// the same thing 
 [Person create:@{ @"name" : @"John", @"age" : @12, @"member" : @NO }]; // XCode >= 4.4
 ```
 
