@@ -28,25 +28,38 @@
     return [self fetchWithPredicate:nil inContext:context];
 }
 
-+ (NSArray *)whereFormat:(NSString *)format, ...
++ (NSArray *)where:(id)request, ...
 {
     va_list va_arguments;
-    va_start(va_arguments, format);
-    NSString *condition = [[NSString alloc] initWithFormat:format arguments:va_arguments];
+    va_start(va_arguments, request);
+    NSArray *arguments = [self arrayFromVaList:va_arguments];
     va_end(va_arguments);
-    return [self where:condition];
+    return [self whereFromContext:[NSManagedObjectContext defaultContext] condition:request arguments:arguments];
 }
 
-+ (NSArray *)where:(id)condition {
-    
-    return [self where:condition
-             inContext:[NSManagedObjectContext defaultContext]];
++ (NSArray *)whereFromContext:(NSManagedObjectContext *)context condition:(id)request, ...
+{
+    va_list va_arguments;
+    va_start(va_arguments, request);
+    NSArray *arguments = [self arrayFromVaList:va_arguments];
+    va_end(va_arguments);
+    return [self whereFromContext:context condition:request arguments:arguments];
 }
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
     
-    return [self fetchWithPredicate:[self predicateFromStringOrDict:condition]
-                          inContext:context];
+    return [self whereFromContext:context condition:condition arguments:nil];
+}
+
++ (NSArray *)whereFromContext:(NSManagedObjectContext *)context condition:(id)request arguments:(NSArray *)arguments
+{
+    if ([request isKindOfClass:[NSString class]]) {
+        return [self fetchWithPredicate:[self predicateFromString:request withArray:arguments] inContext:context];
+    } else if ([request isKindOfClass:[NSDictionary class]]) {
+        return [self fetchWithPredicate:[self predicateFromDictionary:request] inContext:context];
+    } else {
+        return nil;
+    }
 }
 
 
@@ -109,15 +122,28 @@
     return queryString;
 }
 
-+ (NSPredicate *)predicateFromStringOrDict:(id)condition {
-    
-    if ([condition isKindOfClass:[NSString class]])
-        return [NSPredicate predicateWithFormat:condition];
-    
-    else if ([condition isKindOfClass:[NSDictionary class]])
-        return [NSPredicate predicateWithFormat:[self queryStringFromDictionary:condition]];
-    
-    return nil;
++ (NSArray *)arrayFromVaList:(va_list)va_arguments
+{
+    NSMutableArray *arguments = [NSMutableArray array];
+    id object;
+    while ((object = va_arg( va_arguments, id))) {
+        [arguments addObject:object];
+    }
+    return arguments;
+}
+
++ (NSPredicate *)predicateFromString:(NSString*)format withArray:(NSArray *)arguments
+{
+    if (arguments != nil && [arguments count] > 0) {
+        return [NSPredicate predicateWithFormat:format argumentArray:arguments];
+    } else {
+        return [NSPredicate predicateWithFormat:format];
+    }
+}
+
++ (NSPredicate *)predicateFromDictionary:(NSDictionary *)dictionary
+{
+    return [NSPredicate predicateWithFormat:[self queryStringFromDictionary:dictionary]];
 }
 
 + (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {

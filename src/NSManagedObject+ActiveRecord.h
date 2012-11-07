@@ -26,8 +26,7 @@
 + (id)create:(NSDictionary *)attributes;
 
 + (NSArray *)all;
-+ (NSArray *)where:(id)condition;
-+ (NSArray *)whereFormat:(NSString *)format, ...;
++ (NSArray *)where:(id)request, ...;
 
 
 
