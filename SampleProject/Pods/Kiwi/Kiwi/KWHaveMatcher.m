@@ -133,13 +133,13 @@ static NSString * const CountKey = @"CountKey";
     if (self.actualCount == 1)
         return @"1 item";
     else
-        return [NSString stringWithFormat:@"%u items", self.actualCount];
+        return [NSString stringWithFormat:@"%u items", (unsigned)self.actualCount];
 }
 
 - (NSString *)failureMessageForShould {
     return [NSString stringWithFormat:@"expected subject to %@ %u %@, got %@",
                                       [self verbPhrase],
-                                      self.count,
+                                      (unsigned)self.count,
                                       [self itemPhrase],
                                       [self actualCountPhrase]];
 }
@@ -147,7 +147,7 @@ static NSString * const CountKey = @"CountKey";
 - (NSString *)failureMessageForShouldNot {
     return [NSString stringWithFormat:@"expected subject not to %@ %u %@",
                                       [self verbPhrase],
-                                      self.count,
+                                      (unsigned)self.count,
                                       [self itemPhrase]];
 }
 
@@ -156,7 +156,7 @@ static NSString * const CountKey = @"CountKey";
 
 - (NSString *)description
 {
-  return [NSString stringWithFormat:@"%@ %u %@", [self verbPhrase], self.count, [self itemPhrase]];
+  return [NSString stringWithFormat:@"%@ %u %@", [self verbPhrase], (unsigned)self.count, [self itemPhrase]];
 }
 
 #pragma mark -
@@ -213,8 +213,8 @@ static NSString * const CountKey = @"CountKey";
 + (void)invocationCapturer:(KWInvocationCapturer *)anInvocationCapturer didCaptureInvocation:(NSInvocation *)anInvocation {
     NSDictionary *userInfo = anInvocationCapturer.userInfo;
     id verifier = [userInfo objectForKey:MatchVerifierKey];
-    KWCountType countType = [[userInfo objectForKey:CountTypeKey] unsignedIntValue];
-    KWCountType count = [[userInfo objectForKey:CountKey] unsignedIntValue];
+    KWCountType countType = [[userInfo objectForKey:CountTypeKey] unsignedIntegerValue];
+    NSUInteger count = [[userInfo objectForKey:CountKey] unsignedIntegerValue];
 
     switch (countType) {
         case KWCountTypeExact:
@@ -240,8 +240,8 @@ static NSString * const CountKey = @"CountKey";
 
 - (NSDictionary *)userInfoForHaveMatcherWithCountType:(KWCountType)aCountType count:(NSUInteger)aCount {
     return [NSDictionary dictionaryWithObjectsAndKeys:self, MatchVerifierKey,
-                                                      [NSNumber numberWithUnsignedInt:aCountType], CountTypeKey,
-                                                      [NSNumber numberWithUnsignedInt:aCount], CountKey, nil];
+                                                      [NSNumber numberWithUnsignedInteger:aCountType], CountTypeKey,
+                                                      [NSNumber numberWithUnsignedInteger:aCount], CountKey, nil];
 }
 
 - (id)have:(NSUInteger)aCount {

@@ -14,12 +14,14 @@ extern "C" {
 
 #import "KWAfterAllNode.h"
 #import "KWAfterEachNode.h"
+#import "KWAny.h"
 #import "KWAsyncVerifier.h"
 #import "KWBeBetweenMatcher.h"
 #import "KWBeEmptyMatcher.h"
 #import "KWBeIdenticalToMatcher.h"
 #import "KWBeKindOfClassMatcher.h"
 #import "KWBeMemberOfClassMatcher.h"
+#import "KWBeSubclassOfClassMatcher.h"
 #import "KWBeTrueMatcher.h"
 #import "KWBeNilMatcher.h"
 #import "KWBeNonNilMatcher.h"
@@ -36,7 +38,7 @@ extern "C" {
 #import "KWContextNode.h"
 #import "KWDeviceInfo.h"
 #import "KWEqualMatcher.h"
-#import "KWExampleGroup.h"
+#import "KWExample.h"
 #import "KWExampleGroupBuilder.h"
 #import "KWExampleNode.h"
 #import "KWExampleNodeVisitor.h"
@@ -73,7 +75,11 @@ extern "C" {
 #import "KWUserDefinedMatcher.h"
 #import "KWValue.h"
 #import "KWVerifying.h"
+#import "KWCaptureSpy.h"
+#import "KWStringPrefixMatcher.h"
+#import "KWStringContainsMatcher.h"
 
+  
 // Public Foundation Categories
 #import "NSObject+KiwiMockAdditions.h"
 #import "NSObject+KiwiStubAdditions.h"

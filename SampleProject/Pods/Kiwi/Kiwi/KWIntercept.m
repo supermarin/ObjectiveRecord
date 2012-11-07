@@ -12,10 +12,12 @@
 static const char * const KWInterceptClassSuffix = "_KWIntercept";
 static NSMutableDictionary *KWObjectStubs = nil;
 static NSMutableDictionary *KWMessageSpies = nil;
+static NSMutableArray *KWRestoredObjects = nil;
 
 #pragma mark -
 #pragma mark Intercept Enabled Method Implementations
 
+Class KWRestoreOriginalClass(id anObject);
 void KWInterceptedForwardInvocation(id anObject, SEL aSelector, NSInvocation* anInvocation);
 void KWInterceptedDealloc(id anObject, SEL aSelector);
 Class KWInterceptedClass(id anObject, SEL aSelector);
@@ -24,6 +26,9 @@ Class KWInterceptedSuperclass(id anObject, SEL aSelector);
 #pragma mark -
 #pragma mark Getting Forwarding Implementations
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+
 IMP KWRegularForwardingImplementation(void) {
     return class_getMethodImplementation([NSObject class], @selector(KWNonExistantSelector));
 }
@@ -31,6 +36,8 @@ IMP KWRegularForwardingImplementation(void) {
 IMP KWStretForwardingImplementation(void) {
     return class_getMethodImplementation_stret([NSObject class], @selector(KWNonExistantSelector));
 }
+
+#pragma clang diagnostic pop
 
 IMP KWForwardingImplementationForMethodEncoding(const char* encoding) {
 #if TARGET_CPU_ARM
@@ -66,9 +73,12 @@ BOOL KWClassIsInterceptClass(Class aClass) {
     return result != nil;
 }
 
+int interceptCount = 0;
+
 NSString *KWInterceptClassNameForClass(Class aClass) {
     const char *className = class_getName(aClass);
-    return [NSString stringWithFormat:@"%s%s", className, KWInterceptClassSuffix];
+    interceptCount++;
+    return [NSString stringWithFormat:@"%s%s%d", className, KWInterceptClassSuffix, interceptCount];
 }
 
 Class KWInterceptClassForCanonicalClass(Class canonicalClass) {
@@ -152,6 +162,17 @@ void KWSetupMethodInterceptSupport(Class interceptClass, SEL aSelector) {
 #pragma mark -
 #pragma mark Intercept Enabled Method Implementations
 
+Class KWRestoreOriginalClass(id anObject) {
+    Class interceptClass = object_getClass(anObject);
+    if (KWClassIsInterceptClass(interceptClass))
+    {
+        Class originalClass = class_getSuperclass(interceptClass);
+        // anObject->isa = originalClass;
+        object_setClass(anObject, originalClass);
+    }
+    return interceptClass;
+}
+
 void KWInterceptedForwardInvocation(id anObject, SEL aSelector, NSInvocation* anInvocation) {
     NSValue *key = [NSValue valueWithNonretainedObject:anObject];
     NSMutableDictionary *spyArrayDictionary = [KWMessageSpies objectForKey:key];
@@ -174,11 +195,10 @@ void KWInterceptedForwardInvocation(id anObject, SEL aSelector, NSInvocation* an
             return;
     }
 
-    Class interceptClass = object_getClass(anObject);
-    Class originalClass = class_getSuperclass(interceptClass);
-    anObject->isa = originalClass;
+    Class interceptClass = KWRestoreOriginalClass(anObject);
     [anInvocation invoke];
-    anObject->isa = interceptClass;
+    // anObject->isa = interceptClass;
+    object_setClass(anObject, interceptClass);
 }
 
 void KWInterceptedDealloc(id anObject, SEL aSelector) {
@@ -186,9 +206,7 @@ void KWInterceptedDealloc(id anObject, SEL aSelector) {
     [KWMessageSpies removeObjectForKey:key];
     [KWObjectStubs removeObjectForKey:key];
 
-    Class interceptClass = object_getClass(anObject);
-    Class originalClass = class_getSuperclass(interceptClass);
-    anObject->isa = originalClass;
+    KWRestoreOriginalClass(anObject);
     [anObject dealloc];
 }
 
@@ -203,6 +221,15 @@ Class KWInterceptedSuperclass(id anObject, SEL aSelector) {
     Class originalClass = class_getSuperclass(interceptClass);
     Class originalSuperclass = class_getSuperclass(originalClass);
     return originalSuperclass;
+}
+
+#pragma mark - Managing Stubs & Spies
+
+void KWClearStubsAndSpies(void) {
+    KWRestoredObjects = [NSMutableArray array];
+    KWClearAllMessageSpies();
+    KWClearAllObjectStubs();
+    KWRestoredObjects = nil;
 }
 
 #pragma mark -
@@ -223,7 +250,7 @@ void KWAssociateObjectStub(id anObject, KWStub *aStub) {
 
     NSUInteger stubCount = [stubs count];
 
-    for (int i = 0; i < stubCount; ++i) {
+    for (NSUInteger i = 0; i < stubCount; ++i) {
         KWStub *existingStub = [stubs objectAtIndex:i];
 
         if ([aStub.messagePattern isEqualToMessagePattern:existingStub.messagePattern]) {
@@ -241,6 +268,14 @@ void KWClearObjectStubs(id anObject) {
 }
 
 void KWClearAllObjectStubs(void) {
+    for (NSValue *objectKey in KWObjectStubs) {
+        id stubbedObject = [objectKey nonretainedObjectValue];
+        if ([KWRestoredObjects containsObject:stubbedObject]) {
+            continue;
+        }
+        KWRestoreOriginalClass(stubbedObject);
+        [KWRestoredObjects addObject:stubbedObject];
+    }
     [KWObjectStubs removeAllObjects];
 }
 
@@ -285,5 +320,13 @@ void KWClearObjectSpy(id anObject, id aSpy, KWMessagePattern *aMessagePattern) {
 }
 
 void KWClearAllMessageSpies(void) {
+    for (NSValue *objectKey in KWMessageSpies) {
+        id spiedObject = [objectKey nonretainedObjectValue];
+        if ([KWRestoredObjects containsObject:spiedObject]) {
+            continue;
+        }
+        KWRestoreOriginalClass(spiedObject);
+        [KWRestoredObjects addObject:spiedObject];
+    }
     [KWMessageSpies removeAllObjects];
 }

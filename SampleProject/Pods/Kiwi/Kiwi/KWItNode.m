@@ -6,18 +6,32 @@
 
 #import "KWItNode.h"
 #import "KWExampleNodeVisitor.h"
-#import "KWExampleGroup.h"
+#import "KWExample.h"
 #import "KWVerifying.h"
+#import "KWContextNode.h"
+
+@interface KWItNode ()
+
+@property (nonatomic, retain, readwrite) KWContextNode *context;
+
+@end
 
 @implementation KWItNode
 
-@synthesize exampleGroup;
+@synthesize context = _context;
+@synthesize example;
 
 #pragma mark -
 #pragma mark Initializing
 
-+ (id)itNodeWithCallSite:(KWCallSite *)aCallSite description:(NSString *)aDescription block:(KWVoidBlock)aBlock {
-    return [[[self alloc] initWithCallSite:aCallSite description:aDescription block:aBlock] autorelease];
++ (id)itNodeWithCallSite:(KWCallSite *)aCallSite 
+             description:(NSString *)aDescription 
+                 context:(KWContextNode *)context 
+                   block:(KWVoidBlock)aBlock;
+{
+    KWItNode *itNode = [[self alloc] initWithCallSite:aCallSite description:aDescription block:aBlock];
+    itNode.context = context;
+    return [itNode autorelease];
 }
 
 #pragma mark -
@@ -34,9 +48,25 @@
 {
   NSString *description = [super description];
   if (description == nil) {
-    description = [self.exampleGroup generateDescriptionForAnonymousItNode];
+    description = [self.example generateDescriptionForAnonymousItNode];
   }
   return description;
+}
+
+#pragma mark -
+#pragma mark - Accessing the context stack
+
+- (NSArray *)contextStack
+{
+  NSMutableArray *contextStack = [NSMutableArray array];
+  
+  KWContextNode *currentContext = _context;
+  
+  while (currentContext) {
+    [contextStack addObject:currentContext];
+    currentContext = currentContext.parentContext;
+  }
+  return contextStack;
 }
 
 @end

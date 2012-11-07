@@ -13,11 +13,14 @@
 #import "KWStub.h"
 #import "KWWorkarounds.h"
 #import "NSInvocation+KiwiAdditions.h"
+#import "KWCaptureSpy.h"
 
 static NSString * const ExpectOrStubTagKey = @"ExpectOrStubTagKey";
 static NSString * const StubTag = @"StubTag";
 static NSString * const ExpectTag = @"ExpectTag";
 static NSString * const StubValueKey = @"StubValueKey";
+static NSString * const StubSecondValueKey = @"StubSecondValueKey";
+static NSString * const ChangeStubValueAfterTimesKey = @"ChangeStubValueAfterTimesKey";
 
 @interface KWMock()
 
@@ -199,7 +202,7 @@ static NSString * const StubValueKey = @"StubValueKey";
 - (void)removeStubWithMessagePattern:(KWMessagePattern *)messagePattern {
     NSUInteger stubCount = [self.stubs count];
 
-    for (int i = 0; i < stubCount; ++i) {
+    for (NSUInteger i = 0; i < stubCount; ++i) {
         KWStub *stub = [self.stubs objectAtIndex:i];
 
         if ([stub.messagePattern isEqualToMessagePattern:messagePattern]) {
@@ -212,6 +215,11 @@ static NSString * const StubValueKey = @"StubValueKey";
 - (void)stub:(SEL)aSelector {
     KWMessagePattern *messagePattern = [KWMessagePattern messagePatternWithSelector:aSelector];
     [self stubMessagePattern:messagePattern andReturn:nil];
+}
+
+- (void)stub:(SEL)aSelector withBlock:(id (^)(NSArray *params))block {
+    KWMessagePattern *messagePattern = [KWMessagePattern messagePatternWithSelector:aSelector];
+    [self stubMessagePattern:messagePattern withBlock:block];
 }
 
 - (void)stub:(SEL)aSelector withArguments:(id)firstArgument, ... {
@@ -244,10 +252,29 @@ static NSString * const StubValueKey = @"StubValueKey";
     return [KWInvocationCapturer invocationCapturerWithDelegate:self userInfo:userInfo];
 }
 
+- (id)stubAndReturn:(id)aValue times:(id)times afterThatReturn:(id)aSecondValue {
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:StubTag, ExpectOrStubTagKey, aValue, StubValueKey, times, ChangeStubValueAfterTimesKey, aSecondValue, StubSecondValueKey, nil];
+    return [KWInvocationCapturer invocationCapturerWithDelegate:self userInfo:userInfo];
+}
+
 - (void)stubMessagePattern:(KWMessagePattern *)aMessagePattern andReturn:(id)aValue {
     [self expectMessagePattern:aMessagePattern];
     [self removeStubWithMessagePattern:aMessagePattern];
     KWStub *stub = [KWStub stubWithMessagePattern:aMessagePattern value:aValue];
+    [self.stubs addObject:stub];
+}
+
+- (void)stubMessagePattern:(KWMessagePattern *)aMessagePattern withBlock:(id (^)(NSArray *params))block {
+    [self expectMessagePattern:aMessagePattern];
+    [self removeStubWithMessagePattern:aMessagePattern];
+    KWStub *stub = [KWStub stubWithMessagePattern:aMessagePattern block:block];
+    [self.stubs addObject:stub];
+}
+
+- (void)stubMessagePattern:(KWMessagePattern *)aMessagePattern andReturn:(id)aValue times:(id)times afterThatReturn:(id)aSecondValue {   
+    [self expectMessagePattern:aMessagePattern];
+    [self removeStubWithMessagePattern:aMessagePattern];
+    KWStub *stub = [KWStub stubWithMessagePattern:aMessagePattern value:aValue times:times afterThatReturn:aSecondValue];
     [self.stubs addObject:stub];
 }
 
@@ -257,6 +284,12 @@ static NSString * const StubValueKey = @"StubValueKey";
 
 #pragma mark -
 #pragma mark Spying on Messages
+
+- (KWCaptureSpy *)captureArgument:(SEL)selector atIndex:(NSUInteger)index {
+    KWCaptureSpy *spy = [[[KWCaptureSpy alloc] initWithArgumentIndex:index] autorelease];
+    [self addMessageSpy:spy forMessagePattern:[KWMessagePattern messagePatternWithSelector:selector]];
+    return  spy;
+}
 
 - (void)addMessageSpy:(id<KWMessageSpying>)aSpy forMessagePattern:(KWMessagePattern *)aMessagePattern {
     [self expectMessagePattern:aMessagePattern];
@@ -314,10 +347,15 @@ static NSString * const StubValueKey = @"StubValueKey";
 - (void)invocationCapturer:(KWInvocationCapturer *)anInvocationCapturer didCaptureInvocation:(NSInvocation *)anInvocation {
     KWMessagePattern *messagePattern = [KWMessagePattern messagePatternFromInvocation:anInvocation];
     NSString *tag = [anInvocationCapturer.userInfo objectForKey:ExpectOrStubTagKey];
-
     if ([tag isEqualToString:StubTag]) {
         id value = [anInvocationCapturer.userInfo objectForKey:StubValueKey];
-        [self stubMessagePattern:messagePattern andReturn:value];
+        if (![anInvocationCapturer.userInfo objectForKey:StubSecondValueKey]) {
+            [self stubMessagePattern:messagePattern andReturn:value];
+        } else {
+            id times = [anInvocationCapturer.userInfo objectForKey:ChangeStubValueAfterTimesKey];
+            id secondValue = [anInvocationCapturer.userInfo objectForKey:StubSecondValueKey];
+            [self stubMessagePattern:messagePattern andReturn:value times:times afterThatReturn:secondValue];
+        }
     } else {
         [self expectMessagePattern:messagePattern];
     }

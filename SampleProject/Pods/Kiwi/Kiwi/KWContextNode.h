@@ -15,9 +15,11 @@
 @class KWItNode;
 @class KWPendingNode;
 @class KWRegisterMatchersNode;
+@class KWExample;
 
 @interface KWContextNode : NSObject<KWExampleNode> {
 @private
+    KWContextNode *parentContext;
     KWCallSite *callSite;
     NSString *description;
     KWRegisterMatchersNode *registerMatchersNode;
@@ -26,14 +28,15 @@
     KWBeforeEachNode *beforeEachNode;
     KWAfterEachNode *afterEachNode;
     NSMutableArray *nodes;
+    BOOL performedExampleCount;
 }
 
 #pragma mark -
 #pragma mark Initializing
 
-- (id)initWithCallSite:(KWCallSite *)aCallSite description:(NSString *)aDescription;
+- (id)initWithCallSite:(KWCallSite *)aCallSite parentContext:(KWContextNode *)node description:(NSString *)aDescription;
 
-+ (id)contextNodeWithCallSite:(KWCallSite *)aCallSite description:(NSString *)aDescription;
++ (id)contextNodeWithCallSite:(KWCallSite *)aCallSite parentContext:(KWContextNode *)contextNode description:(NSString *)aDescription;
 
 #pragma mark -
 #pragma mark  Getting Call Sites
@@ -53,11 +56,14 @@
 @property (nonatomic, readwrite, retain) KWAfterAllNode *afterAllNode;
 @property (nonatomic, readwrite, retain) KWBeforeEachNode *beforeEachNode;
 @property (nonatomic, readwrite, retain) KWAfterEachNode *afterEachNode;
+@property (nonatomic, readonly) KWContextNode *parentContext;
 @property (nonatomic, readonly) NSArray *nodes;
 
 - (void)addContextNode:(KWContextNode *)aNode;
 - (void)addItNode:(KWItNode *)aNode;
 - (void)addPendingNode:(KWPendingNode *)aNode;
+
+- (void)performExample:(KWExample *)example withBlock:(void (^)(void))exampleBlock;
 
 #pragma mark -
 #pragma mark Accepting Visitors

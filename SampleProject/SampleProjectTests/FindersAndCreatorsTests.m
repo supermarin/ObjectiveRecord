@@ -14,17 +14,33 @@
 static NSString *UNIQUE_NAME = @"ldkhbfaewlfbaewljfhb";
 static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
 
-SPEC_BEGIN(FindersAndCreators)
-
-NSArray *names = [NSArray arrayWithObjects:@"John", @"Steve", @"Neo", UNIQUE_NAME, nil];
-NSArray *surnames = [NSArray arrayWithObjects:@"Doe", @"Jobs", @"Anderson", UNIQUE_SURNAME, nil];
 
 #pragma mark - Helpers
 
-Person *(^fetchUniquePerson)(void) = ^Person *(void) {
-    return  [Person where:[NSString stringWithFormat:@"name = '%@' AND surname = '%@'",
-                                                    UNIQUE_NAME, UNIQUE_SURNAME]].first;
-};
+@interface Helper : NSObject @end
+@implementation Helper
+
++ (NSManagedObjectContext *)createNewContext {
+    NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
+    return newContext;
+}
+
++ (Person *)fetchUniquePerson {
+    return [Person where:[NSString stringWithFormat:@"name = '%@' AND surname = '%@'",
+                          UNIQUE_NAME, UNIQUE_SURNAME]].first;
+}
+
+@end
+
+
+
+#pragma mark - Specs
+
+SPEC_BEGIN(FindersAndCreators)
+
+NSArray *names = @[@"John", @"Steve", @"Neo", UNIQUE_NAME];
+NSArray *surnames = @[@"Doe", @"Jobs", @"Anderson", UNIQUE_SURNAME];
 
 void (^createSomePeople)(void) = ^(void) {
     [names enumerateObjectsUsingBlock:^(id name, NSUInteger idx, BOOL *stop) {
@@ -51,6 +67,45 @@ describe(@"Find / Create / Save / Delete specs", ^{
         [Person deleteAll];
     });
     
+    
+    context(@"Finders", ^{
+        
+        it(@"Finds ALL the entities!", ^{
+            [[[Person all] should] haveCountOf:[names count]];
+        });
+        
+        it(@"Finds using [Entity where: STRING]", ^{
+            
+            Person *unique = [Person where:[NSString stringWithFormat:@"name == '%@'",UNIQUE_NAME]].first;
+            [[unique.surname should] equal:UNIQUE_SURNAME];
+            
+        });
+        
+        it(@"Finds using [Entity where: STRING and ARGUMENTS]", ^{
+            
+            Person *unique = [Person whereFormat:@"name == '%@'", UNIQUE_NAME].first;
+            [[unique.surname should] equal:UNIQUE_SURNAME];
+            
+        });
+        
+        it(@"Finds using [Entity where: DICTIONARY]", ^{
+            
+            NSArray *attributes = [NSArray arrayWithObjects:@"name", @"surname", @"age", @"isMember", nil];
+            NSArray *values =     [NSArray arrayWithObjects:@"John", @"Doe", [NSNumber numberWithInt:0], [NSNumber numberWithBool:YES], nil];
+            
+            
+            Person *unique = [Person where:[NSDictionary dictionaryWithObjects:values
+                                                                       forKeys:attributes]].first;
+            
+            [[unique.name should] equal:@"John"];
+            [[unique.surname should] equal:@"Doe"];
+            [[unique.age should] equal:theValue(0)];
+            [[unique.isMember should] equal:theValue(YES)];
+        });
+        
+    });
+    
+    
     context(@"Creating", ^{
         
         it(@"creates without arguments", ^{
@@ -74,12 +129,13 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
     });
     
+    
     context(@"Saving", ^{
 
         __block Person *person;
 
         beforeEach(^{
-            person = fetchUniquePerson();
+            person = [Helper fetchUniquePerson];
             person.name = @"changed attribute for save";
         });
         
@@ -105,13 +161,15 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
     });
     
+        
     context(@"Deleting", ^{
-       
+        
         it(@"Deletes the object from database with -delete", ^{
-            [fetchUniquePerson() shouldNotBeNil];
-            [[fetchUniquePerson().managedObjectContext should] receive:@selector(save:)];
-            [fetchUniquePerson() delete];
-            [fetchUniquePerson() shouldBeNil];
+            Person *person = [Helper fetchUniquePerson];
+            [person shouldNotBeNil];
+            [[person.managedObjectContext should] receive:@selector(save:)];
+            [person delete];
+            [[Helper fetchUniquePerson] shouldBeNil];
         });
         
         it(@"Deletes everything from database with +deleteAll", ^{
@@ -124,75 +182,19 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
     });
     
-    context(@"Finders", ^{
-       
-//        it(@"should support the simple args like [NSString stringWithFormat:]", ^{
-//
-//            Person *unique = [Person where:@"name == '%@'", UNIQUE_NAME];
-//            [[unique.surname should] equal:UNIQUE_SURNAME];
-//        });
-        
-        it(@"Finds ALL the entities!", ^{
-            [[[Person all] should] haveCountOf:[names count]];
-        });
-        
-        it(@"Finds using [Entity where: STRING]", ^{
-            
-            Person *unique = [Person where:[NSString stringWithFormat:@"name == '%@'",UNIQUE_NAME]].first;
-            [[unique.surname should] equal:UNIQUE_SURNAME];
-            
-        });
-        
-        it(@"Finds using [Entity where: STRING and ARGUMENTS]", ^{
-            
-            Person *unique = [Person whereFormat:@"name == '%@'", UNIQUE_NAME].first;
-            [[unique.surname should] equal:UNIQUE_SURNAME];
-            
-        });
-
-        it(@"Finds using [Entity where: DICTIONARY]", ^{
-
-            NSArray *attributes = [NSArray arrayWithObjects:@"name", @"surname", @"age", @"isMember", nil];
-            NSArray *values =     [NSArray arrayWithObjects:@"John", @"Doe", [NSNumber numberWithInt:0], [NSNumber numberWithBool:YES], nil];
-
-            
-            Person *unique = [Person where:[NSDictionary dictionaryWithObjects:values 
-                                                                       forKeys:attributes]].first;
-
-            [[unique.name should] equal:@"John"];
-            [[unique.surname should] equal:@"Doe"];
-            [[unique.age should] equal:theValue(0)];
-            [[unique.isMember should] equal:theValue(YES)];
-        });
-        
-    });
     
     context(@"All from above, in a separate context!", ^{
 
-        NSManagedObjectContext *newContext = [NSManagedObjectContext new]; 
-        newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
+        NSManagedObjectContext *newContext = [Helper createNewContext];
         
         beforeAll(^{
+            [Person deleteAll];
+            
             Person *newPerson = [Person createInContext:newContext];
             newPerson.name = @"Joshua";
+            newPerson.surname = @"Jobs";
             newPerson.age = [NSNumber numberWithInt:100];
             [newPerson save];
-        });
-        
-        afterAll(^{
-            [Person deleteAllInContext:newContext];
-        });
-        
-        it(@"Finds in a separate context", ^{
-            [[newContext should] receive:@selector(executeFetchRequest:error:)];
-            Person *found = [Person where:@"name == 'Joshua'" inContext:newContext].first;
-            [[found.name should] equal:@"Joshua"];
-        });
-
-        it(@"Finds ALL! in a separate context", ^{
-            [[newContext should] receive:@selector(executeFetchRequest:error:)];
-            [Person allInContext:newContext];
-//TODO: NEED TO FIGURE THIS ONE OUT [[[Person allInContext:newContext] should] haveCountOf:[[Person all] count]+1];
         });
         
         it(@"Creates in a separate context", ^{
@@ -213,8 +215,26 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [Person create:[NSDictionary dictionary] inContext:newContext];
         });
         
+        it(@"Finds in a separate context", ^{
+            [[newContext should] receive:@selector(executeFetchRequest:error:)];
+            Person *found = [Person where:@"name == 'Joshua'" inContext:newContext].first;
+            [[found.surname should] equal:@"Jobs"];
+        });
+        
+        it(@"Finds all in a separate context", ^{
+            NSManagedObjectContext *anotherContext = [Helper createNewContext];
+            
+            [[anotherContext should] receive:@selector(executeFetchRequest:error:)];
+            [[[Person allInContext:anotherContext] should] haveCountOf:6];
+        });
+        
+        it(@"Deletes all from context", ^{
+            [Person deleteAllInContext:newContext];
+            [[Person allInContext:newContext] shouldBeNil];
+        });
         
     });
+
     
 });
 

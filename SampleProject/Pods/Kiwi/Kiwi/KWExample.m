@@ -4,7 +4,7 @@
 // Copyright 2010 Allen Ding. All rights reserved.
 //
 
-#import "KWExampleGroup.h"
+#import "KWExample.h"
 #import "KWExampleGroupBuilder.h"
 #import "KWContextNode.h"
 #import "KWMatcherFactory.h"
@@ -23,36 +23,35 @@
 #import "KWWorkarounds.h"
 #import "KWIntercept.h"
 #import "KWExampleNode.h"
+#import "KWExampleSuite.h"
 
 
-@interface KWExampleGroup ()
+@interface KWExample ()
 
 @property (nonatomic, readonly) NSMutableArray *verifiers;
 @property (nonatomic, readonly) KWMatcherFactory *matcherFactory;
-@property (nonatomic, readonly) NSMutableArray *exampleNodeStack;
-@property (nonatomic, assign) id<KWExampleGroupDelegate> delegate;
+@property (nonatomic, assign) id<KWExampleDelegate> delegate;
+@property (nonatomic, assign) BOOL didNotFinish;
+
+- (void)reportResultForExampleNodeWithLabel:(NSString *)label;
 
 @end
 
-@implementation KWExampleGroup {
-  NSArray *contextNodeStack;
-  id<KWExampleNode> exampleNode;
-  BOOL passed;
-}
+@implementation KWExample
 
 @synthesize matcherFactory;
 @synthesize verifiers;
-@synthesize exampleNodeStack;
 @synthesize delegate = _delegate;
+@synthesize suite;
+@synthesize lastInContext;
+@synthesize didNotFinish;
 
-- (id)initWithExampleNode:(id<KWExampleNode>)node contextNodeStack:(NSArray *)stack;
+- (id)initWithExampleNode:(id<KWExampleNode>)node
 {
   if ((self = [super init])) {
-    contextNodeStack = [stack copy];
     exampleNode = [node retain];
     matcherFactory = [[KWMatcherFactory alloc] init];
     verifiers = [[NSMutableArray alloc] init];
-    exampleNodeStack = [[NSMutableArray alloc] init];
     passed = YES;
   }
   return self;
@@ -60,12 +59,21 @@
 
 - (void)dealloc 
 {
-  [contextNodeStack release];
+  [lastInContext release];
   [exampleNode release];
-  [exampleNodeStack release];
   [matcherFactory release];
   [verifiers release];
   [super dealloc];
+}
+
+- (BOOL)isLastInContext:(KWContextNode *)context
+{
+  return context == self.lastInContext;
+}
+
+- (NSString *)description
+{
+  return [NSString stringWithFormat:@"<KWExample: %@>", exampleNode.description];
 }
 
 #pragma mark - Adding Verifiers
@@ -97,36 +105,31 @@
 
 #pragma mark - Running examples
 
-- (void)runWithDelegate:(id<KWExampleGroupDelegate>)delegate;
+- (void)runWithDelegate:(id<KWExampleDelegate>)delegate;
 {
   self.delegate = delegate;
   [self.matcherFactory registerMatcherClassesWithNamespacePrefix:@"KW"];
-  [[KWExampleGroupBuilder sharedExampleGroupBuilder] setCurrentExampleGroup:self];
-  [[contextNodeStack objectAtIndex:0] acceptExampleNodeVisitor:self];
+  [[KWExampleGroupBuilder sharedExampleGroupBuilder] setCurrentExample:self];
+  [exampleNode acceptExampleNodeVisitor:self]; 
 }
 
 #pragma mark - Reporting failure
 
 - (NSString *)descriptionForExampleContext {
-  NSMutableString *description = [NSMutableString string];
-  
-  for (id<KWExampleNode> node in self.exampleNodeStack) {
-    NSString *nodeDescription = [node description];
-    
-    if (nodeDescription != nil)
-      [description appendFormat:@"%@ ", nodeDescription];
+  NSMutableArray *parts = [NSMutableArray array];
+
+  for (KWContextNode *context in [[exampleNode contextStack] reverseObjectEnumerator]) {
+    if ([context description] != nil) {
+      [parts addObject:[[context description] stringByAppendingString:@","]];
+    }
   }
   
-  // Remove trailing space
-  if ([description length] > 0)
-    [description deleteCharactersInRange:NSMakeRange([description length] - 1, 1)];
-  
-  return description;
+  return [parts componentsJoinedByString:@" "];
 }
 
 - (KWFailure *)outputReadyFailureWithFailure:(KWFailure *)aFailure {
-  NSString *annotatedFailureMessage = [NSString stringWithFormat:@"'%@' [FAILED], %@",
-                                       [self descriptionForExampleContext],
+  NSString *annotatedFailureMessage = [NSString stringWithFormat:@"'%@ %@' [FAILED], %@",
+                                       [self descriptionForExampleContext], [exampleNode description],
                                        aFailure.message];
   
 #if TARGET_IPHONE_SIMULATOR
@@ -143,32 +146,34 @@
 - (void)reportFailure:(KWFailure *)failure
 {
   passed = NO;
-  [self.delegate exampleGroup:self didFailWithFailure:[self outputReadyFailureWithFailure:failure]];
+  [self.delegate example:self didFailWithFailure:[self outputReadyFailureWithFailure:failure]];
+}
+
+- (void)reportResultForExampleNodeWithLabel:(NSString *)label
+{
+  NSLog(@"+ '%@ %@' [%@]", [self descriptionForExampleContext], [exampleNode description], label);
+}
+
+#pragma mark - Full description with context
+
+/** Pending cases will be marked yellow by XCode as not finished, because their description differs for -[SenTestCaseRun start] and -[SenTestCaseRun stop] methods
+ */
+
+- (NSString *)pendingNotFinished {
+    BOOL reportPending = self.didNotFinish;
+    self.didNotFinish = YES;
+    return reportPending ? @"(PENDING)" : @"";
+}
+    
+- (NSString *)descriptionWithContext {
+    NSString *descriptionWithContext = [NSString stringWithFormat:@"%@ %@", 
+                                        [self descriptionForExampleContext], 
+                                        [exampleNode description] ? [exampleNode description] : @""];
+    BOOL isPending = [exampleNode isKindOfClass:[KWPendingNode class]];
+    return isPending ? [descriptionWithContext stringByAppendingString:[self pendingNotFinished]] : descriptionWithContext;
 }
 
 #pragma mark - Visiting Nodes
-
-- (void)visitContextNode:(KWContextNode *)aNode {
-  [self.exampleNodeStack addObject:aNode];
-  
-  @try {
-    [aNode.registerMatchersNode acceptExampleNodeVisitor:self];
-    [aNode.beforeAllNode acceptExampleNodeVisitor:self];
-    
-    for (id<KWExampleNode> node in aNode.nodes)
-      [node acceptExampleNodeVisitor:self];
-    
-    [aNode.afterAllNode acceptExampleNodeVisitor:self];
-  } @catch (NSException *exception) {
-    KWFailure *failure = [KWFailure failureWithCallSite:aNode.callSite format:@"%@ \"%@\" raised",
-                          [exception name],
-                          [exception reason]];
-
-    [self reportFailure:failure];
-  }
-  
-  [self.exampleNodeStack removeLastObject];
-}
 
 - (void)visitRegisterMatchersNode:(KWRegisterMatchersNode *)aNode {
   [self.matcherFactory registerMatcherClassesWithNamespacePrefix:aNode.namespacePrefix];
@@ -206,20 +211,14 @@
   if (aNode.block == nil || aNode != exampleNode)
     return;
   
-  aNode.exampleGroup = self;
+  aNode.example = self;
   
-  @try {
-    for (KWContextNode *contextNode in self.exampleNodeStack) {
-      if (contextNode.beforeEachNode.block != nil)
-        contextNode.beforeEachNode.block();
-    }
-    
-    // Add it node to the stack
-    [self.exampleNodeStack addObject:aNode];
-    
-    @try {
+  [aNode.context performExample:self withBlock:^{
+  
+    @try {      
+      
       aNode.block();
-
+      
 #if KW_TARGET_HAS_INVOCATION_EXCEPTION_BUG
       NSException *invocationException = KWGetAndClearExceptionFromAcrossInvocationBoundary();
       [invocationException raise];
@@ -230,43 +229,27 @@
         [verifier exampleWillEnd];
       }
       
-    } @catch (NSException *exception) {      
+    } @catch (NSException *exception) {
       KWFailure *failure = [KWFailure failureWithCallSite:aNode.callSite format:@"%@ \"%@\" raised",
                             [exception name],
                             [exception reason]];
       [self reportFailure:failure];
     }
-
-    // Remove it node from the stack
-    [self.exampleNodeStack removeLastObject];
     
-    for (KWContextNode *contextNode in self.exampleNodeStack) {
-      if (contextNode.afterEachNode.block != nil)
-        contextNode.afterEachNode.block();
+    if (passed) {
+      [self reportResultForExampleNodeWithLabel:@"PASSED"];
     }
-  } @catch (NSException *exception) {
-    KWFailure *failure = [KWFailure failureWithCallSite:aNode.callSite format:@"%@ \"%@\" raised",
-                          [exception name],
-                          [exception reason]];
-    [self reportFailure:failure];
-  }
-  
-  if (passed) {
-    NSLog(@"+ '%@ %@' [PASSED]", [self descriptionForExampleContext], [exampleNode description]);
-  }
-  
-  // Always clear stubs and spies at the end of it blocks
-  KWClearAllMessageSpies();
-  KWClearAllObjectStubs();
+    
+    // Always clear stubs and spies at the end of it blocks
+      KWClearStubsAndSpies();
+  }];
 }
 
 - (void)visitPendingNode:(KWPendingNode *)aNode {
   if (aNode != exampleNode)
     return;
-  
-  [self.exampleNodeStack addObject:aNode];
-  NSLog(@"+ '%@' [PENDING]", [self descriptionForExampleContext]);
-  [self.exampleNodeStack removeLastObject];
+
+  [self reportResultForExampleNodeWithLabel:@"PENDING"];
 }
 
 - (NSString *)generateDescriptionForAnonymousItNode
@@ -317,7 +300,7 @@ void specify(KWVoidBlock aBlock)
     itWithCallSite(nil, nil, aBlock);
 }
 
-void pending(NSString *aDescription, KWVoidBlock ignoredBlock) {
+void pending_(NSString *aDescription, KWVoidBlock ignoredBlock) {
     pendingWithCallSite(nil, aDescription, ignoredBlock);
 }
 

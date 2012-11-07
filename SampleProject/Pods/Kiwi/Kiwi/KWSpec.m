@@ -6,33 +6,32 @@
 
 #import "KWSpec.h"
 #import <objc/runtime.h>
-#import "KWExampleGroup.h"
+#import "KWExample.h"
 #import "KWExampleGroupBuilder.h"
 #import "KWIntercept.h"
 #import "KWObjCUtilities.h"
 #import "KWStringUtilities.h"
 #import "NSMethodSignature+KiwiAdditions.h"
 #import "KWFailure.h"
+#import "KWExampleSuite.h"
 
-#define kKWINVOCATION_EXAMPLE_GROUP_KEY @"__KWExampleGroupKey"
 
 @interface KWSpec()
 
 #pragma mark -
 #pragma mark Properties
 
-@property (nonatomic, retain) KWExampleGroup *exampleGroup;
+@property (nonatomic, retain) KWExample *example;
 
 @end
 
 @implementation KWSpec
 
-@synthesize exampleGroup;
+@synthesize example;
 
 - (void)dealloc 
 {
-    objc_setAssociatedObject([self invocation], kKWINVOCATION_EXAMPLE_GROUP_KEY, nil, OBJC_ASSOCIATION_RETAIN);
-    [exampleGroup release];
+    [example release];
     [super dealloc];
 }
 
@@ -40,9 +39,36 @@
 
 + (void)buildExampleGroups {}
 
+/* Reported by XCode SenTestingKit Runner before and after invocation of the test
+   Use camel case to make method friendly names from example description
+ */
+
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"-[%@ example]", NSStringFromClass([self class])];
+    KWExample *currentExample = self.example ? self.example : [[self invocation] kw_example];
+    NSString *name = [currentExample descriptionWithContext];
+    
+    // CamelCase the string
+    NSArray *words = [name componentsSeparatedByString:@" "];
+    name = @"";
+    for (NSString *word in words) {
+        if ([word length] < 1)
+        {
+            continue;
+        }
+        name = [name stringByAppendingString:[[word substringToIndex:1] uppercaseString]];
+        name = [name stringByAppendingString:[word substringFromIndex:1]];
+    }
+    
+    // Replace the commas with underscores to separate the levels of context
+    name = [name stringByReplacingOccurrencesOfString:@"," withString:@"_"];
+    
+    // Strip out characters not legal in function names
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[^a-zA-Z0-9_]*" options:0 error:&error];
+    name = [regex stringByReplacingMatchesInString:name options:0 range:NSMakeRange(0, name.length) withTemplate:@""];
+
+    return [NSString stringWithFormat:@"-[%@ %@]", NSStringFromClass([self class]), name];
 }
 
 #pragma mark -
@@ -59,25 +85,11 @@
     if ([self methodForSelector:selector] == [KWSpec methodForSelector:selector])
         return nil;
 
-    NSArray *exampleGroups = [[KWExampleGroupBuilder sharedExampleGroupBuilder] buildExampleGroups:^{
+    KWExampleSuite *exampleSuite = [[KWExampleGroupBuilder sharedExampleGroupBuilder] buildExampleGroups:^{
         [self buildExampleGroups];
     }];
-    
-    NSMutableArray *invocations = [NSMutableArray array];
-    
-    for (KWExampleGroup *exampleGroup in exampleGroups) {
-        // Add a single dummy invocation for each example group
-        NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:[KWEncodingForVoidMethod() UTF8String]];
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
-
-        [invocations addObject:invocation];
-        
-        // because SenTest will modify the invocation target, we'll have to store 
-        // another reference to the example group so we can retrieve it later
-        objc_setAssociatedObject(invocation, kKWINVOCATION_EXAMPLE_GROUP_KEY, exampleGroup, OBJC_ASSOCIATION_RETAIN);    
-    }
   
-    return invocations;
+    return [exampleSuite invocationsForTestCase];
 }
 
 #pragma mark -
@@ -85,22 +97,24 @@
 
 - (void)invokeTest 
 {
-    self.exampleGroup = objc_getAssociatedObject([self invocation], kKWINVOCATION_EXAMPLE_GROUP_KEY);
-    
+    self.example = [[self invocation] kw_example];
+
     NSAutoreleasePool *subPool = [[NSAutoreleasePool alloc] init];
-    
+
     @try {
-        [self.exampleGroup runWithDelegate:self];
+        [self.example runWithDelegate:self];
     } @catch (NSException *exception) {
         [self failWithException:exception];
     }
+    
+    [[self invocation] kw_setExample:nil];
     
     [subPool release];
 }
 
 #pragma mark - KWExampleGroupDelegate methods
 
-- (void)exampleGroup:(KWExampleGroup *)exampleGroup didFailWithFailure:(KWFailure *)failure
+- (void)example:(KWExample *)example didFailWithFailure:(KWFailure *)failure
 {
     [self failWithException:[failure exceptionValue]];
 }
@@ -110,22 +124,22 @@
 
 + (id)addVerifier:(id<KWVerifying>)aVerifier
 {
-  return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExampleGroup] addVerifier:aVerifier];
+  return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExample] addVerifier:aVerifier];
 }
 
 + (id)addExistVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite
 {
-  return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExampleGroup] addExistVerifierWithExpectationType:anExpectationType callSite:aCallSite];
+  return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExample] addExistVerifierWithExpectationType:anExpectationType callSite:aCallSite];
 }
 
 + (id)addMatchVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite
 {
-  return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExampleGroup] addMatchVerifierWithExpectationType:anExpectationType callSite:aCallSite];
+  return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExample] addMatchVerifierWithExpectationType:anExpectationType callSite:aCallSite];
 }
 
 + (id)addAsyncVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite timeout:(NSInteger)timeout
 {
-  return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExampleGroup] addAsyncVerifierWithExpectationType:anExpectationType callSite:aCallSite timeout:timeout];
+  return [[[KWExampleGroupBuilder sharedExampleGroupBuilder] currentExample] addAsyncVerifierWithExpectationType:anExpectationType callSite:aCallSite timeout:timeout];
 }
 
 @end
