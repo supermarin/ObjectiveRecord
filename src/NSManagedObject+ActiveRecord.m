@@ -28,6 +28,14 @@
     return [self fetchWithPredicate:nil inContext:context];
 }
 
++ (NSArray *)whereFormat:(NSString *)format, ...
+{
+    va_list va_arguments;
+    va_start(va_arguments, format);
+    NSString *condition = [[NSString alloc] initWithFormat:format arguments:va_arguments];
+    va_end(va_arguments);
+    return [self where:condition];
+}
 
 + (NSArray *)where:(id)condition {
     

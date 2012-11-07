@@ -142,6 +142,13 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[unique.surname should] equal:UNIQUE_SURNAME];
             
         });
+        
+        it(@"Finds using [Entity where: STRING and ARGUMENTS]", ^{
+            
+            Person *unique = [Person whereFormat:@"name == '%@'", UNIQUE_NAME].first;
+            [[unique.surname should] equal:UNIQUE_SURNAME];
+            
+        });
 
         it(@"Finds using [Entity where: DICTIONARY]", ^{
 

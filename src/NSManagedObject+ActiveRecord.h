@@ -27,6 +27,7 @@
 
 + (NSArray *)all;
 + (NSArray *)where:(id)condition;
++ (NSArray *)whereFormat:(NSString *)format, ...;
 
 
 
