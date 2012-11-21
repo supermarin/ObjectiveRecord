@@ -56,26 +56,6 @@ static NSString *CUSTOM_MODEL_NAME = @"Database";
 static NSString *CUSTOM_DATABASE_NAME = nil;
 ```
 
-#### NSArray additions
-
-``` objc
-NSArray *array; // assume it's full of objects
-
-[array each:^(id object) {
-    
-    NSLog(@"Object: %@", object); 
-}];
-
-[array eachWithIndex:^(id object, int index) {
-    
-    NSLog(@"Object: %@ idx: %i", object, index); 
-}];
-
-id object = array.first;
-id object = array.last;
-```
-
-
 #### Examples
 
 ``` objc
