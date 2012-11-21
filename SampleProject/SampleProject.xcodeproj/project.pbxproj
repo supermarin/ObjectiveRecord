@@ -11,8 +11,6 @@
 		4944537D57D049F28365F1AE /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0C6BA1184F43B596AFE47B /* libPods-test.a */; };
 		892C1E91165D54160077F2CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 892C1E90165D54160077F2CB /* Default-568h@2x.png */; };
 		897D09E515B0926200722A8F /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E015B0926200722A8F /* CoreDataManager.m */; };
-		897D09E715B0926200722A8F /* NSArray+Accessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E215B0926200722A8F /* NSArray+Accessors.m */; };
-		897D09E815B0926200722A8F /* NSArray+Accessors.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E215B0926200722A8F /* NSArray+Accessors.m */; };
 		897D09E915B0926200722A8F /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E415B0926200722A8F /* NSManagedObject+ActiveRecord.m */; };
 		897D09EA15B0926200722A8F /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09E415B0926200722A8F /* NSManagedObject+ActiveRecord.m */; };
 		897D09FA15B0940A00722A8F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09F915B0940A00722A8F /* Person.m */; };
@@ -50,8 +48,6 @@
 		897D09DD15B0926200722A8F /* ObjectiveRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectiveRecord.h; path = ../../ObjectiveRecord.h; sourceTree = "<group>"; };
 		897D09DF15B0926200722A8F /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		897D09E015B0926200722A8F /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
-		897D09E115B0926200722A8F /* NSArray+Accessors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Accessors.h"; sourceTree = "<group>"; };
-		897D09E215B0926200722A8F /* NSArray+Accessors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Accessors.m"; sourceTree = "<group>"; };
 		897D09E315B0926200722A8F /* NSManagedObject+ActiveRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+ActiveRecord.h"; sourceTree = "<group>"; };
 		897D09E415B0926200722A8F /* NSManagedObject+ActiveRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+ActiveRecord.m"; sourceTree = "<group>"; };
 		897D09F815B0940A00722A8F /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
@@ -125,8 +121,6 @@
 			children = (
 				897D09DF15B0926200722A8F /* CoreDataManager.h */,
 				897D09E015B0926200722A8F /* CoreDataManager.m */,
-				897D09E115B0926200722A8F /* NSArray+Accessors.h */,
-				897D09E215B0926200722A8F /* NSArray+Accessors.m */,
 				897D09E315B0926200722A8F /* NSManagedObject+ActiveRecord.h */,
 				897D09E415B0926200722A8F /* NSManagedObject+ActiveRecord.m */,
 			);
@@ -396,7 +390,6 @@
 				89F1EEBA15A4C73B00AE4FB4 /* AppDelegate.m in Sources */,
 				89F1EEBD15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld in Sources */,
 				897D09E515B0926200722A8F /* CoreDataManager.m in Sources */,
-				897D09E715B0926200722A8F /* NSArray+Accessors.m in Sources */,
 				897D09E915B0926200722A8F /* NSManagedObject+ActiveRecord.m in Sources */,
 				897D09FA15B0940A00722A8F /* Person.m in Sources */,
 			);
@@ -407,7 +400,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				89F1EED315A4C73B00AE4FB4 /* SampleProjectTests.m in Sources */,
-				897D09E815B0926200722A8F /* NSArray+Accessors.m in Sources */,
 				897D09EA15B0926200722A8F /* NSManagedObject+ActiveRecord.m in Sources */,
 				897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */,
 				897D0A2415B0B07C00722A8F /* NSArrayCategoriesTests.m in Sources */,
