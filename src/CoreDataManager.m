@@ -16,15 +16,13 @@ static NSString *CUSTOM_DATABASE_NAME = nil;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 static CoreDataManager *singleton;
-- (id)initForSingleton {
-    return [super init];
-}
 
 + (id)instance {
-    @synchronized(self) {
-        if (!singleton)
-            singleton = [[self alloc] initForSingleton];
-    }
+    static dispatch_once_t singletonToken;
+    dispatch_once(&singletonToken, ^{
+        singleton = [[self alloc] init];
+    });
+    
     return singleton;
 }
 
