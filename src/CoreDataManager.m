@@ -7,13 +7,13 @@
 //
 
 #import "CoreDataManager.h"
-static NSString *CUSTOM_MODEL_NAME = nil;
-static NSString *CUSTOM_DATABASE_NAME = nil;
 
 @implementation CoreDataManager
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize databaseName = _databaseName;
+@synthesize modelName = _modelName;
 
 static CoreDataManager *singleton;
 - (id)initForSingleton {
@@ -36,13 +36,15 @@ static CoreDataManager *singleton;
 }
 
 - (NSString *)databaseName {
-    if (CUSTOM_DATABASE_NAME) return CUSTOM_DATABASE_NAME;
-    return [[self appName] stringByAppendingString:@".sqlite"];
+    if (_databaseName != nil) return _databaseName;
+    _databaseName = [[[self appName] stringByAppendingString:@".sqlite"] copy];
+    return _databaseName;
 }
 
 - (NSString *)modelName {
-    if (CUSTOM_MODEL_NAME) return CUSTOM_MODEL_NAME;
-    return [self appName];
+    if (_modelName != nil) return _modelName;
+    _modelName = [[self appName] copy];
+    return _modelName;
 }
 
 #pragma mark - Public
