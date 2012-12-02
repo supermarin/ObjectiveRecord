@@ -49,11 +49,10 @@ NSArray *people = [Person allInContext:newContext];
 ```
 
 ### Custom CoreData model or .sqlite database
-If you've added the Core Data manually, you can change the custom model and database name in CoreDataManager.m
+If you've added the Core Data manually, you can change the custom model and database name on CoreDataManager
 ``` objc
-
-static NSString *CUSTOM_MODEL_NAME = @"Database";
-static NSString *CUSTOM_DATABASE_NAME = nil;
+[CoreDataManager instance].modelName = @"MyModelName";
+[CoreDataManager instance].databaseName = @"custom_database_name";
 ```
 
 #### Examples
