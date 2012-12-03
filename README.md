@@ -82,6 +82,3 @@ john.save;
 }];
 ```
 
-####ToDo
-Try to make `where:(NSString *)condition` take va_args like NSLog().
-That way you wouldn't have to use -stringWithFormat, and it would look cleaner.
