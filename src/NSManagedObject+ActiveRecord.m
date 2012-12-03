@@ -32,9 +32,9 @@
 {
     va_list va_arguments;
     va_start(va_arguments, format);
-    NSString *condition = [[NSString alloc] initWithFormat:format arguments:va_arguments];
+    NSPredicate *condition = [NSPredicate predicateWithFormat:format arguments:va_arguments];
     va_end(va_arguments);
-    return [self where:condition];
+    return [self where:condition inContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (NSArray *)where:(id)condition {
@@ -45,7 +45,9 @@
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
     
-    return [self fetchWithPredicate:[self predicateFromStringOrDict:condition]
+    NSPredicate *predicate = (![condition isKindOfClass:[NSPredicate class]]) ? [self predicateFromStringOrDict:condition] : condition;
+    
+    return [self fetchWithPredicate:predicate
                           inContext:context];
 }
 
@@ -112,7 +114,7 @@
 + (NSPredicate *)predicateFromStringOrDict:(id)condition {
     
     if ([condition isKindOfClass:[NSString class]])
-        return [NSPredicate predicateWithFormat:condition];
+        return [NSPredicate predicateWithFormat:@"%@", condition];
     
     else if ([condition isKindOfClass:[NSDictionary class]])
         return [NSPredicate predicateWithFormat:[self queryStringFromDictionary:condition]];
@@ -149,7 +151,7 @@
     BOOL save = [self.managedObjectContext save:&error];
 
     if (!save || error) {
-        NSLog(@"Unresolved error in saving context for entity: %@!\n Error:%@", self, error);
+        NSLog(@"Unresolved error in saving context for entity: %@!\n Error: %@", self, error);
         return NO;
     }
     
