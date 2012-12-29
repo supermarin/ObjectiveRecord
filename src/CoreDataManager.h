@@ -20,6 +20,7 @@
 
 + (id)instance;
 - (BOOL)saveContext;
+- (BOOL)saveAsyncContext;
 - (NSURL *)applicationDocumentsDirectory;
 
 @end
