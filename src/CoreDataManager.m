@@ -104,7 +104,7 @@ static CoreDataManager *singleton;
     return YES;
 }
 
-- (BOOL)saveAsyncContext
+- (BOOL)saveContextAsync
 {
     if (self.managedObjectContext == nil) return NO;
     if ([self.managedObjectContext hasChanges]) {

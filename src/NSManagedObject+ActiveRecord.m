@@ -159,4 +159,28 @@
     return YES;
 }
 
+- (BOOL)saveAsync
+{
+    if (self.managedObjectContext == nil) return NO;
+    if ([self.managedObjectContext hasChanges]) {
+        
+        NSManagedObjectContext *child = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [child setParentContext:self.managedObjectContext];
+        
+        [child performBlock:^{
+            NSError *error = nil;
+            if (![child save:&error])
+            {
+                NSLog(@"Unresolved error in saving context! %@, %@", error, [error userInfo]);
+            }
+            // Save the changes on the main context
+            [child.parentContext performBlock:^{
+                NSError *parentError = nil;
+                [child.parentContext save:&parentError];
+            }];
+        }];
+    }
+    return YES;
+}
+
 @end
