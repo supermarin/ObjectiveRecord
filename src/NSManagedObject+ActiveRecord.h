@@ -8,7 +8,7 @@
 
 #import <CoreData/CoreData.h>
 #import "CoreDataManager.h"
-#import "NSArray+Accessors.h"
+#import "NSArray+ObjectiveSugar.h"
 
 @interface NSManagedObjectContext (ActiveRecord)
 + (NSManagedObjectContext *)defaultContext;
