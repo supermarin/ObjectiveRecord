@@ -13,8 +13,8 @@ It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
 ``` objc
 Person *john = [Person create];
 john.name = @"John";
-john.save;
-john.delete;
+[john save];
+[john delete];
 
 NSDictionary *attributes; // assume it's populated with name = john, key = value,...
 [Person create:attributes];
@@ -73,7 +73,7 @@ for(Person *person in [Person all]) {
 Person *john = [Person create];
 john.name = @"John";
 john.surname = @"Wayne";
-john.save;
+[john save];
 
 // find / delete
 [[Person where: @{ "member" : @NO }] each:^(Person *person) {
