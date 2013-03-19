@@ -1,1 +1,2 @@
-../../ObjectiveSugar/src/ObjectiveSugar.h
+#import <NSNumber+Rubyfy.h>
+#import <NSArray+Accessors.h>

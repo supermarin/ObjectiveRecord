@@ -1,1 +1,18 @@
-../../Kiwi/Kiwi/KWBeforeEachNode.h
+//
+// Licensed under the terms in License.txt
+//
+// Copyright 2010 Allen Ding. All rights reserved.
+//
+
+#import "KiwiConfiguration.h"
+#import "KWBlockNode.h"
+#import "KWExampleNode.h"
+
+@interface KWBeforeEachNode : KWBlockNode<KWExampleNode>
+
+#pragma mark -
+#pragma mark Initializing
+
++ (id)beforeEachNodeWithCallSite:(KWCallSite *)aCallSite block:(KWVoidBlock)aBlock;
+
+@end
