@@ -41,7 +41,8 @@ NSArray *people = [Person where:@{ @"age" : @18,
 ### Custom ManagedObjectContext
 
 ``` objc
-NSManagedObjectContext *newContext = [NSManagedObjectContext new];
+NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
 
 Person *john = [Person createInContext:newContext];
 Person *john = [Person where:@"name == 'John'" inContext:newContext].first;
