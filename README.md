@@ -16,10 +16,7 @@ john.name = @"John";
 [john save];
 [john delete];
 
-NSDictionary *attributes; // assume it's populated with name = john, key = value,...
-[Person create:attributes];
-// the same thing 
-[Person create:@{ @"name" : @"John", @"age" : @12, @"member" : @NO }]; // XCode >= 4.4
+[Person create:@{ @"name" : @"John", @"age" : @12, @"member" : @NO }];
 ```
 
 #### Finders
@@ -27,9 +24,8 @@ NSDictionary *attributes; // assume it's populated with name = john, key = value
 ``` objc
 NSArray *people = [Person all];
 NSArray *johns = [Person where:@"name == 'John'"];
-Person *johnDoe = [Person where:@"name == 'John' AND surname = 'Doe'"].first;
+Person *johnDoe = [Person where:@"name == 'John' AND surname == 'Doe'"].first;
 
-// XCode >= 4.4
 NSArray *people = [Person where:@{ @"age" : @18 }];
 
 NSArray *people = [Person where:@{ @"age" : @18,
