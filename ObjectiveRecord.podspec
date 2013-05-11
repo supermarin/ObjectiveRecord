@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author       = { "Marin Usalj" => "mneorr@gmail.com" }
   s.source       = { :git => "https://github.com/mneorr/Objective-Record.git", :tag => "1.1.2" }
   
-  s.source_files = 'src/**/*.{h,m}'
+  s.source_files = 'Classes/**/*.{h,m}'
   s.framework  = 'CoreData'
   s.requires_arc = true
 
