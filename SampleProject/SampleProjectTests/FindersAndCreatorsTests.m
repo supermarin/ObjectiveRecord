@@ -17,22 +17,16 @@ static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
 
 #pragma mark - Helpers
 
-@interface Helper : NSObject @end
-@implementation Helper
-
-+ (NSManagedObjectContext *)createNewContext {
-    NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
-    return newContext;
-}
-
-+ (Person *)fetchUniquePerson {
+Person *fetchUniquePerson() {
     return [Person where:[NSString stringWithFormat:@"name = '%@' AND surname = '%@'",
                           UNIQUE_NAME, UNIQUE_SURNAME]].first;
 }
 
-@end
-
+NSManagedObjectContext *createNewContext() {
+    NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
+    return newContext;
+}
 
 
 #pragma mark - Specs
@@ -135,7 +129,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         __block Person *person;
 
         beforeEach(^{
-            person = [Helper fetchUniquePerson];
+            person = fetchUniquePerson();
             person.name = @"changed attribute for save";
         });
         
@@ -165,11 +159,11 @@ describe(@"Find / Create / Save / Delete specs", ^{
     context(@"Deleting", ^{
         
         it(@"Deletes the object from database with -delete", ^{
-            Person *person = [Helper fetchUniquePerson];
+            Person *person = fetchUniquePerson();
             [person shouldNotBeNil];
             [[person.managedObjectContext should] receive:@selector(save:)];
             [person delete];
-            [[Helper fetchUniquePerson] shouldBeNil];
+            [fetchUniquePerson() shouldBeNil];
         });
         
         it(@"Deletes everything from database with +deleteAll", ^{
@@ -185,7 +179,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
     
     context(@"All from above, in a separate context!", ^{
 
-        NSManagedObjectContext *newContext = [Helper createNewContext];
+        NSManagedObjectContext *newContext = createNewContext();
         
         beforeAll(^{
             [Person deleteAll];
@@ -222,7 +216,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
         
         it(@"Finds all in a separate context", ^{
-            NSManagedObjectContext *anotherContext = [Helper createNewContext];
+            NSManagedObjectContext *anotherContext = createNewContext();
             
             [[anotherContext should] receive:@selector(executeFetchRequest:error:)];
             [[[Person allInContext:anotherContext] should] haveCountOf:6];
