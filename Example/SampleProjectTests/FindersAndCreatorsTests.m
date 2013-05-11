@@ -209,16 +209,20 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
         
         it(@"Finds in a separate context", ^{
-            [[newContext should] receive:@selector(executeFetchRequest:error:)];
-            Person *found = [Person where:@"name == 'Joshua'" inContext:newContext].first;
-            [[found.surname should] equal:@"Jobs"];
+            [newContext performBlock:^{
+                [[newContext should] receive:@selector(executeFetchRequest:error:)];
+                Person *found = [Person where:@"name == 'Joshua'" inContext:newContext].first;
+                [[found.surname should] equal:@"Jobs"];
+            }];
         });
         
         it(@"Finds all in a separate context", ^{
             NSManagedObjectContext *anotherContext = createNewContext();
             
-            [[anotherContext should] receive:@selector(executeFetchRequest:error:)];
-            [[[Person allInContext:anotherContext] should] haveCountOf:6];
+            [anotherContext performBlock:^{
+                [[anotherContext should] receive:@selector(executeFetchRequest:error:)];
+                [[[Person allInContext:anotherContext] should] haveCountOf:6];
+            }];
         });
         
         it(@"Deletes all from context", ^{
