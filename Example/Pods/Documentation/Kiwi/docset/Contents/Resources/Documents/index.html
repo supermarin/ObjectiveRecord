@@ -2,20 +2,20 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Kiwi 1.0.0 Reference</title>
+		<title>Kiwi 2.0.6 Reference</title>
 		<link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="index.html">Kiwi 1.0.0 </a></h1>
-				<a id="developerHome" href="index.html">Allen Ding, Luke Redpath</a>
+				<h1><a id="libraryTitle" href="index.html">Kiwi 2.0.6 </a></h1>
+				<a id="developerHome" href="index.html">Allen Ding and Luke Redpath</a>
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">Kiwi 1.0.0 Reference</h1>
+				<h1 class="hideInXcode">Kiwi 2.0.6 Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar"></ul>
 		</header>
@@ -26,10 +26,79 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">Kiwi 1.0.0 Reference</h1>
+						<h1 class="title title-header">Kiwi 2.0.6 Reference</h1>
 					</div>		
 				</div>
 				<div id="container">
+					
+					<div class="section section-overview index-overview">
+						
+						
+						<h1>Simple BDD for iOS</h1>
+
+<p>Kiwi is a Behavior Driven Development library for iOS development.
+The goal is to provide a BDD library that is exquisitely simple to setup and use.</p>
+
+<h1>Kiwi 2.0 &ndash; Reboot</h1>
+
+<p><a href="https://github.com/allending/Kiwi/issues/176">https://github.com/allending/Kiwi/issues/176</a></p>
+
+<h1>Requirements</h1>
+
+<ul>
+<li>Xcode 4.x</li>
+<li>LLVM compiler recommended</li>
+</ul>
+
+
+<h1>Contributors</h1>
+
+<p>Kiwi is open-source and is developed by the community. The full list of Kiwi individual contributors is <a href="https://github.com/allending/Kiwi/graphs/contributors">here</a>.</p>
+
+<h1>Why?</h1>
+
+<p>The idea behind Kiwi is to have tests that are more readable than what is possible with the bundled test framework.</p>
+
+<p>Tests (or rather specs) are written in Objective-C and run within the comfort of Xcode to provide a test environment that is as unobtrusive and seamless as possible in terms of running tests and error reporting.</p>
+
+<p>Specs look like this:</p>
+
+<p>```objective-c
+describe(@&ldquo;Team&rdquo;, ^{</p>
+
+<pre><code>context(@"when newly created", ^{
+    it(@"should have a name", ^{
+        id team = [Team team];
+        [[team.name should] equal:@"Black Hawks"];
+    });
+
+    it(@"should have 11 players", ^{
+        id team = [Team team];
+        [[[team should] have:11] players];
+    });
+});
+</code></pre>
+
+<p>});
+```</p>
+
+<p>To some of you, this might seem like an abomination. To the rest, read on&hellip;</p>
+
+<h1>License</h1>
+
+<p>Kiwi is open source software. You may freely distribute it under the terms of
+the license agreement found in <strong>License.txt</strong>.</p>
+
+<h1>Documentation</h1>
+
+<p>The <a href="https://github.com/allending/Kiwi/wiki">Kiwi Wiki</a> is the official documentation source.</p>
+
+<h1>Getting it</h1>
+
+<p>The best way to get Kiwi is by using <a href="https://github.com/cocoapods/cocoapods">CocoaPods</a>. For all the installation details, check out the <a href="https://github.com/allending/kiwi/wiki">Wiki</a></p>
+						
+						
+					</div>
 					
                         
                     
@@ -42,6 +111,8 @@
 							<li><a href="Classes/KWAfterAllNode.html">KWAfterAllNode</a></li>
 							
 							<li><a href="Classes/KWAfterEachNode.html">KWAfterEachNode</a></li>
+							
+							<li><a href="Classes/KWAny.html">KWAny</a></li>
 							
 							<li><a href="Classes/KWAsyncMatcherProbe.html">KWAsyncMatcherProbe</a></li>
 							
@@ -61,6 +132,8 @@
 							
 							<li><a href="Classes/KWBeNonNilMatcher.html">KWBeNonNilMatcher</a></li>
 							
+							<li><a href="Classes/KWBeSubclassOfClassMatcher.html">KWBeSubclassOfClassMatcher</a></li>
+							
 							<li><a href="Classes/KWBeTrueMatcher.html">KWBeTrueMatcher</a></li>
 							
 							<li><a href="Classes/KWBeWithinMatcher.html">KWBeWithinMatcher</a></li>
@@ -79,6 +152,10 @@
 							
 							<li><a href="Classes/KWCallSite.html">KWCallSite</a></li>
 							
+							<li><a href="Classes/KWCaptureSpy.html">KWCaptureSpy</a></li>
+							
+							<li><a href="Classes/KWChangeMatcher.html">KWChangeMatcher</a></li>
+							
 							<li><a href="Classes/KWConformToProtocolMatcher.html">KWConformToProtocolMatcher</a></li>
 							
 							<li><a href="Classes/KWContainMatcher.html">KWContainMatcher</a></li>
@@ -89,9 +166,11 @@
 							
 							<li><a href="Classes/KWEqualMatcher.html">KWEqualMatcher</a></li>
 							
-							<li><a href="Classes/KWExampleGroup.html">KWExampleGroup</a></li>
+							<li><a href="Classes/KWExample.html">KWExample</a></li>
 							
 							<li><a href="Classes/KWExampleGroupBuilder.html">KWExampleGroupBuilder</a></li>
+							
+							<li><a href="Classes/KWExampleSuite.html">KWExampleSuite</a></li>
 							
 							<li><a href="Classes/KWExistVerifier.html">KWExistVerifier</a></li>
 							
@@ -101,7 +180,9 @@
 							
 							<li><a href="Classes/KWFutureObject.html">KWFutureObject</a></li>
 							
-							<li><a href="Classes/KWHamcrestMatcher.html">KWHamcrestMatcher</a></li>
+							<li><a href="Classes/KWGenericMatchEvaluator.html">KWGenericMatchEvaluator</a></li>
+							
+							<li><a href="Classes/KWGenericMatcher.html">KWGenericMatcher</a></li>
 							
 							<li><a href="Classes/KWHaveMatcher.html">KWHaveMatcher</a></li>
 							
@@ -143,6 +224,10 @@
 							
 							<li><a href="Classes/KWSpec.html">KWSpec</a></li>
 							
+							<li><a href="Classes/KWStringContainsMatcher.html">KWStringContainsMatcher</a></li>
+							
+							<li><a href="Classes/KWStringPrefixMatcher.html">KWStringPrefixMatcher</a></li>
+							
 							<li><a href="Classes/KWStub.html">KWStub</a></li>
 							
 							<li><a href="Classes/KWTestCase.html">KWTestCase</a></li>
@@ -165,11 +250,9 @@
 						<h2 class="index-title">Protocol References</h2>
 						<ul>
 							
-							<li><a href="Protocols/HCMatcher.html">HCMatcher</a></li>
-							
 							<li><a href="Protocols/KWContainmentCountMatcherTerminals.html">KWContainmentCountMatcherTerminals</a></li>
 							
-							<li><a href="Protocols/KWExampleGroupDelegate.html">KWExampleGroupDelegate</a></li>
+							<li><a href="Protocols/KWExampleDelegate.html">KWExampleDelegate</a></li>
 							
 							<li><a href="Protocols/KWExampleNode.html">KWExampleNode</a></li>
 							
@@ -193,9 +276,13 @@
 						<h2 class="index-title">Category References</h2>
 						<ul>
 							
-							<li><a href="Categories/NSArray+KiwiHamcrestAdditions.html">NSArray(KiwiHamcrestAdditions)</a></li>
+							<li><a href="Categories/NSArray+KiwiGenericMatchingAdditions.html">NSArray(KiwiGenericMatchingAdditions)</a></li>
+							
+							<li><a href="Categories/NSInvocation+KWExampleGroup.html">NSInvocation(KWExampleGroup)</a></li>
 							
 							<li><a href="Categories/NSInvocation+KiwiAdditions.html">NSInvocation(KiwiAdditions)</a></li>
+							
+							<li><a href="Categories/NSInvocation+OCMAdditions.html">NSInvocation(OCMAdditions)</a></li>
 							
 							<li><a href="Categories/NSMethodSignature+KiwiAdditions.html">NSMethodSignature(KiwiAdditions)</a></li>
 							
@@ -203,13 +290,23 @@
 							
 							<li><a href="Categories/NSObject+KWUserDefinedMatchersDefinitions.html">NSObject(KWUserDefinedMatchersDefinitions)</a></li>
 							
-							<li><a href="Categories/NSObject+KiwiHamcrestAdditions.html">NSObject(KiwiHamcrestAdditions)</a></li>
+							<li><a href="Categories/NSObject+KiwiGenericMatchingAdditions.html">NSObject(KiwiGenericMatchingAdditions)</a></li>
 							
 							<li><a href="Categories/NSObject+KiwiMockAdditions.html">NSObject(KiwiMockAdditions)</a></li>
+							
+							<li><a href="Categories/NSObject+KiwiSpyAdditions.html">NSObject(KiwiSpyAdditions)</a></li>
 							
 							<li><a href="Categories/NSObject+KiwiStubAdditions.html">NSObject(KiwiStubAdditions)</a></li>
 							
 							<li><a href="Categories/NSObject+KiwiVerifierAdditions.html">NSObject(KiwiVerifierAdditions)</a></li>
+							
+							<li><a href="Categories/NSObject+KiwiVerifierMacroNames.html">NSObject(KiwiVerifierMacroNames)</a></li>
+							
+							<li><a href="Categories/NSOrderedSet+KiwiGenericMatchingAdditions.html">NSOrderedSet(KiwiGenericMatchingAdditions)</a></li>
+							
+							<li><a href="Categories/NSProxy+KiwiVerifierAdditions.html">NSProxy(KiwiVerifierAdditions)</a></li>
+							
+							<li><a href="Categories/NSSet+KiwiGenericMatchingAdditions.html">NSSet(KiwiGenericMatchingAdditions)</a></li>
 							
 							<li><a href="Categories/NSValue+KiwiAdditions.html">NSValue(KiwiAdditions)</a></li>
 							
@@ -224,9 +321,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Allen Ding, Luke Redpath. All rights reserved. (Last updated: 2012-07-04)</span><br />
+						<p><span class="copyright">&copy; 2013 Allen Ding and Luke Redpath. All rights reserved. (Last updated: 2013-05-11)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 	
 					</div>

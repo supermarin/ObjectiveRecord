@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/KWMessageSpying.html">
+	<File path="Categories/NSObject+KiwiSpyAdditions.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/KWMessageSpying</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cat/NSObject(KiwiSpyAdditions)</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMessageSpying.h</DeclaredIn>
+			<DeclaredIn>NSObject+KiwiSpyAdditions.h</DeclaredIn>
 			
 			<NodeRef refid="76"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/KWMessageSpying/object:didReceiveInvocation:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiSpyAdditions)/captureArgument:atIndex:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMessageSpying.h</DeclaredIn>			
+			<DeclaredIn>NSObject+KiwiSpyAdditions.h</DeclaredIn>			
 			
-			<Declaration>- (void)object:(id)anObject didReceiveInvocation:(NSInvocation *)anInvocation</Declaration>
+			<Declaration>- (KWCaptureSpy *)captureArgument:(SEL)selector atIndex:(NSUInteger)index</Declaration>
 			
 			
-			<Anchor>//api/name/object:didReceiveInvocation:</Anchor>
+			<Anchor>//api/name/captureArgument:atIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiSpyAdditions)/captureArgument:atIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSObject+KiwiSpyAdditions.h</DeclaredIn>			
+			
+			<Declaration>+ (KWCaptureSpy *)captureArgument:(SEL)selector atIndex:(NSUInteger)index</Declaration>
+			
+			
+			<Anchor>//api/name/captureArgument:atIndex:</Anchor>
 		</Token>
 		
 	</File>

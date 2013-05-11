@@ -7,13 +7,13 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">Kiwi 1.0.0 </a></h1>
-				<a id="developerHome" href="../index.html">Allen Ding, Luke Redpath</a>
+				<h1><a id="libraryTitle" href="../index.html">Kiwi 2.0.6 </a></h1>
+				<a id="developerHome" href="../index.html">Allen Ding and Luke Redpath</a>
 			</div>
 			
 			<div id="title" role="banner">
@@ -38,14 +38,16 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/exampleGroup">&nbsp;&nbsp;&nbsp;&nbsp;exampleGroup</option>
+	<option value="//api/name/context">&nbsp;&nbsp;&nbsp;&nbsp;context</option>
+	
+	<option value="//api/name/example">&nbsp;&nbsp;&nbsp;&nbsp;example</option>
 	
 	
 	
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/itNodeWithCallSite:description:block:">&nbsp;&nbsp;&nbsp;&nbsp;+ itNodeWithCallSite:description:block:</option>
+	<option value="//api/name/itNodeWithCallSite:description:context:block:">&nbsp;&nbsp;&nbsp;&nbsp;+ itNodeWithCallSite:description:context:block:</option>
 	
 	
 	
@@ -71,7 +73,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/exampleGroup">exampleGroup</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/context">context</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/example">example</a></span></li>
 	
 </ul></li>
 
@@ -79,7 +83,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/itNodeWithCallSite:description:block:">itNodeWithCallSite:description:block:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/itNodeWithCallSite:description:context:block:">itNodeWithCallSite:description:context:block:</a></span></li>
 	
 </ul></li>
 
@@ -133,14 +137,21 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/exampleGroup">&nbsp;&nbsp;exampleGroup</a></code>
+		<code><a href="#//api/name/example">&nbsp;&nbsp;example</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/itNodeWithCallSite:description:block:">+&nbsp;itNodeWithCallSite:description:block:</a></code>
+		<code><a href="#//api/name/context">&nbsp;&nbsp;context</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/itNodeWithCallSite:description:context:block:">+&nbsp;itNodeWithCallSite:description:context:block:</a></code>
 		
 	</span>
 	
@@ -159,12 +170,23 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/exampleGroup" title="exampleGroup"></a>
-	<h3 class="subsubtitle method-title">exampleGroup</h3>
+	<a name="//api/name/context" title="context"></a>
+	<h3 class="subsubtitle method-title">context</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KWExampleGroup *exampleGroup</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain, readonly) KWContextNode *context</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/example" title="example"></a>
+	<h3 class="subsubtitle method-title">example</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KWExample *example</code></div>
 
     
 </div>
@@ -178,12 +200,12 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/itNodeWithCallSite:description:block:" title="itNodeWithCallSite:description:block:"></a>
-	<h3 class="subsubtitle method-title">itNodeWithCallSite:description:block:</h3>
+	<a name="//api/name/itNodeWithCallSite:description:context:block:" title="itNodeWithCallSite:description:context:block:"></a>
+	<h3 class="subsubtitle method-title">itNodeWithCallSite:description:context:block:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (id)itNodeWithCallSite:(KWCallSite *)<em>aCallSite</em> description:(NSString *)<em>aDescription</em> block:(KWVoidBlock)<em>aBlock</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (id)itNodeWithCallSite:(KWCallSite *)<em>aCallSite</em> description:(NSString *)<em>aDescription</em> context:(KWContextNode *)<em>context</em> block:(KWVoidBlock)<em>aBlock</em></code></div>
 
     
 </div>
@@ -203,9 +225,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Allen Ding, Luke Redpath. All rights reserved. (Last updated: 2012-07-04)</span><br />
+						<p><span class="copyright">&copy; 2013 Allen Ding and Luke Redpath. All rights reserved. (Last updated: 2013-05-11)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>

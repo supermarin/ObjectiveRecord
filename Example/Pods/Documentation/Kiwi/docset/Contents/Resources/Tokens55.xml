@@ -1,157 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWUserDefinedMatcher.html">
+	<File path="Classes/KWReceiveMatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWUserDefinedMatcher</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWReceiveMatcher</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>
 			
 			<NodeRef refid="55"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setSelector:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/setWillEvaluateMultipleTimes:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) SEL selector</Declaration>
+			<Declaration>@property (nonatomic, assign) BOOL willEvaluateMultipleTimes</Declaration>
 			
 			
-			<Anchor>//api/name/selector</Anchor>
+			<Anchor>//api/name/willEvaluateMultipleTimes</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWUserDefinedMatcher/selector</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWReceiveMatcher/willEvaluateMultipleTimes</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) SEL selector</Declaration>
+			<Declaration>@property (nonatomic, assign) BOOL willEvaluateMultipleTimes</Declaration>
 			
 			
-			<Anchor>//api/name/selector</Anchor>
+			<Anchor>//api/name/willEvaluateMultipleTimes</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setFailureMessageForShould:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, copy) NSString *failureMessageForShould</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector</Declaration>
 			
 			
-			<Anchor>//api/name/failureMessageForShould</Anchor>
+			<Anchor>//api/name/receive:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWUserDefinedMatcher/failureMessageForShould</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:withCount:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, copy) NSString *failureMessageForShould</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector withCount:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/failureMessageForShould</Anchor>
+			<Anchor>//api/name/receive:withCount:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setFailureMessageForShouldNot:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:withCountAtLeast:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, copy) NSString *failureMessageForShouldNot</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector withCountAtLeast:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/failureMessageForShouldNot</Anchor>
+			<Anchor>//api/name/receive:withCountAtLeast:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWUserDefinedMatcher/failureMessageForShouldNot</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:withCountAtMost:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, copy) NSString *failureMessageForShouldNot</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector withCountAtMost:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/failureMessageForShouldNot</Anchor>
+			<Anchor>//api/name/receive:withCountAtMost:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setMatcherBlock:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:andReturn:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) KWUserDefinedMatcherBlock matcherBlock</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue</Declaration>
 			
 			
-			<Anchor>//api/name/matcherBlock</Anchor>
+			<Anchor>//api/name/receive:andReturn:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWUserDefinedMatcher/matcherBlock</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:andReturn:withCount:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) KWUserDefinedMatcherBlock matcherBlock</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue withCount:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/matcherBlock</Anchor>
+			<Anchor>//api/name/receive:andReturn:withCount:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setDescription:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:andReturn:withCountAtLeast:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, copy) NSString *description</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue withCountAtLeast:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/description</Anchor>
+			<Anchor>//api/name/receive:andReturn:withCountAtLeast:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWUserDefinedMatcher/description</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:andReturn:withCountAtMost:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, copy) NSString *description</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue withCountAtMost:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/description</Anchor>
+			<Anchor>//api/name/receive:andReturn:withCountAtMost:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWUserDefinedMatcher/matcherWithSubject:block:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receiveMessagePattern:countType:count:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>+ (id)matcherWithSubject:(id)aSubject block:(KWUserDefinedMatcherBlock)aBlock</Declaration>
+			<Declaration>- (void)receiveMessagePattern:(KWMessagePattern *)aMessagePattern countType:(KWCountType)aCountType count:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/matcherWithSubject:block:</Anchor>
+			<Anchor>//api/name/receiveMessagePattern:countType:count:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/initWithSubject:block:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receiveMessagePattern:andReturn:countType:count:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithSubject:(id)aSubject block:(KWUserDefinedMatcherBlock)aBlock</Declaration>
-			
-			
-			<Anchor>//api/name/initWithSubject:block:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setSubject:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
-			
-			<Declaration>- (void)setSubject:(id)aSubject</Declaration>
+			<Declaration>- (void)receiveMessagePattern:(KWMessagePattern *)aMessagePattern andReturn:(id)aValue countType:(KWCountType)aCountType count:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/setSubject:</Anchor>
+			<Anchor>//api/name/receiveMessagePattern:andReturn:countType:count:</Anchor>
 		</Token>
 		
 	</File>

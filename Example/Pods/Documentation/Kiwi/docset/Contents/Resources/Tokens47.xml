@@ -1,36 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWProbePoller.html">
+	<File path="Classes/KWMatchers.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWProbePoller</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWMatchers</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWProbePoller.h</DeclaredIn>
+			<DeclaredIn>KWMatchers.h</DeclaredIn>
 			
 			<NodeRef refid="47"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWProbePoller/initWithTimeout:delay:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KWMatchers/matchers</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWProbePoller.h</DeclaredIn>			
+			<DeclaredIn>KWMatchers.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithTimeout:(NSTimeInterval)theTimeout delay:(NSTimeInterval)theDelay</Declaration>
+			<Declaration>+ (id)matchers</Declaration>
 			
 			
-			<Anchor>//api/name/initWithTimeout:delay:</Anchor>
+			<Anchor>//api/name/matchers</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWProbePoller/check:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KWMatchers/defineMatcher:as:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWProbePoller.h</DeclaredIn>			
+			<DeclaredIn>KWMatchers.h</DeclaredIn>			
 			
-			<Declaration>- (BOOL)check:(id&lt;KWProbe&gt;)probe</Declaration>
+			<Declaration>+ (void)defineMatcher:(NSString *)selectorString as:(KWMatchersBuildingBlock)block</Declaration>
 			
 			
-			<Anchor>//api/name/check:</Anchor>
+			<Anchor>//api/name/defineMatcher:as:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchers/defineMatcher:as:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMatchers.h</DeclaredIn>			
+			
+			<Declaration>- (void)defineMatcher:(NSString *)selectorString as:(KWMatchersBuildingBlock)block</Declaration>
+			
+			
+			<Anchor>//api/name/defineMatcher:as:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchers/addUserDefinedMatcherBuilder:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMatchers.h</DeclaredIn>			
+			
+			<Declaration>- (void)addUserDefinedMatcherBuilder:(KWUserDefinedMatcherBuilder *)builder</Declaration>
+			
+			
+			<Anchor>//api/name/addUserDefinedMatcherBuilder:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchers/matcherForSelector:subject:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMatchers.h</DeclaredIn>			
+			
+			<Declaration>- (KWUserDefinedMatcher *)matcherForSelector:(SEL)selector subject:(id)subject</Declaration>
+			
+			
+			<Anchor>//api/name/matcherForSelector:subject:</Anchor>
 		</Token>
 		
 	</File>

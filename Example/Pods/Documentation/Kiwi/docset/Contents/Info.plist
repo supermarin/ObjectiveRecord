@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.cocoapods.Kiwi-1.0.0</string>
+	<string>org.cocoapods.kiwi.Kiwi-2.0.6</string>
 	<key>CFBundleName</key>
-	<string>Kiwi 1.0.0 Documentation</string>
+	<string>Kiwi 2.0.6 Documentation</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -15,19 +15,21 @@
 	
 	
 	<key>DocSetDescription</key>
-	<string>A Behavior Driven Development library for iPhone and iPad development.</string>
+	<string>A Behavior Driven Development library for iOS and OS X.</string>
 	
 	<key>DocSetFeedName</key>
-	<string>Kiwi 1.0.0 Documentation</string>
+	<string>Kiwi 2.0.6 Documentation</string>
 	
 	<key>DocSetMinimumXcodeVersion</key>
 	<string>3.0</string>
 	
+	<key>DashDocSetFamily</key>
+	<string>appledoc</string>
 	<key>DocSetPublisherIdentifier</key>
-	<string>org.cocoapods.documentation</string>
+	<string>org.cocoapods.kiwi.documentation</string>
 	<key>DocSetPublisherName</key>
-	<string>Allen Ding, Luke Redpath</string>
+	<string>Allen Ding and Luke Redpath</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Allen Ding, Luke Redpath</string>
+	<string>Allen Ding and Luke Redpath</string>
 </dict>
 </plist>

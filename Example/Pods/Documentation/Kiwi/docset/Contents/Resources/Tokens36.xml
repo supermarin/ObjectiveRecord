@@ -1,102 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWInvocationCapturer.html">
+	<File path="Classes/KWFutureObject.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWInvocationCapturer</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWFutureObject</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>
+			<DeclaredIn>KWFutureObject.h</DeclaredIn>
 			
 			<NodeRef refid="36"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWInvocationCapturer/initWithDelegate:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KWFutureObject/objectWithObjectPointer:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			<DeclaredIn>KWFutureObject.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithDelegate:(id)aDelegate</Declaration>
+			<Declaration>+ (id)objectWithObjectPointer:(id *)pointer</Declaration>
 			
 			
-			<Anchor>//api/name/initWithDelegate:</Anchor>
+			<Anchor>//api/name/objectWithObjectPointer:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWInvocationCapturer/initWithDelegate:userInfo:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KWFutureObject/futureObjectWithBlock:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			<DeclaredIn>KWFutureObject.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithDelegate:(id)aDelegate userInfo:(NSDictionary *)aUserInfo</Declaration>
+			<Declaration>+ (id)futureObjectWithBlock:(KWFutureObjectBlock)block</Declaration>
 			
 			
-			<Anchor>//api/name/initWithDelegate:userInfo:</Anchor>
+			<Anchor>//api/name/futureObjectWithBlock:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWInvocationCapturer/invocationCapturerWithDelegate:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWFutureObject/initWithBlock:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			<DeclaredIn>KWFutureObject.h</DeclaredIn>			
 			
-			<Declaration>+ (id)invocationCapturerWithDelegate:(id)aDelegate</Declaration>
+			<Declaration>- (id)initWithBlock:(KWFutureObjectBlock)aBlock</Declaration>
 			
 			
-			<Anchor>//api/name/invocationCapturerWithDelegate:</Anchor>
+			<Anchor>//api/name/initWithBlock:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWInvocationCapturer/invocationCapturerWithDelegate:userInfo:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWFutureObject/object</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			<DeclaredIn>KWFutureObject.h</DeclaredIn>			
 			
-			<Declaration>+ (id)invocationCapturerWithDelegate:(id)aDelegate userInfo:(NSDictionary *)aUserInfo</Declaration>
-			
-			
-			<Anchor>//api/name/invocationCapturerWithDelegate:userInfo:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWInvocationCapturer/setDelegate:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) id delegate</Declaration>
+			<Declaration>- (id)object</Declaration>
 			
 			
-			<Anchor>//api/name/delegate</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWInvocationCapturer/delegate</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) id delegate</Declaration>
-			
-			
-			<Anchor>//api/name/delegate</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWInvocationCapturer/setUserInfo:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) NSDictionary *userInfo</Declaration>
-			
-			
-			<Anchor>//api/name/userInfo</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWInvocationCapturer/userInfo</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) NSDictionary *userInfo</Declaration>
-			
-			
-			<Anchor>//api/name/userInfo</Anchor>
+			<Anchor>//api/name/object</Anchor>
 		</Token>
 		
 	</File>

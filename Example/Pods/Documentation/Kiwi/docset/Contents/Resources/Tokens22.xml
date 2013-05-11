@@ -1,36 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWContainMatcher.html">
+	<File path="Classes/KWCallSite.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWContainMatcher</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWCallSite</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWContainMatcher.h</DeclaredIn>
+			<DeclaredIn>KWCallSite.h</DeclaredIn>
 			
 			<NodeRef refid="22"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWContainMatcher/contain:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWCallSite/initWithFilename:lineNumber:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWContainMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWCallSite.h</DeclaredIn>			
 			
-			<Declaration>- (void)contain:(id)anObject</Declaration>
+			<Declaration>- (id)initWithFilename:(NSString *)aFilename lineNumber:(NSUInteger)aLineNumber</Declaration>
 			
 			
-			<Anchor>//api/name/contain:</Anchor>
+			<Anchor>//api/name/initWithFilename:lineNumber:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWContainMatcher/containObjectsInArray:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KWCallSite/callSiteWithFilename:lineNumber:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWContainMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWCallSite.h</DeclaredIn>			
 			
-			<Declaration>- (void)containObjectsInArray:(NSArray *)anArray</Declaration>
+			<Declaration>+ (id)callSiteWithFilename:(NSString *)aFilename lineNumber:(NSUInteger)aLineNumber</Declaration>
 			
 			
-			<Anchor>//api/name/containObjectsInArray:</Anchor>
+			<Anchor>//api/name/callSiteWithFilename:lineNumber:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWCallSite/setFilename:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWCallSite.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly, copy) NSString *filename</Declaration>
+			
+			
+			<Anchor>//api/name/filename</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWCallSite/filename</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWCallSite.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly, copy) NSString *filename</Declaration>
+			
+			
+			<Anchor>//api/name/filename</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWCallSite/setLineNumber:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWCallSite.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSUInteger lineNumber</Declaration>
+			
+			
+			<Anchor>//api/name/lineNumber</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWCallSite/lineNumber</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWCallSite.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSUInteger lineNumber</Declaration>
+			
+			
+			<Anchor>//api/name/lineNumber</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWCallSite/isEqualToCallSite:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWCallSite.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)isEqualToCallSite:(KWCallSite *)aCallSite</Declaration>
+			
+			
+			<Anchor>//api/name/isEqualToCallSite:</Anchor>
 		</Token>
 		
 	</File>

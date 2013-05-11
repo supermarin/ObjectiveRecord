@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Protocols/KWExampleGroupDelegate.html">
+	<File path="Categories/NSMethodSignature+KiwiAdditions.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intf/KWExampleGroupDelegate</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cat/NSMethodSignature(KiwiAdditions)</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWExampleGroupDelegate.h</DeclaredIn>
+			<DeclaredIn>NSMethodSignature+KiwiAdditions.h</DeclaredIn>
 			
 			<NodeRef refid="71"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/KWExampleGroupDelegate/exampleGroup:didFailWithFailure:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSMethodSignature(KiwiAdditions)/numberOfMessageArguments</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWExampleGroupDelegate.h</DeclaredIn>			
+			<DeclaredIn>NSMethodSignature+KiwiAdditions.h</DeclaredIn>			
 			
-			<Declaration>- (void)exampleGroup:(KWExampleGroup *)exampleGroup didFailWithFailure:(KWFailure *)failure</Declaration>
+			<Declaration>- (NSUInteger)numberOfMessageArguments</Declaration>
 			
 			
-			<Anchor>//api/name/exampleGroup:didFailWithFailure:</Anchor>
+			<Anchor>//api/name/numberOfMessageArguments</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSMethodSignature(KiwiAdditions)/messageArgumentTypeAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSMethodSignature+KiwiAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (const char *)messageArgumentTypeAtIndex:(NSUInteger)anIndex</Declaration>
+			
+			
+			<Anchor>//api/name/messageArgumentTypeAtIndex:</Anchor>
 		</Token>
 		
 	</File>

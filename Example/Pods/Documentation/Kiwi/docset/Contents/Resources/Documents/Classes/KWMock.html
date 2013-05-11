@@ -7,13 +7,13 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">Kiwi 1.0.0 </a></h1>
-				<a id="developerHome" href="../index.html">Allen Ding, Luke Redpath</a>
+				<h1><a id="libraryTitle" href="../index.html">Kiwi 2.0.6 </a></h1>
+				<a id="developerHome" href="../index.html">Allen Ding and Luke Redpath</a>
 			</div>
 			
 			<div id="title" role="banner">
@@ -40,11 +40,15 @@
 	
 	<option value="//api/name/isNullMock">&nbsp;&nbsp;&nbsp;&nbsp;isNullMock</option>
 	
+	<option value="//api/name/isPartialMock">&nbsp;&nbsp;&nbsp;&nbsp;isPartialMock</option>
+	
+	<option value="//api/name/mockName">&nbsp;&nbsp;&nbsp;&nbsp;mockName</option>
+	
 	<option value="//api/name/mockedClass">&nbsp;&nbsp;&nbsp;&nbsp;mockedClass</option>
 	
-	<option value="//api/name/mockedProtocol">&nbsp;&nbsp;&nbsp;&nbsp;mockedProtocol</option>
+	<option value="//api/name/mockedObject">&nbsp;&nbsp;&nbsp;&nbsp;mockedObject</option>
 	
-	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
+	<option value="//api/name/mockedProtocol">&nbsp;&nbsp;&nbsp;&nbsp;mockedProtocol</option>
 	
 	
 	
@@ -66,6 +70,10 @@
 	<option value="//api/name/nullMockWithName:forClass:">&nbsp;&nbsp;&nbsp;&nbsp;+ nullMockWithName:forClass:</option>
 	
 	<option value="//api/name/nullMockWithName:forProtocol:">&nbsp;&nbsp;&nbsp;&nbsp;+ nullMockWithName:forProtocol:</option>
+	
+	<option value="//api/name/partialMockForObject:">&nbsp;&nbsp;&nbsp;&nbsp;+ partialMockForObject:</option>
+	
+	<option value="//api/name/partialMockWithName:forObject:">&nbsp;&nbsp;&nbsp;&nbsp;+ partialMockWithName:forObject:</option>
 	
 	
 	
@@ -92,6 +100,10 @@
 	
 	<option value="//api/name/initAsNullMockWithName:forProtocol:">&nbsp;&nbsp;&nbsp;&nbsp;- initAsNullMockWithName:forProtocol:</option>
 	
+	<option value="//api/name/initAsPartialMockForObject:">&nbsp;&nbsp;&nbsp;&nbsp;- initAsPartialMockForObject:</option>
+	
+	<option value="//api/name/initAsPartialMockWithName:forObject:">&nbsp;&nbsp;&nbsp;&nbsp;- initAsPartialMockWithName:forObject:</option>
+	
 	<option value="//api/name/initForClass:">&nbsp;&nbsp;&nbsp;&nbsp;- initForClass:</option>
 	
 	<option value="//api/name/initForProtocol:">&nbsp;&nbsp;&nbsp;&nbsp;- initForProtocol:</option>
@@ -112,9 +124,15 @@
 	
 	<option value="//api/name/stub:withArguments:">&nbsp;&nbsp;&nbsp;&nbsp;- stub:withArguments:</option>
 	
+	<option value="//api/name/stub:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- stub:withBlock:</option>
+	
 	<option value="//api/name/stubAndReturn:">&nbsp;&nbsp;&nbsp;&nbsp;- stubAndReturn:</option>
 	
+	<option value="//api/name/stubAndReturn:times:afterThatReturn:">&nbsp;&nbsp;&nbsp;&nbsp;- stubAndReturn:times:afterThatReturn:</option>
+	
 	<option value="//api/name/stubMessagePattern:andReturn:">&nbsp;&nbsp;&nbsp;&nbsp;- stubMessagePattern:andReturn:</option>
+	
+	<option value="//api/name/stubMessagePattern:andReturn:times:afterThatReturn:">&nbsp;&nbsp;&nbsp;&nbsp;- stubMessagePattern:andReturn:times:afterThatReturn:</option>
 	
 	
 	
@@ -140,11 +158,15 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isNullMock">isNullMock</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isPartialMock">isPartialMock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/mockName">mockName</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/mockedClass">mockedClass</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/mockedProtocol">mockedProtocol</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/mockedObject">mockedObject</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/mockedProtocol">mockedProtocol</a></span></li>
 	
 </ul></li>
 
@@ -167,6 +189,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/nullMockWithName:forClass:">nullMockWithName:forClass:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/nullMockWithName:forProtocol:">nullMockWithName:forProtocol:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/partialMockForObject:">partialMockForObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/partialMockWithName:forObject:">partialMockWithName:forObject:</a></span></li>
 	
 </ul></li>
 
@@ -194,6 +220,10 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initAsNullMockWithName:forProtocol:">initAsNullMockWithName:forProtocol:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initAsPartialMockForObject:">initAsPartialMockForObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initAsPartialMockWithName:forObject:">initAsPartialMockWithName:forObject:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initForClass:">initForClass:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initForProtocol:">initForProtocol:</a></span></li>
@@ -214,9 +244,15 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stub:withArguments:">stub:withArguments:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stub:withBlock:">stub:withBlock:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stubAndReturn:">stubAndReturn:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stubAndReturn:times:afterThatReturn:">stubAndReturn:times:afterThatReturn:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stubMessagePattern:andReturn:">stubMessagePattern:andReturn:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stubMessagePattern:andReturn:times:afterThatReturn:">stubMessagePattern:andReturn:times:afterThatReturn:</a></span></li>
 	
 </ul></li>
 
@@ -321,6 +357,20 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/initAsPartialMockForObject:">&ndash;&nbsp;initAsPartialMockForObject:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initAsPartialMockWithName:forObject:">&ndash;&nbsp;initAsPartialMockWithName:forObject:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/mockForClass:">+&nbsp;mockForClass:</a></code>
 		
 	</span>
@@ -377,6 +427,20 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/partialMockForObject:">+&nbsp;partialMockForObject:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/partialMockWithName:forObject:">+&nbsp;partialMockWithName:forObject:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/isNullMock">&nbsp;&nbsp;isNullMock</a></code>
 		
 	</span>
@@ -384,7 +448,14 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
+		<code><a href="#//api/name/isPartialMock">&nbsp;&nbsp;isPartialMock</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/mockName">&nbsp;&nbsp;mockName</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -392,6 +463,13 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/mockedClass">&nbsp;&nbsp;mockedClass</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/mockedObject">&nbsp;&nbsp;mockedObject</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -406,6 +484,13 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/stub:">&ndash;&nbsp;stub:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stub:withBlock:">&ndash;&nbsp;stub:withBlock:</a></code>
 		
 	</span>
 	
@@ -447,7 +532,21 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/stubAndReturn:times:afterThatReturn:">&ndash;&nbsp;stubAndReturn:times:afterThatReturn:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/stubMessagePattern:andReturn:">&ndash;&nbsp;stubMessagePattern:andReturn:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stubMessagePattern:andReturn:times:afterThatReturn:">&ndash;&nbsp;stubMessagePattern:andReturn:times:afterThatReturn:</a></code>
 		
 	</span>
 	
@@ -526,6 +625,28 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/isPartialMock" title="isPartialMock"></a>
+	<h3 class="subsubtitle method-title">isPartialMock</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isPartialMock</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/mockName" title="mockName"></a>
+	<h3 class="subsubtitle method-title">mockName</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *mockName</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/mockedClass" title="mockedClass"></a>
 	<h3 class="subsubtitle method-title">mockedClass</h3>
 	
@@ -537,23 +658,23 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/mockedObject" title="mockedObject"></a>
+	<h3 class="subsubtitle method-title">mockedObject</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) id mockedObject</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/mockedProtocol" title="mockedProtocol"></a>
 	<h3 class="subsubtitle method-title">mockedProtocol</h3>
 	
 	
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) Protocol *mockedProtocol</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/name" title="name"></a>
-	<h3 class="subsubtitle method-title">name</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *name</code></div>
 
     
 </div>
@@ -650,6 +771,28 @@
 	
 
 	<div class="method-subsection method-declaration"><code>+ (id)nullMockWithName:(NSString *)<em>aName</em> forProtocol:(Protocol *)<em>aProtocol</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/partialMockForObject:" title="partialMockForObject:"></a>
+	<h3 class="subsubtitle method-title">partialMockForObject:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)partialMockForObject:(id)<em>object</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/partialMockWithName:forObject:" title="partialMockWithName:forObject:"></a>
+	<h3 class="subsubtitle method-title">partialMockWithName:forObject:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)partialMockWithName:(NSString *)<em>aName</em> forObject:(id)<em>object</em></code></div>
 
     
 </div>
@@ -773,6 +916,28 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/initAsPartialMockForObject:" title="initAsPartialMockForObject:"></a>
+	<h3 class="subsubtitle method-title">initAsPartialMockForObject:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initAsPartialMockForObject:(id)<em>object</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initAsPartialMockWithName:forObject:" title="initAsPartialMockWithName:forObject:"></a>
+	<h3 class="subsubtitle method-title">initAsPartialMockWithName:forObject:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initAsPartialMockWithName:(NSString *)<em>aName</em> forObject:(id)<em>object</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initForClass:" title="initForClass:"></a>
 	<h3 class="subsubtitle method-title">initForClass:</h3>
 	
@@ -883,6 +1048,17 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/stub:withBlock:" title="stub:withBlock:"></a>
+	<h3 class="subsubtitle method-title">stub:withBlock:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)stub:(SEL)<em>aSelector</em> withBlock:(id ( ^ ) ( NSArray *params ))<em>block</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/stubAndReturn:" title="stubAndReturn:"></a>
 	<h3 class="subsubtitle method-title">stubAndReturn:</h3>
 	
@@ -894,12 +1070,34 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/stubAndReturn:times:afterThatReturn:" title="stubAndReturn:times:afterThatReturn:"></a>
+	<h3 class="subsubtitle method-title">stubAndReturn:times:afterThatReturn:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)stubAndReturn:(id)<em>aValue</em> times:(id)<em>times</em> afterThatReturn:(id)<em>aSecondValue</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/stubMessagePattern:andReturn:" title="stubMessagePattern:andReturn:"></a>
 	<h3 class="subsubtitle method-title">stubMessagePattern:andReturn:</h3>
 	
 	
 
 	<div class="method-subsection method-declaration"><code>- (void)stubMessagePattern:(KWMessagePattern *)<em>aMessagePattern</em> andReturn:(id)<em>aValue</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stubMessagePattern:andReturn:times:afterThatReturn:" title="stubMessagePattern:andReturn:times:afterThatReturn:"></a>
+	<h3 class="subsubtitle method-title">stubMessagePattern:andReturn:times:afterThatReturn:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)stubMessagePattern:(KWMessagePattern *)<em>aMessagePattern</em> andReturn:(id)<em>aValue</em> times:(id)<em>times</em> afterThatReturn:(id)<em>aSecondValue</em></code></div>
 
     
 </div>
@@ -917,9 +1115,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Allen Ding, Luke Redpath. All rights reserved. (Last updated: 2012-07-04)</span><br />
+						<p><span class="copyright">&copy; 2013 Allen Ding and Luke Redpath. All rights reserved. (Last updated: 2013-05-11)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>

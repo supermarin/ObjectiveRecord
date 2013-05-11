@@ -1,69 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWSpec.html">
+	<File path="Classes/KWPendingNode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWSpec</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWPendingNode</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWSpec.h</DeclaredIn>
+			<DeclaredIn>KWPendingNode.h</DeclaredIn>
 			
 			<NodeRef refid="52"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWSpec/addVerifier:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWPendingNode/setContext:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWSpec.h</DeclaredIn>			
+			<DeclaredIn>KWPendingNode.h</DeclaredIn>			
 			
-			<Declaration>+ (id)addVerifier:(id&lt;KWVerifying&gt;)aVerifier</Declaration>
+			<Declaration>@property (nonatomic, readonly, retain) KWContextNode *context</Declaration>
 			
 			
-			<Anchor>//api/name/addVerifier:</Anchor>
+			<Anchor>//api/name/context</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWSpec/addExistVerifierWithExpectationType:callSite:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWPendingNode/context</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWSpec.h</DeclaredIn>			
+			<DeclaredIn>KWPendingNode.h</DeclaredIn>			
 			
-			<Declaration>+ (id)addExistVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite</Declaration>
+			<Declaration>@property (nonatomic, readonly, retain) KWContextNode *context</Declaration>
 			
 			
-			<Anchor>//api/name/addExistVerifierWithExpectationType:callSite:</Anchor>
+			<Anchor>//api/name/context</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWSpec/addMatchVerifierWithExpectationType:callSite:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWPendingNode/initWithCallSite:context:description:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWSpec.h</DeclaredIn>			
+			<DeclaredIn>KWPendingNode.h</DeclaredIn>			
 			
-			<Declaration>+ (id)addMatchVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite</Declaration>
+			<Declaration>- (id)initWithCallSite:(KWCallSite *)aCallSite context:(KWContextNode *)context description:(NSString *)aDescription</Declaration>
 			
 			
-			<Anchor>//api/name/addMatchVerifierWithExpectationType:callSite:</Anchor>
+			<Anchor>//api/name/initWithCallSite:context:description:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWSpec/addAsyncVerifierWithExpectationType:callSite:timeout:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KWPendingNode/pendingNodeWithCallSite:context:description:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWSpec.h</DeclaredIn>			
+			<DeclaredIn>KWPendingNode.h</DeclaredIn>			
 			
-			<Declaration>+ (id)addAsyncVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite timeout:(NSInteger)timeout</Declaration>
+			<Declaration>+ (id)pendingNodeWithCallSite:(KWCallSite *)aCallSite context:(KWContextNode *)context description:(NSString *)aDescription</Declaration>
 			
 			
-			<Anchor>//api/name/addAsyncVerifierWithExpectationType:callSite:timeout:</Anchor>
+			<Anchor>//api/name/pendingNodeWithCallSite:context:description:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWSpec/buildExampleGroups</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWPendingNode/setCallSite:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWSpec.h</DeclaredIn>			
+			<DeclaredIn>KWPendingNode.h</DeclaredIn>			
 			
-			<Declaration>+ (void)buildExampleGroups</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWCallSite *callSite</Declaration>
 			
 			
-			<Anchor>//api/name/buildExampleGroups</Anchor>
+			<Anchor>//api/name/callSite</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWPendingNode/callSite</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWPendingNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) KWCallSite *callSite</Declaration>
+			
+			
+			<Anchor>//api/name/callSite</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWPendingNode/setDescription:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWPendingNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSString *description</Declaration>
+			
+			
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWPendingNode/description</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWPendingNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSString *description</Declaration>
+			
+			
+			<Anchor>//api/name/description</Anchor>
 		</Token>
 		
 	</File>

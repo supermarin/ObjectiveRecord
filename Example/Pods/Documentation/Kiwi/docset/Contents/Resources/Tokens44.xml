@@ -1,432 +1,388 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWMock.html">
+	<File path="Classes/KWMatchVerifier.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWMock</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWMatchVerifier</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>
 			
 			<NodeRef refid="44"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/initForClass:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/setExpectationType:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>- (id)initForClass:(Class)aClass</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWExpectationType expectationType</Declaration>
 			
 			
-			<Anchor>//api/name/initForClass:</Anchor>
+			<Anchor>//api/name/expectationType</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/initForProtocol:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWMatchVerifier/expectationType</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>- (id)initForProtocol:(Protocol *)aProtocol</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWExpectationType expectationType</Declaration>
 			
 			
-			<Anchor>//api/name/initForProtocol:</Anchor>
+			<Anchor>//api/name/expectationType</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/initWithName:forClass:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/setCallSite:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithName:(NSString *)aName forClass:(Class)aClass</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWCallSite *callSite</Declaration>
 			
 			
-			<Anchor>//api/name/initWithName:forClass:</Anchor>
+			<Anchor>//api/name/callSite</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/initWithName:forProtocol:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWMatchVerifier/callSite</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithName:(NSString *)aName forProtocol:(Protocol *)aProtocol</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWCallSite *callSite</Declaration>
 			
 			
-			<Anchor>//api/name/initWithName:forProtocol:</Anchor>
+			<Anchor>//api/name/callSite</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/initAsNullMockForClass:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/setMatcherFactory:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>- (id)initAsNullMockForClass:(Class)aClass</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWMatcherFactory *matcherFactory</Declaration>
 			
 			
-			<Anchor>//api/name/initAsNullMockForClass:</Anchor>
+			<Anchor>//api/name/matcherFactory</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/initAsNullMockForProtocol:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWMatchVerifier/matcherFactory</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>- (id)initAsNullMockForProtocol:(Protocol *)aProtocol</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWMatcherFactory *matcherFactory</Declaration>
 			
 			
-			<Anchor>//api/name/initAsNullMockForProtocol:</Anchor>
+			<Anchor>//api/name/matcherFactory</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/initAsNullMockWithName:forClass:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/setReporter:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>- (id)initAsNullMockWithName:(NSString *)aName forClass:(Class)aClass</Declaration>
+			<Declaration>@property (nonatomic, readonly) id&lt;KWReporting&gt; reporter</Declaration>
 			
 			
-			<Anchor>//api/name/initAsNullMockWithName:forClass:</Anchor>
+			<Anchor>//api/name/reporter</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/initAsNullMockWithName:forProtocol:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWMatchVerifier/reporter</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>- (id)initAsNullMockWithName:(NSString *)aName forProtocol:(Protocol *)aProtocol</Declaration>
+			<Declaration>@property (nonatomic, readonly) id&lt;KWReporting&gt; reporter</Declaration>
 			
 			
-			<Anchor>//api/name/initAsNullMockWithName:forProtocol:</Anchor>
+			<Anchor>//api/name/reporter</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMock/mockForClass:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/setSubject:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>+ (id)mockForClass:(Class)aClass</Declaration>
+			<Declaration>@property (nonatomic, readwrite, retain) id subject</Declaration>
 			
 			
-			<Anchor>//api/name/mockForClass:</Anchor>
+			<Anchor>//api/name/subject</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMock/mockForProtocol:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWMatchVerifier/subject</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>+ (id)mockForProtocol:(Protocol *)aProtocol</Declaration>
+			<Declaration>@property (nonatomic, readwrite, retain) id subject</Declaration>
 			
 			
-			<Anchor>//api/name/mockForProtocol:</Anchor>
+			<Anchor>//api/name/subject</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMock/mockWithName:forClass:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/initForShouldWithCallSite:matcherFactory:reporter:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>+ (id)mockWithName:(NSString *)aName forClass:(Class)aClass</Declaration>
+			<Declaration>- (id)initForShouldWithCallSite:(KWCallSite *)aCallSite matcherFactory:(KWMatcherFactory *)aMatcherFactory reporter:(id&lt;KWReporting&gt;)aReporter</Declaration>
 			
 			
-			<Anchor>//api/name/mockWithName:forClass:</Anchor>
+			<Anchor>//api/name/initForShouldWithCallSite:matcherFactory:reporter:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMock/mockWithName:forProtocol:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/initForShouldNotWithCallSite:matcherFactory:reporter:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>+ (id)mockWithName:(NSString *)aName forProtocol:(Protocol *)aProtocol</Declaration>
+			<Declaration>- (id)initForShouldNotWithCallSite:(KWCallSite *)aCallSite matcherFactory:(KWMatcherFactory *)aMatcherFactory reporter:(id&lt;KWReporting&gt;)aReporter</Declaration>
 			
 			
-			<Anchor>//api/name/mockWithName:forProtocol:</Anchor>
+			<Anchor>//api/name/initForShouldNotWithCallSite:matcherFactory:reporter:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMock/nullMockForClass:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/initWithExpectationType:callSite:matcherFactory:reporter:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>+ (id)nullMockForClass:(Class)aClass</Declaration>
+			<Declaration>- (id)initWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite matcherFactory:(KWMatcherFactory *)aMatcherFactory reporter:(id&lt;KWReporting&gt;)aReporter</Declaration>
 			
 			
-			<Anchor>//api/name/nullMockForClass:</Anchor>
+			<Anchor>//api/name/initWithExpectationType:callSite:matcherFactory:reporter:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMock/nullMockForProtocol:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KWMatchVerifier/matchVerifierWithExpectationType:callSite:matcherFactory:reporter:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWMatchVerifier.h</DeclaredIn>			
 			
-			<Declaration>+ (id)nullMockForProtocol:(Protocol *)aProtocol</Declaration>
+			<Declaration>+ (id)matchVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite matcherFactory:(KWMatcherFactory *)aMatcherFactory reporter:(id&lt;KWReporting&gt;)aReporter</Declaration>
 			
 			
-			<Anchor>//api/name/nullMockForProtocol:</Anchor>
+			<Anchor>//api/name/matchVerifierWithExpectationType:callSite:matcherFactory:reporter:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMock/nullMockWithName:forClass:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/containObjects:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWContainMatcher.h</DeclaredIn>			
 			
-			<Declaration>+ (id)nullMockWithName:(NSString *)aName forClass:(Class)aClass</Declaration>
+			<Declaration>- (void)containObjects:(id)firstObject, ...</Declaration>
 			
 			
-			<Anchor>//api/name/nullMockWithName:forClass:</Anchor>
+			<Anchor>//api/name/containObjects:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMock/nullMockWithName:forProtocol:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/have:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWHaveMatcher.h</DeclaredIn>			
 			
-			<Declaration>+ (id)nullMockWithName:(NSString *)aName forProtocol:(Protocol *)aProtocol</Declaration>
+			<Declaration>- (id)have:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/nullMockWithName:forProtocol:</Anchor>
+			<Anchor>//api/name/have:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/setIsNullMock:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/haveAtLeast:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWHaveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) BOOL isNullMock</Declaration>
+			<Declaration>- (id)haveAtLeast:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/isNullMock</Anchor>
+			<Anchor>//api/name/haveAtLeast:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWMock/isNullMock</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/haveAtMost:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWHaveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) BOOL isNullMock</Declaration>
+			<Declaration>- (id)haveAtMost:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/isNullMock</Anchor>
+			<Anchor>//api/name/haveAtMost:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/setName:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receive:withArguments:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) NSString *name</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector withArguments:(id)firstArgument, ...</Declaration>
 			
 			
-			<Anchor>//api/name/name</Anchor>
+			<Anchor>//api/name/receive:withArguments:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWMock/name</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receive:withCount:arguments:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) NSString *name</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector withCount:(NSUInteger)aCount arguments:(id)firstArgument, ...</Declaration>
 			
 			
-			<Anchor>//api/name/name</Anchor>
+			<Anchor>//api/name/receive:withCount:arguments:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/setMockedClass:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receive:withCountAtLeast:arguments:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) Class mockedClass</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector withCountAtLeast:(NSUInteger)aCount arguments:(id)firstArgument, ...</Declaration>
 			
 			
-			<Anchor>//api/name/mockedClass</Anchor>
+			<Anchor>//api/name/receive:withCountAtLeast:arguments:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWMock/mockedClass</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receive:withCountAtMost:arguments:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) Class mockedClass</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector withCountAtMost:(NSUInteger)aCount arguments:(id)firstArgument, ...</Declaration>
 			
 			
-			<Anchor>//api/name/mockedClass</Anchor>
+			<Anchor>//api/name/receive:withCountAtMost:arguments:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/setMockedProtocol:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receive:andReturn:withArguments:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) Protocol *mockedProtocol</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue withArguments:(id)firstArgument, ...</Declaration>
 			
 			
-			<Anchor>//api/name/mockedProtocol</Anchor>
+			<Anchor>//api/name/receive:andReturn:withArguments:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWMock/mockedProtocol</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receive:andReturn:withCount:arguments:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) Protocol *mockedProtocol</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue withCount:(NSUInteger)aCount arguments:(id)firstArgument, ...</Declaration>
 			
 			
-			<Anchor>//api/name/mockedProtocol</Anchor>
+			<Anchor>//api/name/receive:andReturn:withCount:arguments:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/stub:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receive:andReturn:withCountAtLeast:arguments:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)stub:(SEL)aSelector</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue withCountAtLeast:(NSUInteger)aCount arguments:(id)firstArgument, ...</Declaration>
 			
 			
-			<Anchor>//api/name/stub:</Anchor>
+			<Anchor>//api/name/receive:andReturn:withCountAtLeast:arguments:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/stub:withArguments:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receive:andReturn:withCountAtMost:arguments:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)stub:(SEL)aSelector withArguments:(id)firstArgument, ...</Declaration>
+			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue withCountAtMost:(NSUInteger)aCount arguments:(id)firstArgument, ...</Declaration>
 			
 			
-			<Anchor>//api/name/stub:withArguments:</Anchor>
+			<Anchor>//api/name/receive:andReturn:withCountAtMost:arguments:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/stub:andReturn:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receive</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)stub:(SEL)aSelector andReturn:(id)aValue</Declaration>
+			<Declaration>- (id)receive</Declaration>
 			
 			
-			<Anchor>//api/name/stub:andReturn:</Anchor>
+			<Anchor>//api/name/receive</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/stub:andReturn:withArguments:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receiveWithCount:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)stub:(SEL)aSelector andReturn:(id)aValue withArguments:(id)firstArgument, ...</Declaration>
+			<Declaration>- (id)receiveWithCount:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/stub:andReturn:withArguments:</Anchor>
+			<Anchor>//api/name/receiveWithCount:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/stub</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receiveWithCountAtLeast:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (id)stub</Declaration>
+			<Declaration>- (id)receiveWithCountAtLeast:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/stub</Anchor>
+			<Anchor>//api/name/receiveWithCountAtLeast:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/stubAndReturn:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receiveWithCountAtMost:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (id)stubAndReturn:(id)aValue</Declaration>
+			<Declaration>- (id)receiveWithCountAtMost:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/stubAndReturn:</Anchor>
+			<Anchor>//api/name/receiveWithCountAtMost:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/stubMessagePattern:andReturn:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receiveAndReturn:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)stubMessagePattern:(KWMessagePattern *)aMessagePattern andReturn:(id)aValue</Declaration>
+			<Declaration>- (id)receiveAndReturn:(id)aValue</Declaration>
 			
 			
-			<Anchor>//api/name/stubMessagePattern:andReturn:</Anchor>
+			<Anchor>//api/name/receiveAndReturn:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/clearStubs</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receiveAndReturn:withCount:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)clearStubs</Declaration>
+			<Declaration>- (id)receiveAndReturn:(id)aValue withCount:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/clearStubs</Anchor>
+			<Anchor>//api/name/receiveAndReturn:withCount:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/addMessageSpy:forMessagePattern:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receiveAndReturn:withCountAtLeast:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)addMessageSpy:(id&lt;KWMessageSpying&gt;)aSpy forMessagePattern:(KWMessagePattern *)aMessagePattern</Declaration>
+			<Declaration>- (id)receiveAndReturn:(id)aValue withCountAtLeast:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/addMessageSpy:forMessagePattern:</Anchor>
+			<Anchor>//api/name/receiveAndReturn:withCountAtLeast:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/removeMessageSpy:forMessagePattern:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchVerifier/receiveAndReturn:withCountAtMost:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
+			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)removeMessageSpy:(id&lt;KWMessageSpying&gt;)aSpy forMessagePattern:(KWMessagePattern *)aMessagePattern</Declaration>
-			
-			
-			<Anchor>//api/name/removeMessageSpy:forMessagePattern:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/expect:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
-			
-			<Declaration>- (void)expect:(SEL)aSelector</Declaration>
+			<Declaration>- (id)receiveAndReturn:(id)aValue withCountAtMost:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/expect:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/expect:withArguments:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
-			
-			<Declaration>- (void)expect:(SEL)aSelector withArguments:(id)firstArgument, ...</Declaration>
-			
-			
-			<Anchor>//api/name/expect:withArguments:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/expect</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
-			
-			<Declaration>- (id)expect</Declaration>
-			
-			
-			<Anchor>//api/name/expect</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMock/expectMessagePattern:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMock.h</DeclaredIn>			
-			
-			<Declaration>- (void)expectMessagePattern:(KWMessagePattern *)aMessagePattern</Declaration>
-			
-			
-			<Anchor>//api/name/expectMessagePattern:</Anchor>
+			<Anchor>//api/name/receiveAndReturn:withCountAtMost:</Anchor>
 		</Token>
 		
 	</File>

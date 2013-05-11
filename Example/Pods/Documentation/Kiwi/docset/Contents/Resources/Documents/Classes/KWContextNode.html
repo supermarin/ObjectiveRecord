@@ -7,13 +7,13 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">Kiwi 1.0.0 </a></h1>
-				<a id="developerHome" href="../index.html">Allen Ding, Luke Redpath</a>
+				<h1><a id="libraryTitle" href="../index.html">Kiwi 2.0.6 </a></h1>
+				<a id="developerHome" href="../index.html">Allen Ding and Luke Redpath</a>
 			</div>
 			
 			<div id="title" role="banner">
@@ -52,6 +52,8 @@
 	
 	<option value="//api/name/nodes">&nbsp;&nbsp;&nbsp;&nbsp;nodes</option>
 	
+	<option value="//api/name/parentContext">&nbsp;&nbsp;&nbsp;&nbsp;parentContext</option>
+	
 	<option value="//api/name/registerMatchersNode">&nbsp;&nbsp;&nbsp;&nbsp;registerMatchersNode</option>
 	
 	
@@ -59,7 +61,7 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/contextNodeWithCallSite:description:">&nbsp;&nbsp;&nbsp;&nbsp;+ contextNodeWithCallSite:description:</option>
+	<option value="//api/name/contextNodeWithCallSite:parentContext:description:">&nbsp;&nbsp;&nbsp;&nbsp;+ contextNodeWithCallSite:parentContext:description:</option>
 	
 	
 	
@@ -74,7 +76,9 @@
 	
 	<option value="//api/name/addPendingNode:">&nbsp;&nbsp;&nbsp;&nbsp;- addPendingNode:</option>
 	
-	<option value="//api/name/initWithCallSite:description:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithCallSite:description:</option>
+	<option value="//api/name/initWithCallSite:parentContext:description:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithCallSite:parentContext:description:</option>
+	
+	<option value="//api/name/performExample:withBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- performExample:withBlock:</option>
 	
 	
 	
@@ -112,6 +116,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/nodes">nodes</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parentContext">parentContext</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registerMatchersNode">registerMatchersNode</a></span></li>
 	
 </ul></li>
@@ -120,7 +126,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contextNodeWithCallSite:description:">contextNodeWithCallSite:description:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contextNodeWithCallSite:parentContext:description:">contextNodeWithCallSite:parentContext:description:</a></span></li>
 	
 </ul></li>
 
@@ -136,7 +142,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addPendingNode:">addPendingNode:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithCallSite:description:">initWithCallSite:description:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithCallSite:parentContext:description:">initWithCallSite:parentContext:description:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/performExample:withBlock:">performExample:withBlock:</a></span></li>
 	
 </ul></li>
 
@@ -188,14 +196,14 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithCallSite:description:">&ndash;&nbsp;initWithCallSite:description:</a></code>
+		<code><a href="#//api/name/initWithCallSite:parentContext:description:">&ndash;&nbsp;initWithCallSite:parentContext:description:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/contextNodeWithCallSite:description:">+&nbsp;contextNodeWithCallSite:description:</a></code>
+		<code><a href="#//api/name/contextNodeWithCallSite:parentContext:description:">+&nbsp;contextNodeWithCallSite:parentContext:description:</a></code>
 		
 	</span>
 	
@@ -251,6 +259,13 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/parentContext">&nbsp;&nbsp;parentContext</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/nodes">&nbsp;&nbsp;nodes</a></code>
 		
 	</span>
@@ -273,6 +288,13 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/addPendingNode:">&ndash;&nbsp;addPendingNode:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/performExample:withBlock:">&ndash;&nbsp;performExample:withBlock:</a></code>
 		
 	</span>
 	
@@ -375,6 +397,17 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/parentContext" title="parentContext"></a>
+	<h3 class="subsubtitle method-title">parentContext</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KWContextNode *parentContext</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/registerMatchersNode" title="registerMatchersNode"></a>
 	<h3 class="subsubtitle method-title">registerMatchersNode</h3>
 	
@@ -394,12 +427,12 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/contextNodeWithCallSite:description:" title="contextNodeWithCallSite:description:"></a>
-	<h3 class="subsubtitle method-title">contextNodeWithCallSite:description:</h3>
+	<a name="//api/name/contextNodeWithCallSite:parentContext:description:" title="contextNodeWithCallSite:parentContext:description:"></a>
+	<h3 class="subsubtitle method-title">contextNodeWithCallSite:parentContext:description:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (id)contextNodeWithCallSite:(KWCallSite *)<em>aCallSite</em> description:(NSString *)<em>aDescription</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (id)contextNodeWithCallSite:(KWCallSite *)<em>aCallSite</em> parentContext:(KWContextNode *)<em>contextNode</em> description:(NSString *)<em>aDescription</em></code></div>
 
     
 </div>
@@ -457,12 +490,23 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithCallSite:description:" title="initWithCallSite:description:"></a>
-	<h3 class="subsubtitle method-title">initWithCallSite:description:</h3>
+	<a name="//api/name/initWithCallSite:parentContext:description:" title="initWithCallSite:parentContext:description:"></a>
+	<h3 class="subsubtitle method-title">initWithCallSite:parentContext:description:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithCallSite:(KWCallSite *)<em>aCallSite</em> description:(NSString *)<em>aDescription</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithCallSite:(KWCallSite *)<em>aCallSite</em> parentContext:(KWContextNode *)<em>node</em> description:(NSString *)<em>aDescription</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/performExample:withBlock:" title="performExample:withBlock:"></a>
+	<h3 class="subsubtitle method-title">performExample:withBlock:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)performExample:(KWExample *)<em>example</em> withBlock:(void ( ^ ) ( void ))<em>exampleBlock</em></code></div>
 
     
 </div>
@@ -480,9 +524,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Allen Ding, Luke Redpath. All rights reserved. (Last updated: 2012-07-04)</span><br />
+						<p><span class="copyright">&copy; 2013 Allen Ding and Luke Redpath. All rights reserved. (Last updated: 2013-05-11)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>

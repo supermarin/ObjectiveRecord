@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Categories/NSValue+KiwiAdditions.html">
+	<File path="Categories/NSInvocation+KWExampleGroup.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cat/NSValue(KiwiAdditions)</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cat/NSInvocation(KWExampleGroup)</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>NSValue+KiwiAdditions.h</DeclaredIn>
+			<DeclaredIn>KWExampleSuite.h</DeclaredIn>
 			
 			<NodeRef refid="68"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/NSValue(KiwiAdditions)/dataValue</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(KWExampleGroup)/kw_setExample:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>NSValue+KiwiAdditions.h</DeclaredIn>			
+			<DeclaredIn>KWExampleSuite.h</DeclaredIn>			
 			
-			<Declaration>- (NSData *)dataValue</Declaration>
+			<Declaration>- (void)kw_setExample:(KWExample *)exampleGroup</Declaration>
 			
 			
-			<Anchor>//api/name/dataValue</Anchor>
+			<Anchor>//api/name/kw_setExample:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(KWExampleGroup)/kw_example</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleSuite.h</DeclaredIn>			
+			
+			<Declaration>- (KWExample *)kw_example</Declaration>
+			
+			
+			<Anchor>//api/name/kw_example</Anchor>
 		</Token>
 		
 	</File>

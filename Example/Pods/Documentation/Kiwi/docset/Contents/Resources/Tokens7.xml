@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWBeIdenticalToMatcher.html">
+	<File path="Classes/KWBeEmptyMatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWBeIdenticalToMatcher</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWBeEmptyMatcher</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBeIdenticalToMatcher.h</DeclaredIn>
+			<DeclaredIn>KWBeEmptyMatcher.h</DeclaredIn>
 			
 			<NodeRef refid="7"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWBeIdenticalToMatcher/beIdenticalTo:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWBeEmptyMatcher/beEmpty</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBeIdenticalToMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWBeEmptyMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)beIdenticalTo:(id)anObject</Declaration>
+			<Declaration>- (void)beEmpty</Declaration>
 			
 			
-			<Anchor>//api/name/beIdenticalTo:</Anchor>
+			<Anchor>//api/name/beEmpty</Anchor>
 		</Token>
 		
 	</File>

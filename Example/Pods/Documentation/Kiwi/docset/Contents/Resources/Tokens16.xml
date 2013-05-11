@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWBeforeEachNode.html">
+	<File path="Classes/KWBeZeroMatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWBeforeEachNode</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWBeZeroMatcher</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBeforeEachNode.h</DeclaredIn>
+			<DeclaredIn>KWBeZeroMatcher.h</DeclaredIn>
 			
 			<NodeRef refid="16"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWBeforeEachNode/beforeEachNodeWithCallSite:block:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWBeZeroMatcher/beZero</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBeforeEachNode.h</DeclaredIn>			
+			<DeclaredIn>KWBeZeroMatcher.h</DeclaredIn>			
 			
-			<Declaration>+ (id)beforeEachNodeWithCallSite:(KWCallSite *)aCallSite block:(KWVoidBlock)aBlock</Declaration>
+			<Declaration>- (void)beZero</Declaration>
 			
 			
-			<Anchor>//api/name/beforeEachNodeWithCallSite:block:</Anchor>
+			<Anchor>//api/name/beZero</Anchor>
 		</Token>
 		
 	</File>

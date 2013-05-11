@@ -1,58 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWBlockRaiseMatcher.html">
+	<File path="Classes/KWBlock.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWBlockRaiseMatcher</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWBlock</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBlockRaiseMatcher.h</DeclaredIn>
+			<DeclaredIn>KWBlock.h</DeclaredIn>
 			
 			<NodeRef refid="19"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWBlockRaiseMatcher/raise</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWBlock/initWithBlock:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBlockRaiseMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWBlock.h</DeclaredIn>			
 			
-			<Declaration>- (void)raise</Declaration>
+			<Declaration>- (id)initWithBlock:(KWVoidBlock)aBlock</Declaration>
 			
 			
-			<Anchor>//api/name/raise</Anchor>
+			<Anchor>//api/name/initWithBlock:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWBlockRaiseMatcher/raiseWithName:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KWBlock/blockWithBlock:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBlockRaiseMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWBlock.h</DeclaredIn>			
 			
-			<Declaration>- (void)raiseWithName:(NSString *)aName</Declaration>
+			<Declaration>+ (id)blockWithBlock:(KWVoidBlock)aBlock</Declaration>
 			
 			
-			<Anchor>//api/name/raiseWithName:</Anchor>
+			<Anchor>//api/name/blockWithBlock:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWBlockRaiseMatcher/raiseWithReason:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWBlock/call</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBlockRaiseMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWBlock.h</DeclaredIn>			
 			
-			<Declaration>- (void)raiseWithReason:(NSString *)aReason</Declaration>
-			
-			
-			<Anchor>//api/name/raiseWithReason:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWBlockRaiseMatcher/raiseWithName:reason:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBlockRaiseMatcher.h</DeclaredIn>			
-			
-			<Declaration>- (void)raiseWithName:(NSString *)aName reason:(NSString *)aReason</Declaration>
+			<Declaration>- (void)call</Declaration>
 			
 			
-			<Anchor>//api/name/raiseWithName:reason:</Anchor>
+			<Anchor>//api/name/call</Anchor>
 		</Token>
 		
 	</File>

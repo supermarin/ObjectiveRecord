@@ -1,36 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWBeWithinMatcher.html">
+	<File path="Classes/KWBeSubclassOfClassMatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWBeWithinMatcher</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWBeSubclassOfClassMatcher</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBeWithinMatcher.h</DeclaredIn>
+			<DeclaredIn>KWBeSubclassOfClassMatcher.h</DeclaredIn>
 			
 			<NodeRef refid="13"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWBeWithinMatcher/beWithin:of:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWBeSubclassOfClassMatcher/beSubclassOfClass:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBeWithinMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWBeSubclassOfClassMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)beWithin:(id)aDistance of:(id)aValue</Declaration>
-			
-			
-			<Anchor>//api/name/beWithin:of:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWBeWithinMatcher/equal:withDelta:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBeWithinMatcher.h</DeclaredIn>			
-			
-			<Declaration>- (void)equal:(double)aValue withDelta:(double)aDelta</Declaration>
+			<Declaration>- (void)beSubclassOfClass:(Class)aClass</Declaration>
 			
 			
-			<Anchor>//api/name/equal:withDelta:</Anchor>
+			<Anchor>//api/name/beSubclassOfClass:</Anchor>
 		</Token>
 		
 	</File>

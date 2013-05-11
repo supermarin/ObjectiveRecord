@@ -1,146 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWReceiveMatcher.html">
+	<File path="Classes/KWMessageTracker.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWReceiveMatcher</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWMessageTracker</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>
 			
 			<NodeRef refid="49"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/setWillEvaluateMultipleTimes:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMessageTracker/initWithSubject:messagePattern:countType:count:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) BOOL willEvaluateMultipleTimes</Declaration>
+			<Declaration>- (id)initWithSubject:(id)anObject messagePattern:(KWMessagePattern *)aMessagePattern countType:(KWCountType)aCountType count:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/willEvaluateMultipleTimes</Anchor>
+			<Anchor>//api/name/initWithSubject:messagePattern:countType:count:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWReceiveMatcher/willEvaluateMultipleTimes</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KWMessageTracker/messageTrackerWithSubject:messagePattern:countType:count:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, assign) BOOL willEvaluateMultipleTimes</Declaration>
+			<Declaration>+ (id)messageTrackerWithSubject:(id)anObject messagePattern:(KWMessagePattern *)aMessagePattern countType:(KWCountType)aCountType count:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/willEvaluateMultipleTimes</Anchor>
+			<Anchor>//api/name/messageTrackerWithSubject:messagePattern:countType:count:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMessageTracker/setSubject:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>- (void)receive:(SEL)aSelector</Declaration>
+			<Declaration>@property (nonatomic, readonly) id subject</Declaration>
 			
 			
-			<Anchor>//api/name/receive:</Anchor>
+			<Anchor>//api/name/subject</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:withCount:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWMessageTracker/subject</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>- (void)receive:(SEL)aSelector withCount:(NSUInteger)aCount</Declaration>
+			<Declaration>@property (nonatomic, readonly) id subject</Declaration>
 			
 			
-			<Anchor>//api/name/receive:withCount:</Anchor>
+			<Anchor>//api/name/subject</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:withCountAtLeast:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMessageTracker/setMessagePattern:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>- (void)receive:(SEL)aSelector withCountAtLeast:(NSUInteger)aCount</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWMessagePattern *messagePattern</Declaration>
 			
 			
-			<Anchor>//api/name/receive:withCountAtLeast:</Anchor>
+			<Anchor>//api/name/messagePattern</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:withCountAtMost:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWMessageTracker/messagePattern</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>- (void)receive:(SEL)aSelector withCountAtMost:(NSUInteger)aCount</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWMessagePattern *messagePattern</Declaration>
 			
 			
-			<Anchor>//api/name/receive:withCountAtMost:</Anchor>
+			<Anchor>//api/name/messagePattern</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:andReturn:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMessageTracker/setCountType:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWCountType countType</Declaration>
 			
 			
-			<Anchor>//api/name/receive:andReturn:</Anchor>
+			<Anchor>//api/name/countType</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:andReturn:withCount:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWMessageTracker/countType</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue withCount:(NSUInteger)aCount</Declaration>
+			<Declaration>@property (nonatomic, readonly) KWCountType countType</Declaration>
 			
 			
-			<Anchor>//api/name/receive:andReturn:withCount:</Anchor>
+			<Anchor>//api/name/countType</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:andReturn:withCountAtLeast:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMessageTracker/setCount:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue withCountAtLeast:(NSUInteger)aCount</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSUInteger count</Declaration>
 			
 			
-			<Anchor>//api/name/receive:andReturn:withCountAtLeast:</Anchor>
+			<Anchor>//api/name/count</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receive:andReturn:withCountAtMost:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KWMessageTracker/count</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>- (void)receive:(SEL)aSelector andReturn:(id)aValue withCountAtMost:(NSUInteger)aCount</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSUInteger count</Declaration>
 			
 			
-			<Anchor>//api/name/receive:andReturn:withCountAtMost:</Anchor>
+			<Anchor>//api/name/count</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receiveMessagePattern:countType:count:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMessageTracker/stopTracking</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>- (void)receiveMessagePattern:(KWMessagePattern *)aMessagePattern countType:(KWCountType)aCountType count:(NSUInteger)aCount</Declaration>
+			<Declaration>- (void)stopTracking</Declaration>
 			
 			
-			<Anchor>//api/name/receiveMessagePattern:countType:count:</Anchor>
+			<Anchor>//api/name/stopTracking</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWReceiveMatcher/receiveMessagePattern:andReturn:countType:count:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMessageTracker/succeeded</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWReceiveMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
 			
-			<Declaration>- (void)receiveMessagePattern:(KWMessagePattern *)aMessagePattern andReturn:(id)aValue countType:(KWCountType)aCountType count:(NSUInteger)aCount</Declaration>
+			<Declaration>- (BOOL)succeeded</Declaration>
 			
 			
-			<Anchor>//api/name/receiveMessagePattern:andReturn:countType:count:</Anchor>
+			<Anchor>//api/name/succeeded</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMessageTracker/expectedCountPhrase</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)expectedCountPhrase</Declaration>
+			
+			
+			<Anchor>//api/name/expectedCountPhrase</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMessageTracker/receivedCountPhrase</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMessageTracker.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)receivedCountPhrase</Declaration>
+			
+			
+			<Anchor>//api/name/receivedCountPhrase</Anchor>
 		</Token>
 		
 	</File>

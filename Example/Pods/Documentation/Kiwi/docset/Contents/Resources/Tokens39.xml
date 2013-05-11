@@ -1,113 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWMatcher.html">
+	<File path="Classes/KWHaveMatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWMatcher</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWHaveMatcher</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcher.h</DeclaredIn>
+			<DeclaredIn>KWHaveMatcher.h</DeclaredIn>
 			
 			<NodeRef refid="39"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcher/initWithSubject:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHaveMatcher/haveCountOf:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWHaveMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithSubject:(id)anObject</Declaration>
+			<Declaration>- (void)haveCountOf:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/initWithSubject:</Anchor>
+			<Anchor>//api/name/haveCountOf:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMatcher/matcherWithSubject:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHaveMatcher/haveCountOfAtLeast:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWHaveMatcher.h</DeclaredIn>			
 			
-			<Declaration>+ (id)matcherWithSubject:(id)anObject</Declaration>
+			<Declaration>- (void)haveCountOfAtLeast:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/matcherWithSubject:</Anchor>
+			<Anchor>//api/name/haveCountOfAtLeast:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcher/setSubject:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHaveMatcher/haveCountOfAtMost:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWHaveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) id subject</Declaration>
+			<Declaration>- (void)haveCountOfAtMost:(NSUInteger)aCount</Declaration>
 			
 			
-			<Anchor>//api/name/subject</Anchor>
+			<Anchor>//api/name/haveCountOfAtMost:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWMatcher/subject</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHaveMatcher/have:itemsForInvocation:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWHaveMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) id subject</Declaration>
+			<Declaration>- (void)have:(NSUInteger)aCount itemsForInvocation:(NSInvocation *)anInvocation</Declaration>
 			
 			
-			<Anchor>//api/name/subject</Anchor>
+			<Anchor>//api/name/have:itemsForInvocation:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMatcher/matcherStrings</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHaveMatcher/haveAtLeast:itemsForInvocation:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWHaveMatcher.h</DeclaredIn>			
 			
-			<Declaration>+ (NSArray *)matcherStrings</Declaration>
+			<Declaration>- (void)haveAtLeast:(NSUInteger)aCount itemsForInvocation:(NSInvocation *)anInvocation</Declaration>
 			
 			
-			<Anchor>//api/name/matcherStrings</Anchor>
+			<Anchor>//api/name/haveAtLeast:itemsForInvocation:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWMatcher/canMatchSubject:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHaveMatcher/haveAtMost:itemsForInvocation:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcher.h</DeclaredIn>			
+			<DeclaredIn>KWHaveMatcher.h</DeclaredIn>			
 			
-			<Declaration>+ (BOOL)canMatchSubject:(id)anObject</Declaration>
-			
-			
-			<Anchor>//api/name/canMatchSubject:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcher/evaluate</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcher.h</DeclaredIn>			
-			
-			<Declaration>- (BOOL)evaluate</Declaration>
+			<Declaration>- (void)haveAtMost:(NSUInteger)aCount itemsForInvocation:(NSInvocation *)anInvocation</Declaration>
 			
 			
-			<Anchor>//api/name/evaluate</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcher/failureMessageForShould</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcher.h</DeclaredIn>			
-			
-			<Declaration>- (NSString *)failureMessageForShould</Declaration>
-			
-			
-			<Anchor>//api/name/failureMessageForShould</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcher/failureMessageForShouldNot</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcher.h</DeclaredIn>			
-			
-			<Declaration>- (NSString *)failureMessageForShouldNot</Declaration>
-			
-			
-			<Anchor>//api/name/failureMessageForShouldNot</Anchor>
+			<Anchor>//api/name/haveAtMost:itemsForInvocation:</Anchor>
 		</Token>
 		
 	</File>

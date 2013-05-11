@@ -1,47 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWBlock.html">
+	<File path="Classes/KWBeforeAllNode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWBlock</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWBeforeAllNode</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBlock.h</DeclaredIn>
+			<DeclaredIn>KWBeforeAllNode.h</DeclaredIn>
 			
 			<NodeRef refid="17"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWBlock/initWithBlock:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KWBeforeAllNode/beforeAllNodeWithCallSite:block:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBlock.h</DeclaredIn>			
+			<DeclaredIn>KWBeforeAllNode.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithBlock:(KWVoidBlock)aBlock</Declaration>
-			
-			
-			<Anchor>//api/name/initWithBlock:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWBlock/blockWithBlock:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBlock.h</DeclaredIn>			
-			
-			<Declaration>+ (id)blockWithBlock:(KWVoidBlock)aBlock</Declaration>
+			<Declaration>+ (id)beforeAllNodeWithCallSite:(KWCallSite *)aCallSite block:(KWVoidBlock)aBlock</Declaration>
 			
 			
-			<Anchor>//api/name/blockWithBlock:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWBlock/call</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWBlock.h</DeclaredIn>			
-			
-			<Declaration>- (void)call</Declaration>
-			
-			
-			<Anchor>//api/name/call</Anchor>
+			<Anchor>//api/name/beforeAllNodeWithCallSite:block:</Anchor>
 		</Token>
 		
 	</File>

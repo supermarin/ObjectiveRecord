@@ -7,13 +7,13 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">Kiwi 1.0.0 </a></h1>
-				<a id="developerHome" href="../index.html">Allen Ding, Luke Redpath</a>
+				<h1><a id="libraryTitle" href="../index.html">Kiwi 2.0.6 </a></h1>
+				<a id="developerHome" href="../index.html">Allen Ding and Luke Redpath</a>
 			</div>
 			
 			<div id="title" role="banner">
@@ -40,6 +40,8 @@
 	
 	<option value="//api/name/callSite">&nbsp;&nbsp;&nbsp;&nbsp;callSite</option>
 	
+	<option value="//api/name/context">&nbsp;&nbsp;&nbsp;&nbsp;context</option>
+	
 	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;description</option>
 	
 	
@@ -47,14 +49,14 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/pendingNodeWithCallSite:description:">&nbsp;&nbsp;&nbsp;&nbsp;+ pendingNodeWithCallSite:description:</option>
+	<option value="//api/name/pendingNodeWithCallSite:context:description:">&nbsp;&nbsp;&nbsp;&nbsp;+ pendingNodeWithCallSite:context:description:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithCallSite:description:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithCallSite:description:</option>
+	<option value="//api/name/initWithCallSite:context:description:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithCallSite:context:description:</option>
 	
 	
 	
@@ -80,6 +82,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/callSite">callSite</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/context">context</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
 	
 </ul></li>
@@ -88,7 +92,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pendingNodeWithCallSite:description:">pendingNodeWithCallSite:description:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pendingNodeWithCallSite:context:description:">pendingNodeWithCallSite:context:description:</a></span></li>
 	
 </ul></li>
 
@@ -96,7 +100,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithCallSite:description:">initWithCallSite:description:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithCallSite:context:description:">initWithCallSite:context:description:</a></span></li>
 	
 </ul></li>
 
@@ -148,14 +152,21 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithCallSite:description:">&ndash;&nbsp;initWithCallSite:description:</a></code>
+		<code><a href="#//api/name/context">&nbsp;&nbsp;context</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithCallSite:context:description:">&ndash;&nbsp;initWithCallSite:context:description:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/pendingNodeWithCallSite:description:">+&nbsp;pendingNodeWithCallSite:description:</a></code>
+		<code><a href="#//api/name/pendingNodeWithCallSite:context:description:">+&nbsp;pendingNodeWithCallSite:context:description:</a></code>
 		
 	</span>
 	
@@ -199,6 +210,17 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/context" title="context"></a>
+	<h3 class="subsubtitle method-title">context</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, retain) KWContextNode *context</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/description" title="description"></a>
 	<h3 class="subsubtitle method-title">description</h3>
 	
@@ -218,12 +240,12 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/pendingNodeWithCallSite:description:" title="pendingNodeWithCallSite:description:"></a>
-	<h3 class="subsubtitle method-title">pendingNodeWithCallSite:description:</h3>
+	<a name="//api/name/pendingNodeWithCallSite:context:description:" title="pendingNodeWithCallSite:context:description:"></a>
+	<h3 class="subsubtitle method-title">pendingNodeWithCallSite:context:description:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (id)pendingNodeWithCallSite:(KWCallSite *)<em>aCallSite</em> description:(NSString *)<em>aDescription</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (id)pendingNodeWithCallSite:(KWCallSite *)<em>aCallSite</em> context:(KWContextNode *)<em>context</em> description:(NSString *)<em>aDescription</em></code></div>
 
     
 </div>
@@ -237,12 +259,12 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithCallSite:description:" title="initWithCallSite:description:"></a>
-	<h3 class="subsubtitle method-title">initWithCallSite:description:</h3>
+	<a name="//api/name/initWithCallSite:context:description:" title="initWithCallSite:context:description:"></a>
+	<h3 class="subsubtitle method-title">initWithCallSite:context:description:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithCallSite:(KWCallSite *)<em>aCallSite</em> description:(NSString *)<em>aDescription</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithCallSite:(KWCallSite *)<em>aCallSite</em> context:(KWContextNode *)<em>context</em> description:(NSString *)<em>aDescription</em></code></div>
 
     
 </div>
@@ -260,9 +282,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 Allen Ding, Luke Redpath. All rights reserved. (Last updated: 2012-07-04)</span><br />
+						<p><span class="copyright">&copy; 2013 Allen Ding and Luke Redpath. All rights reserved. (Last updated: 2013-05-11)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>

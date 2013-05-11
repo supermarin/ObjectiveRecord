@@ -1,113 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWFailure.html">
+	<File path="Classes/KWEqualMatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWFailure</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWEqualMatcher</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWFailure.h</DeclaredIn>
+			<DeclaredIn>KWEqualMatcher.h</DeclaredIn>
 			
 			<NodeRef refid="29"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWFailure/initWithCallSite:message:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWEqualMatcher/equal:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWFailure.h</DeclaredIn>			
+			<DeclaredIn>KWEqualMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (id)initWithCallSite:(KWCallSite *)aCallSite message:(NSString *)aMessage</Declaration>
-			
-			
-			<Anchor>//api/name/initWithCallSite:message:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWFailure/initWithCallSite:format:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWFailure.h</DeclaredIn>			
-			
-			<Declaration>- (id)initWithCallSite:(KWCallSite *)aCallSite format:(NSString *)format, ...</Declaration>
+			<Declaration>- (void)equal:(id)anObject</Declaration>
 			
 			
-			<Anchor>//api/name/initWithCallSite:format:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWFailure/failureWithCallSite:message:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWFailure.h</DeclaredIn>			
-			
-			<Declaration>+ (id)failureWithCallSite:(KWCallSite *)aCallSite message:(NSString *)aMessage</Declaration>
-			
-			
-			<Anchor>//api/name/failureWithCallSite:message:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KWFailure/failureWithCallSite:format:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWFailure.h</DeclaredIn>			
-			
-			<Declaration>+ (id)failureWithCallSite:(KWCallSite *)aCallSite format:(NSString *)format, ...</Declaration>
-			
-			
-			<Anchor>//api/name/failureWithCallSite:format:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWFailure/setMessage:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWFailure.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) NSString *message</Declaration>
-			
-			
-			<Anchor>//api/name/message</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWFailure/message</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWFailure.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) NSString *message</Declaration>
-			
-			
-			<Anchor>//api/name/message</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWFailure/setCallSite:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWFailure.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) KWCallSite *callSite</Declaration>
-			
-			
-			<Anchor>//api/name/callSite</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWFailure/callSite</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWFailure.h</DeclaredIn>			
-			
-			<Declaration>@property (nonatomic, readonly) KWCallSite *callSite</Declaration>
-			
-			
-			<Anchor>//api/name/callSite</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWFailure/exceptionValue</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWFailure.h</DeclaredIn>			
-			
-			<Declaration>- (NSException *)exceptionValue</Declaration>
-			
-			
-			<Anchor>//api/name/exceptionValue</Anchor>
+			<Anchor>//api/name/equal:</Anchor>
 		</Token>
 		
 	</File>

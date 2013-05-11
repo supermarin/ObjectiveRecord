@@ -1,91 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KWMatcherFactory.html">
+	<File path="Classes/KWHaveValueMatcher.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KWMatcherFactory</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KWHaveValueMatcher</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcherFactory.h</DeclaredIn>
+			<DeclaredIn>KWHaveValueMatcher.h</DeclaredIn>
 			
 			<NodeRef refid="40"/>
 		</Token>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcherFactory/init</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHaveValueMatcher/haveValue:forKey:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcherFactory.h</DeclaredIn>			
+			<DeclaredIn>KWHaveValueMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (id)init</Declaration>
+			<Declaration>- (void)haveValue:(id)value forKey:(NSString *)key</Declaration>
 			
 			
-			<Anchor>//api/name/init</Anchor>
+			<Anchor>//api/name/haveValue:forKey:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcherFactory/setRegisteredMatcherClasses:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHaveValueMatcher/haveValue:forKeyPath:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcherFactory.h</DeclaredIn>			
+			<DeclaredIn>KWHaveValueMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) NSArray *registeredMatcherClasses</Declaration>
+			<Declaration>- (void)haveValue:(id)value forKeyPath:(NSString *)keyPath</Declaration>
 			
 			
-			<Anchor>//api/name/registeredMatcherClasses</Anchor>
+			<Anchor>//api/name/haveValue:forKeyPath:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KWMatcherFactory/registeredMatcherClasses</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHaveValueMatcher/haveValueForKey:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcherFactory.h</DeclaredIn>			
+			<DeclaredIn>KWHaveValueMatcher.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic, readonly) NSArray *registeredMatcherClasses</Declaration>
+			<Declaration>- (void)haveValueForKey:(NSString *)key</Declaration>
 			
 			
-			<Anchor>//api/name/registeredMatcherClasses</Anchor>
+			<Anchor>//api/name/haveValueForKey:</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcherFactory/registerMatcherClass:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KWHaveValueMatcher/haveValueForKeyPath:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcherFactory.h</DeclaredIn>			
+			<DeclaredIn>KWHaveValueMatcher.h</DeclaredIn>			
 			
-			<Declaration>- (void)registerMatcherClass:(Class)aClass</Declaration>
-			
-			
-			<Anchor>//api/name/registerMatcherClass:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcherFactory/registerMatcherClassesWithNamespacePrefix:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcherFactory.h</DeclaredIn>			
-			
-			<Declaration>- (void)registerMatcherClassesWithNamespacePrefix:(NSString *)aNamespacePrefix</Declaration>
+			<Declaration>- (void)haveValueForKeyPath:(NSString *)keyPath</Declaration>
 			
 			
-			<Anchor>//api/name/registerMatcherClassesWithNamespacePrefix:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcherFactory/methodSignatureForMatcherSelector:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcherFactory.h</DeclaredIn>			
-			
-			<Declaration>- (NSMethodSignature *)methodSignatureForMatcherSelector:(SEL)aSelector</Declaration>
-			
-			
-			<Anchor>//api/name/methodSignatureForMatcherSelector:</Anchor>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KWMatcherFactory/matcherFromInvocation:subject:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KWMatcherFactory.h</DeclaredIn>			
-			
-			<Declaration>- (KWMatcher *)matcherFromInvocation:(NSInvocation *)anInvocation subject:(id)subject</Declaration>
-			
-			
-			<Anchor>//api/name/matcherFromInvocation:subject:</Anchor>
+			<Anchor>//api/name/haveValueForKeyPath:</Anchor>
 		</Token>
 		
 	</File>
