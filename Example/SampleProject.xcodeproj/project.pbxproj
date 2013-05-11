@@ -10,6 +10,7 @@
 		197CA8AB5A4845B7B4174348 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B37C31BF7BE149339CB8C037 /* libPods-test.a */; };
 		4944537D57D049F28365F1AE /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0C6BA1184F43B596AFE47B /* libPods-test.a */; };
 		892C1E91165D54160077F2CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 892C1E90165D54160077F2CB /* Default-568h@2x.png */; };
+		89702F25173E57AA00149BD5 /* SampleProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89F1EEBB15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld */; };
 		897D09FA15B0940A00722A8F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09F915B0940A00722A8F /* Person.m */; };
 		897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */; };
 		89F1EEA815A4C73B00AE4FB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */; };
@@ -377,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */,
+				89702F25173E57AA00149BD5 /* SampleProject.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

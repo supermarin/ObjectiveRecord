@@ -35,20 +35,21 @@ static CoreDataManager *singleton;
 
 - (NSString *)databaseName {
     if (_databaseName != nil) return _databaseName;
+    
     _databaseName = [[[self appName] stringByAppendingString:@".sqlite"] copy];
     return _databaseName;
 }
 
 - (NSString *)modelName {
     if (_modelName != nil) return _modelName;
+
     _modelName = [[self appName] copy];
     return _modelName;
 }
 
 #pragma mark - Public
 
-- (NSManagedObjectContext *)managedObjectContext
-{
+- (NSManagedObjectContext *)managedObjectContext {
     if (_managedObjectContext) return _managedObjectContext;
     
     if (self.persistentStoreCoordinator) {
@@ -58,8 +59,7 @@ static CoreDataManager *singleton;
     return _managedObjectContext;
 }
 
-- (NSManagedObjectModel *)managedObjectModel
-{
+- (NSManagedObjectModel *)managedObjectModel {
     if (_managedObjectModel) return _managedObjectModel;
     
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:[self modelName] withExtension:@"momd"];
@@ -67,7 +67,7 @@ static CoreDataManager *singleton;
     return _managedObjectModel;
 }
 
--(void) setUpPersistentStoreCoordinator {
+- (void)setUpPersistentStoreCoordinator {
 
     NSURL *storeURL = [self.applicationDocumentsDirectory URLByAppendingPathComponent:[self databaseName]];
     NSError *error = nil;
@@ -81,8 +81,7 @@ static CoreDataManager *singleton;
         NSLog(@"ERROR IN PERSISTENT STORE COORDINATOR! %@, %@", error, [error userInfo]);
 }
 
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     if (_persistentStoreCoordinator) return _persistentStoreCoordinator;
     
     [self setUpPersistentStoreCoordinator];   
