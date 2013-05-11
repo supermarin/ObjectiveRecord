@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWInvocationCapturer.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWInvocationCapturer</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>
+			
+			<NodeRef refid="36"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWInvocationCapturer/initWithDelegate:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithDelegate:(id)aDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/initWithDelegate:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWInvocationCapturer/initWithDelegate:userInfo:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithDelegate:(id)aDelegate userInfo:(NSDictionary *)aUserInfo</Declaration>
+			
+			
+			<Anchor>//api/name/initWithDelegate:userInfo:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWInvocationCapturer/invocationCapturerWithDelegate:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			
+			<Declaration>+ (id)invocationCapturerWithDelegate:(id)aDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/invocationCapturerWithDelegate:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWInvocationCapturer/invocationCapturerWithDelegate:userInfo:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			
+			<Declaration>+ (id)invocationCapturerWithDelegate:(id)aDelegate userInfo:(NSDictionary *)aUserInfo</Declaration>
+			
+			
+			<Anchor>//api/name/invocationCapturerWithDelegate:userInfo:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWInvocationCapturer/setDelegate:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) id delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWInvocationCapturer/delegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) id delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWInvocationCapturer/setUserInfo:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSDictionary *userInfo</Declaration>
+			
+			
+			<Anchor>//api/name/userInfo</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWInvocationCapturer/userInfo</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWInvocationCapturer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSDictionary *userInfo</Declaration>
+			
+			
+			<Anchor>//api/name/userInfo</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

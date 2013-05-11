@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWItNode.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWItNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWItNode.h</DeclaredIn>
+			
+			<NodeRef refid="37"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWItNode/setExampleGroup:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWItNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) KWExampleGroup *exampleGroup</Declaration>
+			
+			
+			<Anchor>//api/name/exampleGroup</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWItNode/exampleGroup</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWItNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) KWExampleGroup *exampleGroup</Declaration>
+			
+			
+			<Anchor>//api/name/exampleGroup</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWItNode/itNodeWithCallSite:description:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWItNode.h</DeclaredIn>			
+			
+			<Declaration>+ (id)itNodeWithCallSite:(KWCallSite *)aCallSite description:(NSString *)aDescription block:(KWVoidBlock)aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/itNodeWithCallSite:description:block:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

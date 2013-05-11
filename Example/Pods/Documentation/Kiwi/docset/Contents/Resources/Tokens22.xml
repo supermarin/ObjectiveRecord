@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWContainMatcher.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWContainMatcher</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContainMatcher.h</DeclaredIn>
+			
+			<NodeRef refid="22"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContainMatcher/contain:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContainMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)contain:(id)anObject</Declaration>
+			
+			
+			<Anchor>//api/name/contain:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWContainMatcher/containObjectsInArray:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWContainMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)containObjectsInArray:(NSArray *)anArray</Declaration>
+			
+			
+			<Anchor>//api/name/containObjectsInArray:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

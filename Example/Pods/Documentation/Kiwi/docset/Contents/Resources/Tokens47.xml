@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWProbePoller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWProbePoller</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWProbePoller.h</DeclaredIn>
+			
+			<NodeRef refid="47"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWProbePoller/initWithTimeout:delay:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWProbePoller.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithTimeout:(NSTimeInterval)theTimeout delay:(NSTimeInterval)theDelay</Declaration>
+			
+			
+			<Anchor>//api/name/initWithTimeout:delay:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWProbePoller/check:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWProbePoller.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)check:(id&lt;KWProbe&gt;)probe</Declaration>
+			
+			
+			<Anchor>//api/name/check:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

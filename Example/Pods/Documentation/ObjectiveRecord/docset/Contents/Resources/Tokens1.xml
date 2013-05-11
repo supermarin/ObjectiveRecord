@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/CoreDataManager.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/CoreDataManager</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CoreDataManager/setManagedObjectContext:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext</Declaration>
+			
+			
+			<Anchor>//api/name/managedObjectContext</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CoreDataManager/managedObjectContext</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext</Declaration>
+			
+			
+			<Anchor>//api/name/managedObjectContext</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CoreDataManager/setManagedObjectModel:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel</Declaration>
+			
+			
+			<Anchor>//api/name/managedObjectModel</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CoreDataManager/managedObjectModel</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel</Declaration>
+			
+			
+			<Anchor>//api/name/managedObjectModel</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CoreDataManager/setPersistentStoreCoordinator:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator</Declaration>
+			
+			
+			<Anchor>//api/name/persistentStoreCoordinator</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CoreDataManager/persistentStoreCoordinator</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator</Declaration>
+			
+			
+			<Anchor>//api/name/persistentStoreCoordinator</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CoreDataManager/setDatabaseName:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *databaseName</Declaration>
+			
+			
+			<Anchor>//api/name/databaseName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CoreDataManager/databaseName</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *databaseName</Declaration>
+			
+			
+			<Anchor>//api/name/databaseName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CoreDataManager/setModelName:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *modelName</Declaration>
+			
+			
+			<Anchor>//api/name/modelName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CoreDataManager/modelName</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *modelName</Declaration>
+			
+			
+			<Anchor>//api/name/modelName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/CoreDataManager/instance</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>+ (id)instance</Declaration>
+			
+			
+			<Anchor>//api/name/instance</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CoreDataManager/saveContext</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)saveContext</Declaration>
+			
+			
+			<Anchor>//api/name/saveContext</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CoreDataManager/applicationDocumentsDirectory</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>CoreDataManager.h</DeclaredIn>			
+			
+			<Declaration>- (NSURL *)applicationDocumentsDirectory</Declaration>
+			
+			
+			<Anchor>//api/name/applicationDocumentsDirectory</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

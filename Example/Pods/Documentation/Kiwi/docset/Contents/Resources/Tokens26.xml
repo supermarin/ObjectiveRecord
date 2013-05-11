@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWExampleGroup.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWExampleGroup</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroup.h</DeclaredIn>
+			
+			<NodeRef refid="26"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroup/initWithExampleNode:contextNodeStack:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroup.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithExampleNode:(id&lt;KWExampleNode&gt;)node contextNodeStack:(NSArray *)stack</Declaration>
+			
+			
+			<Anchor>//api/name/initWithExampleNode:contextNodeStack:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroup/addVerifier:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroup.h</DeclaredIn>			
+			
+			<Declaration>- (id)addVerifier:(id&lt;KWVerifying&gt;)aVerifier</Declaration>
+			
+			
+			<Anchor>//api/name/addVerifier:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroup/addExistVerifierWithExpectationType:callSite:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroup.h</DeclaredIn>			
+			
+			<Declaration>- (id)addExistVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite</Declaration>
+			
+			
+			<Anchor>//api/name/addExistVerifierWithExpectationType:callSite:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroup/addMatchVerifierWithExpectationType:callSite:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroup.h</DeclaredIn>			
+			
+			<Declaration>- (id)addMatchVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite</Declaration>
+			
+			
+			<Anchor>//api/name/addMatchVerifierWithExpectationType:callSite:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroup/addAsyncVerifierWithExpectationType:callSite:timeout:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroup.h</DeclaredIn>			
+			
+			<Declaration>- (id)addAsyncVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite timeout:(NSInteger)timeout</Declaration>
+			
+			
+			<Anchor>//api/name/addAsyncVerifierWithExpectationType:callSite:timeout:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroup/runWithDelegate:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroup.h</DeclaredIn>			
+			
+			<Declaration>- (void)runWithDelegate:(id&lt;KWExampleGroupDelegate&gt;)delegate</Declaration>
+			
+			
+			<Anchor>//api/name/runWithDelegate:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroup/generateDescriptionForAnonymousItNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroup.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)generateDescriptionForAnonymousItNode</Declaration>
+			
+			
+			<Anchor>//api/name/generateDescriptionForAnonymousItNode</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

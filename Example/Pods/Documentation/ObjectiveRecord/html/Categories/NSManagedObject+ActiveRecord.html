@@ -1,0 +1,542 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NSManagedObject(ActiveRecord) Category Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">ObjectiveRecord 1.1.2 </a></h1>
+				<a id="developerHome" href="../index.html">Marin Usalj</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NSManagedObject(ActiveRecord) Category Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/all">&nbsp;&nbsp;&nbsp;&nbsp;+ all</option>
+	
+	<option value="//api/name/allInContext:">&nbsp;&nbsp;&nbsp;&nbsp;+ allInContext:</option>
+	
+	<option value="//api/name/create">&nbsp;&nbsp;&nbsp;&nbsp;+ create</option>
+	
+	<option value="//api/name/create:">&nbsp;&nbsp;&nbsp;&nbsp;+ create:</option>
+	
+	<option value="//api/name/create:inContext:">&nbsp;&nbsp;&nbsp;&nbsp;+ create:inContext:</option>
+	
+	<option value="//api/name/createInContext:">&nbsp;&nbsp;&nbsp;&nbsp;+ createInContext:</option>
+	
+	<option value="//api/name/deleteAll">&nbsp;&nbsp;&nbsp;&nbsp;+ deleteAll</option>
+	
+	<option value="//api/name/deleteAllInContext:">&nbsp;&nbsp;&nbsp;&nbsp;+ deleteAllInContext:</option>
+	
+	<option value="//api/name/where:">&nbsp;&nbsp;&nbsp;&nbsp;+ where:</option>
+	
+	<option value="//api/name/where:inContext:">&nbsp;&nbsp;&nbsp;&nbsp;+ where:inContext:</option>
+	
+	<option value="//api/name/whereFormat:">&nbsp;&nbsp;&nbsp;&nbsp;+ whereFormat:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/delete">&nbsp;&nbsp;&nbsp;&nbsp;- delete</option>
+	
+	<option value="//api/name/save">&nbsp;&nbsp;&nbsp;&nbsp;- save</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/all">all</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allInContext:">allInContext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/create">create</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/create:">create:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/create:inContext:">create:inContext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createInContext:">createInContext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteAll">deleteAll</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteAllInContext:">deleteAllInContext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/where:">where:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/where:inContext:">where:inContext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/whereFormat:">whereFormat:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delete">delete</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save">save</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NSManagedObject(ActiveRecord) Category Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NSManagedObject(ActiveRecord) Category Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">NSManagedObject+ActiveRecord.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/save">&ndash;&nbsp;save</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/delete">&ndash;&nbsp;delete</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deleteAll">+&nbsp;deleteAll</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/create">+&nbsp;create</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/create:">+&nbsp;create:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/all">+&nbsp;all</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/where:">+&nbsp;where:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/whereFormat:">+&nbsp;whereFormat:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createInContext:">+&nbsp;createInContext:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/create:inContext:">+&nbsp;create:inContext:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deleteAllInContext:">+&nbsp;deleteAllInContext:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allInContext:">+&nbsp;allInContext:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/where:inContext:">+&nbsp;where:inContext:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/all" title="all"></a>
+	<h3 class="subsubtitle method-title">all</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSArray *)all</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/allInContext:" title="allInContext:"></a>
+	<h3 class="subsubtitle method-title">allInContext:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSArray *)allInContext:(NSManagedObjectContext *)<em>context</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/create" title="create"></a>
+	<h3 class="subsubtitle method-title">create</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)create</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/create:" title="create:"></a>
+	<h3 class="subsubtitle method-title">create:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)create:(NSDictionary *)<em>attributes</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/create:inContext:" title="create:inContext:"></a>
+	<h3 class="subsubtitle method-title">create:inContext:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)create:(NSDictionary *)<em>attributes</em> inContext:(NSManagedObjectContext *)<em>context</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createInContext:" title="createInContext:"></a>
+	<h3 class="subsubtitle method-title">createInContext:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (id)createInContext:(NSManagedObjectContext *)<em>context</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deleteAll" title="deleteAll"></a>
+	<h3 class="subsubtitle method-title">deleteAll</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (void)deleteAll</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deleteAllInContext:" title="deleteAllInContext:"></a>
+	<h3 class="subsubtitle method-title">deleteAllInContext:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (void)deleteAllInContext:(NSManagedObjectContext *)<em>context</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/where:" title="where:"></a>
+	<h3 class="subsubtitle method-title">where:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSArray *)where:(id)<em>condition</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/where:inContext:" title="where:inContext:"></a>
+	<h3 class="subsubtitle method-title">where:inContext:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSArray *)where:(id)<em>condition</em> inContext:(NSManagedObjectContext *)<em>context</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/whereFormat:" title="whereFormat:"></a>
+	<h3 class="subsubtitle method-title">whereFormat:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (NSArray *)whereFormat:(NSString *)<em>format</em>, <em>...</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/delete" title="delete"></a>
+	<h3 class="subsubtitle method-title">delete</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)delete</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/save" title="save"></a>
+	<h3 class="subsubtitle method-title">save</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)save</code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Marin Usalj. All rights reserved. (Last updated: 2013-05-11)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

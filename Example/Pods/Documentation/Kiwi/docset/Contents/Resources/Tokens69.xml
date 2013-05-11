@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/HCMatcher.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/HCMatcher</TokenIdentifier>
+			<Abstract type="html">This is a minimal version of HCMatcher from the Hamcrest library, purely
+to support Hamcrest integration with Kiwi.</Abstract>
+			<DeclaredIn>KWHCMatcher.h</DeclaredIn>
+			
+			<NodeRef refid="69"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/HCMatcher/matches:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWHCMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)matches:(id)item</Declaration>
+			
+			
+			<Anchor>//api/name/matches:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

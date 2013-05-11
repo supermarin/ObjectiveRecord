@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWRegisterMatchersNode.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWRegisterMatchersNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRegisterMatchersNode.h</DeclaredIn>
+			
+			<NodeRef refid="50"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWRegisterMatchersNode/initWithCallSite:namespacePrefix:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRegisterMatchersNode.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithCallSite:(KWCallSite *)aCallSite namespacePrefix:(NSString *)aNamespacePrefix</Declaration>
+			
+			
+			<Anchor>//api/name/initWithCallSite:namespacePrefix:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWRegisterMatchersNode/registerMatchersNodeWithCallSite:namespacePrefix:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRegisterMatchersNode.h</DeclaredIn>			
+			
+			<Declaration>+ (id)registerMatchersNodeWithCallSite:(KWCallSite *)aCallSite namespacePrefix:(NSString *)aNamespacePrefix</Declaration>
+			
+			
+			<Anchor>//api/name/registerMatchersNodeWithCallSite:namespacePrefix:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWRegisterMatchersNode/setCallSite:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRegisterMatchersNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) KWCallSite *callSite</Declaration>
+			
+			
+			<Anchor>//api/name/callSite</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWRegisterMatchersNode/callSite</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRegisterMatchersNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) KWCallSite *callSite</Declaration>
+			
+			
+			<Anchor>//api/name/callSite</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWRegisterMatchersNode/setNamespacePrefix:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRegisterMatchersNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSString *namespacePrefix</Declaration>
+			
+			
+			<Anchor>//api/name/namespacePrefix</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWRegisterMatchersNode/namespacePrefix</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWRegisterMatchersNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSString *namespacePrefix</Declaration>
+			
+			
+			<Anchor>//api/name/namespacePrefix</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWExampleGroupBuilder.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWExampleGroupBuilder</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>
+			
+			<NodeRef refid="27"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWExampleGroupBuilder/sharedExampleGroupBuilder</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>+ (id)sharedExampleGroupBuilder</Declaration>
+			
+			
+			<Anchor>//api/name/sharedExampleGroupBuilder</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/setIsBuildingExampleGroup:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isBuildingExampleGroup</Declaration>
+			
+			
+			<Anchor>//api/name/isBuildingExampleGroup</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWExampleGroupBuilder/isBuildingExampleGroup</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isBuildingExampleGroup</Declaration>
+			
+			
+			<Anchor>//api/name/isBuildingExampleGroup</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/setExampleGroups:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain, readonly) NSMutableArray *exampleGroups</Declaration>
+			
+			
+			<Anchor>//api/name/exampleGroups</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWExampleGroupBuilder/exampleGroups</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain, readonly) NSMutableArray *exampleGroups</Declaration>
+			
+			
+			<Anchor>//api/name/exampleGroups</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/setCurrentExampleGroup:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) KWExampleGroup *currentExampleGroup</Declaration>
+			
+			
+			<Anchor>//api/name/currentExampleGroup</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWExampleGroupBuilder/currentExampleGroup</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) KWExampleGroup *currentExampleGroup</Declaration>
+			
+			
+			<Anchor>//api/name/currentExampleGroup</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/buildExampleGroups:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (NSArray *)buildExampleGroups:(void ( ^ ) ( void ))buildingBlock</Declaration>
+			
+			
+			<Anchor>//api/name/buildExampleGroups:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/currentExampleGroup</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (KWExampleGroup *)currentExampleGroup</Declaration>
+			
+			
+			<Anchor>//api/name/currentExampleGroup</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/pushContextNodeWithCallSite:description:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (void)pushContextNodeWithCallSite:(KWCallSite *)aCallSite description:(NSString *)aDescription</Declaration>
+			
+			
+			<Anchor>//api/name/pushContextNodeWithCallSite:description:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/popContextNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (void)popContextNode</Declaration>
+			
+			
+			<Anchor>//api/name/popContextNode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/setRegisterMatchersNodeWithCallSite:namespacePrefix:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (void)setRegisterMatchersNodeWithCallSite:(KWCallSite *)aCallSite namespacePrefix:(NSString *)aNamespacePrefix</Declaration>
+			
+			
+			<Anchor>//api/name/setRegisterMatchersNodeWithCallSite:namespacePrefix:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/setBeforeAllNodeWithCallSite:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (void)setBeforeAllNodeWithCallSite:(KWCallSite *)aCallSite block:(KWVoidBlock)aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/setBeforeAllNodeWithCallSite:block:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/setAfterAllNodeWithCallSite:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (void)setAfterAllNodeWithCallSite:(KWCallSite *)aCallSite block:(KWVoidBlock)aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/setAfterAllNodeWithCallSite:block:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/setBeforeEachNodeWithCallSite:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (void)setBeforeEachNodeWithCallSite:(KWCallSite *)aCallSite block:(KWVoidBlock)aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/setBeforeEachNodeWithCallSite:block:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/setAfterEachNodeWithCallSite:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (void)setAfterEachNodeWithCallSite:(KWCallSite *)aCallSite block:(KWVoidBlock)aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/setAfterEachNodeWithCallSite:block:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/addItNodeWithCallSite:description:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (void)addItNodeWithCallSite:(KWCallSite *)aCallSite description:(NSString *)aDescription block:(KWVoidBlock)aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/addItNodeWithCallSite:description:block:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleGroupBuilder/addPendingNodeWithCallSite:description:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleGroupBuilder.h</DeclaredIn>			
+			
+			<Declaration>- (void)addPendingNodeWithCallSite:(KWCallSite *)aCallSite description:(NSString *)aDescription</Declaration>
+			
+			
+			<Anchor>//api/name/addPendingNodeWithCallSite:description:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWFutureObject.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWFutureObject</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWFutureObject.h</DeclaredIn>
+			
+			<NodeRef refid="31"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWFutureObject/objectWithObjectPointer:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWFutureObject.h</DeclaredIn>			
+			
+			<Declaration>+ (id)objectWithObjectPointer:(id *)pointer</Declaration>
+			
+			
+			<Anchor>//api/name/objectWithObjectPointer:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWFutureObject/futureObjectWithBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWFutureObject.h</DeclaredIn>			
+			
+			<Declaration>+ (id)futureObjectWithBlock:(KWFutureObjectBlock)block</Declaration>
+			
+			
+			<Anchor>//api/name/futureObjectWithBlock:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWFutureObject/initWithBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWFutureObject.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithBlock:(KWFutureObjectBlock)aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/initWithBlock:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWFutureObject/object</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWFutureObject.h</DeclaredIn>			
+			
+			<Declaration>- (id)object</Declaration>
+			
+			
+			<Anchor>//api/name/object</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWUserDefinedMatcher.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWUserDefinedMatcher</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>
+			
+			<NodeRef refid="55"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setSelector:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) SEL selector</Declaration>
+			
+			
+			<Anchor>//api/name/selector</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWUserDefinedMatcher/selector</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) SEL selector</Declaration>
+			
+			
+			<Anchor>//api/name/selector</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setFailureMessageForShould:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *failureMessageForShould</Declaration>
+			
+			
+			<Anchor>//api/name/failureMessageForShould</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWUserDefinedMatcher/failureMessageForShould</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *failureMessageForShould</Declaration>
+			
+			
+			<Anchor>//api/name/failureMessageForShould</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setFailureMessageForShouldNot:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *failureMessageForShouldNot</Declaration>
+			
+			
+			<Anchor>//api/name/failureMessageForShouldNot</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWUserDefinedMatcher/failureMessageForShouldNot</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *failureMessageForShouldNot</Declaration>
+			
+			
+			<Anchor>//api/name/failureMessageForShouldNot</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setMatcherBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) KWUserDefinedMatcherBlock matcherBlock</Declaration>
+			
+			
+			<Anchor>//api/name/matcherBlock</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWUserDefinedMatcher/matcherBlock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) KWUserDefinedMatcherBlock matcherBlock</Declaration>
+			
+			
+			<Anchor>//api/name/matcherBlock</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setDescription:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *description</Declaration>
+			
+			
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWUserDefinedMatcher/description</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, copy) NSString *description</Declaration>
+			
+			
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWUserDefinedMatcher/matcherWithSubject:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>+ (id)matcherWithSubject:(id)aSubject block:(KWUserDefinedMatcherBlock)aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/matcherWithSubject:block:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/initWithSubject:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithSubject:(id)aSubject block:(KWUserDefinedMatcherBlock)aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/initWithSubject:block:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWUserDefinedMatcher/setSubject:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWUserDefinedMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)setSubject:(id)aSubject</Declaration>
+			
+			
+			<Anchor>//api/name/setSubject:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

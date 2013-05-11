@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWMatchers.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWMatchers</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMatchers.h</DeclaredIn>
+			
+			<NodeRef refid="41"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWMatchers/matchers</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMatchers.h</DeclaredIn>			
+			
+			<Declaration>+ (id)matchers</Declaration>
+			
+			
+			<Anchor>//api/name/matchers</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWMatchers/defineMatcher:as:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMatchers.h</DeclaredIn>			
+			
+			<Declaration>+ (void)defineMatcher:(NSString *)selectorString as:(KWMatchersBuildingBlock)block</Declaration>
+			
+			
+			<Anchor>//api/name/defineMatcher:as:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchers/defineMatcher:as:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMatchers.h</DeclaredIn>			
+			
+			<Declaration>- (void)defineMatcher:(NSString *)selectorString as:(KWMatchersBuildingBlock)block</Declaration>
+			
+			
+			<Anchor>//api/name/defineMatcher:as:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchers/addUserDefinedMatcherBuilder:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMatchers.h</DeclaredIn>			
+			
+			<Declaration>- (void)addUserDefinedMatcherBuilder:(KWUserDefinedMatcherBuilder *)builder</Declaration>
+			
+			
+			<Anchor>//api/name/addUserDefinedMatcherBuilder:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWMatchers/matcherForSelector:subject:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWMatchers.h</DeclaredIn>			
+			
+			<Declaration>- (KWUserDefinedMatcher *)matcherForSelector:(SEL)selector subject:(id)subject</Declaration>
+			
+			
+			<Anchor>//api/name/matcherForSelector:subject:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>
