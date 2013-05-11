@@ -1,4 +1,4 @@
 Documentation set was installed to Xcode!
 
-Path: /Users/mneorr/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.kiwi.Kiwi-2.0.6.docset
-Time: 2013-05-11 08:47:55 +0000
+Path: /Users/mneorr/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.kiwi.Kiwi-2.0.5.docset
+Time: 2013-05-11 09:09:14 +0000

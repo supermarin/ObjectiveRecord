@@ -22,16 +22,5 @@
 			<Anchor>//api/name/captureArgument:atIndex:</Anchor>
 		</Token>
 		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiSpyAdditions)/captureArgument:atIndex:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>NSObject+KiwiSpyAdditions.h</DeclaredIn>			
-			
-			<Declaration>+ (KWCaptureSpy *)captureArgument:(SEL)selector atIndex:(NSUInteger)index</Declaration>
-			
-			
-			<Anchor>//api/name/captureArgument:atIndex:</Anchor>
-		</Token>
-		
 	</File>
 </Tokens>

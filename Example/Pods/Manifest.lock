@@ -1,5 +1,5 @@
 PODS:
-  - Kiwi (2.0.6)
+  - Kiwi (2.0.5)
   - ObjectiveRecord (1.1.2):
     - ObjectiveSugar
   - ObjectiveSugar (0.6.2)
@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
     :path: ../ObjectiveRecord.podspec
 
 SPEC CHECKSUMS:
-  Kiwi: 56082a80f942de4d10423d8d8a599ab30cf50228
+  Kiwi: 89ade77eb49c889178cb2779e02514a7b9b9449e
   ObjectiveRecord: 656635e52e4e18ef14fae5cc03875fcbc9a05259
   ObjectiveSugar: 50bcd329b18ab6da6457e1bf55be71acb7c39d44
 

@@ -60,9 +60,6 @@
         })
 #endif // #if defined(__GNUC__)
 
-// Allows for comparision of pointer values in expectations
-#define thePointerValue(expr) [NSValue valueWithPointer:(expr)]
-
 // Example group declarations.
 #define SPEC_BEGIN(name) \
     \

@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.cocoapods.kiwi.Kiwi-2.0.6</string>
+	<string>org.cocoapods.kiwi.Kiwi-2.0.5</string>
 	<key>CFBundleName</key>
-	<string>Kiwi 2.0.6 Documentation</string>
+	<string>Kiwi 2.0.5 Documentation</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -18,7 +18,7 @@
 	<string>A Behavior Driven Development library for iOS and OS X.</string>
 	
 	<key>DocSetFeedName</key>
-	<string>Kiwi 2.0.6 Documentation</string>
+	<string>Kiwi 2.0.5 Documentation</string>
 	
 	<key>DocSetMinimumXcodeVersion</key>
 	<string>3.0</string>

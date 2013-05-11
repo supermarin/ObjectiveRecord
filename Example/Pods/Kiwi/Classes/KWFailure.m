@@ -56,12 +56,9 @@
 #pragma mark Getting Exception Representations
 
 - (NSException *)exceptionValue {
-    NSDictionary *userInfo = nil;
-    if (self.callSite) {
-        NSNumber *lineNumber = @(self.callSite.lineNumber);
-        userInfo = @{SenTestFilenameKey: self.callSite.filename,
-                                                                            SenTestLineNumberKey: lineNumber};
-    }
+    NSNumber *lineNumber = @(self.callSite.lineNumber);
+    NSDictionary *userInfo = @{SenTestFilenameKey: self.callSite.filename,
+                                                                        SenTestLineNumberKey: lineNumber};
     return [NSException exceptionWithName:@"KWFailureException" reason:message userInfo:userInfo];
 }
 
