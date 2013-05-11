@@ -12,7 +12,6 @@
 		892C1E91165D54160077F2CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 892C1E90165D54160077F2CB /* Default-568h@2x.png */; };
 		897D09FA15B0940A00722A8F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09F915B0940A00722A8F /* Person.m */; };
 		897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */; };
-		897D0A2415B0B07C00722A8F /* NSArrayCategoriesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D0A2315B0B07C00722A8F /* NSArrayCategoriesTests.m */; };
 		89F1EEA815A4C73B00AE4FB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */; };
 		89F1EEAA15A4C73B00AE4FB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA915A4C73B00AE4FB4 /* Foundation.framework */; };
 		89F1EEAC15A4C73B00AE4FB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEAB15A4C73B00AE4FB4 /* CoreGraphics.framework */; };
@@ -26,7 +25,6 @@
 		89F1EEC715A4C73B00AE4FB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA915A4C73B00AE4FB4 /* Foundation.framework */; };
 		89F1EEC815A4C73B00AE4FB4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEAD15A4C73B00AE4FB4 /* CoreData.framework */; };
 		89F1EED015A4C73B00AE4FB4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89F1EECE15A4C73B00AE4FB4 /* InfoPlist.strings */; };
-		89F1EED315A4C73B00AE4FB4 /* SampleProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1EED215A4C73B00AE4FB4 /* SampleProjectTests.m */; };
 		F50A38519349436683FB1FD9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFE995F54E34B95BCC097B2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,10 +45,7 @@
 		892C1E90165D54160077F2CB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		897D09F815B0940A00722A8F /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		897D09F915B0940A00722A8F /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
-		897D09FC15B0945400722A8F /* FindersAndCreatorsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindersAndCreatorsTests.h; sourceTree = "<group>"; };
 		897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindersAndCreatorsTests.m; sourceTree = "<group>"; };
-		897D0A2215B0B07C00722A8F /* NSArrayCategoriesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayCategoriesTests.h; sourceTree = "<group>"; };
-		897D0A2315B0B07C00722A8F /* NSArrayCategoriesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayCategoriesTests.m; sourceTree = "<group>"; };
 		89F1EEA315A4C73B00AE4FB4 /* SampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		89F1EEA915A4C73B00AE4FB4 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -67,8 +62,6 @@
 		89F1EEC415A4C73B00AE4FB4 /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		89F1EECD15A4C73B00AE4FB4 /* SampleProjectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleProjectTests-Info.plist"; sourceTree = "<group>"; };
 		89F1EECF15A4C73B00AE4FB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		89F1EED115A4C73B00AE4FB4 /* SampleProjectTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleProjectTests.h; sourceTree = "<group>"; };
-		89F1EED215A4C73B00AE4FB4 /* SampleProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleProjectTests.m; sourceTree = "<group>"; };
 		9D0C6BA1184F43B596AFE47B /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37C31BF7BE149339CB8C037 /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED94BC9174574D97B32EBAE7 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = SOURCE_ROOT; };
@@ -176,13 +169,8 @@
 		89F1EECB15A4C73B00AE4FB4 /* SampleProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				89F1EED115A4C73B00AE4FB4 /* SampleProjectTests.h */,
-				89F1EED215A4C73B00AE4FB4 /* SampleProjectTests.m */,
-				897D09FC15B0945400722A8F /* FindersAndCreatorsTests.h */,
 				897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */,
 				89F1EECC15A4C73B00AE4FB4 /* Supporting Files */,
-				897D0A2215B0B07C00722A8F /* NSArrayCategoriesTests.h */,
-				897D0A2315B0B07C00722A8F /* NSArrayCategoriesTests.m */,
 			);
 			path = SampleProjectTests;
 			sourceTree = "<group>";
@@ -388,9 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89F1EED315A4C73B00AE4FB4 /* SampleProjectTests.m in Sources */,
 				897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */,
-				897D0A2415B0B07C00722A8F /* NSArrayCategoriesTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

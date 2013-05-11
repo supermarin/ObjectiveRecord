@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "FindersAndCreatorsTests.h"
 #import "NSArray+Accessors.h"
 #import "Kiwi.h"
 #import "Person.h"

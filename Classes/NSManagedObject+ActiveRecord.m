@@ -24,7 +24,6 @@
 }
 
 + (NSArray *)allInContext:(NSManagedObjectContext *)context {
-    
     return [self fetchWithPredicate:nil inContext:context];
 }
 
@@ -38,9 +37,7 @@
 }
 
 + (NSArray *)where:(id)condition {
-    
-    return [self where:condition
-             inContext:[NSManagedObjectContext defaultContext]];
+    return [self where:condition inContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
@@ -60,8 +57,7 @@
 }
 
 + (id)create:(NSDictionary *)attributes {
-    return [self create:attributes
-              inContext:[NSManagedObjectContext defaultContext]];
+    return [self create:attributes inContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
@@ -86,12 +82,10 @@
 }
 
 + (void)deleteAll {
-    
     [self deleteAllInContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (void)deleteAllInContext:(NSManagedObjectContext *)context {
-    
     [[self allInContext:context] each:^(id object) {
         [object delete];
     }];
@@ -124,7 +118,6 @@
 }
 
 + (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {
-    
     NSFetchRequest *request = [NSFetchRequest new];
     NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass(self)
                                               inManagedObjectContext:context];
@@ -144,7 +137,6 @@
 }
 
 - (BOOL)saveTheContext {
-
     if (self.managedObjectContext == nil ||
         ![self.managedObjectContext hasChanges]) return YES;
     
