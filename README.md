@@ -24,16 +24,26 @@ john.name = @"John";
 #### Finders
 
 ``` objc
+// all Person entities from the database
 NSArray *people = [Person all];
+
+// Person entities with name John
 NSArray *johns = [Person where:@"name == 'John'"];
+
+// And of course, John Doe!
 Person *johnDoe = [Person where:@"name == 'John' AND surname == 'Doe'"].first;
 
-NSArray *people = [Person where:@{ @"age" : @18 }];
-
+// Members over 18 from NY
 NSArray *people = [Person where:@{ @"age" : @18,
                   @"member" : @YES,
                   @"state" : @"NY"
                   }];
+
+// I wanna be fancy and write my own NSPredicate
+[NSPredicate  predicateWithBlock:^BOOL(Person *person, NSDictionary *bindings) {
+    return person.isMember == YES;
+}];
+NSArray *members = [Person where:membersPredicate];
 ```
 
 ### Custom ManagedObjectContext
