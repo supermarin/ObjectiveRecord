@@ -178,7 +178,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
     
     context(@"All from above, in a separate context!", ^{
 
-        NSManagedObjectContext *newContext = createNewContext();
+        __block NSManagedObjectContext *newContext = createNewContext();
         
         beforeAll(^{
             [Person deleteAll];
@@ -217,11 +217,9 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
         
         it(@"Finds all in a separate context", ^{
-            NSManagedObjectContext *anotherContext = createNewContext();
-            
-            [anotherContext performBlock:^{
-                [[anotherContext should] receive:@selector(executeFetchRequest:error:)];
-                [[[Person allInContext:anotherContext] should] haveCountOf:6];
+            [newContext performBlock:^{
+                [[newContext should] receive:@selector(executeFetchRequest:error:)];
+                [[[Person allInContext:newContext] should] haveCountOf:6];
             }];
         });
         
