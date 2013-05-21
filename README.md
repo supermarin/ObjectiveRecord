@@ -34,9 +34,10 @@ NSArray *johns = [Person where:@"name == 'John'"];
 Person *johnDoe = [Person where:@"name == 'John' AND surname == 'Doe'"].first;
 
 // Members over 18 from NY
-NSArray *people = [Person where:@{ @"age" : @18,
-                  @"member" : @YES,
-                  @"state" : @"NY"
+NSArray *people = [Person where:@{ 
+                      @"age" : @18,
+                      @"member" : @YES,
+                      @"state" : @"NY"
                   }];
 
 // I wanna be fancy and write my own NSPredicate
