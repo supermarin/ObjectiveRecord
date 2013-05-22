@@ -39,6 +39,12 @@
 + (void)deleteAllInContext:(NSManagedObjectContext *)context;
 
 + (NSArray *)allInContext:(NSManagedObjectContext *)context;
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context;    
++ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context;
+
+
+
+#pragma mark - Naming
+
++ (NSString *)entityName;
 
 @end

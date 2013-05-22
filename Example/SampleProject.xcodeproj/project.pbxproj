@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		197CA8AB5A4845B7B4174348 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B37C31BF7BE149339CB8C037 /* libPods-test.a */; };
 		4944537D57D049F28365F1AE /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0C6BA1184F43B596AFE47B /* libPods-test.a */; };
+		496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 496F953C174CCCBA00220FD1 /* OBRPerson.m */; };
 		892C1E91165D54160077F2CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 892C1E90165D54160077F2CB /* Default-568h@2x.png */; };
 		89702F25173E57AA00149BD5 /* SampleProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89F1EEBB15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld */; };
 		897D09FA15B0940A00722A8F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09F915B0940A00722A8F /* Person.m */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		257CA5900A2F4E16BDCF6CE8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		3FFE995F54E34B95BCC097B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		496F953B174CCCBA00220FD1 /* OBRPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRPerson.h; sourceTree = "<group>"; };
+		496F953C174CCCBA00220FD1 /* OBRPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRPerson.m; sourceTree = "<group>"; };
 		59C4037313284DBF93B47093 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		892C1E90165D54160077F2CB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		897D09F815B0940A00722A8F /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 			children = (
 				897D09F815B0940A00722A8F /* Person.h */,
 				897D09F915B0940A00722A8F /* Person.m */,
+				496F953B174CCCBA00220FD1 /* OBRPerson.h */,
+				496F953C174CCCBA00220FD1 /* OBRPerson.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 				89F1EEBA15A4C73B00AE4FB4 /* AppDelegate.m in Sources */,
 				89F1EEBD15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld in Sources */,
 				897D09FA15B0940A00722A8F /* Person.m in Sources */,
+				496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
