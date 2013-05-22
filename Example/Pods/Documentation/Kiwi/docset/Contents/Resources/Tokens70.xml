@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSInvocation+OCMAdditions.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSInvocation(OCMAdditions)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>
+			
+			<NodeRef refid="70"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/getArgumentAtIndexAsObject:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (id)getArgumentAtIndexAsObject:(int)argIndex</Declaration>
+			
+			
+			<Anchor>//api/name/getArgumentAtIndexAsObject:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/invocationDescription</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)invocationDescription</Declaration>
+			
+			
+			<Anchor>//api/name/invocationDescription</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/argumentDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)argumentDescriptionAtIndex:(int)argIndex</Declaration>
+			
+			
+			<Anchor>//api/name/argumentDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/objectDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)objectDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/objectDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/charDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)charDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/charDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/unsignedCharDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)unsignedCharDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/unsignedCharDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/intDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)intDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/intDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/unsignedIntDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)unsignedIntDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/unsignedIntDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/shortDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)shortDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/shortDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/unsignedShortDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)unsignedShortDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/unsignedShortDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/longDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)longDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/longDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/unsignedLongDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)unsignedLongDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/unsignedLongDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/longLongDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)longLongDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/longLongDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/unsignedLongLongDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)unsignedLongLongDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/unsignedLongLongDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/doubleDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)doubleDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/doubleDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/floatDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)floatDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/floatDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/structDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)structDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/structDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/pointerDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)pointerDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/pointerDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/cStringDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)cStringDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/cStringDescriptionAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSInvocation(OCMAdditions)/selectorDescriptionAtIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSInvocation+OCMAdditions.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)selectorDescriptionAtIndex:(int)anInt</Declaration>
+			
+			
+			<Anchor>//api/name/selectorDescriptionAtIndex:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

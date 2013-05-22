@@ -1,0 +1,1 @@
+../../Kiwi/Classes/KWExampleSuite.h

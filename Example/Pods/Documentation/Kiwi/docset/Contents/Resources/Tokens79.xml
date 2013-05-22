@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSObject+KiwiVerifierMacroNames.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSObject(KiwiVerifierMacroNames)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KiwiMacros.h</DeclaredIn>
+			
+			<NodeRef refid="79"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiVerifierMacroNames)/should</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KiwiMacros.h</DeclaredIn>			
+			
+			<Declaration>- (void)should</Declaration>
+			
+			
+			<Anchor>//api/name/should</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiVerifierMacroNames)/shouldNot</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KiwiMacros.h</DeclaredIn>			
+			
+			<Declaration>- (void)shouldNot</Declaration>
+			
+			
+			<Anchor>//api/name/shouldNot</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiVerifierMacroNames)/shouldBeNil</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KiwiMacros.h</DeclaredIn>			
+			
+			<Declaration>- (void)shouldBeNil</Declaration>
+			
+			
+			<Anchor>//api/name/shouldBeNil</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiVerifierMacroNames)/shouldNotBeNil</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KiwiMacros.h</DeclaredIn>			
+			
+			<Declaration>- (void)shouldNotBeNil</Declaration>
+			
+			
+			<Anchor>//api/name/shouldNotBeNil</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiVerifierMacroNames)/shouldEventually</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KiwiMacros.h</DeclaredIn>			
+			
+			<Declaration>- (void)shouldEventually</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEventually</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSObject(KiwiVerifierMacroNames)/shouldEventuallyBeforeTimingOutAfter</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KiwiMacros.h</DeclaredIn>			
+			
+			<Declaration>- (void)shouldEventuallyBeforeTimingOutAfter</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEventuallyBeforeTimingOutAfter</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

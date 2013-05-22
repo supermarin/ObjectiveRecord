@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWItNode.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWItNode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWItNode.h</DeclaredIn>
+			
+			<NodeRef refid="43"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWItNode/setExample:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWItNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) KWExample *example</Declaration>
+			
+			
+			<Anchor>//api/name/example</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWItNode/example</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWItNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) KWExample *example</Declaration>
+			
+			
+			<Anchor>//api/name/example</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWItNode/setContext:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWItNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain, readonly) KWContextNode *context</Declaration>
+			
+			
+			<Anchor>//api/name/context</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWItNode/context</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWItNode.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain, readonly) KWContextNode *context</Declaration>
+			
+			
+			<Anchor>//api/name/context</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWItNode/itNodeWithCallSite:description:context:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWItNode.h</DeclaredIn>			
+			
+			<Declaration>+ (id)itNodeWithCallSite:(KWCallSite *)aCallSite description:(NSString *)aDescription context:(KWContextNode *)context block:(KWVoidBlock)aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/itNodeWithCallSite:description:context:block:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

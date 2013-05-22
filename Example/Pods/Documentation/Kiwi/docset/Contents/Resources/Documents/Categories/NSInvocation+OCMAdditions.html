@@ -1,0 +1,683 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>NSInvocation(OCMAdditions) Category Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Kiwi 2.0.5 </a></h1>
+				<a id="developerHome" href="../index.html">Allen Ding and Luke Redpath</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">NSInvocation(OCMAdditions) Category Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/argumentDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- argumentDescriptionAtIndex:</option>
+	
+	<option value="//api/name/cStringDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- cStringDescriptionAtIndex:</option>
+	
+	<option value="//api/name/charDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- charDescriptionAtIndex:</option>
+	
+	<option value="//api/name/doubleDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- doubleDescriptionAtIndex:</option>
+	
+	<option value="//api/name/floatDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- floatDescriptionAtIndex:</option>
+	
+	<option value="//api/name/getArgumentAtIndexAsObject:">&nbsp;&nbsp;&nbsp;&nbsp;- getArgumentAtIndexAsObject:</option>
+	
+	<option value="//api/name/intDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- intDescriptionAtIndex:</option>
+	
+	<option value="//api/name/invocationDescription">&nbsp;&nbsp;&nbsp;&nbsp;- invocationDescription</option>
+	
+	<option value="//api/name/longDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- longDescriptionAtIndex:</option>
+	
+	<option value="//api/name/longLongDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- longLongDescriptionAtIndex:</option>
+	
+	<option value="//api/name/objectDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- objectDescriptionAtIndex:</option>
+	
+	<option value="//api/name/pointerDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- pointerDescriptionAtIndex:</option>
+	
+	<option value="//api/name/selectorDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- selectorDescriptionAtIndex:</option>
+	
+	<option value="//api/name/shortDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- shortDescriptionAtIndex:</option>
+	
+	<option value="//api/name/structDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- structDescriptionAtIndex:</option>
+	
+	<option value="//api/name/unsignedCharDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- unsignedCharDescriptionAtIndex:</option>
+	
+	<option value="//api/name/unsignedIntDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- unsignedIntDescriptionAtIndex:</option>
+	
+	<option value="//api/name/unsignedLongDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- unsignedLongDescriptionAtIndex:</option>
+	
+	<option value="//api/name/unsignedLongLongDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- unsignedLongLongDescriptionAtIndex:</option>
+	
+	<option value="//api/name/unsignedShortDescriptionAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- unsignedShortDescriptionAtIndex:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/argumentDescriptionAtIndex:">argumentDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cStringDescriptionAtIndex:">cStringDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/charDescriptionAtIndex:">charDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/doubleDescriptionAtIndex:">doubleDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/floatDescriptionAtIndex:">floatDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getArgumentAtIndexAsObject:">getArgumentAtIndexAsObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/intDescriptionAtIndex:">intDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/invocationDescription">invocationDescription</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/longDescriptionAtIndex:">longDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/longLongDescriptionAtIndex:">longLongDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/objectDescriptionAtIndex:">objectDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pointerDescriptionAtIndex:">pointerDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectorDescriptionAtIndex:">selectorDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shortDescriptionAtIndex:">shortDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/structDescriptionAtIndex:">structDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unsignedCharDescriptionAtIndex:">unsignedCharDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unsignedIntDescriptionAtIndex:">unsignedIntDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unsignedLongDescriptionAtIndex:">unsignedLongDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unsignedLongLongDescriptionAtIndex:">unsignedLongLongDescriptionAtIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unsignedShortDescriptionAtIndex:">unsignedShortDescriptionAtIndex:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="NSInvocation(OCMAdditions) Category Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">NSInvocation(OCMAdditions) Category Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">NSInvocation+OCMAdditions.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getArgumentAtIndexAsObject:">&ndash;&nbsp;getArgumentAtIndexAsObject:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/invocationDescription">&ndash;&nbsp;invocationDescription</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/argumentDescriptionAtIndex:">&ndash;&nbsp;argumentDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/objectDescriptionAtIndex:">&ndash;&nbsp;objectDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/charDescriptionAtIndex:">&ndash;&nbsp;charDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unsignedCharDescriptionAtIndex:">&ndash;&nbsp;unsignedCharDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/intDescriptionAtIndex:">&ndash;&nbsp;intDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unsignedIntDescriptionAtIndex:">&ndash;&nbsp;unsignedIntDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shortDescriptionAtIndex:">&ndash;&nbsp;shortDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unsignedShortDescriptionAtIndex:">&ndash;&nbsp;unsignedShortDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/longDescriptionAtIndex:">&ndash;&nbsp;longDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unsignedLongDescriptionAtIndex:">&ndash;&nbsp;unsignedLongDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/longLongDescriptionAtIndex:">&ndash;&nbsp;longLongDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unsignedLongLongDescriptionAtIndex:">&ndash;&nbsp;unsignedLongLongDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/doubleDescriptionAtIndex:">&ndash;&nbsp;doubleDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/floatDescriptionAtIndex:">&ndash;&nbsp;floatDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/structDescriptionAtIndex:">&ndash;&nbsp;structDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pointerDescriptionAtIndex:">&ndash;&nbsp;pointerDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cStringDescriptionAtIndex:">&ndash;&nbsp;cStringDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/selectorDescriptionAtIndex:">&ndash;&nbsp;selectorDescriptionAtIndex:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/argumentDescriptionAtIndex:" title="argumentDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">argumentDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)argumentDescriptionAtIndex:(int)<em>argIndex</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cStringDescriptionAtIndex:" title="cStringDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">cStringDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)cStringDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/charDescriptionAtIndex:" title="charDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">charDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)charDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/doubleDescriptionAtIndex:" title="doubleDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">doubleDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)doubleDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/floatDescriptionAtIndex:" title="floatDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">floatDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)floatDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getArgumentAtIndexAsObject:" title="getArgumentAtIndexAsObject:"></a>
+	<h3 class="subsubtitle method-title">getArgumentAtIndexAsObject:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)getArgumentAtIndexAsObject:(int)<em>argIndex</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/intDescriptionAtIndex:" title="intDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">intDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)intDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/invocationDescription" title="invocationDescription"></a>
+	<h3 class="subsubtitle method-title">invocationDescription</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)invocationDescription</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/longDescriptionAtIndex:" title="longDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">longDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)longDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/longLongDescriptionAtIndex:" title="longLongDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">longLongDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)longLongDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/objectDescriptionAtIndex:" title="objectDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">objectDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)objectDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pointerDescriptionAtIndex:" title="pointerDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">pointerDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)pointerDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/selectorDescriptionAtIndex:" title="selectorDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">selectorDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)selectorDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shortDescriptionAtIndex:" title="shortDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">shortDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)shortDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/structDescriptionAtIndex:" title="structDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">structDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)structDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unsignedCharDescriptionAtIndex:" title="unsignedCharDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">unsignedCharDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)unsignedCharDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unsignedIntDescriptionAtIndex:" title="unsignedIntDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">unsignedIntDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)unsignedIntDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unsignedLongDescriptionAtIndex:" title="unsignedLongDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">unsignedLongDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)unsignedLongDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unsignedLongLongDescriptionAtIndex:" title="unsignedLongLongDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">unsignedLongLongDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)unsignedLongLongDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unsignedShortDescriptionAtIndex:" title="unsignedShortDescriptionAtIndex:"></a>
+	<h3 class="subsubtitle method-title">unsignedShortDescriptionAtIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)unsignedShortDescriptionAtIndex:(int)<em>anInt</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Allen Ding and Luke Redpath. All rights reserved. (Last updated: 2013-05-11)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

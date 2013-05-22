@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWStringPrefixMatcher.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWStringPrefixMatcher</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStringPrefixMatcher.h</DeclaredIn>
+			
+			<NodeRef refid="60"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWStringPrefixMatcher/matcherWithPrefix:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStringPrefixMatcher.h</DeclaredIn>			
+			
+			<Declaration>+ (id)matcherWithPrefix:(NSString *)aPrefix</Declaration>
+			
+			
+			<Anchor>//api/name/matcherWithPrefix:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStringPrefixMatcher/initWithPrefix:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStringPrefixMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithPrefix:(NSString *)aPrefix</Declaration>
+			
+			
+			<Anchor>//api/name/initWithPrefix:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

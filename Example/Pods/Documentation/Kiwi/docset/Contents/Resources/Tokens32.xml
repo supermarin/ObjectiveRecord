@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWExampleSuite.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWExampleSuite</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleSuite.h</DeclaredIn>
+			
+			<NodeRef refid="32"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleSuite/initWithRootNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleSuite.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithRootNode:(KWContextNode *)contextNode</Declaration>
+			
+			
+			<Anchor>//api/name/initWithRootNode:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleSuite/addExample:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleSuite.h</DeclaredIn>			
+			
+			<Declaration>- (void)addExample:(KWExample *)example</Declaration>
+			
+			
+			<Anchor>//api/name/addExample:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleSuite/markLastExampleAsLastInContext:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleSuite.h</DeclaredIn>			
+			
+			<Declaration>- (void)markLastExampleAsLastInContext:(KWContextNode *)context</Declaration>
+			
+			
+			<Anchor>//api/name/markLastExampleAsLastInContext:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWExampleSuite/invocationsForTestCase</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWExampleSuite.h</DeclaredIn>			
+			
+			<Declaration>- (NSArray *)invocationsForTestCase</Declaration>
+			
+			
+			<Anchor>//api/name/invocationsForTestCase</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

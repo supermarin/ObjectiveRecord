@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWChangeMatcher.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWChangeMatcher</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWChangeMatcher.h</DeclaredIn>
+			
+			<NodeRef refid="24"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWChangeMatcher/change:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWChangeMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)change:(KWChangeMatcherCountBlock)countBlock</Declaration>
+			
+			
+			<Anchor>//api/name/change:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWChangeMatcher/change:by:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWChangeMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)change:(KWChangeMatcherCountBlock)countBlock by:(NSInteger)expectedDifference</Declaration>
+			
+			
+			<Anchor>//api/name/change:by:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

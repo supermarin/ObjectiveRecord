@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSManagedObjectContext+ActiveRecord.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSManagedObjectContext(ActiveRecord)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSManagedObject+ActiveRecord.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSManagedObjectContext(ActiveRecord)/defaultContext</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSManagedObject+ActiveRecord.h</DeclaredIn>			
+			
+			<Declaration>+ (NSManagedObjectContext *)defaultContext</Declaration>
+			
+			
+			<Anchor>//api/name/defaultContext</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

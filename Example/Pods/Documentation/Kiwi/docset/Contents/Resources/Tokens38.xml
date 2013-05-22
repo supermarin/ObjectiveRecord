@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWGenericMatcher.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWGenericMatcher</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWGenericMatcher.h</DeclaredIn>
+			
+			<NodeRef refid="38"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWGenericMatcher/match:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWGenericMatcher.h</DeclaredIn>			
+			
+			<Declaration>- (void)match:(id)aMatcher</Declaration>
+			
+			
+			<Anchor>//api/name/match:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

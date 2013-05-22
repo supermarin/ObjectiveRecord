@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KWStub.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KWStub</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>
+			
+			<NodeRef refid="61"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStub/initWithMessagePattern:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithMessagePattern:(KWMessagePattern *)aMessagePattern</Declaration>
+			
+			
+			<Anchor>//api/name/initWithMessagePattern:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStub/initWithMessagePattern:value:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithMessagePattern:(KWMessagePattern *)aMessagePattern value:(id)aValue</Declaration>
+			
+			
+			<Anchor>//api/name/initWithMessagePattern:value:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStub/initWithMessagePattern:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithMessagePattern:(KWMessagePattern *)aMessagePattern block:(id ( ^ ) ( NSArray *params ))aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/initWithMessagePattern:block:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStub/initWithMessagePattern:value:times:afterThatReturn:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithMessagePattern:(KWMessagePattern *)aMessagePattern value:(id)aValue times:(id)times afterThatReturn:(id)aSecondValue</Declaration>
+			
+			
+			<Anchor>//api/name/initWithMessagePattern:value:times:afterThatReturn:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWStub/stubWithMessagePattern:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>+ (id)stubWithMessagePattern:(KWMessagePattern *)aMessagePattern</Declaration>
+			
+			
+			<Anchor>//api/name/stubWithMessagePattern:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWStub/stubWithMessagePattern:value:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>+ (id)stubWithMessagePattern:(KWMessagePattern *)aMessagePattern value:(id)aValue</Declaration>
+			
+			
+			<Anchor>//api/name/stubWithMessagePattern:value:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWStub/stubWithMessagePattern:block:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>+ (id)stubWithMessagePattern:(KWMessagePattern *)aMessagePattern block:(id ( ^ ) ( NSArray *params ))aBlock</Declaration>
+			
+			
+			<Anchor>//api/name/stubWithMessagePattern:block:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KWStub/stubWithMessagePattern:value:times:afterThatReturn:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>+ (id)stubWithMessagePattern:(KWMessagePattern *)aMessagePattern value:(id)aValue times:(id)times afterThatReturn:(id)aSecondValue</Declaration>
+			
+			
+			<Anchor>//api/name/stubWithMessagePattern:value:times:afterThatReturn:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStub/setMessagePattern:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) KWMessagePattern *messagePattern</Declaration>
+			
+			
+			<Anchor>//api/name/messagePattern</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWStub/messagePattern</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) KWMessagePattern *messagePattern</Declaration>
+			
+			
+			<Anchor>//api/name/messagePattern</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStub/setValue:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) id value</Declaration>
+			
+			
+			<Anchor>//api/name/value</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWStub/value</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) id value</Declaration>
+			
+			
+			<Anchor>//api/name/value</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStub/setReturnValueTimes:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) id returnValueTimes</Declaration>
+			
+			
+			<Anchor>//api/name/returnValueTimes</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWStub/returnValueTimes</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) id returnValueTimes</Declaration>
+			
+			
+			<Anchor>//api/name/returnValueTimes</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStub/setReturnedValueTimes:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) int returnedValueTimes</Declaration>
+			
+			
+			<Anchor>//api/name/returnedValueTimes</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWStub/returnedValueTimes</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) int returnedValueTimes</Declaration>
+			
+			
+			<Anchor>//api/name/returnedValueTimes</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStub/setSecondValue:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) id secondValue</Declaration>
+			
+			
+			<Anchor>//api/name/secondValue</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KWStub/secondValue</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) id secondValue</Declaration>
+			
+			
+			<Anchor>//api/name/secondValue</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KWStub/processInvocation:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KWStub.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)processInvocation:(NSInvocation *)anInvocation</Declaration>
+			
+			
+			<Anchor>//api/name/processInvocation:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>
