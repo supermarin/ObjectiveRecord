@@ -9,6 +9,7 @@
 #import "NSArray+Accessors.h"
 #import "Kiwi.h"
 #import "Person.h"
+#import "OBRPerson.h"
 
 static NSString *UNIQUE_NAME = @"ldkhbfaewlfbaewljfhb";
 static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
@@ -228,6 +229,35 @@ describe(@"Find / Create / Save / Delete specs", ^{
         it(@"Deletes all from context", ^{
             [Person deleteAllInContext:newContext];
             [[Person allInContext:newContext] shouldBeNil];
+        });
+        
+    });
+    
+    
+    context(@"With a different class name to the entity name", ^{
+        
+        NSManagedObjectContext *newContext = createNewContext();
+        
+        it(@"Has the correct entity name", ^{
+            [[[OBRPerson entityName] should] equal:@"OtherPerson"];
+        });
+        
+        it(@"Fetches the correct entity", ^{
+            [[NSEntityDescription should]
+             receive:@selector(entityForName:inManagedObjectContext:)
+             andReturn:[NSEntityDescription entityForName:@"OtherPerson" inManagedObjectContext:newContext]
+             withArguments:@"OtherPerson", newContext];
+            
+            [OBRPerson allInContext:newContext];
+        });
+        
+        it(@"Creates the correct entity", ^{
+            [[NSEntityDescription should]
+             receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:)
+             andReturn:nil
+             withArguments:@"OtherPerson", newContext];
+            
+            [OBRPerson createInContext:newContext];
         });
         
     });

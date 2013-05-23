@@ -68,7 +68,7 @@
 }
 
 + (id)createInContext:(NSManagedObjectContext *)context {
-    return [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass(self)
+    return [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
                                          inManagedObjectContext:context];
 }
 
@@ -89,6 +89,13 @@
     [[self allInContext:context] each:^(id object) {
         [object delete];
     }];
+}
+
+#pragma mark - Naming
+
++ (NSString *)entityName {
+    
+    return NSStringFromClass(self);
 }
 
 #pragma mark - Private
@@ -119,7 +126,7 @@
 
 + (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [NSFetchRequest new];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass(self)
+    NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName]
                                               inManagedObjectContext:context];
     [request setEntity:entity];
     return request;
