@@ -7,4 +7,4 @@ before_install:
   - brew update
   - brew install xctool
 
-script: xctool clean test -workspace SampleProject.xcworkspace -scheme SampleProject
+script: make test
