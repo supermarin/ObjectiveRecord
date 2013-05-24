@@ -2,9 +2,5 @@ language: objective-c
 
 before_install:
   - cd Example
-  - gem update cocoapods
-  - pod install
-  - brew update
-  - brew install xctool
 
-script: make test
+script: make ci
