@@ -1,4 +1,0 @@
-Documentation set was installed to Xcode!
-
-Path: /Users/mneorr/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.objectiverecord.ObjectiveRecord-1.1.2.docset
-Time: 2013-05-11 08:33:48 +0000
