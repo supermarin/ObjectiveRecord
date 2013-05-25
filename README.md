@@ -70,12 +70,10 @@ If you've added the Core Data manually, you can change the custom model and data
 ``` objc
 // find
 [[Person all] each:^(Person *person) {
-    
     person.member = @NO;
 }];
 
 for(Person *person in [Person all]) {
-  
     person.member = @YES;
 }
 
@@ -87,8 +85,7 @@ john.surname = @"Wayne";
 
 // find / delete
 [[Person where: @{ "member" : @NO }] each:^(Person *person) {
-  
-  [person delete];
+    [person delete];
 }];
 ```
 
