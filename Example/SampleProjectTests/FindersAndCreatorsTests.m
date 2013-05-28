@@ -7,6 +7,7 @@
 //
 
 #import "Kiwi.h"
+#import "ObjectiveSugar.h"
 #import "Person.h"
 #import "OBRPerson.h"
 
@@ -110,18 +111,29 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
 
         it(@"creates with dict", ^{
-            NSArray *attributes = [NSArray arrayWithObjects:@"firstName", @"lastName", @"age", nil];
-            NSArray *values = [NSArray arrayWithObjects:@"marin", @"usalj", [NSNumber numberWithInt:23], nil];
-
-            Person *person = [Person create:[NSDictionary dictionaryWithObjects:values 
-                                                                        forKeys:attributes]];
-            [[person.firstName should] equal:@"marin"];
-            [[person.lastName should] equal:@"usalj"];
-            [[person.age should] equal:theValue(23)];
+            Person *person = [Person create:@{
+                @"firstName": @"Marin",
+                @"lastName": @"Usalj",
+                @"age": @24
+            }];
+            [[person.firstName should] equal:@"Marin"];
+            [[person.lastName should] equal:@"Usalj"];
+            [[person.age should] equal:theValue(24)];
         });
         
     });
     
+    context(@"Updating", ^{
+       
+        it(@"Can update using dictionary", ^{
+            Person *person = [Person create];
+            [person update:@{ @"firstName": @"Jonathan", @"age": @50 }];
+            
+            [[person.firstName should] equal:@"Jonathan"];
+            [[person.age should] equal:@50];
+        });
+        
+    });
     
     context(@"Saving", ^{
 
@@ -200,10 +212,8 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
         
         it(@"Creates in a separate context", ^{
-            [[NSEntityDescription should] 
-             receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:) 
-             andReturn:nil 
-             withArguments:@"Person", newContext];
+            [[NSEntityDescription should] receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:)
+                                    withArguments:@"Person", newContext];
             
             [Person create:[NSDictionary dictionary] inContext:newContext];
         });

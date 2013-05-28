@@ -7,8 +7,8 @@
 //
 
 #import <CoreData/CoreData.h>
+#import "NSManagedObject+Mappings.h"
 #import "CoreDataManager.h"
-#import "NSArray+ObjectiveSugar.h"
 
 @interface NSManagedObjectContext (ActiveRecord)
 + (NSManagedObjectContext *)defaultContext;
@@ -24,6 +24,7 @@
 
 + (id)create;
 + (id)create:(NSDictionary *)attributes;
+- (void)update:(NSDictionary *)attributes;
 
 + (NSArray *)all;
 + (NSArray *)where:(id)condition;

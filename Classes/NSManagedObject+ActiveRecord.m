@@ -7,6 +7,7 @@
 //
 
 #import "NSManagedObject+ActiveRecord.h"
+#import "ObjectiveSugar.h"
 
 @implementation NSManagedObjectContext (ActiveRecord)
 
@@ -63,13 +64,20 @@
 + (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
     NSManagedObject *newEntity = [self createInContext:context];
     
-    [newEntity setValuesForKeysWithDictionary:attributes];
+    
+    [newEntity update:attributes];
+    
     return newEntity;
 }
 
 + (id)createInContext:(NSManagedObjectContext *)context {
     return [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
                                          inManagedObjectContext:context];
+}
+
+- (void)update:(NSDictionary *)attributes {
+    for (id key in attributes.allKeys)
+        [self setValue:attributes[key] forKey:[self keyForRemoteKey:key]];
 }
 
 - (BOOL)save {
