@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DACC695F84144D119EF2F56A"
+               BlueprintIdentifier = "0E3CEB0D9AD547809A0FE162"
                BuildableName = "libPods.a"
                BlueprintName = "Pods"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "70BCFABB50CA46ACA7FCBBC2"
-               BuildableName = "libPods-test.a"
-               BlueprintName = "Pods-test"
+               BlueprintIdentifier = "90685BE2BC2141A993FE9744"
+               BuildableName = "libPods-SampleProjectTests.a"
+               BlueprintName = "Pods-SampleProjectTests"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

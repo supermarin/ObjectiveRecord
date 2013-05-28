@@ -17,8 +17,11 @@ static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
 #pragma mark - Helpers
 
 Person *fetchUniquePerson() {
-    return [Person where:[NSString stringWithFormat:@"name = '%@' AND surname = '%@'",
-                          UNIQUE_NAME, UNIQUE_SURNAME]].first;
+    Person *person = [Person where:[NSString stringWithFormat:@"firstName = '%@' AND lastName = '%@'",
+                                    UNIQUE_NAME, UNIQUE_SURNAME]].first;
+    
+    NSLog(@"fetched person... %@", person);
+    return person;
 }
 
 NSManagedObjectContext *createNewContext() {
@@ -27,33 +30,30 @@ NSManagedObjectContext *createNewContext() {
     return newContext;
 }
 
-
-#pragma mark - Specs
-
-SPEC_BEGIN(FindersAndCreators)
-
-NSArray *names = @[@"John", @"Steve", @"Neo", UNIQUE_NAME];
-NSArray *surnames = @[@"Doe", @"Jobs", @"Anderson", UNIQUE_SURNAME];
-
-void (^createSomePeople)(void) = ^(void) {
-    [names enumerateObjectsUsingBlock:^(id name, NSUInteger idx, BOOL *stop) {
+void createSomePeople(NSArray *names, NSArray *surnames) {
+    [names eachWithIndex:^(NSString *name, int idx) {
         Person *person = [Person create];
-        person.name = name;
-        person.surname = [surnames objectAtIndex:idx];
+        person.firstName = name;
+        person.lastName = [surnames objectAtIndex:idx];
         person.age = [NSNumber numberWithInt:idx];
         person.isMember = [NSNumber numberWithBool:YES];
         [person save];
     }];
-};
+}
 
 
-#pragma mark - Specs
+
+
+SPEC_BEGIN(FindersAndCreators)
 
 describe(@"Find / Create / Save / Delete specs", ^{
 
+    NSArray *names = @[@"John", @"Steve", @"Neo", UNIQUE_NAME];
+    NSArray *surnames = @[@"Doe", @"Jobs", @"Anderson", UNIQUE_SURNAME];
+    
     beforeAll(^{
         [Person deleteAll];
-        createSomePeople();
+        createSomePeople(names, surnames);
     });
     
     afterAll(^{
@@ -69,31 +69,31 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
         it(@"Finds using [Entity where: STRING]", ^{
             
-            Person *unique = [Person where:[NSString stringWithFormat:@"name == '%@'",UNIQUE_NAME]].first;
-            [[unique.surname should] equal:UNIQUE_SURNAME];
+            Person *unique = [Person where:[NSString stringWithFormat:@"firstName == '%@'",UNIQUE_NAME]].first;
+            [[unique.lastName should] equal:UNIQUE_SURNAME];
             
         });
         
         it(@"Finds using [Entity where: STRING and ARGUMENTS]", ^{
             
-            Person *unique = [Person whereFormat:@"name == '%@'", UNIQUE_NAME].first;
-            [[unique.surname should] equal:UNIQUE_SURNAME];
+            Person *unique = [Person whereFormat:@"firstName == '%@'", UNIQUE_NAME].first;
+            [[unique.lastName should] equal:UNIQUE_SURNAME];
             
         });
         
         it(@"Finds using [Entity where: DICTIONARY]", ^{
+
+            Person *person = [Person where:@{
+                @"firstName": @"John",
+                @"lastName": @"Doe",
+                @"age": @0,
+                @"isMember": @YES
+            }].first;
             
-            NSArray *attributes = [NSArray arrayWithObjects:@"name", @"surname", @"age", @"isMember", nil];
-            NSArray *values =     [NSArray arrayWithObjects:@"John", @"Doe", [NSNumber numberWithInt:0], [NSNumber numberWithBool:YES], nil];
-            
-            
-            Person *unique = [Person where:[NSDictionary dictionaryWithObjects:values
-                                                                       forKeys:attributes]].first;
-            
-            [[unique.name should] equal:@"John"];
-            [[unique.surname should] equal:@"Doe"];
-            [[unique.age should] equal:theValue(0)];
-            [[unique.isMember should] equal:theValue(YES)];
+            [[person.firstName should] equal:@"John"];
+            [[person.lastName should] equal:@"Doe"];
+            [[person.age should] equal:@0];
+            [[person.isMember should] equal:theValue(YES)];
         });
         
     });
@@ -103,20 +103,20 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
         it(@"creates without arguments", ^{
             Person *person = [Person create];
-            person.name = @"marin";
-            person.surname = UNIQUE_SURNAME;            
-            [[[[Person where:@"name == 'marin'"].first surname] should] equal:UNIQUE_SURNAME];
+            person.firstName = @"marin";
+            person.lastName = UNIQUE_SURNAME;
+            [[[[Person where:@"firstName == 'marin'"].first lastName] should] equal:UNIQUE_SURNAME];
         });
         
 
         it(@"creates with dict", ^{
-            NSArray *attributes = [NSArray arrayWithObjects:@"name", @"surname", @"age", nil];
+            NSArray *attributes = [NSArray arrayWithObjects:@"firstName", @"lastName", @"age", nil];
             NSArray *values = [NSArray arrayWithObjects:@"marin", @"usalj", [NSNumber numberWithInt:23], nil];
 
             Person *person = [Person create:[NSDictionary dictionaryWithObjects:values 
                                                                         forKeys:attributes]];
-            [[person.name should] equal:@"marin"];
-            [[person.surname should] equal:@"usalj"];
+            [[person.firstName should] equal:@"marin"];
+            [[person.lastName should] equal:@"usalj"];
             [[person.age should] equal:theValue(23)];
         });
         
@@ -129,22 +129,22 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
         beforeEach(^{
             person = fetchUniquePerson();
-            person.name = @"changed attribute for save";
+            person.firstName = @"changed attribute for save";
         });
         
         afterEach(^{
-            person.name = UNIQUE_NAME;
+            person.firstName = UNIQUE_NAME;
             [person save];
         });
 
         it(@"uses the object's context", ^{
-            [[person.managedObjectContext should] receive:@selector(save:)];
+            [[person.managedObjectContext should] receive:@selector(save:) andReturn:theValue(YES)];
             [person save];
         });
         
         it(@"returns YES if save has succeeded", ^{
-            [[theValue([person save]) should] beTrue];
-            [[theValue([person save]) should] beTrue];
+            [[@([person save]) should] beTrue];
+            [[@([person save]) should] beTrue];
         });
         
         it(@"returns NO if save hasn't succeeded", ^{
@@ -184,8 +184,8 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [Person deleteAll];
             
             Person *newPerson = [Person createInContext:newContext];
-            newPerson.name = @"Joshua";
-            newPerson.surname = @"Jobs";
+            newPerson.firstName = @"Joshua";
+            newPerson.lastName = @"Jobs";
             newPerson.age = [NSNumber numberWithInt:100];
             [newPerson save];
         });
@@ -211,8 +211,8 @@ describe(@"Find / Create / Save / Delete specs", ^{
         it(@"Finds in a separate context", ^{
             [newContext performBlock:^{
                 [[newContext should] receive:@selector(executeFetchRequest:error:)];
-                Person *found = [Person where:@"name == 'Joshua'" inContext:newContext].first;
-                [[found.surname should] equal:@"Jobs"];
+                Person *found = [Person where:@"firstName == 'Joshua'" inContext:newContext].first;
+                [[found.lastName should] equal:@"Jobs"];
             }];
         });
         
@@ -242,19 +242,16 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
         
         it(@"Fetches the correct entity", ^{
-            [[NSEntityDescription should]
-             receive:@selector(entityForName:inManagedObjectContext:)
-             andReturn:[NSEntityDescription entityForName:@"OtherPerson" inManagedObjectContext:newContext]
-             withArguments:@"OtherPerson", newContext];
+            [[NSEntityDescription should] receive:@selector(entityForName:inManagedObjectContext:)
+                                        andReturn:[NSEntityDescription entityForName:@"OtherPerson" inManagedObjectContext:newContext]
+                                    withArguments:@"OtherPerson", newContext];
             
             [OBRPerson allInContext:newContext];
         });
         
         it(@"Creates the correct entity", ^{
-            [[NSEntityDescription should]
-             receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:)
-             andReturn:nil
-             withArguments:@"OtherPerson", newContext];
+            [[NSEntityDescription should] receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:)
+                                    withArguments:@"OtherPerson", newContext];
             
             [OBRPerson createInContext:newContext];
         });

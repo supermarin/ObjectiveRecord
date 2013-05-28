@@ -1,7 +1,6 @@
 platform :ios, :deployment_target => "5.0"
   pod 'ObjectiveSugar'
   pod 'ObjectiveRecord', :path => '../ObjectiveRecord.podspec'
-target :test, :exclusive => true do
-  link_with 'SampleProjectTests'
+target :SampleProjectTests, :exclusive => true do
   pod 'Kiwi'
 end

@@ -2,8 +2,8 @@
 //  Person.m
 //  SampleProject
 //
-//  Created by Marin Usalj on 7/13/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Marin Usalj on 5/28/13.
+//
 //
 
 #import "Person.h"
@@ -11,9 +11,9 @@
 
 @implementation Person
 
-@dynamic name;
-@dynamic surname;
 @dynamic age;
 @dynamic isMember;
+@dynamic firstName;
+@dynamic lastName;
 
 @end

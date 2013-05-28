@@ -5,6 +5,8 @@ DEFAULT_SCHEME=$(PROJECT_NAME)
 test:
 	xctool -workspace $(WORKSPACE) -scheme $(DEFAULT_SCHEME) clean test
 
+hardcore_test: remove_pods install_pods test
+
 remove_pods:
 	rm -rf Pods
 	rm Podfile.lock
@@ -15,5 +17,5 @@ install_pods:
 install_tools:
 	gem update cocoapods
 
-ci: install_tools remove_pods install_pods test
+ci: install_tools hardcore_test
 

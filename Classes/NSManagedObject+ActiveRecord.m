@@ -150,7 +150,7 @@
     BOOL save = [self.managedObjectContext save:&error];
 
     if (!save || error) {
-        NSLog(@"Unresolved error in saving context for entity: %@!\n Error: %@", self, error);
+        NSLog(@"Unresolved error in saving context for entity:\n%@!\nError: %@", self, error);
         return NO;
     }
     
