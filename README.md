@@ -6,7 +6,7 @@ It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
 
 [![Build Status](https://travis-ci.org/mneorr/Objective-Record.png?branch=master)](https://travis-ci.org/mneorr/Objective-Record)
 
-### Usage
+#### Usage
 1. Install with [CocoaPods](http://cocoapods.org) or clone
 2. `#import "ObjectiveRecord.h"` in your model or .pch file.
 
@@ -47,7 +47,7 @@ NSArray *people = [Person where:@{
 NSArray *members = [Person where:membersPredicate];
 ```
 
-### Custom ManagedObjectContext
+#### Custom ManagedObjectContext
 
 ``` objc
 NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
@@ -58,7 +58,7 @@ Person *john = [Person where:@"name == 'John'" inContext:newContext].first;
 NSArray *people = [Person allInContext:newContext];
 ```
 
-### Custom CoreData model or .sqlite database
+#### Custom CoreData model or .sqlite database
 If you've added the Core Data manually, you can change the custom model and database name on CoreDataManager
 ``` objc
 [CoreDataManager instance].modelName = @"MyModelName";
@@ -87,5 +87,27 @@ john.surname = @"Wayne";
 [[Person where: @{ "member" : @NO }] each:^(Person *person) {
     [person delete];
 }];
+```
+#### Mapping
+
+The most of the time, your JSON web service returns keys like `first_name`, `last_name`, etc. <br/>
+Your ObjC implementation has camelCased properties - `firstName`, `lastName`.<br/>
+
+Since v1.2, camel case is supported automatically - you don't have to do nothing! Otherwise, if you have more complex mapping, here's how you do it:
+
+``` objc
+// just override - mappings in your NSManagedObject subclass
+
+@implementation Person
+
+- (NSDictionary *)mappings {
+  return @{ 
+      @"id": @"remoteID",
+      @"mmbr": @"isMember"
+  };
+  // first_name => firstName is automatically handled
+}
+
+@end
 ```
 
