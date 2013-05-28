@@ -15,7 +15,7 @@
 @dynamic firstName;
 @dynamic lastName;
 
-+ (NSDictionary *)mappings {
+- (NSDictionary *)mappings {
     return @{
         @"first_name": @"firstName",
         @"last_name": @"lastName"

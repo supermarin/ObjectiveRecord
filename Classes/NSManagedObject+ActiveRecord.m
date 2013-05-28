@@ -63,8 +63,6 @@
 
 + (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
     NSManagedObject *newEntity = [self createInContext:context];
-    
-    
     [newEntity update:attributes];
     
     return newEntity;

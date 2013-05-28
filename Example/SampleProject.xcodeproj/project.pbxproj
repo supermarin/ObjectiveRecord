@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 496F953C174CCCBA00220FD1 /* OBRPerson.m */; };
 		892C1E91165D54160077F2CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 892C1E90165D54160077F2CB /* Default-568h@2x.png */; };
+		89424AB6175528A4002A8E2D /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 89424AB5175528A4002A8E2D /* Car.m */; };
 		8956CE641754EE6A00BD551C /* MappingsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8956CE631754EE6A00BD551C /* MappingsTests.m */; };
 		89702F25173E57AA00149BD5 /* SampleProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89F1EEBB15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld */; };
 		897D09FA15B0940A00722A8F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09F915B0940A00722A8F /* Person.m */; };
@@ -45,6 +46,8 @@
 		496F953B174CCCBA00220FD1 /* OBRPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRPerson.h; sourceTree = "<group>"; };
 		496F953C174CCCBA00220FD1 /* OBRPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRPerson.m; sourceTree = "<group>"; };
 		892C1E90165D54160077F2CB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		89424AB4175528A4002A8E2D /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Car.h; path = Models/Car.h; sourceTree = "<group>"; };
+		89424AB5175528A4002A8E2D /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Car.m; path = Models/Car.m; sourceTree = "<group>"; };
 		8956CE631754EE6A00BD551C /* MappingsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappingsTests.m; sourceTree = "<group>"; };
 		897D09F815B0940A00722A8F /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		897D09F915B0940A00722A8F /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 				89F1EEB815A4C73B00AE4FB4 /* AppDelegate.h */,
 				89F1EEB915A4C73B00AE4FB4 /* AppDelegate.m */,
 				89F1EEBB15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld */,
+				89424AB4175528A4002A8E2D /* Car.h */,
+				89424AB5175528A4002A8E2D /* Car.m */,
 				89F1EEB015A4C73B00AE4FB4 /* Supporting Files */,
 			);
 			path = SampleProject;
@@ -358,6 +363,7 @@
 				89F1EEBD15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld in Sources */,
 				897D09FA15B0940A00722A8F /* Person.m in Sources */,
 				496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */,
+				89424AB6175528A4002A8E2D /* Car.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
