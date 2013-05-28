@@ -97,7 +97,7 @@ Since v1.2, camel case is supported automatically - you don't have to do nothing
 
 ``` objc
 // just override - mappings in your NSManagedObject subclass
-
+// this method is called just once, so you don't have to do any caching / singletons
 @implementation Person
 
 - (NSDictionary *)mappings {
