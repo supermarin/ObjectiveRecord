@@ -41,7 +41,7 @@ NSArray *people = [Person where:@{
                   }];
 
 // I wanna be fancy and write my own NSPredicate
-[NSPredicate  predicateWithBlock:^BOOL(Person *person, NSDictionary *bindings) {
+NSPredicate *membersPredicate = [NSPredicate  predicateWithBlock:^BOOL(Person *person, NSDictionary *bindings) {
     return person.isMember == YES;
 }];
 NSArray *members = [Person where:membersPredicate];
