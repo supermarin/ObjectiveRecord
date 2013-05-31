@@ -103,7 +103,15 @@ Since v1.2, camel case is supported automatically - you don't have to do nothing
 - (NSDictionary *)mappings {
   return @{ 
       @"id": @"remoteID",
-      @"mmbr": @"isMember"
+      @"mmbr": @"isMember",
+      // you can also map relationships, and initialize your graph from a single line
+      @"employees": @{
+          @"class": [Person class]
+      },
+      @"cars": @{
+          @"key": "vehicles",
+          @"class": [Vehicle class]
+      }
   };
   // first_name => firstName is automatically handled
 }
