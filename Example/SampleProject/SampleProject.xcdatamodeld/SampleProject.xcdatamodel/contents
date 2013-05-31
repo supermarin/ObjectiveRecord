@@ -12,10 +12,12 @@
         <attribute name="isMember" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="owner" inverseEntity="Car" syncable="YES"/>
+        <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="manager" inverseEntity="Person" syncable="YES"/>
+        <relationship name="manager" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="employees" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
         <element name="Car" positionX="160" positionY="192" width="128" height="90"/>
         <element name="OtherPerson" positionX="160" positionY="192" width="128" height="45"/>
-        <element name="Person" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Person" positionX="-270" positionY="-117" width="128" height="150"/>
     </elements>
 </model>

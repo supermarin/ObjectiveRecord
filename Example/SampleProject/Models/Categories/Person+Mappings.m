@@ -13,10 +13,10 @@
 
 - (NSDictionary *)mappings {
     return @{
-             @"cars" : @{
-                     @"class": [Car class]
-                     }
-             };
+             @"cars"     : @{ @"class": [Car class] },
+             @"employees": @{ @"class": [Person class] },
+             @"manager"  : @{ @"class": [Person class] }
+    };
 }
 
 @end

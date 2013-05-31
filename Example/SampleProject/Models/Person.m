@@ -8,6 +8,7 @@
 
 #import "Person.h"
 #import "Car.h"
+#import "Person.h"
 
 
 @implementation Person
@@ -17,5 +18,7 @@
 @dynamic isMember;
 @dynamic lastName;
 @dynamic cars;
+@dynamic manager;
+@dynamic employees;
 
 @end

@@ -14,6 +14,34 @@ SPEC_BEGIN(MappingsTests)
 
 describe(@"Mappings", ^{
     
+    NSDictionary *JSON = @{
+        @"first_name": @"Marin",
+        @"last_name": @"Usalj",
+        @"age": @24,
+        @"is_member": @YES,
+        @"cars": @[
+               @{ @"hp": @220, @"make": @"Trabant" },
+               @{ @"hp": @90, @"make": @"Volkswagen" }
+        ],
+        @"manager": @{
+               @"firstName": @"Delisa",
+               @"lastName": @"Mason",
+               @"age": @25,
+               @"isMember": @NO
+        },
+        @"employees": @[
+               @{ @"first_name": @"Luca" },
+               @{ @"first_name": @"Tony" },
+               @{ @"first_name": @"Jim" }
+        ]
+    };
+    
+    __block Person *person;
+    
+    beforeEach(^{
+        person = [Person create:JSON];
+    });
+    
     it(@"caches mappings", ^{
         Car *car = [Car create];
         [[car should] receive:@selector(mappings) andReturn:@{ @"hp": @"horsePower" } withCount:1];
@@ -24,20 +52,25 @@ describe(@"Mappings", ^{
     });
     
     it(@"uses mapped values when creating", ^{
-        Person *marin = [Person create:@{ @"first_name": @"Marin", @"last_name": @"Usalj", @"age": @24 }];
-        [[marin.firstName should] equal:@"Marin"];
-        [[marin.lastName should] equal:@"Usalj"];
-        [[marin.age should] equal:@24];
+        [[person.firstName should] equal:@"Marin"];
+        [[person.lastName should] equal:@"Usalj"];
+        [[person.age should] equal:@24];
     });
     
     it(@"can support snake_case even without mappings", ^{
-        Person *member = [Person create:@{ @"is_member": @YES }];
-        [[member.isMember should] beTrue];
+        [[person.isMember should] beTrue];
     });
     
     it(@"supports nested properties", ^{
-        Person *owner = [Person create:@{@"cars": @[ @{@"hp" : @120 }, @{@"make": @"Honda"}]}];
-        [[[owner should] have:2] cars];
+        [[[person should] have:2] cars];
+    });
+    
+    it(@"supports to one relationship", ^{
+        [[person.manager.firstName should] equal:@"Delisa"];
+    });
+    
+    it(@"supports to many relationship", ^{
+       [[[person should] have:3] employees];
     });
 });
 
