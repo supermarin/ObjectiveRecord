@@ -77,12 +77,10 @@
     [attributes each:^(id key, id value) {
         id remoteKey = [self keyForRemoteKey:key];
         
-        if ([remoteKey isKindOfClass:[NSString class]]) {
+        if ([remoteKey isKindOfClass:[NSString class]])
             [self setValue:value forKey:remoteKey];
-        } else {
+        else
             [self hydrateObject:value ofClass:remoteKey[@"class"] forKey:remoteKey[@"key"] ?: key];
-        }
-     
     }];
 }
 
