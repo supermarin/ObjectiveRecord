@@ -13,6 +13,8 @@
 		89702F25173E57AA00149BD5 /* SampleProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89F1EEBB15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld */; };
 		897AD0C11758CFD8006869BA /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 897AD0C01758CFD8006869BA /* Car.m */; };
 		897AD0C41758D013006869BA /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 897AD0C31758D013006869BA /* Person.m */; };
+		897AD0C71758D99A006869BA /* Person+Mappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 897AD0C61758D99A006869BA /* Person+Mappings.m */; };
+		897AD0CA1758D9A6006869BA /* Car+Mappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 897AD0C91758D9A6006869BA /* Car+Mappings.m */; };
 		897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */; };
 		89F1EEA815A4C73B00AE4FB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */; };
 		89F1EEAA15A4C73B00AE4FB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA915A4C73B00AE4FB4 /* Foundation.framework */; };
@@ -51,6 +53,10 @@
 		897AD0C01758CFD8006869BA /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
 		897AD0C21758D013006869BA /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		897AD0C31758D013006869BA /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		897AD0C51758D99A006869BA /* Person+Mappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Person+Mappings.h"; path = "Categories/Person+Mappings.h"; sourceTree = "<group>"; };
+		897AD0C61758D99A006869BA /* Person+Mappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Person+Mappings.m"; path = "Categories/Person+Mappings.m"; sourceTree = "<group>"; };
+		897AD0C81758D9A6006869BA /* Car+Mappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Car+Mappings.h"; path = "Categories/Car+Mappings.h"; sourceTree = "<group>"; };
+		897AD0C91758D9A6006869BA /* Car+Mappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Car+Mappings.m"; path = "Categories/Car+Mappings.m"; sourceTree = "<group>"; };
 		897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindersAndCreatorsTests.m; sourceTree = "<group>"; };
 		89F1EEA315A4C73B00AE4FB4 /* SampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -110,6 +116,10 @@
 				897AD0C01758CFD8006869BA /* Car.m */,
 				496F953B174CCCBA00220FD1 /* OBRPerson.h */,
 				496F953C174CCCBA00220FD1 /* OBRPerson.m */,
+				897AD0C51758D99A006869BA /* Person+Mappings.h */,
+				897AD0C61758D99A006869BA /* Person+Mappings.m */,
+				897AD0C81758D9A6006869BA /* Car+Mappings.h */,
+				897AD0C91758D9A6006869BA /* Car+Mappings.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -364,6 +374,8 @@
 				496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */,
 				897AD0C11758CFD8006869BA /* Car.m in Sources */,
 				897AD0C41758D013006869BA /* Person.m in Sources */,
+				897AD0C71758D99A006869BA /* Person+Mappings.m in Sources */,
+				897AD0CA1758D9A6006869BA /* Car+Mappings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

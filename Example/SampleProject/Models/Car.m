@@ -16,8 +16,4 @@
 @dynamic make;
 @dynamic owner;
 
-- (NSDictionary *)mappings {
-    return @{ @"hp": @"horsePower" };
-}
-
 @end

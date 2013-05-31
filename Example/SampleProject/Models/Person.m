@@ -18,12 +18,4 @@
 @dynamic lastName;
 @dynamic cars;
 
-- (NSDictionary *)mappings {
-    return @{
-        @"cars" : @{
-             @"class": [Car class]
-        }
-    };
-}
-
 @end

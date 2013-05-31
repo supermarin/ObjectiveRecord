@@ -7,8 +7,8 @@
 //
 
 #import "Kiwi.h"
-#import "Person.h"
-#import "Car.h"
+#import "Person+Mappings.h"
+#import "Car+Mappings.h"
 
 SPEC_BEGIN(MappingsTests)
 
