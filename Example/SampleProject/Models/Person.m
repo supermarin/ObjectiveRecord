@@ -21,7 +21,6 @@
 - (NSDictionary *)mappings {
     return @{
         @"cars" : @{
-             @"key": @"cars",
              @"class": [Car class]
         }
     };

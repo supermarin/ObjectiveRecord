@@ -80,7 +80,7 @@
         if ([remoteKey isKindOfClass:[NSString class]]) {
             [self setValue:value forKey:remoteKey];
         } else {
-            [self hydrateObject:value forKey:remoteKey];
+            [self hydrateObject:value ofClass:remoteKey[@"class"] forKey:remoteKey[@"key"] ?: key];
         }
      
     }];
@@ -172,9 +172,9 @@
     return YES;
 }
 
-- (void)hydrateObject:(id)properties forKey:(NSDictionary *)key {
-    [self setValue:[self objectOrSetOfObjectsFromValue:properties ofClass:key[@"class"]]
-            forKey:key[@"key"]];
+- (void)hydrateObject:(id)properties ofClass:(Class)class forKey:(NSString *)key {
+    [self setValue:[self objectOrSetOfObjectsFromValue:properties ofClass:class]
+            forKey:key];
 }
 
 - (id)objectOrSetOfObjectsFromValue:(id)value ofClass:(Class)class {
