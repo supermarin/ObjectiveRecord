@@ -43,11 +43,10 @@
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
     
-    NSPredicate *predicate = ([condition isKindOfClass:[NSPredicate class]]) ? condition :
-                                                [self predicateFromStringOrDict:condition];
+    NSPredicate *predicate = ([condition isKindOfClass:[NSPredicate class]]) ? condition
+                                                                             : [self predicateFromStringOrDict:condition];
     
-    return [self fetchWithPredicate:predicate
-                          inContext:context];
+    return [self fetchWithPredicate:predicate inContext:context];
 }
 
 
@@ -74,8 +73,17 @@
 }
 
 - (void)update:(NSDictionary *)attributes {
-    for (id key in attributes.allKeys)
-        [self setValue:attributes[key] forKey:[self keyForRemoteKey:key]];
+    
+    [attributes each:^(id key, id value) {
+        id remoteKey = [self keyForRemoteKey:key];
+        
+        if ([remoteKey isKindOfClass:[NSString class]]) {
+            [self setValue:value forKey:remoteKey];
+        } else {
+            [self hydrateObject:value forKey:remoteKey];
+        }
+     
+    }];
 }
 
 - (BOOL)save {
@@ -109,9 +117,10 @@
 + (NSString *)queryStringFromDictionary:(NSDictionary *)conditions {
     NSMutableString *queryString = [NSMutableString new];
     
-    [conditions.allKeys each:^(id attribute) {
-        [queryString appendFormat:@"%@ == '%@'", attribute, [conditions valueForKey:attribute]];
-
+    
+    [conditions each:^(id attribute, id value) {
+        [queryString appendFormat:@"%@ == '%@'", attribute, value];
+        
         if (attribute == conditions.allKeys.last) return;
         [queryString appendString:@" AND "];
     }];
@@ -161,6 +170,21 @@
     }
     
     return YES;
+}
+
+- (void)hydrateObject:(id)properties forKey:(NSDictionary *)key {
+    [self setValue:[self objectOrSetOfObjectsFromValue:properties ofClass:key[@"class"]]
+            forKey:key[@"key"]];
+}
+
+- (id)objectOrSetOfObjectsFromValue:(id)value ofClass:(Class)class {
+    
+    if ([value isKindOfClass:[NSArray class]])
+        return [NSSet setWithArray:[value map:^id(NSDictionary *dict) {
+            return [class create:dict];
+        }]];
+    
+    else return [class create:value];
 }
 
 @end

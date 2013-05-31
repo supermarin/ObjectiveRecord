@@ -35,6 +35,10 @@ describe(@"Mappings", ^{
         [[member.isMember should] beTrue];
     });
     
+    it(@"supports nested properties", ^{
+        Person *owner = [Person create:@{@"cars": @[ @{@"hp" : @120 }, @{@"make": @"Honda"}]}];
+        [[[owner should] have:2] cars];
+    });
 });
 
 SPEC_END

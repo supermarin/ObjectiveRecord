@@ -3,6 +3,7 @@
     <entity name="Car" representedClassName="Car" syncable="YES">
         <attribute name="horsePower" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="make" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="cars" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="OtherPerson" syncable="YES"/>
     <entity name="Person" representedClassName="Person" syncable="YES">
@@ -10,10 +11,11 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isMember" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="owner" inverseEntity="Car" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Car" positionX="160" positionY="192" width="128" height="90"/>
         <element name="OtherPerson" positionX="160" positionY="192" width="128" height="45"/>
-        <element name="Person" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Car" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Person" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>
