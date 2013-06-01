@@ -118,4 +118,7 @@ Since v1.2, camel case is supported automatically - you don't have to do nothing
 
 @end
 ```
+#### Roadmap
 
+- NSIncrementalStore support
+- In memory store support
