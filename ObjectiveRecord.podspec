@@ -1,12 +1,14 @@
+VERSION = "1.3"
+
 Pod::Spec.new do |s|
   s.name         = "ObjectiveRecord"
-  s.version      = "1.2"
+  s.version      = VERSION
   s.summary      = "Lightweight and sexy Core Data finders, creators and other methods. Rails syntax."
   s.homepage     = "https://github.com/mneorr/Objective-Record"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
 
   s.author       = { "Marin Usalj" => "mneorr@gmail.com" }
-  s.source       = { :git => "https://github.com/mneorr/Objective-Record.git", :tag => "1.2" }
+  s.source       = { :git => "https://github.com/mneorr/Objective-Record.git", :tag => VERSION }
   
   s.source_files = 'Classes/**/*.{h,m}'
   s.framework  = 'CoreData'
