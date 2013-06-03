@@ -43,8 +43,6 @@ void createSomePeople(NSArray *names, NSArray *surnames) {
 }
 
 
-
-
 SPEC_BEGIN(FindersAndCreators)
 
 describe(@"Find / Create / Save / Delete specs", ^{

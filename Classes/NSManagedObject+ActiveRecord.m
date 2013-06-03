@@ -179,10 +179,10 @@
     
     if ([value isKindOfClass:[NSArray class]])
         return [NSSet setWithArray:[value map:^id(NSDictionary *dict) {
-            return [class create:dict];
+            return [class create:dict inContext:self.managedObjectContext];
         }]];
     
-    else return [class create:value];
+    else return [class create:value inContext:self.managedObjectContext];
 }
 
 @end

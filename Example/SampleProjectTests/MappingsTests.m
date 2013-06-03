@@ -37,13 +37,15 @@ describe(@"Mappings", ^{
     };
     
     __block Person *person;
+    NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
     
     beforeEach(^{
-        person = [Person create:JSON];
+        person = [Person create:JSON inContext:newContext];
     });
     
     it(@"caches mappings", ^{
-        Car *car = [Car create];
+        Car *car = [Car createInContext:newContext];
         [[car should] receive:@selector(mappings) andReturn:@{ @"hp": @"horsePower" } withCount:1];
         
         [car update:@{ @"hp": @150 }];
