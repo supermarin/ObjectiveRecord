@@ -14,6 +14,7 @@
 + (NSManagedObjectContext *)defaultContext {
     return [[CoreDataManager instance] managedObjectContext];
 }
+
 @end
 
 @implementation NSManagedObject (ActiveRecord)
@@ -78,7 +79,7 @@
         id remoteKey = [self keyForRemoteKey:key];
         
         if ([remoteKey isKindOfClass:[NSString class]])
-            [self setValue:value forKey:remoteKey];
+            [self setSafeValue:value forKey:remoteKey];
         else
             [self hydrateObject:value ofClass:remoteKey[@"class"] forKey:remoteKey[@"key"] ?: key];
     }];
@@ -171,8 +172,8 @@
 }
 
 - (void)hydrateObject:(id)properties ofClass:(Class)class forKey:(NSString *)key {
-    [self setValue:[self objectOrSetOfObjectsFromValue:properties ofClass:class]
-            forKey:key];
+    [self setSafeValue:[self objectOrSetOfObjectsFromValue:properties ofClass:class]
+                forKey:key];
 }
 
 - (id)objectOrSetOfObjectsFromValue:(id)value ofClass:(Class)class {
@@ -183,6 +184,46 @@
         }]];
     
     else return [class create:value inContext:self.managedObjectContext];
+}
+
+- (void)setSafeValue:(id)value forKey:(id)key {
+    
+    if (value == nil || value == [NSNull null]) return;
+    
+//    NSDictionary *attributes = [[self entity] attributesByName];
+//    NSAttributeType attributeType = [[attributes objectForKey:key] attributeType];
+//    if ((attributeType == NSStringAttributeType) && ([value isKindOfClass:[NSNumber class]])) {
+//        value = [value stringValue];
+//    }  else if ([value isKindOfClass:[NSString class]]) {
+//       
+//        if ((attributeType == NSInteger16AttributeType) ||
+//            (attributeType == NSInteger32AttributeType) ||
+//            (attributeType == NSInteger64AttributeType) ||
+//            (attributeType == NSBooleanAttributeType))
+//            
+//            value = [NSNumber numberWithInteger:[value integerValue]];
+//        
+//        else if (attributeType == NSFloatAttributeType)
+//            value = [NSNumber numberWithDouble:[value doubleValue]];
+//        
+//        else if (attributeType == NSDateAttributeType)
+//            value = [self.defaultFormatter dateFromString:value];
+//    }
+    
+    [self setValue:value forKey:key];
+}
+
+
+#pragma mark - Date Formatting
+
+- (NSDateFormatter *)defaultFormatter {
+    static NSDateFormatter *sharedFormatter;
+    static dispatch_once_t singletonToken;
+    dispatch_once(&singletonToken, ^{
+        sharedFormatter = [[NSDateFormatter alloc] init];
+    });
+    
+    return sharedFormatter;
 }
 
 @end
