@@ -75,10 +75,6 @@ describe(@"Mappings", ^{
        [[[person should] have:3] employees];
     });
     
-    it(@"doesn't set NSNull properties", ^{
-        [person update:@{ @"is_member": [NSNull null] }];
-        [[person.isMember should] equal:@YES];
-    });
 });
 
 SPEC_END

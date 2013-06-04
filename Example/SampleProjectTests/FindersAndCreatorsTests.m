@@ -131,6 +131,12 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[person.age should] equal:@50];
         });
         
+        it(@"doesn't set NSNull properties", ^{
+            Person *person = [Person create];
+            [person update:@{ @"is_member": [NSNull null] }];
+            [person.isMember shouldBeNil];
+        });
+        
     });
     
     context(@"Saving", ^{
@@ -226,7 +232,6 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
         it(@"Finds all in a separate context", ^{
             NSManagedObjectContext *anotherContext = createNewContext();
-            
             [anotherContext performBlock:^{
                 [[anotherContext should] receive:@selector(executeFetchRequest:error:)];
                 [[[Person allInContext:anotherContext] should] haveCountOf:6];
