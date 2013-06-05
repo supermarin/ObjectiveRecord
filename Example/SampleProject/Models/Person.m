@@ -2,7 +2,7 @@
 //  Person.m
 //  SampleProject
 //
-//  Created by Marin Usalj on 5/31/13.
+//  Created by Marin Usalj on 6/5/13.
 //
 //
 
@@ -17,8 +17,10 @@
 @dynamic firstName;
 @dynamic isMember;
 @dynamic lastName;
+@dynamic savings;
+@dynamic anniversary;
 @dynamic cars;
-@dynamic manager;
 @dynamic employees;
+@dynamic manager;
 
 @end

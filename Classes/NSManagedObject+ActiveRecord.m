@@ -190,29 +190,33 @@
     
     if (value == nil || value == [NSNull null]) return;
     
-//    NSDictionary *attributes = [[self entity] attributesByName];
-//    NSAttributeType attributeType = [[attributes objectForKey:key] attributeType];
-//    if ((attributeType == NSStringAttributeType) && ([value isKindOfClass:[NSNumber class]])) {
-//        value = [value stringValue];
-//    }  else if ([value isKindOfClass:[NSString class]]) {
-//       
-//        if ((attributeType == NSInteger16AttributeType) ||
-//            (attributeType == NSInteger32AttributeType) ||
-//            (attributeType == NSInteger64AttributeType) ||
-//            (attributeType == NSBooleanAttributeType))
-//            
-//            value = [NSNumber numberWithInteger:[value integerValue]];
-//        
-//        else if (attributeType == NSFloatAttributeType)
-//            value = [NSNumber numberWithDouble:[value doubleValue]];
-//        
-//        else if (attributeType == NSDateAttributeType)
-//            value = [self.defaultFormatter dateFromString:value];
-//    }
+    NSDictionary *attributes = [[self entity] attributesByName];
+    NSAttributeType attributeType = [[attributes objectForKey:key] attributeType];
+    
+    if ((attributeType == NSStringAttributeType) && ([value isKindOfClass:[NSNumber class]]))
+        value = [value stringValue];
+
+    else if ([value isKindOfClass:[NSString class]]) {
+
+        if ([self isIntegerAttributeType:attributeType])
+            value = [NSNumber numberWithInteger:[value integerValue]];
+
+        else if (attributeType == NSFloatAttributeType)
+            value = [NSNumber numberWithDouble:[value doubleValue]];
+        
+        else if (attributeType == NSDateAttributeType)
+            value = [self.defaultFormatter dateFromString:value];
+    }
     
     [self setValue:value forKey:key];
 }
 
+- (BOOL)isIntegerAttributeType:(NSAttributeType)attributeType {
+    return (attributeType == NSInteger16AttributeType) ||
+           (attributeType == NSInteger32AttributeType) ||
+           (attributeType == NSInteger64AttributeType) ||
+           (attributeType == NSBooleanAttributeType);
+}
 
 #pragma mark - Date Formatting
 
@@ -221,6 +225,7 @@
     static dispatch_once_t singletonToken;
     dispatch_once(&singletonToken, ^{
         sharedFormatter = [[NSDateFormatter alloc] init];
+        [sharedFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss z"];
     });
     
     return sharedFormatter;

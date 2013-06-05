@@ -123,6 +123,8 @@ describe(@"Find / Create / Save / Delete specs", ^{
     
     context(@"Updating", ^{
        
+        
+        
         it(@"Can update using dictionary", ^{
             Person *person = [Person create];
             [person update:@{ @"firstName": @"Jonathan", @"age": @50 }];
@@ -135,6 +137,30 @@ describe(@"Find / Create / Save / Delete specs", ^{
             Person *person = [Person create];
             [person update:@{ @"is_member": [NSNull null] }];
             [person.isMember shouldBeNil];
+        });
+        
+        it(@"stringifies numbers", ^{
+            Person *person = [Person create:@{ @"first_name": @123 }];
+            [[person.firstName should] equal:@"123"];
+        });
+        
+        it(@"converts strings to integers", ^{
+            Person *person = [Person create:@{ @"age": @"24" }];
+            [[person.age should] equal:@24];
+        });
+        
+        it(@"converts strings to floats", ^{
+            Person *person = [Person create:@{ @"savings": @"1500.12" }];
+            [[person.savings should] equal:@(1500.12f)];
+        });
+        
+        it(@"converts strings to dates", ^{
+            NSDateFormatter *formatta = [NSDateFormatter new];
+            [formatta setDateFormat:@"yyyy-MM-dd HH:mm:ss z"];
+            
+            NSDate *date = [NSDate date];
+            Person *person = [Person create:@{ @"anniversary": [formatta stringFromDate:date] }];
+            [[@([date timeIntervalSinceDate:person.anniversary]) should] beLessThan:@(0.7f)];
         });
         
     });

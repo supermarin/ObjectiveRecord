@@ -8,9 +8,11 @@
     <entity name="OtherPerson" syncable="YES"/>
     <entity name="Person" representedClassName="Person" syncable="YES">
         <attribute name="age" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="anniversary" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isMember" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="savings" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="owner" inverseEntity="Car" syncable="YES"/>
         <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="manager" inverseEntity="Person" syncable="YES"/>
         <relationship name="manager" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="employees" inverseEntity="Person" syncable="YES"/>
@@ -18,6 +20,6 @@
     <elements>
         <element name="Car" positionX="160" positionY="192" width="128" height="90"/>
         <element name="OtherPerson" positionX="160" positionY="192" width="128" height="45"/>
-        <element name="Person" positionX="-270" positionY="-117" width="128" height="150"/>
+        <element name="Person" positionX="-270" positionY="-117" width="128" height="180"/>
     </elements>
 </model>

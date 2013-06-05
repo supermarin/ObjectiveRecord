@@ -2,7 +2,7 @@
 //  Person.h
 //  SampleProject
 //
-//  Created by Marin Usalj on 5/31/13.
+//  Created by Marin Usalj on 6/5/13.
 //
 //
 
@@ -17,9 +17,11 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSNumber * isMember;
 @property (nonatomic, retain) NSString * lastName;
+@property (nonatomic, retain) NSNumber * savings;
+@property (nonatomic, retain) NSDate * anniversary;
 @property (nonatomic, retain) NSSet *cars;
-@property (nonatomic, retain) Person *manager;
 @property (nonatomic, retain) NSSet *employees;
+@property (nonatomic, retain) Person *manager;
 @end
 
 @interface Person (CoreDataGeneratedAccessors)
