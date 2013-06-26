@@ -476,6 +476,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D5E6E703ADFB432282251ADF /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SampleProject/SampleProject-Prefix.pch";
 				INFOPLIST_FILE = "SampleProject/SampleProject-Info.plist";
@@ -489,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D5E6E703ADFB432282251ADF /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SampleProject/SampleProject-Prefix.pch";
 				INFOPLIST_FILE = "SampleProject/SampleProject-Info.plist";

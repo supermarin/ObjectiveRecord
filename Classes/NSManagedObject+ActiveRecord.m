@@ -17,6 +17,14 @@
 
 @end
 
+@implementation NSObject(null)
+
+- (BOOL)exists {
+    return self && self != [NSNull null];
+}
+
+@end
+
 @implementation NSManagedObject (ActiveRecord)
 
 #pragma mark - Finders
@@ -62,6 +70,8 @@
 }
 
 + (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
+    unless([attributes exists]) return nil;
+    
     NSManagedObject *newEntity = [self createInContext:context];
     [newEntity update:attributes];
     
@@ -74,6 +84,7 @@
 }
 
 - (void)update:(NSDictionary *)attributes {
+    unless([attributes exists]) return;
     
     [attributes each:^(id key, id value) {
         id remoteKey = [self keyForRemoteKey:key];

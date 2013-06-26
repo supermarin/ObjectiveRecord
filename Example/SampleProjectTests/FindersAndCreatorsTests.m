@@ -119,6 +119,11 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[person.age should] equal:theValue(24)];
         });
         
+        it(@"Doesn't create with nulls", ^{
+            [[Person create:nil] shouldBeNil];
+            [[Person create:(id)[NSNull null]] shouldBeNil];
+        });
+        
     });
     
     context(@"Updating", ^{
@@ -160,7 +165,15 @@ describe(@"Find / Create / Save / Delete specs", ^{
             
             NSDate *date = [NSDate date];
             Person *person = [Person create:@{ @"anniversary": [formatta stringFromDate:date] }];
-            [[@([date timeIntervalSinceDate:person.anniversary]) should] beLessThan:@(0.7f)];
+            [[@([date timeIntervalSinceDate:person.anniversary]) should] beLessThan:@1];
+        });
+        
+        it(@"doesn't update with nulls", ^{
+            Person *person = fetchUniquePerson();
+            [person update:nil];
+            [person update:(id)[NSNull null]];
+            
+            [[person.firstName should] equal:UNIQUE_NAME];
         });
         
     });
@@ -224,12 +237,13 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
         beforeAll(^{
             [Person deleteAll];
-            
-            Person *newPerson = [Person createInContext:newContext];
-            newPerson.firstName = @"Joshua";
-            newPerson.lastName = @"Jobs";
-            newPerson.age = [NSNumber numberWithInt:100];
-            [newPerson save];
+            [newContext performBlockAndWait:^{
+                Person *newPerson = [Person createInContext:newContext];
+                newPerson.firstName = @"Joshua";
+                newPerson.lastName = @"Jobs";
+                newPerson.age = [NSNumber numberWithInt:100];
+                [newPerson save];
+            }];
         });
         
         it(@"Creates in a separate context", ^{

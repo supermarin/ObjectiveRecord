@@ -16,6 +16,7 @@
 
 @interface NSManagedObject (ActiveRecord)
 
+
 #pragma mark - Default Context
 
 - (BOOL)save;
@@ -29,7 +30,6 @@
 + (NSArray *)all;
 + (NSArray *)where:(id)condition;
 + (NSArray *)whereFormat:(NSString *)format, ...;
-
 
 
 #pragma mark - Custom Context
