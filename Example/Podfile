@@ -2,5 +2,5 @@ platform :ios, :deployment_target => "5.0"
   pod 'ObjectiveSugar'
   pod 'ObjectiveRecord', :path => '../ObjectiveRecord.podspec'
 target :SampleProjectTests, :exclusive => true do
-  pod 'Kiwi'
+  pod 'Kiwi', '2.1'
 end
