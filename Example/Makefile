@@ -1,21 +1,17 @@
 PROJECT_NAME=SampleProject
 WORKSPACE=$(PROJECT_NAME).xcworkspace
 DEFAULT_SCHEME=$(PROJECT_NAME)
+TESTING_TOOL=xcodebuild
+#TESTING_TOOL=xctool
 
 test:
-	xctool -workspace $(WORKSPACE) -scheme $(DEFAULT_SCHEME) clean test
-
-hardcore_test: remove_pods install_pods test
-
-remove_pods:
-	rm -rf Pods
-	rm Podfile.lock
+	$(TESTING_TOOL) -workspace $(WORKSPACE) -scheme $(DEFAULT_SCHEME) clean test
 
 install_pods:
 	pod install
 
-install_tools:
+update_tools:
 	gem update cocoapods
 
-ci: install_tools hardcore_test
+ci: update_tools install_pods test
 
