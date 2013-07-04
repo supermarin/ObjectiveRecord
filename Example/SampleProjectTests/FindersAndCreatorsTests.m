@@ -32,14 +32,14 @@ NSManagedObjectContext *createNewContext() {
 }
 
 void createSomePeople(NSArray *names, NSArray *surnames) {
-    [names eachWithIndex:^(NSString *name, int idx) {
+    for (int i = 0; i < names.count; i++) {
         Person *person = [Person create];
-        person.firstName = name;
-        person.lastName = [surnames objectAtIndex:idx];
-        person.age = [NSNumber numberWithInt:idx];
-        person.isMember = [NSNumber numberWithBool:YES];
+        person.firstName = names[i];
+        person.lastName = surnames[i];
+        person.age = @(i);
+        person.isMember = @YES;
         [person save];
-    }];
+    }
 }
 
 
@@ -81,12 +81,11 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
         
         it(@"Finds using [Entity where: DICTIONARY]", ^{
-
             Person *person = [Person where:@{
                 @"firstName": @"John",
                 @"lastName": @"Doe",
                 @"age": @0,
-                @"isMember": @YES
+                @"isMember": @1
             }].first;
             
             [[person.firstName should] equal:@"John"];

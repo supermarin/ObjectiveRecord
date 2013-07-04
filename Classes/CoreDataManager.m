@@ -47,6 +47,7 @@ static CoreDataManager *singleton;
     return _modelName;
 }
 
+
 #pragma mark - Public
 
 - (NSManagedObjectContext *)managedObjectContext {
@@ -67,27 +68,17 @@ static CoreDataManager *singleton;
     return _managedObjectModel;
 }
 
-- (void)setUpPersistentStoreCoordinator {
-
-    NSURL *storeURL = [self.applicationDocumentsDirectory URLByAppendingPathComponent:[self databaseName]];
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    
-    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-    
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
-        NSLog(@"ERROR IN PERSISTENT STORE COORDINATOR! %@, %@", error, [error userInfo]);
-}
-
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     if (_persistentStoreCoordinator) return _persistentStoreCoordinator;
     
-    [self setUpPersistentStoreCoordinator];   
+    _persistentStoreCoordinator = [self persistentStoreCoordinatorWithStoreType:NSSQLiteStoreType
+                                                                       storeURL:[self sqliteStoreURL]];
     return _persistentStoreCoordinator;
 }
 
+- (void)useInMemoryStore {
+    _persistentStoreCoordinator = [self persistentStoreCoordinatorWithStoreType:NSInMemoryStoreType storeURL:nil];
+}
 
 - (BOOL)saveContext {
     if (self.managedObjectContext == nil) return NO;
@@ -103,11 +94,36 @@ static CoreDataManager *singleton;
     return YES;
 }
 
+
 #pragma mark - Application's Documents directory
+
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory 
                                                    inDomains:NSUserDomainMask] lastObject];
 }
+
+
+#pragma mark - Private
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinatorWithStoreType:(NSString *const)storeType
+                                                                 storeURL:(NSURL *)storeURL {
+    
+    NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    
+    NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption: @YES,
+                               NSInferMappingModelAutomaticallyOption: @YES };
+
+    NSError *error = nil;
+    if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:storeURL options:options error:&error])
+        NSLog(@"ERROR WHILE CREATING PERSISTENT STORE COORDINATOR! %@, %@", error, [error userInfo]);
+    
+    return coordinator;
+}
+
+- (NSURL *)sqliteStoreURL {
+    return [self.applicationDocumentsDirectory URLByAppendingPathComponent:[self databaseName]];
+}
+
 
 
 @end

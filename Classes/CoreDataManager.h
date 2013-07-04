@@ -19,6 +19,10 @@
 
 + (id)instance;
 - (BOOL)saveContext;
+- (void)useInMemoryStore;
+
+#pragma mark - Helpers
+
 - (NSURL *)applicationDocumentsDirectory;
 
 @end
