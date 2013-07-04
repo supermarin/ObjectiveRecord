@@ -38,7 +38,7 @@ describe(@"Mappings", ^{
     
     __block Person *person;
     NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
+    newContext.persistentStoreCoordinator = [[CoreDataManager sharedManager] persistentStoreCoordinator];
     
     beforeEach(^{
         person = [Person create:JSON inContext:newContext];

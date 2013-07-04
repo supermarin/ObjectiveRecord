@@ -12,7 +12,7 @@
 @implementation NSManagedObjectContext (ActiveRecord)
 
 + (NSManagedObjectContext *)defaultContext {
-    return [[CoreDataManager instance] managedObjectContext];
+    return [[CoreDataManager sharedManager] managedObjectContext];
 }
 
 @end

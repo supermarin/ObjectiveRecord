@@ -27,7 +27,7 @@ Person *fetchUniquePerson() {
 
 NSManagedObjectContext *createNewContext() {
     NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
+    newContext.persistentStoreCoordinator = [[CoreDataManager sharedManager] persistentStoreCoordinator];
     return newContext;
 }
 

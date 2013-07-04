@@ -13,7 +13,7 @@ SPEC_BEGIN(CoreDataManagerTests)
 
 describe(@"Core data stack", ^{
    
-    CoreDataManager *manager = [CoreDataManager instance];
+    CoreDataManager *manager = [CoreDataManager sharedManager];
     
     it(@"can use in-memory store", ^{
         [manager useInMemoryStore];
