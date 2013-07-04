@@ -127,14 +127,16 @@
 + (NSString *)queryStringFromDictionary:(NSDictionary *)conditions {
     NSMutableString *queryString = [NSMutableString new];
     
-    
     [conditions each:^(id attribute, id value) {
-        [queryString appendFormat:@"%@ == '%@'", attribute, value];
+        if ([value isKindOfClass:[NSString class]])
+            [queryString appendFormat:@"%@ == '%@'", attribute, value];
+        else
+            [queryString appendFormat:@"%@ == %@", attribute, value];
         
         if (attribute == conditions.allKeys.last) return;
         [queryString appendString:@" AND "];
     }];
-    
+
     return queryString;
 }
 
