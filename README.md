@@ -118,6 +118,14 @@ Since v1.2, camel case is supported automatically - you don't have to do nothing
 
 @end
 ```
+
+#### Testing
+
+ObjectiveRecord supports CoreData's in-memory store. In any place, before your tests start running, it's enough to call
+``` objc
+[[CoreDataManager sharedManager] useInMemoryStore];
+```
+
 #### Roadmap
 
 - NSIncrementalStore support
