@@ -129,7 +129,7 @@
     
     [conditions each:^(id attribute, id value) {
         if ([value isKindOfClass:[NSString class]])
-            [queryString appendFormat:@"%@ == '%@'", attribute, value];
+            [queryString appendFormat:@"%@ == %%@", attribute];
         else
             [queryString appendFormat:@"%@ == %@", attribute, value];
         
@@ -146,7 +146,7 @@
         return [NSPredicate predicateWithFormat:condition];
     
     else if ([condition isKindOfClass:[NSDictionary class]])
-        return [NSPredicate predicateWithFormat:[self queryStringFromDictionary:condition]];
+        return [NSPredicate predicateWithFormat:[self queryStringFromDictionary:condition] argumentArray:[(NSDictionary *)condition allKeys]];
     
     return nil;
 }
