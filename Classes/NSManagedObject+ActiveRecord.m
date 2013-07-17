@@ -146,7 +146,7 @@
         return [NSPredicate predicateWithFormat:condition];
     
     else if ([condition isKindOfClass:[NSDictionary class]])
-        return [NSPredicate predicateWithFormat:[self queryStringFromDictionary:condition] argumentArray:[(NSDictionary *)condition allKeys]];
+        return [NSPredicate predicateWithFormat:[self queryStringFromDictionary:condition] argumentArray:[(NSDictionary *)condition allValues]];
     
     return nil;
 }
