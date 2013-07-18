@@ -133,7 +133,7 @@
     NSURL *directory = [self isOSX] ? self.applicationSupportDirectory : self.applicationDocumentsDirectory;
     NSURL *databaseDir = [directory URLByAppendingPathComponent:[self databaseName]];
     
-    [self createApplicationSupportDirIfNeeded:databaseDir];
+    [self createApplicationSupportDirIfNeeded:directory];
     return databaseDir;
 }
 
