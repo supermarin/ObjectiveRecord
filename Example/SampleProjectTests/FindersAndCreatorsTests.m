@@ -31,9 +31,9 @@ NSManagedObjectContext *createNewContext() {
     return newContext;
 }
 
-void createSomePeople(NSArray *names, NSArray *surnames) {
+void createSomePeople(NSArray *names, NSArray *surnames, NSManagedObjectContext *context) {
     for (int i = 0; i < names.count; i++) {
-        Person *person = [Person create];
+        Person *person = [Person createInContext:context];
         person.firstName = names[i];
         person.lastName = surnames[i];
         person.age = @(i);
@@ -52,7 +52,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
     
     beforeAll(^{
         [Person deleteAll];
-        createSomePeople(names, surnames);
+        createSomePeople(names, surnames, NSManagedObjectContext.defaultContext);
     });
     
     afterAll(^{
@@ -272,8 +272,11 @@ describe(@"Find / Create / Save / Delete specs", ^{
         it(@"Finds all in a separate context", ^{
             NSManagedObjectContext *anotherContext = createNewContext();
             [anotherContext performBlock:^{
+                [Person deleteAll];
+                createSomePeople(names, surnames, anotherContext);
+                NSLog(@"is on main? %@", @([NSThread isMainThread]));
                 [[anotherContext should] receive:@selector(executeFetchRequest:error:)];
-                [[[Person allInContext:anotherContext] should] haveCountOf:6];
+                [[[Person allInContext:anotherContext] should] haveCountOf:names.count];
             }];
         });
         

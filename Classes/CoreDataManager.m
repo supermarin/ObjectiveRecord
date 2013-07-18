@@ -98,11 +98,17 @@
 }
 
 
-#pragma mark - Application's Documents directory
+#pragma mark - SQLite file directory
 
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory 
                                                    inDomains:NSUserDomainMask] lastObject];
+}
+
+- (NSURL *)applicationSupportDirectory {
+    return [[[[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory
+                                                   inDomains:NSUserDomainMask] lastObject]
+            URLByAppendingPathComponent:[self appName]];
 }
 
 
@@ -124,9 +130,23 @@
 }
 
 - (NSURL *)sqliteStoreURL {
-    return [self.applicationDocumentsDirectory URLByAppendingPathComponent:[self databaseName]];
+    NSURL *directory = [self isOSX] ? self.applicationSupportDirectory : self.applicationDocumentsDirectory;
+    NSURL *databaseDir = [directory URLByAppendingPathComponent:[self databaseName]];
+    
+    [self createApplicationSupportDirIfNeeded:databaseDir];
+    return databaseDir;
 }
 
+- (BOOL)isOSX {
+    if (NSClassFromString(@"UIDevice")) return NO;
+    return YES;
+}
 
+- (void)createApplicationSupportDirIfNeeded:(NSURL *)url {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:url.absoluteString]) return;
+
+    [[NSFileManager defaultManager] createDirectoryAtURL:url
+                             withIntermediateDirectories:YES attributes:nil error:nil];
+}
 
 @end

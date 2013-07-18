@@ -26,5 +26,6 @@
 #pragma mark - Helpers
 
 - (NSURL *)applicationDocumentsDirectory;
+- (NSURL *)applicationSupportDirectory;
 
 @end
