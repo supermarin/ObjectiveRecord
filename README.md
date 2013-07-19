@@ -84,7 +84,7 @@ john.surname = @"Wayne";
 [john save];
 
 // find / delete
-[[Person where: @{ "member" : @NO }] each:^(Person *person) {
+[[Person where: @{ @"member" : @NO }] each:^(Person *person) {
     [person delete];
 }];
 ```
@@ -109,7 +109,7 @@ Since v1.2, camel case is supported automatically - you don't have to do nothing
           @"class": [Person class]
       },
       @"cars": @{
-          @"key": "vehicles",
+          @"key": @"vehicles",
           @"class": [Vehicle class]
       }
   };
