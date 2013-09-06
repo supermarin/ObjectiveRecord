@@ -4,7 +4,7 @@ The syntax is borrowed from Ruby on Rails.<br>
 And yeah, no AppDelegate code.
 It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
 
-[![Build Status](https://travis-ci.org/mneorr/Objective-Record.png?branch=master)](https://travis-ci.org/mneorr/Objective-Record)
+[![Build Status](https://travis-ci.org/mneorr/ObjectiveRecord.png?branch=master)](https://travis-ci.org/mneorr/ObjectiveRecord)
 
 #### Usage
 1. Install with [CocoaPods](http://cocoapods.org) or clone
