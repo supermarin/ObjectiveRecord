@@ -270,14 +270,16 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
         
         it(@"Finds all in a separate context", ^{
-            NSManagedObjectContext *anotherContext = createNewContext();
+            __block NSManagedObjectContext *anotherContext = createNewContext();
+            __block NSArray *newPeople;
+
             [anotherContext performBlock:^{
                 [Person deleteAll];
                 createSomePeople(names, surnames, anotherContext);
-                NSLog(@"is on main? %@", @([NSThread isMainThread]));
-                [[anotherContext should] receive:@selector(executeFetchRequest:error:)];
-                [[[Person allInContext:anotherContext] should] haveCountOf:names.count];
+                newPeople = [Person allInContext:anotherContext];
             }];
+
+            [[expectFutureValue(newPeople) shouldEventually] haveCountOf:names.count];
         });
         
         it(@"Deletes all from context", ^{
