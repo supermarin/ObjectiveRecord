@@ -46,6 +46,11 @@
     return [self where:condition];
 }
 
++ (instancetype)findOrCreate:(NSDictionary *)properties {
+    NSManagedObject *existing = [self where:properties].first;
+    return existing ?: [self create:properties];
+}
+
 + (NSArray *)where:(id)condition {
     return [self where:condition inContext:[NSManagedObjectContext defaultContext]];
 }
