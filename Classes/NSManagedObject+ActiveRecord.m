@@ -58,6 +58,16 @@
     return [self fetchWithPredicate:predicate inContext:context];
 }
 
++ (instancetype)findOrCreate:(NSDictionary *)attributes {
+    NSArray *objects = [self where:attributes];
+    
+    if (objects.count < 1)
+        return [self create:attributes];
+    else
+        return objects.firstObject;
+    
+    return nil;
+}
 
 #pragma mark - Creation / Deletion
 

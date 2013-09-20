@@ -30,7 +30,7 @@
 + (NSArray *)all;
 + (NSArray *)where:(id)condition;
 + (NSArray *)whereFormat:(NSString *)format, ...;
-
++ (instancetype)findOrCreate:(NSDictionary *)attributes;
 
 #pragma mark - Custom Context
 

@@ -92,6 +92,22 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[person.isMember should] equal:theValue(YES)];
         });
         
+        it(@"Finds and creates if there was no object", ^{
+            [Person deleteAll];
+            Person *luis = [Person findOrCreate:@{ @"firstName": @"Luis" }];
+            [[luis.firstName should] equal:@"Luis"];
+        });
+        
+        it(@"doesn't create duplicate objects on findOrCreate", ^{
+            [Person deleteAll];
+            
+            [@4 times:^{
+                [Person findOrCreate:@{ @"firstName": @"Luis" }];
+            }];
+            
+            [[[Person all] should] haveCountOf:1];
+        });
+
     });
     
     
