@@ -48,12 +48,12 @@ describe(@"Find / Create / Save / Delete specs", ^{
     NSArray *names = @[@"John", @"Steve", @"Neo", UNIQUE_NAME];
     NSArray *surnames = @[@"Doe", @"Jobs", @"Anderson", UNIQUE_SURNAME];
     
-    beforeEach(^{
+    beforeAll(^{
         [Person deleteAll];
         createSomePeople(names, surnames, NSManagedObjectContext.defaultContext);
     });
     
-    afterEach(^{
+    afterAll(^{
         [Person deleteAll];
     });
     
@@ -90,43 +90,6 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[person.lastName should] equal:@"Doe"];
             [[person.age should] equal:@0];
             [[person.isMember should] equal:theValue(YES)];
-        });
-
-        context(@"find or create", ^{
-            beforeEach(^{
-                [Person deleteAll];
-            });
-            context(@"when the object exists", ^{
-                __block Person *marin;
-                beforeEach(^{
-                    marin = [Person create:@{@"firstName": @"Marin"}];
-                });
-                it(@"does not create a new object", ^{
-
-                    [Person findOrCreate:@{@"firstName": @"Marin"}];
-                    [[theValue(Person.all.count) should] equal:theValue(1)];
-
-                });
-                it(@"returns that object", ^{
-
-                    Person *result = [Person findOrCreate:@{@"firstName": @"Marin"}];
-                    [[result.firstName should] equal:@"Marin"];
-                });
-            });
-
-            context(@"when no object matches the specified criteria", ^{
-                it(@"creates a new instance", ^{
-                    [Person findOrCreate:@{@"firstName": @"Marin"}];
-                    [[theValue(Person.all.count) should] equal:theValue(1)];
-                });
-
-                it(@"returns the new instance", ^{
-                    Person *marin = [Person findOrCreate:@{@"firstName": @"Marin"}];
-
-                    [[marin.firstName should] equal:@"Marin"];
-                });
-            });
-
         });
         
     });
