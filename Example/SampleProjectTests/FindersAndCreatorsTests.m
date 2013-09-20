@@ -20,8 +20,6 @@ static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
 Person *fetchUniquePerson() {
     Person *person = [Person where:[NSString stringWithFormat:@"firstName = '%@' AND lastName = '%@'",
                                     UNIQUE_NAME, UNIQUE_SURNAME]].first;
-    
-    NSLog(@"fetched person... %@", person);
     return person;
 }
 
