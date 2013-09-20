@@ -48,12 +48,12 @@ describe(@"Find / Create / Save / Delete specs", ^{
     NSArray *names = @[@"John", @"Steve", @"Neo", UNIQUE_NAME];
     NSArray *surnames = @[@"Doe", @"Jobs", @"Anderson", UNIQUE_SURNAME];
     
-    beforeAll(^{
+    beforeEach(^{
         [Person deleteAll];
         createSomePeople(names, surnames, NSManagedObjectContext.defaultContext);
     });
     
-    afterAll(^{
+    afterEach(^{
         [Person deleteAll];
     });
     
