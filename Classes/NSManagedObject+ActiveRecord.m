@@ -64,7 +64,7 @@
     if (objects.count < 1)
         return [self create:attributes];
     else
-        return objects.firstObject;
+        return objects.lastObject;
     
     return nil;
 }
