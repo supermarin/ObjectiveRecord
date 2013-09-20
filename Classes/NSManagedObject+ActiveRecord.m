@@ -63,7 +63,6 @@
     return [self fetchWithPredicate:predicate inContext:context];
 }
 
-
 #pragma mark - Creation / Deletion
 
 + (id)create {
