@@ -46,11 +46,6 @@
     return [self where:condition];
 }
 
-+ (instancetype)findOrCreate:(NSDictionary *)properties {
-    NSManagedObject *existing = [self where:properties].first;
-    return existing ?: [self create:properties];
-}
-
 + (NSArray *)where:(id)condition {
     return [self where:condition inContext:[NSManagedObjectContext defaultContext]];
 }
@@ -63,6 +58,16 @@
     return [self fetchWithPredicate:predicate inContext:context];
 }
 
++ (instancetype)findOrCreate:(NSDictionary *)attributes {
+    NSArray *objects = [self where:attributes];
+    
+    if (objects.count < 1)
+        return [self create:attributes];
+    else
+        return objects.lastObject;
+    
+    return nil;
+}
 
 #pragma mark - Creation / Deletion
 

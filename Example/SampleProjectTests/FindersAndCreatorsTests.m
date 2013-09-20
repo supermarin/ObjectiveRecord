@@ -91,44 +91,23 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[person.age should] equal:@0];
             [[person.isMember should] equal:theValue(YES)];
         });
-
-        context(@"find or create", ^{
-            beforeEach(^{
-                [Person deleteAll];
-            });
-            context(@"when the object exists", ^{
-                __block Person *marin;
-                beforeEach(^{
-                    marin = [Person create:@{@"firstName": @"Marin"}];
-                });
-                it(@"does not create a new object", ^{
-
-                    [Person findOrCreate:@{@"firstName": @"Marin"}];
-                    [[theValue(Person.all.count) should] equal:theValue(1)];
-
-                });
-                it(@"returns that object", ^{
-
-                    Person *result = [Person findOrCreate:@{@"firstName": @"Marin"}];
-                    [[result.firstName should] equal:@"Marin"];
-                });
-            });
-
-            context(@"when no object matches the specified criteria", ^{
-                it(@"creates a new instance", ^{
-                    [Person findOrCreate:@{@"firstName": @"Marin"}];
-                    [[theValue(Person.all.count) should] equal:theValue(1)];
-                });
-
-                it(@"returns the new instance", ^{
-                    Person *marin = [Person findOrCreate:@{@"firstName": @"Marin"}];
-
-                    [[marin.firstName should] equal:@"Marin"];
-                });
-            });
-
+        
+        it(@"Finds and creates if there was no object", ^{
+            [Person deleteAll];
+            Person *luis = [Person findOrCreate:@{ @"firstName": @"Luis" }];
+            [[luis.firstName should] equal:@"Luis"];
         });
         
+        it(@"doesn't create duplicate objects on findOrCreate", ^{
+            [Person deleteAll];
+            
+            [@4 times:^{
+                [Person findOrCreate:@{ @"firstName": @"Luis" }];
+            }];
+            
+            [[[Person all] should] haveCountOf:1];
+        });
+
     });
     
     
