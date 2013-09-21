@@ -137,7 +137,9 @@
 				D5E6E703ADFB432282251ADF /* Pods.xcconfig */,
 				A5F4AE16E7FA4739830EBD2A /* Pods-SampleProjectTests.xcconfig */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		89F1EEA415A4C73B00AE4FB4 /* Products */ = {
 			isa = PBXGroup;
