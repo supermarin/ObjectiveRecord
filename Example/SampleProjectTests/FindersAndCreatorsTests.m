@@ -241,7 +241,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
         NSManagedObjectContext *newContext = createNewContext();
         
-        beforeAll(^{
+        beforeEach(^{
             [Person deleteAll];
             [newContext performBlockAndWait:^{
                 Person *newPerson = [Person createInContext:newContext];
@@ -270,8 +270,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
         it(@"Finds in a separate context", ^{
             [newContext performBlock:^{
-                [[newContext should] receive:@selector(executeFetchRequest:error:)];
-                Person *found = [Person where:@"firstName == 'Joshua'" inContext:newContext].first;
+                Person *found = [Person where:@{ @"firstName": @"Joshua" } inContext:newContext].first;
                 [[found.lastName should] equal:@"Jobs"];
             }];
         });
