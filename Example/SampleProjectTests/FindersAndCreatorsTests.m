@@ -287,6 +287,14 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
             [[expectFutureValue(newPeople) shouldEventually] haveCountOf:names.count];
         });
+      
+        it(@"Find or create in a separate context", ^{
+            [newContext performBlock:^{
+                [Person deleteAll];
+                Person *luis = [Person findOrCreate:@{ @"firstName": @"Luis" } inContext:newContext];
+                [[luis.firstName should] equal:@"Luis"];
+            }];
+        });
         
         it(@"Deletes all from context", ^{
             [Person deleteAllInContext:newContext];

@@ -47,7 +47,11 @@
 }
 
 + (instancetype)findOrCreate:(NSDictionary *)properties {
-    NSManagedObject *existing = [self where:properties].first;
+    return [self findOrCreate:properties inContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context {
+    NSManagedObject *existing = [self where:properties inContext:context].first;
     return existing ?: [self create:properties];
 }
 

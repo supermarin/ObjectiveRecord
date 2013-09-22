@@ -41,8 +41,7 @@
 
 + (NSArray *)allInContext:(NSManagedObjectContext *)context;
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context;
-
-
++ (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context;
 
 #pragma mark - Naming
 
