@@ -95,12 +95,18 @@
     unless([attributes exists]) return;
     
     [attributes each:^(id key, id value) {
-        id remoteKey = [self keyForRemoteKey:key];
-        
-        if ([remoteKey isKindOfClass:[NSString class]])
-            [self setSafeValue:value forKey:remoteKey];
-        else
-            [self hydrateObject:value ofClass:remoteKey[@"class"] forKey:remoteKey[@"key"] ?: key];
+        // Try catch is there to prevent crash when unexpected keys are passed in
+        @try {
+            id remoteKey = [self keyForRemoteKey:key];
+            
+            if ([remoteKey isKindOfClass:[NSString class]])
+                [self setValue:value forKey:remoteKey];
+            else
+                [self hydrateObject:value ofClass:remoteKey[@"class"] forKey:remoteKey[@"key"] ?: key];
+        }
+        @catch (NSException *exception) {
+            
+        }
     }];
 }
 
