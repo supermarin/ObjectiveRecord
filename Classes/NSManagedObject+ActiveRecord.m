@@ -174,7 +174,7 @@
     [request setPredicate:predicate];
     
     NSArray *fetchedObjects = [context executeFetchRequest:request error:nil];
-    return fetchedObjects.count > 0 ? fetchedObjects : nil;
+    return fetchedObjects;
 }
 
 - (BOOL)saveTheContext {
