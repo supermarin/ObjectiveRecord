@@ -134,13 +134,11 @@
 
 + (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict
 {
-    NSArray *keys = [[dict keysOfEntriesPassingTest:^(id k, id o, BOOL *s){return YES;}] allObjects];
-    NSString *formatString = [[keys map:^NSString *(NSString *key){
-        return [key stringByAppendingString:@" == %@"];
-    }] componentsJoinedByString:@" AND "];
-    NSArray *args = [keys map:^(NSString *key){return dict[key];}];
+    NSArray *subpredicates = [dict map:^(id key, id value) {
+        return [NSPredicate predicateWithFormat:@"%K == %@", key, value];
+    }];
 
-    return [NSPredicate predicateWithFormat:formatString argumentArray:args];
+    return [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
 }
 
 + (NSPredicate *)predicateFromStringOrDict:(id)condition {
