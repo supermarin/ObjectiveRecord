@@ -36,6 +36,7 @@ void createSomePeople(NSArray *names, NSArray *surnames, NSManagedObjectContext 
         person.lastName = surnames[i];
         person.age = @(i);
         person.isMember = @YES;
+        person.anniversary = [NSDate dateWithTimeIntervalSince1970:0];
         [person save];
     }
 }
@@ -78,13 +79,15 @@ describe(@"Find / Create / Save / Delete specs", ^{
                 @"firstName": @"John",
                 @"lastName": @"Doe",
                 @"age": @0,
-                @"isMember": @1
+                @"isMember": @1,
+                @"anniversary": [NSDate dateWithTimeIntervalSince1970:0]
             }].first;
             
             [[person.firstName should] equal:@"John"];
             [[person.lastName should] equal:@"Doe"];
             [[person.age should] equal:@0];
             [[person.isMember should] equal:theValue(YES)];
+            [[person.anniversary should] equal:[NSDate dateWithTimeIntervalSince1970:0]];
         });
 
         it(@"Finds and creates if there was no object", ^{

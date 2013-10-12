@@ -60,10 +60,10 @@
 }
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
-    
+
     NSPredicate *predicate = ([condition isKindOfClass:[NSPredicate class]]) ? condition
                                                                              : [self predicateFromStringOrDict:condition];
-    
+
     return [self fetchWithPredicate:predicate inContext:context];
 }
 
@@ -79,10 +79,10 @@
 
 + (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
     unless([attributes exists]) return nil;
-    
+
     NSManagedObject *newEntity = [self createInContext:context];
     [newEntity update:attributes];
-    
+
     return newEntity;
 }
 
@@ -93,10 +93,10 @@
 
 - (void)update:(NSDictionary *)attributes {
     unless([attributes exists]) return;
-    
+
     [attributes each:^(id key, id value) {
         id remoteKey = [self keyForRemoteKey:key];
-        
+
         if ([remoteKey isKindOfClass:[NSString class]])
             [self setSafeValue:value forKey:remoteKey];
         else
@@ -126,36 +126,29 @@
 #pragma mark - Naming
 
 + (NSString *)entityName {
-    
+
     return NSStringFromClass(self);
 }
 
 #pragma mark - Private
 
-+ (NSString *)queryStringFromDictionary:(NSDictionary *)conditions {
-    NSMutableString *queryString = [NSMutableString new];
-    
-    [conditions each:^(id attribute, id value) {
-        if ([value isKindOfClass:[NSString class]])
-            [queryString appendFormat:@"%@ == '%@'", attribute, value];
-        else
-            [queryString appendFormat:@"%@ == %@", attribute, value];
-        
-        if (attribute == conditions.allKeys.last) return;
-        [queryString appendString:@" AND "];
++ (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict
+{
+    NSArray *subpredicates = [dict map:^(id key, id value) {
+        return [NSPredicate predicateWithFormat:@"%K == %@", key, value];
     }];
 
-    return queryString;
+    return [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
 }
 
 + (NSPredicate *)predicateFromStringOrDict:(id)condition {
-    
+
     if ([condition isKindOfClass:[NSString class]])
         return [NSPredicate predicateWithFormat:condition];
-    
+
     else if ([condition isKindOfClass:[NSDictionary class]])
-        return [NSPredicate predicateWithFormat:[self queryStringFromDictionary:condition]];
-    
+        return [self predicateFromDictionary:condition];
+
     return nil;
 }
 
@@ -169,10 +162,10 @@
 
 + (NSArray *)fetchWithPredicate:(NSPredicate *)predicate
                       inContext:(NSManagedObjectContext *)context {
-    
+
     NSFetchRequest *request = [self createFetchRequestInContext:context];
     [request setPredicate:predicate];
-    
+
     NSArray *fetchedObjects = [context executeFetchRequest:request error:nil];
     return fetchedObjects.count > 0 ? fetchedObjects : nil;
 }
@@ -180,7 +173,7 @@
 - (BOOL)saveTheContext {
     if (self.managedObjectContext == nil ||
         ![self.managedObjectContext hasChanges]) return YES;
-    
+
     NSError *error = nil;
     BOOL save = [self.managedObjectContext save:&error];
 
@@ -188,7 +181,7 @@
         NSLog(@"Unresolved error in saving context for entity:\n%@!\nError: %@", self, error);
         return NO;
     }
-    
+
     return YES;
 }
 
@@ -198,22 +191,22 @@
 }
 
 - (id)objectOrSetOfObjectsFromValue:(id)value ofClass:(Class)class {
-    
+
     if ([value isKindOfClass:[NSArray class]])
         return [NSSet setWithArray:[value map:^id(NSDictionary *dict) {
             return [class create:dict inContext:self.managedObjectContext];
         }]];
-    
+
     else return [class create:value inContext:self.managedObjectContext];
 }
 
 - (void)setSafeValue:(id)value forKey:(id)key {
-    
+
     if (value == nil || value == [NSNull null]) return;
-    
+
     NSDictionary *attributes = [[self entity] attributesByName];
     NSAttributeType attributeType = [[attributes objectForKey:key] attributeType];
-    
+
     if ((attributeType == NSStringAttributeType) && ([value isKindOfClass:[NSNumber class]]))
         value = [value stringValue];
 
@@ -224,11 +217,11 @@
 
         else if (attributeType == NSFloatAttributeType)
             value = [NSNumber numberWithDouble:[value doubleValue]];
-        
+
         else if (attributeType == NSDateAttributeType)
             value = [self.defaultFormatter dateFromString:value];
     }
-    
+
     [self setValue:value forKey:key];
 }
 
@@ -248,7 +241,7 @@
         sharedFormatter = [[NSDateFormatter alloc] init];
         [sharedFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss z"];
     });
-    
+
     return sharedFormatter;
 }
 
