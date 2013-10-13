@@ -18,7 +18,11 @@ john.name = @"John";
 [john save];
 [john delete];
 
-[Person create:@{ @"name" : @"John", @"age" : @12, @"member" : @NO }];
+[Person create:@{ 
+    @"name" : @"John",
+    @"age" : @12, 
+    @"member" : @NO 
+}];
 ```
 
 #### Finders
