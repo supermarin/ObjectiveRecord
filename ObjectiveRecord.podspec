@@ -1,4 +1,4 @@
-@version = "1.3.1"
+@version = "1.4.0"
 
 Pod::Spec.new do |s|
   s.name         = "ObjectiveRecord"
