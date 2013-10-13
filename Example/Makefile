@@ -1,8 +1,7 @@
 PROJECT_NAME=SampleProject
 WORKSPACE=$(PROJECT_NAME).xcworkspace
 DEFAULT_SCHEME=$(PROJECT_NAME)
-#TESTING_TOOL=xctool
-TESTING_TOOL=xcodebuild
+TESTING_TOOL=xctool
 
 clean:
 	$(TESTING_TOOL) -workspace $(WORKSPACE) -scheme $(DEFAULT_SCHEME) \
