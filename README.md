@@ -44,7 +44,7 @@ NSArray *people = [Person where:@{
                       @"state" : @"NY"
                   }];
 
-// I wanna be fancy and write my own NSPredicate
+// You can even write your own NSPredicate
 NSPredicate *membersPredicate = [NSPredicate  predicateWithBlock:^BOOL(Person *person, NSDictionary *bindings) {
     return person.isMember == YES;
 }];
@@ -65,8 +65,8 @@ NSArray *people = [Person allInContext:newContext];
 #### Custom CoreData model or .sqlite database
 If you've added the Core Data manually, you can change the custom model and database name on CoreDataManager
 ``` objc
-[CoreDataManager instance].modelName = @"MyModelName";
-[CoreDataManager instance].databaseName = @"custom_database_name";
+[CoreDataManager sharedManager].modelName = @"MyModelName";
+[CoreDataManager sharedManager].databaseName = @"custom_database_name";
 ```
 
 #### Examples
