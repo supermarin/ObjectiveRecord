@@ -97,7 +97,7 @@ john.surname = @"Wayne";
 The most of the time, your JSON web service returns keys like `first_name`, `last_name`, etc. <br/>
 Your ObjC implementation has camelCased properties - `firstName`, `lastName`.<br/>
 
-Since v1.2, camel case is supported automatically - you don't have to do nothing! Otherwise, if you have more complex mapping, here's how you do it:
+Since v1.2, camel case is supported automatically - you don't have to do anything! Otherwise, if you have more complex mapping, here's how you do it:
 
 ``` objc
 // just override - mappings in your NSManagedObject subclass
