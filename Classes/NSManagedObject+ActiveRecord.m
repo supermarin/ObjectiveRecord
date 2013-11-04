@@ -38,12 +38,12 @@
 }
 
 + (NSArray *)whereFormat:(NSString *)format, ... {
-    va_list va_arguments;
-    va_start(va_arguments, format);
-    NSString *condition = [[NSString alloc] initWithFormat:format arguments:va_arguments];
-    va_end(va_arguments);
+  va_list va_arguments;
+  va_start(va_arguments, format);
+  NSPredicate *predicate = [NSPredicate predicateWithFormat:format arguments:va_arguments];
+  va_end(va_arguments);
 
-    return [self where:condition];
+  return [self where:predicate];
 }
 
 + (instancetype)findOrCreate:(NSDictionary *)properties {
