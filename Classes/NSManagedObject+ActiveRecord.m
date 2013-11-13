@@ -52,7 +52,7 @@
 
 + (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context {
     NSManagedObject *existing = [self where:properties inContext:context].first;
-    return existing ?: [self create:properties];
+    return existing ?: [self create:properties inContext:context];
 }
 
 + (NSArray *)where:(id)condition {
