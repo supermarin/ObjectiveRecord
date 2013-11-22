@@ -219,7 +219,7 @@
             value = [NSNumber numberWithDouble:[value doubleValue]];
 
         else if (attributeType == NSDateAttributeType)
-            value = [self.defaultFormatter dateFromString:value];
+            value = [self.formatter dateFromString:value];
     }
 
     [self setValue:value forKey:key];
@@ -234,15 +234,25 @@
 
 #pragma mark - Date Formatting
 
-- (NSDateFormatter *)defaultFormatter {
-    static NSDateFormatter *sharedFormatter;
-    static dispatch_once_t singletonToken;
-    dispatch_once(&singletonToken, ^{
-        sharedFormatter = [[NSDateFormatter alloc] init];
-        [sharedFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss z"];
-    });
+static NSDateFormatter *sharedFormatter;
+static dispatch_once_t singletonToken;
 
++(NSDateFormatter *)sharedFormatter{
+    dispatch_once(&singletonToken, ^{
+        if(!sharedFormatter){
+            sharedFormatter = [[NSDateFormatter alloc] init];
+            [sharedFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss z"];
+        }
+    });
     return sharedFormatter;
+}
+
+- (NSDateFormatter *)formatter {
+    return [NSManagedObject sharedFormatter];
+}
+
++ (void)setFormatter:(NSString *)newFormatter {
+    [sharedFormatter setDateFormat:newFormatter];
 }
 
 @end

@@ -176,6 +176,18 @@ describe(@"Find / Create / Save / Delete specs", ^{
             Person *person = [Person create:@{ @"anniversary": [formatta stringFromDate:date] }];
             [[@([date timeIntervalSinceDate:person.anniversary]) should] beLessThan:@1];
         });
+            
+        it(@"converts string from specified date format", ^{
+            [NSManagedObject setFormatter:@"HH:mm:ss"];
+            Person *person = [Person create:@{ @"anniversary": @"12:24:05" }];
+            [person.anniversary shouldNotBeNil];
+        });
+        
+        it(@"can't convert string from specified date format", ^{
+            [NSManagedObject setFormatter:@"yyyy HH:mm:ss"];
+            Person *person = [Person create:@{ @"anniversary": @"12:24:05" }];
+            [person.anniversary shouldBeNil];
+        });
         
         it(@"doesn't update with nulls", ^{
             Person *person = fetchUniquePerson();
