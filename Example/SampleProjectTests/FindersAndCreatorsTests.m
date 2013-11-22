@@ -121,11 +121,11 @@ describe(@"Find / Create / Save / Delete specs", ^{
             Person *person = [Person create:@{
                 @"firstName": @"Marin",
                 @"lastName": @"Usalj",
-                @"age": @24
+                @"age": @25
             }];
             [[person.firstName should] equal:@"Marin"];
             [[person.lastName should] equal:@"Usalj"];
-            [[person.age should] equal:theValue(24)];
+            [[person.age should] equal:theValue(25)];
         });
         
         it(@"Doesn't create with nulls", ^{
@@ -159,8 +159,8 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
         
         it(@"converts strings to integers", ^{
-            Person *person = [Person create:@{ @"age": @"24" }];
-            [[person.age should] equal:@24];
+            Person *person = [Person create:@{ @"age": @"25" }];
+            [[person.age should] equal:@25];
         });
         
         it(@"converts strings to floats", ^{
