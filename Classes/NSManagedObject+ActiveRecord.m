@@ -219,7 +219,7 @@
             value = [NSNumber numberWithDouble:[value doubleValue]];
 
         else if (attributeType == NSDateAttributeType)
-            value = [self.formatter dateFromString:value];
+            value = [self.dateFormatter dateFromString:value];
     }
 
     [self setValue:value forKey:key];
@@ -247,12 +247,12 @@ static dispatch_once_t singletonToken;
     return sharedFormatter;
 }
 
-- (NSDateFormatter *)formatter {
+- (NSDateFormatter *)dateFormatter {
     return [NSManagedObject sharedFormatter];
 }
 
-+ (void)setFormatter:(NSString *)newFormatter {
-    [sharedFormatter setDateFormat:newFormatter];
++ (void)setDateFormat:(NSString *)dateFormat {
+    [[NSManagedObject sharedFormatter] setDateFormat:dateFormat];
 }
 
 @end

@@ -49,6 +49,6 @@
 
 #pragma mark - Date Formatting
 
-+ (void)setFormatter:(NSString *)newFormatter;
++ (void)setDateFormat:(NSString *)dateFormat;
 
 @end
