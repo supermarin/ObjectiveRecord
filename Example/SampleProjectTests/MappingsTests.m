@@ -17,7 +17,7 @@ describe(@"Mappings", ^{
     NSDictionary *JSON = @{
         @"first_name": @"Marin",
         @"last_name": @"Usalj",
-        @"age": @24,
+        @"age": @25,
         @"is_member": @YES,
         @"cars": @[
                @{ @"hp": @220, @"make": @"Trabant" },
@@ -56,7 +56,7 @@ describe(@"Mappings", ^{
     it(@"uses mapped values when creating", ^{
         [[person.firstName should] equal:@"Marin"];
         [[person.lastName should] equal:@"Usalj"];
-        [[person.age should] equal:@24];
+        [[person.age should] equal:@25];
     });
     
     it(@"can support snake_case even without mappings", ^{
