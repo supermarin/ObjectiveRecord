@@ -35,7 +35,7 @@ NSArray *people = [Person all];
 NSArray *johns = [Person where:@"name == 'John'"];
 
 // And of course, John Doe!
-Person *johnDoe = [Person where:@"name == 'John' AND surname == 'Doe'"].first;
+Person *johnDoe = [Person find:@"name == 'John' AND surname == 'Doe'"];
 
 // Members over 18 from NY
 NSArray *people = [Person where:@{ 
@@ -58,7 +58,7 @@ NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithCon
 newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
 
 Person *john = [Person createInContext:newContext];
-Person *john = [Person where:@"name == 'John'" inContext:newContext].first;
+Person *john = [Person find:@"name == 'John'" inContext:newContext];
 NSArray *people = [Person allInContext:newContext];
 ```
 

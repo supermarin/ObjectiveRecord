@@ -31,6 +31,7 @@
 + (NSArray *)where:(id)condition;
 + (NSArray *)whereFormat:(NSString *)format, ...;
 + (instancetype)findOrCreate:(NSDictionary *)attributes;
++ (instancetype)find:(NSDictionary *)attributes;
 
 #pragma mark - Custom Context
 
@@ -42,6 +43,7 @@
 + (NSArray *)allInContext:(NSManagedObjectContext *)context;
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context;
 + (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context;
++ (instancetype)find:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
 
 #pragma mark - Naming
 

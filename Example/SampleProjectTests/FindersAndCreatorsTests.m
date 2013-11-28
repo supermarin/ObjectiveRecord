@@ -104,6 +104,16 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[[Person all] should] haveCountOf:1];
         });
 
+        it(@"Finds the first match", ^{
+            Person *johnDoe = [Person find:@{ @"firstName": @"John",
+                                              @"lastName": @"Doe" }];
+            [[johnDoe.firstName should] equal:@"John"];
+        });
+
+        it(@"doesn't create an object on find", ^{
+            Person *cat = [Person find:@{ @"firstName": @"Cat" }];
+            [cat shouldBeNil];
+        });
     });
     
     
@@ -290,7 +300,15 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
             [[expectFutureValue(newPeople) shouldEventually] haveCountOf:names.count];
         });
-      
+
+        it(@"Finds the first match in a separate context", ^{
+            NSDictionary *attributes = @{ @"firstName": @"Joshua",
+                                          @"lastName": @"Jobs" };
+            Person *joshua = [Person find:attributes inContext:newContext];
+            [[joshua.firstName should] equal:@"Joshua"];
+        });
+
+
         it(@"Find or create in a separate context", ^{
             [newContext performBlock:^{
                 [Person deleteAll];
