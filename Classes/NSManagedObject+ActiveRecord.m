@@ -34,7 +34,7 @@
 }
 
 + (NSArray *)allInContext:(NSManagedObjectContext *)context {
-    return [self fetchWithPredicate:nil inContext:context fetchLimit:nil];
+    return [self fetchWithPredicate:nil inContext:context];
 }
 
 + (NSArray *)whereFormat:(NSString *)format, ... {
@@ -173,6 +173,10 @@
                                               inManagedObjectContext:context];
     [request setEntity:entity];
     return request;
+}
+
++ (NSArray *)fetchWithPredicate:(NSPredicate *)predicate inContext:(NSManagedObjectContext *)context {
+    return [self fetchWithPredicate:predicate inContext:context fetchLimit:nil];
 }
 
 + (NSArray *)fetchWithPredicate:(NSPredicate *)predicate
