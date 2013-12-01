@@ -116,7 +116,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
 
         it(@"Finds a limited number of results", ^{
-            [@2 times:^{
+            [@4 times:^{
                 Person *newPerson = [Person create];
                 newPerson.firstName = @"John";
                 [newPerson save];
@@ -318,7 +318,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
 
         it(@"Finds a limited number of results in a separate context", ^{
-            [@2 times:^{
+            [@4 times:^{
                 [newContext performBlockAndWait:^{
                     Person *newPerson = [Person createInContext:newContext];
                     newPerson.firstName = @"Joshua";
