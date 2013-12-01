@@ -76,9 +76,9 @@
 }
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit {
-
-    NSPredicate *predicate = ([condition isKindOfClass:[NSPredicate class]]) ? condition
-                                                                             : [self predicateFromStringOrDict:condition];
+    NSPredicate *predicate = ([condition isKindOfClass:[NSPredicate class]])
+                                ? condition
+                                : [self predicateFromStringOrDict:condition];
 
     return [self fetchWithPredicate:predicate inContext:context fetchLimit:limit];
 }
@@ -126,7 +126,6 @@
 
 - (void)delete {
     [self.managedObjectContext deleteObject:self];
-//    [self saveTheContext];
 }
 
 + (void)deleteAll {

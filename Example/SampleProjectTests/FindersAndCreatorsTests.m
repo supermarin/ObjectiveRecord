@@ -121,7 +121,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
                 newPerson.firstName = @"John";
                 [newPerson save];
             }];
-            [[[Person where:@{ @"firstName": @"John"} limit:@2] should] haveCountOf:2];
+            [[[Person where:@{ @"firstName": @"John" } limit:@2] should] haveCountOf:2];
         });
     });
     
