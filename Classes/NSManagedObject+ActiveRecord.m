@@ -55,16 +55,32 @@
     return existing ?: [self create:properties inContext:context];
 }
 
++ (instancetype)find:(NSDictionary *)attributes {
+    return [self find:attributes inContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (instancetype)find:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
+    return [self where:attributes inContext:context limit:@1].first;
+}
+
 + (NSArray *)where:(id)condition {
     return [self where:condition inContext:[NSManagedObjectContext defaultContext]];
 }
 
++ (NSArray *)where:(id)condition limit:(NSNumber *)limit {
+    return [self where:condition inContext:[NSManagedObjectContext defaultContext] limit:limit];
+}
+
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
+    return [self where:condition inContext:context limit:nil];
+}
+
++ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit {
 
     NSPredicate *predicate = ([condition isKindOfClass:[NSPredicate class]]) ? condition
                                                                              : [self predicateFromStringOrDict:condition];
 
-    return [self fetchWithPredicate:predicate inContext:context];
+    return [self fetchWithPredicate:predicate inContext:context fetchLimit:limit];
 }
 
 #pragma mark - Creation / Deletion
@@ -132,8 +148,7 @@
 
 #pragma mark - Private
 
-+ (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict
-{
++ (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict {
     NSArray *subpredicates = [dict map:^(id key, id value) {
         return [NSPredicate predicateWithFormat:@"%K == %@", key, value];
     }];
@@ -160,11 +175,17 @@
     return request;
 }
 
++ (NSArray *)fetchWithPredicate:(NSPredicate *)predicate inContext:(NSManagedObjectContext *)context {
+    return [self fetchWithPredicate:predicate inContext:context fetchLimit:nil];
+}
+
 + (NSArray *)fetchWithPredicate:(NSPredicate *)predicate
-                      inContext:(NSManagedObjectContext *)context {
+                      inContext:(NSManagedObjectContext *)context
+                     fetchLimit:(NSNumber *)fetchLimit {
 
     NSFetchRequest *request = [self createFetchRequestInContext:context];
     [request setPredicate:predicate];
+    if (fetchLimit) [request setFetchLimit:[fetchLimit integerValue]];
 
     return [context executeFetchRequest:request error:nil];
 }

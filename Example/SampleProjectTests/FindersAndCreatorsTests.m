@@ -104,6 +104,25 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[[Person all] should] haveCountOf:1];
         });
 
+        it(@"Finds the first match", ^{
+            Person *johnDoe = [Person find:@{ @"firstName": @"John",
+                                              @"lastName": @"Doe" }];
+            [[johnDoe.firstName should] equal:@"John"];
+        });
+
+        it(@"doesn't create an object on find", ^{
+            Person *cat = [Person find:@{ @"firstName": @"Cat" }];
+            [cat shouldBeNil];
+        });
+
+        it(@"Finds a limited number of results", ^{
+            [@4 times:^{
+                Person *newPerson = [Person create];
+                newPerson.firstName = @"John";
+                [newPerson save];
+            }];
+            [[[Person where:@{ @"firstName": @"John"} limit:@2] should] haveCountOf:2];
+        });
     });
     
     
@@ -291,7 +310,29 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
             [[newPeople should] haveCountOf:names.count];
         });
-      
+
+        it(@"Finds the first match in a separate context", ^{
+            NSDictionary *attributes = @{ @"firstName": @"Joshua",
+                                          @"lastName": @"Jobs" };
+            Person *joshua = [Person find:attributes inContext:newContext];
+            [[joshua.firstName should] equal:@"Joshua"];
+        });
+
+        it(@"Finds a limited number of results in a separate context", ^{
+            [@4 times:^{
+                [newContext performBlockAndWait:^{
+                    Person *newPerson = [Person createInContext:newContext];
+                    newPerson.firstName = @"Joshua";
+                    [newPerson save];
+                }];
+            }];
+            NSArray *people = [Person where:@{ @"firstName": @"Joshua"}
+                                  inContext:newContext
+                                      limit:@2];
+            [[people should] haveCountOf:2];
+        });
+
+
         it(@"Find or create in a separate context", ^{
             [newContext performBlockAndWait:^{
                 Person *luis = [Person findOrCreate:@{ @"firstName": @"Luis" } inContext:newContext];
