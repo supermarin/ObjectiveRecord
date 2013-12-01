@@ -75,6 +75,11 @@ describe(@"Mappings", ^{
        [[[person should] have:3] employees];
     });
     
+    it(@"uses mappings in findOrCreate", ^{
+        Person *bob = [Person findOrCreate:@{ @"first_name": @"Bob" }];
+        [[bob.firstName should] equal:@"Bob"];
+    });
+    
 });
 
 SPEC_END
