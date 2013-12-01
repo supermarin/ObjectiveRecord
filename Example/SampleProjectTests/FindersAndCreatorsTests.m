@@ -114,6 +114,15 @@ describe(@"Find / Create / Save / Delete specs", ^{
             Person *cat = [Person find:@{ @"firstName": @"Cat" }];
             [cat shouldBeNil];
         });
+
+        it(@"Finds a limited number of results", ^{
+            [@2 times:^{
+                Person *newPerson = [Person create];
+                newPerson.firstName = @"John";
+                [newPerson save];
+            }];
+            [[[Person where:@{ @"firstName": @"John"} limit:@2] should] haveCountOf:2];
+        });
     });
     
     
@@ -306,6 +315,20 @@ describe(@"Find / Create / Save / Delete specs", ^{
                                           @"lastName": @"Jobs" };
             Person *joshua = [Person find:attributes inContext:newContext];
             [[joshua.firstName should] equal:@"Joshua"];
+        });
+
+        it(@"Finds a limited number of results in a separate context", ^{
+            [@2 times:^{
+                [newContext performBlockAndWait:^{
+                    Person *newPerson = [Person createInContext:newContext];
+                    newPerson.firstName = @"Joshua";
+                    [newPerson save];
+                }];
+            }];
+            NSArray *people = [Person where:@{ @"firstName": @"Joshua"}
+                                  inContext:newContext
+                                      limit:@2];
+            [[people should] haveCountOf:2];
         });
 
 

@@ -67,6 +67,10 @@
     return [self where:condition inContext:[NSManagedObjectContext defaultContext]];
 }
 
++ (NSArray *)where:(id)condition limit:(NSNumber *)limit {
+    return [self where:condition inContext:[NSManagedObjectContext defaultContext] limit:limit];
+}
+
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
     return [self where:condition inContext:context limit:nil];
 }
