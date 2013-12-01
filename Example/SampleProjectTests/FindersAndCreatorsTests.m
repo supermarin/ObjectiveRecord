@@ -230,7 +230,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         
         it(@"Deletes everything from database with +deleteAll", ^{
             [Person deleteAll];
-            [[Person all] shouldBeNil];
+            [[[Person all] should] beEmpty];
         });
         
     });
@@ -302,7 +302,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         it(@"Deletes all from context", ^{
             [newContext performBlockAndWait:^{
                 [Person deleteAllInContext:newContext];
-                [[Person allInContext:newContext] shouldBeNil];
+                [[[Person allInContext:newContext] should] beEmpty];
             }];
         });
         

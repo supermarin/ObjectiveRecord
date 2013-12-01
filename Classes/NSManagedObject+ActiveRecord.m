@@ -166,8 +166,7 @@
     NSFetchRequest *request = [self createFetchRequestInContext:context];
     [request setPredicate:predicate];
 
-    NSArray *fetchedObjects = [context executeFetchRequest:request error:nil];
-    return fetchedObjects.count > 0 ? fetchedObjects : nil;
+    return [context executeFetchRequest:request error:nil];
 }
 
 - (BOOL)saveTheContext {
