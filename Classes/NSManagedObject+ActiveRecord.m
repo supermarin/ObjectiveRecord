@@ -110,7 +110,7 @@
 
 - (void)delete {
     [self.managedObjectContext deleteObject:self];
-    [self saveTheContext];
+//    [self saveTheContext];
 }
 
 + (void)deleteAll {

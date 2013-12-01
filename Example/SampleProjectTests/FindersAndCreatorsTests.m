@@ -224,15 +224,11 @@ describe(@"Find / Create / Save / Delete specs", ^{
         it(@"Deletes the object from database with -delete", ^{
             Person *person = fetchUniquePerson();
             [person shouldNotBeNil];
-            [[person.managedObjectContext should] receive:@selector(save:)];
             [person delete];
             [fetchUniquePerson() shouldBeNil];
         });
         
         it(@"Deletes everything from database with +deleteAll", ^{
-            [[[NSManagedObjectContext defaultContext] should] receive:@selector(save:)
-                                                            andReturn:nil
-                                                            withCount:[Person all].count];
             [Person deleteAll];
             [[Person all] shouldBeNil];
         });
@@ -242,10 +238,14 @@ describe(@"Find / Create / Save / Delete specs", ^{
     
     context(@"All from above, in a separate context!", ^{
 
-        NSManagedObjectContext *newContext = createNewContext();
+        __block NSManagedObjectContext *newContext;
         
         beforeEach(^{
             [Person deleteAll];
+            [NSManagedObjectContext.defaultContext save:nil];
+            
+            newContext = createNewContext();
+            
             [newContext performBlockAndWait:^{
                 Person *newPerson = [Person createInContext:newContext];
                 newPerson.firstName = @"Joshua";
@@ -256,15 +256,14 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
         
         it(@"Creates in a separate context", ^{
-            [[NSEntityDescription should] 
-             receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:) 
-             andReturn:nil 
-             withArguments:@"Person", newContext];
+            [[NSEntityDescription should] receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:)
+                                        andReturn:nil
+                                    withArguments:@"Person", newContext];
             
             [Person createInContext:newContext];
         });
         
-        it(@"Creates in a separate context", ^{
+        it(@"Creates with dictionary in a separate context", ^{
             [[NSEntityDescription should] receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:)
                                     withArguments:@"Person", newContext];
             
@@ -272,7 +271,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
         
         it(@"Finds in a separate context", ^{
-            [newContext performBlock:^{
+            [newContext performBlockAndWait:^{
                 Person *found = [Person where:@{ @"firstName": @"Joshua" } inContext:newContext].first;
                 [[found.lastName should] equal:@"Jobs"];
             }];
@@ -282,26 +281,29 @@ describe(@"Find / Create / Save / Delete specs", ^{
             __block NSManagedObjectContext *anotherContext = createNewContext();
             __block NSArray *newPeople;
 
-            [anotherContext performBlock:^{
+            [anotherContext performBlockAndWait:^{
                 [Person deleteAll];
+                [NSManagedObjectContext.defaultContext save:nil];
+                
                 createSomePeople(names, surnames, anotherContext);
                 newPeople = [Person allInContext:anotherContext];
             }];
 
-            [[expectFutureValue(newPeople) shouldEventually] haveCountOf:names.count];
+            [[newPeople should] haveCountOf:names.count];
         });
       
         it(@"Find or create in a separate context", ^{
-            [newContext performBlock:^{
-                [Person deleteAll];
+            [newContext performBlockAndWait:^{
                 Person *luis = [Person findOrCreate:@{ @"firstName": @"Luis" } inContext:newContext];
                 [[luis.firstName should] equal:@"Luis"];
             }];
         });
         
         it(@"Deletes all from context", ^{
-            [Person deleteAllInContext:newContext];
-            [[Person allInContext:newContext] shouldBeNil];
+            [newContext performBlockAndWait:^{
+                [Person deleteAllInContext:newContext];
+                [[Person allInContext:newContext] shouldBeNil];
+            }];
         });
         
     });
