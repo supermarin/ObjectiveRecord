@@ -5,10 +5,10 @@ TESTING_TOOL=xctool
 
 clean:
 	$(TESTING_TOOL) -workspace $(WORKSPACE) -scheme $(DEFAULT_SCHEME) \
-		-sdk iphonesimulator ONLY_ACTIVE_ARCH=NO clean
+		-sdk iphonesimulator clean
 test:
 	$(TESTING_TOOL) -workspace $(WORKSPACE) -scheme $(DEFAULT_SCHEME) \
-		-sdk iphonesimulator ONLY_ACTIVE_ARCH=NO test
+		-sdk iphonesimulator test
 
 install_pods:
 	pod install
