@@ -100,11 +100,11 @@ Your ObjC implementation has camelCased properties - `firstName`, `lastName`.<br
 Since v1.2, camel case is supported automatically - you don't have to do anything! Otherwise, if you have more complex mapping, here's how you do it:
 
 ``` objc
-// just override - mappings in your NSManagedObject subclass
+// just override +mappings in your NSManagedObject subclass
 // this method is called just once, so you don't have to do any caching / singletons
 @implementation Person
 
-- (NSDictionary *)mappings {
++ (NSDictionary *)mappings {
   return @{ 
       @"id": @"remoteID",
       @"mmbr": @"isMember",
