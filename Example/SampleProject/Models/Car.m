@@ -2,11 +2,12 @@
 //  Car.m
 //  SampleProject
 //
-//  Created by Marin Usalj on 5/31/13.
+//  Created by Marin Usalj on 12/3/13.
 //
 //
 
 #import "Car.h"
+#import "InsuranceCompany.h"
 #import "Person.h"
 
 
@@ -15,5 +16,6 @@
 @dynamic horsePower;
 @dynamic make;
 @dynamic owner;
+@dynamic insuranceCompany;
 
 @end

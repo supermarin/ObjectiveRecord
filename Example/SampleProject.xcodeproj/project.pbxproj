@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 496F953C174CCCBA00220FD1 /* OBRPerson.m */; };
 		6433E5B9184D89EC008EF278 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5B8184D89EC008EF278 /* Person.m */; };
+		6433E5C2184E83C2008EF278 /* InsuranceCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5C1184E83C2008EF278 /* InsuranceCompany.m */; };
+		6433E5C5184E83D6008EF278 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5C4184E83D6008EF278 /* Car.m */; };
+		6433E5C8184E88DB008EF278 /* InsuranceCompany+Mappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5C7184E88DB008EF278 /* InsuranceCompany+Mappings.m */; };
 		892C1E91165D54160077F2CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 892C1E90165D54160077F2CB /* Default-568h@2x.png */; };
 		8956CE641754EE6A00BD551C /* MappingsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8956CE631754EE6A00BD551C /* MappingsTests.m */; };
 		89702F25173E57AA00149BD5 /* SampleProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89F1EEBB15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld */; };
-		897AD0C11758CFD8006869BA /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 897AD0C01758CFD8006869BA /* Car.m */; };
 		897AD0C71758D99A006869BA /* Person+Mappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 897AD0C61758D99A006869BA /* Person+Mappings.m */; };
 		897AD0CA1758D9A6006869BA /* Car+Mappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 897AD0C91758D9A6006869BA /* Car+Mappings.m */; };
 		897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */; };
@@ -50,10 +52,14 @@
 		496F953C174CCCBA00220FD1 /* OBRPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRPerson.m; sourceTree = "<group>"; };
 		6433E5B7184D89EC008EF278 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		6433E5B8184D89EC008EF278 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		6433E5C0184E83C2008EF278 /* InsuranceCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceCompany.h; sourceTree = "<group>"; };
+		6433E5C1184E83C2008EF278 /* InsuranceCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceCompany.m; sourceTree = "<group>"; };
+		6433E5C3184E83D6008EF278 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
+		6433E5C4184E83D6008EF278 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		6433E5C6184E88DB008EF278 /* InsuranceCompany+Mappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InsuranceCompany+Mappings.h"; sourceTree = "<group>"; };
+		6433E5C7184E88DB008EF278 /* InsuranceCompany+Mappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "InsuranceCompany+Mappings.m"; sourceTree = "<group>"; };
 		892C1E90165D54160077F2CB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8956CE631754EE6A00BD551C /* MappingsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappingsTests.m; sourceTree = "<group>"; };
-		897AD0BF1758CFD8006869BA /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
-		897AD0C01758CFD8006869BA /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
 		897AD0C51758D99A006869BA /* Person+Mappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Person+Mappings.h"; path = "Categories/Person+Mappings.h"; sourceTree = "<group>"; };
 		897AD0C61758D99A006869BA /* Person+Mappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Person+Mappings.m"; path = "Categories/Person+Mappings.m"; sourceTree = "<group>"; };
 		897AD0C81758D9A6006869BA /* Car+Mappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Car+Mappings.h"; path = "Categories/Car+Mappings.h"; sourceTree = "<group>"; };
@@ -112,16 +118,20 @@
 		897D09F715B093F200722A8F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6433E5C3184E83D6008EF278 /* Car.h */,
+				6433E5C4184E83D6008EF278 /* Car.m */,
+				6433E5C0184E83C2008EF278 /* InsuranceCompany.h */,
+				6433E5C1184E83C2008EF278 /* InsuranceCompany.m */,
 				6433E5B7184D89EC008EF278 /* Person.h */,
 				6433E5B8184D89EC008EF278 /* Person.m */,
-				897AD0BF1758CFD8006869BA /* Car.h */,
-				897AD0C01758CFD8006869BA /* Car.m */,
 				496F953B174CCCBA00220FD1 /* OBRPerson.h */,
 				496F953C174CCCBA00220FD1 /* OBRPerson.m */,
 				897AD0C51758D99A006869BA /* Person+Mappings.h */,
 				897AD0C61758D99A006869BA /* Person+Mappings.m */,
 				897AD0C81758D9A6006869BA /* Car+Mappings.h */,
 				897AD0C91758D9A6006869BA /* Car+Mappings.m */,
+				6433E5C6184E88DB008EF278 /* InsuranceCompany+Mappings.h */,
+				6433E5C7184E88DB008EF278 /* InsuranceCompany+Mappings.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -373,12 +383,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6433E5C5184E83D6008EF278 /* Car.m in Sources */,
 				89F1EEB615A4C73B00AE4FB4 /* main.m in Sources */,
 				89F1EEBA15A4C73B00AE4FB4 /* AppDelegate.m in Sources */,
+				6433E5C8184E88DB008EF278 /* InsuranceCompany+Mappings.m in Sources */,
 				6433E5B9184D89EC008EF278 /* Person.m in Sources */,
+				6433E5C2184E83C2008EF278 /* InsuranceCompany.m in Sources */,
 				89F1EEBD15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld in Sources */,
 				496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */,
-				897AD0C11758CFD8006869BA /* Car.m in Sources */,
 				897AD0C71758D99A006869BA /* Person+Mappings.m in Sources */,
 				897AD0CA1758D9A6006869BA /* Car+Mappings.m in Sources */,
 			);

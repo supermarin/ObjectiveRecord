@@ -8,6 +8,7 @@
 
 #import "Car+Mappings.h"
 #import "Person+Mappings.h"
+#import "InsuranceCompany.h"
 
 @implementation Car (Mappings)
 
@@ -16,6 +17,10 @@
         @"hp": @"horsePower",
         @"owner": @{
             @"class": [Person class]
+        },
+        @"insurance_id": @{
+            @"key": @"insuranceCompany",
+            @"class": [InsuranceCompany class]
         }
     };
 }

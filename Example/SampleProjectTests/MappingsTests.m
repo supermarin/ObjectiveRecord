@@ -9,6 +9,7 @@
 #import "Kiwi.h"
 #import "Person+Mappings.h"
 #import "Car+Mappings.h"
+#import "InsuranceCompany.h"
 
 SPEC_BEGIN(MappingsTests)
 
@@ -37,6 +38,7 @@ describe(@"Mappings", ^{
     };
     
     __block Person *person;
+    
     NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     newContext.persistentStoreCoordinator = [[CoreDataManager sharedManager] persistentStoreCoordinator];
     
@@ -80,9 +82,9 @@ describe(@"Mappings", ^{
         [[bob.firstName should] equal:@"Bob"];
     });
     
-    xit(@"supports parent object fetched with a block", ^{
-        Car *car = [Car create:@{ @"hp": @150, @"person_id": @1234 }];
-        [[car.owner should] equal:[Car findOrCreate:@{ @"remoteID": @1234 }]];
+    it(@"supports creating a parent object using just ID from the server", ^{
+        Car *car = [Car create:@{ @"hp": @150, @"insurance_id": @1234 }];
+        [[car.insuranceCompany should] equal:[InsuranceCompany find:@{ @"remoteID": @1234 }]];
     });
     
 });

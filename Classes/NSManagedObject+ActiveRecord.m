@@ -210,13 +210,15 @@
 }
 
 - (id)objectOrSetOfObjectsFromValue:(id)value ofClass:(Class)class {
-
-    if ([value isKindOfClass:[NSArray class]])
+    if ([value isKindOfClass:[NSDictionary class]])
+        return [class findOrCreate:value inContext:self.managedObjectContext];
+    
+    else if ([value isKindOfClass:[NSArray class]])
         return [NSSet setWithArray:[value map:^id(NSDictionary *dict) {
             return [class findOrCreate:dict inContext:self.managedObjectContext];
         }]];
-
-    else return [class findOrCreate:value inContext:self.managedObjectContext];
+    else
+        return [class findOrCreate:@{ [class primaryKey]: value } inContext:self.managedObjectContext];
 }
 
 - (void)setSafeValue:(id)value forKey:(id)key {

@@ -16,4 +16,7 @@
 /// If your web service returns `first_name`, and locally you have `firstName` this method handles mapped keys
 + (id)keyForRemoteKey:(NSString *)key;
 
+/// The default unique identifier for your entity. Usually 'remoteID', or some sort of ID
++ (id)primaryKey;
+
 @end

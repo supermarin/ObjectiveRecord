@@ -3,7 +3,13 @@
     <entity name="Car" representedClassName="Car" syncable="YES">
         <attribute name="horsePower" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="make" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="insuranceCompany" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InsuranceCompany" inverseName="cars" inverseEntity="InsuranceCompany" syncable="YES"/>
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="cars" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="InsuranceCompany" representedClassName="InsuranceCompany" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="insuranceCompany" inverseEntity="Car" syncable="YES"/>
     </entity>
     <entity name="OtherPerson" syncable="YES"/>
     <entity name="Person" representedClassName="Person" syncable="YES">
@@ -22,5 +28,6 @@
         <element name="Car" positionX="0" positionY="0" width="0" height="0"/>
         <element name="OtherPerson" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Person" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="InsuranceCompany" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

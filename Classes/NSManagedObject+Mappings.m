@@ -62,5 +62,10 @@
     return nil;
 }
 
++ (id)primaryKey {
+    @throw [NSException exceptionWithName:NSStringWithFormat(@"Primary key undefined in %@", self.class)
+                                   reason:NSStringWithFormat(@"You need to override %@ +primaryKey if you want to support automatic creation with only object ID", self.class)
+                                 userInfo:nil];
+}
 
 @end
