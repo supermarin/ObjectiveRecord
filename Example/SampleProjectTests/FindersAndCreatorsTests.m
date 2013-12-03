@@ -203,7 +203,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[person.firstName should] equal:UNIQUE_NAME];
         });
         
-        xit(@"doesn't always create new relationship object", ^{
+        it(@"doesn't always create new relationship object", ^{
             Car *car = [Car create:@{ @"hp": @150, @"owner": @{ @"firstName": @"asetnset" } }];
             [@3 times:^{
                 [car update:@{ @"make": @"Porsche", @"owner": @{ @"firstName": @"asetnset" } }];

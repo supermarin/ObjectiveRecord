@@ -13,7 +13,10 @@
 
 + (NSDictionary *)mappings {
     return @{
-        @"hp": @"horsePower"
+        @"hp": @"horsePower",
+        @"owner": @{
+            @"class": [Person class]
+        }
     };
 }
 
