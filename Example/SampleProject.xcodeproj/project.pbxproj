@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 496F953C174CCCBA00220FD1 /* OBRPerson.m */; };
+		6433E5B9184D89EC008EF278 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5B8184D89EC008EF278 /* Person.m */; };
 		892C1E91165D54160077F2CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 892C1E90165D54160077F2CB /* Default-568h@2x.png */; };
 		8956CE641754EE6A00BD551C /* MappingsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8956CE631754EE6A00BD551C /* MappingsTests.m */; };
 		89702F25173E57AA00149BD5 /* SampleProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89F1EEBB15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld */; };
@@ -15,7 +16,6 @@
 		897AD0C71758D99A006869BA /* Person+Mappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 897AD0C61758D99A006869BA /* Person+Mappings.m */; };
 		897AD0CA1758D9A6006869BA /* Car+Mappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 897AD0C91758D9A6006869BA /* Car+Mappings.m */; };
 		897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */; };
-		898BF331175FE6C100ED0F50 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 898BF330175FE6C100ED0F50 /* Person.m */; };
 		8990C3161785C2F500212182 /* CoreDataManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8990C3151785C2F500212182 /* CoreDataManagerTests.m */; };
 		89F1EEA815A4C73B00AE4FB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */; };
 		89F1EEAA15A4C73B00AE4FB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA915A4C73B00AE4FB4 /* Foundation.framework */; };
@@ -48,6 +48,8 @@
 		0EE71E2B92554B48A0914E08 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		496F953B174CCCBA00220FD1 /* OBRPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRPerson.h; sourceTree = "<group>"; };
 		496F953C174CCCBA00220FD1 /* OBRPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRPerson.m; sourceTree = "<group>"; };
+		6433E5B7184D89EC008EF278 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		6433E5B8184D89EC008EF278 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		892C1E90165D54160077F2CB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8956CE631754EE6A00BD551C /* MappingsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappingsTests.m; sourceTree = "<group>"; };
 		897AD0BF1758CFD8006869BA /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
@@ -57,8 +59,6 @@
 		897AD0C81758D9A6006869BA /* Car+Mappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Car+Mappings.h"; path = "Categories/Car+Mappings.h"; sourceTree = "<group>"; };
 		897AD0C91758D9A6006869BA /* Car+Mappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Car+Mappings.m"; path = "Categories/Car+Mappings.m"; sourceTree = "<group>"; };
 		897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindersAndCreatorsTests.m; sourceTree = "<group>"; };
-		898BF32F175FE6C100ED0F50 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		898BF330175FE6C100ED0F50 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		8990C3151785C2F500212182 /* CoreDataManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManagerTests.m; sourceTree = "<group>"; };
 		89F1EEA315A4C73B00AE4FB4 /* SampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -112,8 +112,8 @@
 		897D09F715B093F200722A8F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				898BF32F175FE6C100ED0F50 /* Person.h */,
-				898BF330175FE6C100ED0F50 /* Person.m */,
+				6433E5B7184D89EC008EF278 /* Person.h */,
+				6433E5B8184D89EC008EF278 /* Person.m */,
 				897AD0BF1758CFD8006869BA /* Car.h */,
 				897AD0C01758CFD8006869BA /* Car.m */,
 				496F953B174CCCBA00220FD1 /* OBRPerson.h */,
@@ -375,12 +375,12 @@
 			files = (
 				89F1EEB615A4C73B00AE4FB4 /* main.m in Sources */,
 				89F1EEBA15A4C73B00AE4FB4 /* AppDelegate.m in Sources */,
+				6433E5B9184D89EC008EF278 /* Person.m in Sources */,
 				89F1EEBD15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld in Sources */,
 				496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */,
 				897AD0C11758CFD8006869BA /* Car.m in Sources */,
 				897AD0C71758D99A006869BA /* Person+Mappings.m in Sources */,
 				897AD0CA1758D9A6006869BA /* Car+Mappings.m in Sources */,
-				898BF331175FE6C100ED0F50 /* Person.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 //
 
 #import "Car.h"
-
+@class Person;
 @interface Car (Mappings)
 
 @end

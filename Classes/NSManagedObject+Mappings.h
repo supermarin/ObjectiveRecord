@@ -11,9 +11,9 @@
 @interface NSManagedObject (Mappings)
 
 /// Needs to be overriden in your entity. Not required if you don't have mappings
-- (NSDictionary *)mappings;
++ (NSDictionary *)mappings;
 
 /// If your web service returns `first_name`, and locally you have `firstName` this method handles mapped keys
-- (id)keyForRemoteKey:(NSString *)key;
++ (id)keyForRemoteKey:(NSString *)key;
 
 @end

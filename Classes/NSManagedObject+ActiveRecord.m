@@ -111,7 +111,7 @@
     unless([attributes exists]) return;
 
     [attributes each:^(id key, id value) {
-        id remoteKey = [self keyForRemoteKey:key];
+        id remoteKey = [self.class keyForRemoteKey:key];
 
         if ([remoteKey isKindOfClass:[NSString class]])
             [self setSafeValue:value forKey:remoteKey];
@@ -149,7 +149,7 @@
 
 + (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict {
     NSArray *subpredicates = [dict map:^(id key, id value) {
-        return [NSPredicate predicateWithFormat:@"%K == %@", key, value];
+        return [NSPredicate predicateWithFormat:@"%K == %@", [self keyForRemoteKey:key], value];
     }];
 
     return [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
@@ -213,10 +213,10 @@
 
     if ([value isKindOfClass:[NSArray class]])
         return [NSSet setWithArray:[value map:^id(NSDictionary *dict) {
-            return [class create:dict inContext:self.managedObjectContext];
+            return [class findOrCreate:dict inContext:self.managedObjectContext];
         }]];
 
-    else return [class create:value inContext:self.managedObjectContext];
+    else return [class findOrCreate:value inContext:self.managedObjectContext];
 }
 
 - (void)setSafeValue:(id)value forKey:(id)key {

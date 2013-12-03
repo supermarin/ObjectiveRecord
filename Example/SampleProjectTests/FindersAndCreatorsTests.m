@@ -8,8 +8,9 @@
 
 #import "Kiwi.h"
 #import "ObjectiveSugar.h"
-#import "Person.h"
+#import "Person+Mappings.h"
 #import "OBRPerson.h"
+#import "Car+Mappings.h"
 
 static NSString *UNIQUE_NAME = @"ldkhbfaewlfbaewljfhb";
 static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
@@ -156,8 +157,6 @@ describe(@"Find / Create / Save / Delete specs", ^{
     
     context(@"Updating", ^{
        
-        
-        
         it(@"Can update using dictionary", ^{
             Person *person = [Person create];
             [person update:@{ @"firstName": @"Jonathan", @"age": @50 }];
@@ -204,6 +203,13 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[person.firstName should] equal:UNIQUE_NAME];
         });
         
+        xit(@"doesn't always create new relationship object", ^{
+            Car *car = [Car create:@{ @"hp": @150, @"owner": @{ @"firstName": @"asetnset" } }];
+            [@3 times:^{
+                [car update:@{ @"make": @"Porsche", @"owner": @{ @"firstName": @"asetnset" } }];
+            }];
+            [[[Person where:@{ @"firstName": @"asetnset" }] should] haveCountOf:1];
+        });
     });
     
     context(@"Saving", ^{

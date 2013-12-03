@@ -7,11 +7,14 @@
 //
 
 #import "Car+Mappings.h"
+#import "Person+Mappings.h"
 
 @implementation Car (Mappings)
 
-- (NSDictionary *)mappings {
-    return @{ @"hp": @"horsePower" };
++ (NSDictionary *)mappings {
+    return @{
+        @"hp": @"horsePower"
+    };
 }
 
 @end

@@ -1,4 +1,4 @@
-//
+
 //  Person+Mappings.m
 //  SampleProject
 //
@@ -11,11 +11,11 @@
 
 @implementation Person (Mappings)
 
-- (NSDictionary *)mappings {
++ (NSDictionary *)mappings {
     return @{
-             @"cars"     : @{ @"class": [Car class] },
-             @"employees": @{ @"class": [Person class] },
-             @"manager"  : @{ @"class": [Person class] }
+         @"employees": @{ @"class": [Person class] },
+         @"cars"     : @{ @"class": [Car class] },
+         @"manager"  : @{ @"class": [Person class] }
     };
 }
 

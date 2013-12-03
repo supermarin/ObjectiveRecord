@@ -46,7 +46,7 @@ describe(@"Mappings", ^{
     
     it(@"caches mappings", ^{
         Car *car = [Car createInContext:newContext];
-        [[car should] receive:@selector(mappings) andReturn:@{ @"hp": @"horsePower" } withCount:1];
+        [[Car should] receive:@selector(mappings) withCountAtMost:1];
         
         [car update:@{ @"hp": @150 }];
         [car update:@{ @"make": @"Ford" }];
@@ -78,6 +78,11 @@ describe(@"Mappings", ^{
     it(@"uses mappings in findOrCreate", ^{
         Person *bob = [Person findOrCreate:@{ @"first_name": @"Bob" }];
         [[bob.firstName should] equal:@"Bob"];
+    });
+    
+    xit(@"supports parent object fetched with a block", ^{
+        Car *car = [Car create:@{ @"hp": @150, @"person_id": @1234 }];
+        [[car.owner should] equal:[Car findOrCreate:@{ @"remoteID": @1234 }]];
     });
     
 });

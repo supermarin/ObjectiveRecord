@@ -7,34 +7,24 @@
 //
 
 #import "NSManagedObject+Mappings.h"
+#import "NSManagedObject+ActiveRecord.h"
 #import "ObjectiveSugar.h"
 #import <objc/runtime.h>
-
-@implementation NSMutableDictionary(Mappings)
-
-+ (instancetype)sharedMappings {
-    static NSMutableDictionary *singleton;
-    static dispatch_once_t singletonToken;
-    dispatch_once(&singletonToken, ^{
-        singleton = [[self alloc] init];
-    });
-    return singleton;
-}
-
-@end
 
 
 @implementation NSManagedObject (Mappings)
 
-- (id)keyForRemoteKey:(NSString *)remoteKey {
++ (id)keyForRemoteKey:(NSString *)remoteKey {
     
     if (self.cachedMappings[remoteKey])
         return self.cachedMappings[remoteKey];
     
     NSString *camelCasedProperty = [remoteKey.camelCase stringByReplacingCharactersInRange:NSMakeRange(0, 1)
                                                                                 withString:[[remoteKey substringWithRange:NSMakeRange(0, 1)] lowercaseString]];
+
+    NSEntityDescription *desc = [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:[NSManagedObjectContext defaultContext]];
     
-    if ([self respondsToSelector:NSSelectorFromString(camelCasedProperty)]) {
+    if ([desc propertiesByName][camelCasedProperty]) {
         self.cachedMappings[remoteKey] = camelCasedProperty;
         return camelCasedProperty;
     }
@@ -43,24 +33,32 @@
     return remoteKey;
 }
 
-
 #pragma mark - Private
 
-- (NSMutableDictionary *)cachedMappings {
-    NSMutableDictionary *mappings = [NSMutableDictionary sharedMappings][self.class];
++ (NSMutableDictionary *)cachedMappings {
+    NSMutableDictionary *mappingsForClass = [NSManagedObject sharedMappings][self.class];
 
-    if (!mappings) {
-        mappings = [self mappings].mutableCopy ?: @{}.mutableCopy;
-        [NSMutableDictionary sharedMappings][(id<NSCopying>)self.class] = mappings;
+    if (!mappingsForClass) {
+        mappingsForClass = [self mappings].mutableCopy ?: @{}.mutableCopy;
+        [NSManagedObject sharedMappings][(id<NSCopying>)self.class] = mappingsForClass;
     }
     
-    return mappings;
+    return mappingsForClass;
+}
+
++ (NSMutableDictionary *)sharedMappings {
+    static NSMutableDictionary *singleton;
+    static dispatch_once_t singletonToken;
+    dispatch_once(&singletonToken, ^{
+        singleton = @{}.mutableCopy;
+    });
+    return singleton;
 }
 
 
 #pragma mark - Abstract
 
-- (NSDictionary *)mappings {
++ (NSDictionary *)mappings {
     return nil;
 }
 
