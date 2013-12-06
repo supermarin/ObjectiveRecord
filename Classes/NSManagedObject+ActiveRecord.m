@@ -76,9 +76,7 @@
 }
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit {
-    NSPredicate *predicate = ([condition isKindOfClass:[NSPredicate class]])
-                                ? condition
-                                : [self predicateFromStringOrDict:condition];
+    NSPredicate *predicate = [self predicateFromObject:condition];
 
     return [self fetchWithPredicate:predicate inContext:context fetchLimit:limit];
 }
@@ -98,9 +96,7 @@
 }
 
 + (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context {
-    NSPredicate *predicate = ([condition isKindOfClass:[NSPredicate class]])
-                                ? condition
-                                : [self predicateFromStringOrDict:condition];
+    NSPredicate *predicate = [self predicateFromObject:condition];
 
     return [self countForFetchWithPredicate:predicate inContext:context];
 }
@@ -177,9 +173,12 @@
     return [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
 }
 
-+ (NSPredicate *)predicateFromStringOrDict:(id)condition {
++ (NSPredicate *)predicateFromObject:(id)condition {
 
-    if ([condition isKindOfClass:[NSString class]])
+    if ([condition isKindOfClass:[NSPredicate class]])
+        return condition;
+
+    else if ([condition isKindOfClass:[NSString class]])
         return [NSPredicate predicateWithFormat:condition];
 
     else if ([condition isKindOfClass:[NSDictionary class]])

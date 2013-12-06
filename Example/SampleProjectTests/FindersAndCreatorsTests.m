@@ -129,17 +129,17 @@ describe(@"Find / Create / Save / Delete specs", ^{
     context(@"Counting", ^{
 
         it(@"counts all entities", ^{
-            [[theValue([Person count]) should] equal:theValue(4)];
+            [[@([Person count]) should] equal:@(4)];
         });
 
         it(@"counts found entities", ^{
             NSUInteger count = [Person countWhere:@{@"firstName" : @"Neo"}];
-            [[theValue(count) should] equal:theValue(1)];
+            [[@(count) should] equal:@(1)];
         });
 
         it(@"counts zero when none found", ^{
             NSUInteger count = [Person countWhere:@{@"firstName" : @"Nobody"}];
-            [[theValue(count) should] equal:theValue(0)];
+            [[@(count) should] equal:@(0)];
         });
     });
 
