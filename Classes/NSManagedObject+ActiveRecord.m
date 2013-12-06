@@ -83,6 +83,28 @@
     return [self fetchWithPredicate:predicate inContext:context fetchLimit:limit];
 }
 
+#pragma mark - Aggregation
+
++ (NSUInteger)count {
+    return [self countInContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (NSUInteger)countWhere:(id)condition {
+    return [self countWhere:condition inContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (NSUInteger)countInContext:(NSManagedObjectContext *)context {
+    return [self countForFetchWithPredicate:nil inContext:context];
+}
+
++ (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context {
+    NSPredicate *predicate = ([condition isKindOfClass:[NSPredicate class]])
+                                ? condition
+                                : [self predicateFromStringOrDict:condition];
+
+    return [self countForFetchWithPredicate:predicate inContext:context];
+}
+
 #pragma mark - Creation / Deletion
 
 + (id)create {
@@ -187,6 +209,14 @@
     if (fetchLimit) [request setFetchLimit:[fetchLimit integerValue]];
 
     return [context executeFetchRequest:request error:nil];
+}
+
++ (NSUInteger)countForFetchWithPredicate:(NSPredicate *)predicate
+                               inContext:(NSManagedObjectContext *)context {
+    NSFetchRequest *request = [self createFetchRequestInContext:context];
+    [request setPredicate:predicate];
+
+    return [context countForFetchRequest:request error:nil];
 }
 
 - (BOOL)saveTheContext {

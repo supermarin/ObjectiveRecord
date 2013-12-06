@@ -51,6 +51,16 @@ NSPredicate *membersPredicate = [NSPredicate  predicateWithBlock:^BOOL(Person *p
 NSArray *members = [Person where:membersPredicate];
 ```
 
+#### Aggregation
+
+``` objc
+// count all Person entities
+NSUInteger personCount = [Person count];
+
+// count people named John
+NSUInteger johnCount = [Person countWhere:@"name == 'John'"];
+```
+
 #### Custom ManagedObjectContext
 
 ``` objc

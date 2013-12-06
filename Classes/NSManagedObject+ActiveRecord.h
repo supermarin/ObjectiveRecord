@@ -33,6 +33,8 @@
 + (NSArray *)whereFormat:(NSString *)format, ...;
 + (instancetype)findOrCreate:(NSDictionary *)attributes;
 + (instancetype)find:(NSDictionary *)attributes;
++ (NSUInteger)count;
++ (NSUInteger)countWhere:(id)condition;
 
 #pragma mark - Custom Context
 
@@ -46,6 +48,8 @@
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit;
 + (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context;
 + (instancetype)find:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
++ (NSUInteger)countInContext:(NSManagedObjectContext *)context;
++ (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context;
 
 #pragma mark - Naming
 
