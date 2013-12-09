@@ -1,22 +1,22 @@
 PROJECT_NAME=SampleProject
 WORKSPACE=$(PROJECT_NAME).xcworkspace
 DEFAULT_SCHEME=$(PROJECT_NAME)
-TESTING_TOOL=xcodebuild
+DEFAULT_FLAGS=-sdk iphonesimulator
+
+DEFAULT_TASK=$(TESTING_TOOL) -workspace $(WORKSPACE) -scheme $(DEFAULT_SCHEME) $(DEFAULT_FLAGS)
 
 clean:
-	$(TESTING_TOOL) -workspace $(WORKSPACE) -scheme $(DEFAULT_SCHEME) \
-		-sdk iphonesimulator clean
+	$(DEFAULT_TASK) clean
+
 test:
-	$(TESTING_TOOL) -workspace $(WORKSPACE) -scheme $(DEFAULT_SCHEME) \
-		-sdk iphonesimulator test
+	$(DEFAULT_TASK) test | xcpretty -c
 
 install_pods:
 	pod install
 
 update_tools:
-	brew update
-	brew upgrade xctool
 	gem install cocoapods
+	gem install xcpretty
 
-ci: update_tools install_pods clean test
+ci: update_tools install_pods test
 
