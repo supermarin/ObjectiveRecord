@@ -125,8 +125,24 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[[Person where:@{ @"firstName": @"John" } limit:@2] should] haveCountOf:2];
         });
     });
-    
-    
+
+    context(@"Counting", ^{
+
+        it(@"counts all entities", ^{
+            [[@([Person count]) should] equal:@(4)];
+        });
+
+        it(@"counts found entities", ^{
+            NSUInteger count = [Person countWhere:@{@"firstName" : @"Neo"}];
+            [[@(count) should] equal:@(1)];
+        });
+
+        it(@"counts zero when none found", ^{
+            NSUInteger count = [Person countWhere:@{@"firstName" : @"Nobody"}];
+            [[@(count) should] equal:@(0)];
+        });
+    });
+
     context(@"Creating", ^{
         
         it(@"creates without arguments", ^{

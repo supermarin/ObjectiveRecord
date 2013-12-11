@@ -76,11 +76,29 @@
 }
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit {
-    NSPredicate *predicate = ([condition isKindOfClass:[NSPredicate class]])
-                                ? condition
-                                : [self predicateFromStringOrDict:condition];
+    NSPredicate *predicate = [self predicateFromObject:condition];
 
     return [self fetchWithPredicate:predicate inContext:context fetchLimit:limit];
+}
+
+#pragma mark - Aggregation
+
++ (NSUInteger)count {
+    return [self countInContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (NSUInteger)countWhere:(id)condition {
+    return [self countWhere:condition inContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (NSUInteger)countInContext:(NSManagedObjectContext *)context {
+    return [self countForFetchWithPredicate:nil inContext:context];
+}
+
++ (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context {
+    NSPredicate *predicate = [self predicateFromObject:condition];
+
+    return [self countForFetchWithPredicate:predicate inContext:context];
 }
 
 #pragma mark - Creation / Deletion
@@ -155,9 +173,12 @@
     return [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
 }
 
-+ (NSPredicate *)predicateFromStringOrDict:(id)condition {
++ (NSPredicate *)predicateFromObject:(id)condition {
 
-    if ([condition isKindOfClass:[NSString class]])
+    if ([condition isKindOfClass:[NSPredicate class]])
+        return condition;
+
+    else if ([condition isKindOfClass:[NSString class]])
         return [NSPredicate predicateWithFormat:condition];
 
     else if ([condition isKindOfClass:[NSDictionary class]])
@@ -187,6 +208,14 @@
     if (fetchLimit) [request setFetchLimit:[fetchLimit integerValue]];
 
     return [context executeFetchRequest:request error:nil];
+}
+
++ (NSUInteger)countForFetchWithPredicate:(NSPredicate *)predicate
+                               inContext:(NSManagedObjectContext *)context {
+    NSFetchRequest *request = [self createFetchRequestInContext:context];
+    [request setPredicate:predicate];
+
+    return [context countForFetchRequest:request error:nil];
 }
 
 - (BOOL)saveTheContext {
