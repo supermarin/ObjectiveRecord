@@ -1,7 +1,9 @@
-rvm: 2.0.0
 language: objective-c
 
 before_install:
   - cd Example
 
+install: make install
+
 script: make ci
+
