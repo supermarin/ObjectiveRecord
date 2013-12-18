@@ -264,6 +264,9 @@
 
         if ([self isIntegerAttributeType:attributeType])
             value = [NSNumber numberWithInteger:[value integerValue]];
+        
+        else if (attributeType == NSBooleanAttributeType)
+            value = [NSNumber numberWithBool:[value boolValue]];
 
         else if (attributeType == NSFloatAttributeType)
             value = [NSNumber numberWithDouble:[value doubleValue]];
@@ -278,8 +281,7 @@
 - (BOOL)isIntegerAttributeType:(NSAttributeType)attributeType {
     return (attributeType == NSInteger16AttributeType) ||
            (attributeType == NSInteger32AttributeType) ||
-           (attributeType == NSInteger64AttributeType) ||
-           (attributeType == NSBooleanAttributeType);
+           (attributeType == NSInteger64AttributeType);
 }
 
 #pragma mark - Date Formatting
