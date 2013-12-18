@@ -19,7 +19,7 @@ describe(@"Mappings", ^{
         @"first_name": @"Marin",
         @"last_name": @"Usalj",
         @"age": @25,
-        @"is_member": @YES,
+        @"is_member": @"true",
         @"cars": @[
                @{ @"hp": @220, @"make": @"Trabant" },
                @{ @"hp": @90, @"make": @"Volkswagen" }
