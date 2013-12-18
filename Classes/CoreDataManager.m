@@ -33,7 +33,7 @@
 #pragma mark - Private
 
 - (NSString *)appName {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+    return [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleName"];
 }
 
 - (NSString *)databaseName {
@@ -66,7 +66,7 @@
 - (NSManagedObjectModel *)managedObjectModel {
     if (_managedObjectModel) return _managedObjectModel;
     
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:[self modelName] withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle bundleForClass:[self class]] URLForResource:[self modelName] withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
