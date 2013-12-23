@@ -210,11 +210,9 @@
 }
 
 + (NSSortDescriptor *)sortDescriptorFromDictionary:(NSDictionary *)dict {
-    NSArray *sort = [dict map:^(id key, id value) {
-        BOOL isAscending = [[value uppercaseString] isEqualToString:@"DESC"] ? NO : YES;
-        return [NSSortDescriptor sortDescriptorWithKey:key ascending:isAscending];
-    }];
-    return [sort first];
+    BOOL isAscending = ![[dict.allValues.first uppercaseString] isEqualToString:@"DESC"];
+    return [NSSortDescriptor sortDescriptorWithKey:dict.allKeys.first
+                                         ascending:isAscending];
 }
 
 + (NSSortDescriptor *)sortDescriptorFromObject:(id)order {
