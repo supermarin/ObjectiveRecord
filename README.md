@@ -51,6 +51,29 @@ NSPredicate *membersPredicate = [NSPredicate  predicateWithBlock:^BOOL(Person *p
 NSArray *members = [Person where:membersPredicate];
 ```
 
+#### Order and Limit
+
+``` objc
+// People by their last name ascending
+NSArray *sortedPeople = [Person allWithOrder:@"surname"];
+
+// People named John by their last name Z to A
+NSArray *reversedPeople = [Person where:@{@"name" : @"John"} 
+                                  order:@{@"surname" : @"DESC"}];
+
+// You can use NSSortDescriptor too
+NSArray *people = [Person allWithOrder:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+
+// And multiple orderings with any of the above
+NSArray *morePeople = [Person allWithOrder:@[@{@"surname" : @"ASC"},
+                                             @{@"name" : @"DESC"}]];
+
+// Just the first 5 people named John sorted by last name
+NSArray *fivePeople = [Person where:@"name == 'John'"
+                              order:@{@"surname" : @"ASC"}
+                              limit:@(5)];
+```
+
 #### Aggregation
 
 ``` objc

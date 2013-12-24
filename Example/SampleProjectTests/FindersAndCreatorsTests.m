@@ -126,6 +126,72 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
     });
 
+    context(@"Ordering", ^{
+
+        id (^firstNameMapper)(Person *) = ^id (Person *p) { return p.firstName; };
+        id (^lastNameMapper)(Person *) = ^id (Person *p) { return p.lastName; };
+
+        beforeEach(^{
+            [Person deleteAll];
+            createSomePeople(@[@"Abe", @"Bob", @"Cal", @"Don"],
+                             @[@"Zed", @"Mol", @"Gaz", @"Mol"],
+                             [NSManagedObjectContext defaultContext]);
+        });
+
+        it(@"orders results by a single property", ^{
+            NSArray *resultLastNames = [[Person allWithOrder:@"lastName"]
+                                        map:lastNameMapper];
+            [[resultLastNames should] equal:@[@"Gaz", @"Mol", @"Mol", @"Zed"]];
+        });
+
+        it(@"orders results by multiple properties", ^{
+            NSArray *resultFirstNames = [[Person allWithOrder:@[@"lastName", @"firstName"]]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Cal", @"Bob", @"Don", @"Abe"]];
+        });
+
+        it(@"orders results by property ascending", ^{
+            NSArray *resultFirstNames = [[Person allWithOrder:@{@"firstName" : @"ASC"}]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Abe", @"Bob", @"Cal", @"Don"]];
+        });
+
+        it(@"orders results by property descending", ^{
+            NSArray *resultFirstNames = [[Person allWithOrder:@[@{@"firstName" : @"DESC"}]]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Don", @"Cal", @"Bob", @"Abe"]];
+        });
+
+        it(@"orders results by sort descriptors", ^{
+            NSArray *resultFirstNames = [[Person allWithOrder:@[[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
+                                                                [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:NO]]]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Cal", @"Don", @"Bob", @"Abe"]];
+        });
+
+        it(@"orders found results", ^{
+            NSArray *resultFirstNames = [[Person where:@{@"lastName" : @"Mol"} order:@"firstName"]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Bob", @"Don"]];
+        });
+
+        it(@"orders limited results", ^{
+            NSArray *resultLastNames = [[Person where:nil order:@"lastName" limit:@(2)]
+                                        map:lastNameMapper];
+            [[resultLastNames should] equal:@[@"Gaz", @"Mol"]];
+        });
+
+        it(@"orders found and limited results", ^{
+            NSArray *resultFirstNames = [[Person where:@{@"lastName" : @"Mol"}
+                                             inContext:[NSManagedObjectContext defaultContext]
+                                                 order:@[@{@"lastName" : @"ASC"},
+                                                         @{@"firstName" : @"DESC"}]
+                                                 limit:@(1)]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Don"]];
+        });
+    });
+
     context(@"Counting", ^{
 
         it(@"counts all entities", ^{

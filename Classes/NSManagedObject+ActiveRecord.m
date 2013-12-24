@@ -33,8 +33,16 @@
     return [self allInContext:[NSManagedObjectContext defaultContext]];
 }
 
++ (NSArray *)allWithOrder:(id)order {
+    return [self allInContext:[NSManagedObjectContext defaultContext] order:order];
+}
+
 + (NSArray *)allInContext:(NSManagedObjectContext *)context {
-    return [self fetchWithPredicate:nil inContext:context];
+    return [self allInContext:context order:nil];
+}
+
++ (NSArray *)allInContext:(NSManagedObjectContext *)context order:(id)order {
+    return [self fetchWithCondition:nil inContext:context withOrder:order fetchLimit:nil];
 }
 
 + (NSArray *)whereFormat:(NSString *)format, ... {
@@ -67,18 +75,32 @@
     return [self where:condition inContext:[NSManagedObjectContext defaultContext]];
 }
 
++ (NSArray *)where:(id)condition order:(id)order {
+    return [self where:condition inContext:[NSManagedObjectContext defaultContext] order:order];
+}
+
 + (NSArray *)where:(id)condition limit:(NSNumber *)limit {
     return [self where:condition inContext:[NSManagedObjectContext defaultContext] limit:limit];
 }
 
++ (NSArray *)where:(id)condition order:(id)order limit:(NSNumber *)limit {
+    return [self where:condition inContext:[NSManagedObjectContext defaultContext] order:order limit:limit];
+}
+
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
-    return [self where:condition inContext:context limit:nil];
+    return [self where:condition inContext:context order:nil limit:nil];
+}
+
++ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order {
+    return [self where:condition inContext:context order:order limit:nil];
 }
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit {
-    NSPredicate *predicate = [self predicateFromObject:condition];
+    return [self where:condition inContext:context order:nil limit:limit];
+}
 
-    return [self fetchWithPredicate:predicate inContext:context fetchLimit:limit];
++ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit {
+    return [self fetchWithCondition:condition inContext:context withOrder:order fetchLimit:limit];
 }
 
 #pragma mark - Aggregation
@@ -187,6 +209,35 @@
     return nil;
 }
 
++ (NSSortDescriptor *)sortDescriptorFromDictionary:(NSDictionary *)dict {
+    BOOL isAscending = ![[dict.allValues.first uppercaseString] isEqualToString:@"DESC"];
+    return [NSSortDescriptor sortDescriptorWithKey:dict.allKeys.first
+                                         ascending:isAscending];
+}
+
++ (NSSortDescriptor *)sortDescriptorFromObject:(id)order {
+    if ([order isKindOfClass:[NSSortDescriptor class]])
+        return order;
+
+    else if ([order isKindOfClass:[NSString class]])
+        return [NSSortDescriptor sortDescriptorWithKey:order ascending:YES];
+
+    else if ([order isKindOfClass:[NSDictionary class]])
+        return [self sortDescriptorFromDictionary:order];
+
+    return nil;
+}
+
++ (NSArray *)sortDescriptorsFromObject:(id)order {
+    if ([order isKindOfClass:[NSArray class]])
+        return [order map:^id (id object) {
+            return [self sortDescriptorFromObject:object];
+        }];
+
+    else
+        return @[[self sortDescriptorFromObject:order]];
+}
+
 + (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [NSFetchRequest new];
     NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName]
@@ -195,17 +246,21 @@
     return request;
 }
 
-+ (NSArray *)fetchWithPredicate:(NSPredicate *)predicate inContext:(NSManagedObjectContext *)context {
-    return [self fetchWithPredicate:predicate inContext:context fetchLimit:nil];
-}
-
-+ (NSArray *)fetchWithPredicate:(NSPredicate *)predicate
++ (NSArray *)fetchWithCondition:(id)condition
                       inContext:(NSManagedObjectContext *)context
+                      withOrder:(id)order
                      fetchLimit:(NSNumber *)fetchLimit {
 
     NSFetchRequest *request = [self createFetchRequestInContext:context];
-    [request setPredicate:predicate];
-    if (fetchLimit) [request setFetchLimit:[fetchLimit integerValue]];
+
+    if (condition)
+        [request setPredicate:[self predicateFromObject:condition]];
+
+    if (order)
+        [request setSortDescriptors:[self sortDescriptorsFromObject:order]];
+
+    if (fetchLimit)
+        [request setFetchLimit:[fetchLimit integerValue]];
 
     return [context executeFetchRequest:request error:nil];
 }
