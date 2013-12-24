@@ -128,6 +128,9 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
     context(@"Ordering", ^{
 
+        id (^firstNameMapper)(Person *) = ^id (Person *p) { return p.firstName; };
+        id (^lastNameMapper)(Person *) = ^id (Person *p) { return p.lastName; };
+
         beforeEach(^{
             [Person deleteAll];
             createSomePeople(@[@"Abe", @"Bob", @"Cal", @"Don"],
@@ -136,51 +139,56 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
 
         it(@"orders results by a single property", ^{
-            NSArray *result = [Person allWithOrder:@"lastName"];
-            [[((Person *)[result first]).lastName should] equal:@"Gaz"];
+            NSArray *resultLastNames = [[Person allWithOrder:@"lastName"]
+                                        map:lastNameMapper];
+            [[resultLastNames should] equal:@[@"Gaz", @"Mol", @"Mol", @"Zed"]];
         });
 
         it(@"orders results by multiple properties", ^{
-            NSArray *result = [Person allWithOrder:@[@"lastName", @"firstName"]];
-            [[((Person *)[result objectAtIndex:1]).firstName should] equal:@"Bob"];
+            NSArray *resultFirstNames = [[Person allWithOrder:@[@"lastName", @"firstName"]]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Cal", @"Bob", @"Don", @"Abe"]];
         });
 
         it(@"orders results by property ascending", ^{
-            NSArray *result = [Person allWithOrder:@{@"firstName" : @"ASC"}];
-            [[((Person *)[result first]).firstName should] equal:@"Abe"];
+            NSArray *resultFirstNames = [[Person allWithOrder:@{@"firstName" : @"ASC"}]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Abe", @"Bob", @"Cal", @"Don"]];
         });
 
         it(@"orders results by property descending", ^{
-            NSArray *result = [Person allWithOrder:@[@{@"firstName" : @"DESC"}]];
-            [[((Person *)[result first]).firstName should] equal:@"Don"];
+            NSArray *resultFirstNames = [[Person allWithOrder:@[@{@"firstName" : @"DESC"}]]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Don", @"Cal", @"Bob", @"Abe"]];
         });
 
         it(@"orders results by sort descriptors", ^{
-            NSArray *result = [Person allWithOrder:@[[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
-                                                     [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:NO]]];
-            [[((Person *)[result objectAtIndex:1]).firstName should] equal:@"Don"];
+            NSArray *resultFirstNames = [[Person allWithOrder:@[[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
+                                                                [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:NO]]]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Cal", @"Don", @"Bob", @"Abe"]];
         });
 
         it(@"orders found results", ^{
-            NSArray *result = [Person where:@{@"lastName" : @"Mol"} order:@"firstName"];
-            [[((Person *)[result objectAtIndex:0]).firstName should] equal:@"Bob"];
-            [[((Person *)[result objectAtIndex:1]).firstName should] equal:@"Don"];
+            NSArray *resultFirstNames = [[Person where:@{@"lastName" : @"Mol"} order:@"firstName"]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Bob", @"Don"]];
         });
 
         it(@"orders limited results", ^{
-            NSArray *result = [Person where:nil order:@"lastName" limit:@(2)];
-            [[@([result count]) should] equal:@(2)];
-            [[((Person *)[result first]).lastName should] equal:@"Gaz"];
+            NSArray *resultLastNames = [[Person where:nil order:@"lastName" limit:@(2)]
+                                        map:lastNameMapper];
+            [[resultLastNames should] equal:@[@"Gaz", @"Mol"]];
         });
 
         it(@"orders found and limited results", ^{
-            NSArray *result = [Person where:@{@"lastName" : @"Mol"}
-                                  inContext:[NSManagedObjectContext defaultContext]
-                                      order:@[@{@"lastName" : @"ASC"},
-                                              @{@"firstName" : @"DESC"}]
-                                      limit:@(1)];
-            [[@([result count]) should] equal:@(1)];
-            [[((Person *)[result first]).firstName should] equal:@"Don"];
+            NSArray *resultFirstNames = [[Person where:@{@"lastName" : @"Mol"}
+                                             inContext:[NSManagedObjectContext defaultContext]
+                                                 order:@[@{@"lastName" : @"ASC"},
+                                                         @{@"firstName" : @"DESC"}]
+                                                 limit:@(1)]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Don"]];
         });
     });
 
