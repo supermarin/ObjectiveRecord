@@ -97,6 +97,16 @@ describe(@"Mappings", ^{
             [car update:@{ @"owner": @{ @"coolness": @(100) } }];
         }) shouldNot] raise];
     });
+
+    it(@"supports creating nested parent objects using IDs from the server", ^{
+        Car *car = [Car create:@{ @"insurance_company": @{ @"id" : @1234, @"owner_id" : @4567 }}];
+        [[car.insuranceCompany.owner should] equal:[Person find:@{ @"remoteID": @4567 }]];
+    });
+
+    it(@"supports creating full nested parent objects", ^{
+        Car *car = [Car create:@{ @"insurance_company": @{ @"id" : @1234, @"owner" : @{ @"id" : @4567, @"first_name" : @"Stan" } }}];
+        [[car.insuranceCompany.owner should] equal:[Person find:@{ @"remoteID": @4567, @"firstName": @"Stan" }]];
+    });
 });
 
 SPEC_END
