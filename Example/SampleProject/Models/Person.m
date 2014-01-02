@@ -8,7 +8,6 @@
 
 #import "Person.h"
 #import "Car.h"
-#import "Person.h"
 
 
 @implementation Person
