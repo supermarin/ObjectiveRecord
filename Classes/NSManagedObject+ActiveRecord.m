@@ -185,6 +185,24 @@
     return NSStringFromClass(self);
 }
 
++ (NSEntityDescription *)entity {
+    return [self entityInContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (NSEntityDescription *)entityInContext:(NSManagedObjectContext *)context {
+    NSString *name = [self entityName];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:name
+                                              inManagedObjectContext:context];
+    if (!entity) // two letter class prefix
+        entity = [NSEntityDescription entityForName:[name substringFromIndex:2]
+                             inManagedObjectContext:context];
+    if (!entity) // three letter class prefix
+        entity = [NSEntityDescription entityForName:[name substringFromIndex:3]
+                             inManagedObjectContext:context];
+    
+    return entity;
+}
+
 #pragma mark - Private
 
 + (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict {
@@ -240,22 +258,9 @@
 
 + (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [NSFetchRequest new];
-    NSString *name = [self entityName];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:name
-                                              inManagedObjectContext:context];
-    if (!entity) {
-        // 2 char prefix
-        entity = [NSEntityDescription entityForName:[name substringFromIndex:2]
-                             inManagedObjectContext:context];
-    }
-    if (!entity) {
-        // 3 char prefix
-        entity = [NSEntityDescription entityForName:[name substringFromIndex:3]
-                             inManagedObjectContext:context];
-    }
+    NSEntityDescription *entity = [self entityInContext:context];
     
     NSParameterAssert(entity);
-    
     [request setEntity:entity];
     return request;
 }
