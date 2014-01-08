@@ -240,8 +240,22 @@
 
 + (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [NSFetchRequest new];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName]
+    NSString *name = [self entityName];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:name
                                               inManagedObjectContext:context];
+    if (!entity) {
+        // 2 char prefix
+        entity = [NSEntityDescription entityForName:[name substringFromIndex:2]
+                             inManagedObjectContext:context];
+    }
+    if (!entity) {
+        // 3 char prefix
+        entity = [NSEntityDescription entityForName:[name substringFromIndex:3]
+                             inManagedObjectContext:context];
+    }
+    
+    NSParameterAssert(entity);
+    
     [request setEntity:entity];
     return request;
 }
