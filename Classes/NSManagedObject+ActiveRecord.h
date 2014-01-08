@@ -60,5 +60,7 @@
 #pragma mark - Naming
 
 + (NSString *)entityName;
++ (NSEntityDescription *)entity;
++ (NSEntityDescription *)entityInContext:(NSManagedObjectContext *)context;
 
 @end
