@@ -23,10 +23,12 @@
             @"class": [InsuranceCompany class]
         },
         @"insurance_company": @{
-                @"key": @"insuranceCompany",
-                @"class": [InsuranceCompany class]
-                }
-
+            @"key": @"insuranceCompany",
+            @"class": [InsuranceCompany class],
+            @"transform": ^id(NSDictionary * value) {
+                return [InsuranceCompany create:value];
+            }
+        }
     };
 }
 
