@@ -24,7 +24,7 @@
 #import "NSManagedObject+ActiveRecord.h"
 #import "ObjectiveSugar.h"
 
-typedef id (^TransformBlock)(id value);
+typedef id (^TransformBlock)(id value, NSManagedObjectContext *context);
 
 @implementation NSManagedObject (Mappings)
 
@@ -48,6 +48,11 @@ typedef id (^TransformBlock)(id value);
 }
 
 + (id)transformValue:(id)value forRemoteKey:(NSString *)remoteKey inContext:(NSManagedObjectContext *)context {
+    if ([self cachedMappings][remoteKey][@"transform"]) {
+        TransformBlock transformer = [self cachedMappings][remoteKey][@"transform"];
+        return transformer(value, context);
+    }
+    
     Class class = [self cachedMappings][remoteKey][@"class"];
     if (class)
         return [self objectOrSetOfObjectsFromValue:value ofClass:class inContext:context];
@@ -61,13 +66,8 @@ typedef id (^TransformBlock)(id value);
     if ([value isKindOfClass:class])
         return value;
 
-    if ([value isKindOfClass:[NSDictionary class]]) {
-        if (value[@"transform"]) {
-            TransformBlock transformer = value[@"transform"];
-            return transformer(value);
-        }
+    if ([value isKindOfClass:[NSDictionary class]])
         return [class findOrCreate:value inContext:context];
-    }
 
     if ([value isKindOfClass:[NSArray class]])
         return [NSSet setWithArray:[value map:^id(id object) {
