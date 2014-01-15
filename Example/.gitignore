@@ -8,11 +8,14 @@ build/*
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
 !default.xcworkspace
 xcuserdata
+*.xccheckout
 profile
 *.moved-aside
 .idea
 Profiles_and_certificates
 Pods
+
+xcodebuild.log
+xcodebuild_error.log
