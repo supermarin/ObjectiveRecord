@@ -71,6 +71,12 @@
     return _managedObjectModel;
 }
 
+- (void)setPersistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    _persistentStoreCoordinator = persistentStoreCoordinator;
+
+    _managedObjectContext = nil;
+}
+
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     if (_persistentStoreCoordinator) return _persistentStoreCoordinator;
     
@@ -150,3 +156,4 @@
 }
 
 @end
+

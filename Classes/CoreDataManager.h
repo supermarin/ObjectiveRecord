@@ -13,7 +13,7 @@
 
 @property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (copy, nonatomic) NSString *databaseName;
 @property (copy, nonatomic) NSString *modelName;
@@ -30,3 +30,4 @@
 - (NSURL *)applicationSupportDirectory;
 
 @end
+
