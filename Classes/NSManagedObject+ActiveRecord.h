@@ -61,4 +61,8 @@
 
 + (NSString *)entityName;
 
+#pragma mark - Date Formatting
+
++ (void)setDateFormat:(NSString *)dateFormat;
+
 @end
