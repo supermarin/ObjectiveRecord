@@ -12,6 +12,7 @@
 
 @interface NSManagedObjectContext (ActiveRecord)
 + (NSManagedObjectContext *)defaultContext;
++ (NSArray*)allContexts;
 @end
 
 @interface NSManagedObject (ActiveRecord)
@@ -56,6 +57,9 @@
 + (instancetype)find:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
 + (NSUInteger)countInContext:(NSManagedObjectContext *)context;
 + (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context;
+
+- (void)moveToContext:(NSManagedObjectContext*)context;
+- (void)copyToContext:(NSManagedObjectContext*)context;
 
 #pragma mark - Naming
 

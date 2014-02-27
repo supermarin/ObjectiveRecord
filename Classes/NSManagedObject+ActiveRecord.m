@@ -12,7 +12,11 @@
 @implementation NSManagedObjectContext (ActiveRecord)
 
 + (NSManagedObjectContext *)defaultContext {
-    return [[CoreDataManager sharedManager] managedObjectContext];
+    return [[CoreDataManager sharedManager] defaultManagedObjectContext];
+}
+
++ (NSArray *)allContexts {
+  return [[CoreDataManager sharedManager] managedObjectContexts];
 }
 
 @end
@@ -30,10 +34,26 @@
 #pragma mark - Finders
 
 + (NSArray *)all {
+  if ([NSManagedObjectContext allContexts].count > 1) {
+    NSMutableArray* all = [NSMutableArray array];
+    for (NSManagedObjectContext* context in [NSManagedObjectContext allContexts]) {
+      [all addObjectsFromArray:[self allInContext:context]];
+    }
+    return all;
+  }
     return [self allInContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (NSArray *)allWithOrder:(id)order {
+  if ([NSManagedObjectContext allContexts].count > 1) {
+    NSMutableArray* all = [NSMutableArray array];
+    for (NSManagedObjectContext* context in [NSManagedObjectContext allContexts]) {
+      [all addObjectsFromArray:[self allInContext:context]];
+    }
+    NSArray* sortDescriptors = [self sortDescriptorsFromObject:order];
+    [all sortedArrayUsingDescriptors:sortDescriptors];
+    return all;
+  }
     return [self allInContext:[NSManagedObjectContext defaultContext] order:order];
 }
 
@@ -64,6 +84,14 @@
 }
 
 + (instancetype)find:(NSDictionary *)attributes {
+    if ([NSManagedObjectContext allContexts].count > 1) {
+      id result = nil;
+      for (NSManagedObjectContext* context in [NSManagedObjectContext allContexts]) {
+        result = [self find:attributes inContext:context];
+        if (result) break;
+      }
+      return result;
+    }
     return [self find:attributes inContext:[NSManagedObjectContext defaultContext]];
 }
 
@@ -72,18 +100,52 @@
 }
 
 + (NSArray *)where:(id)condition {
+    if ([NSManagedObjectContext allContexts].count > 1) {
+      NSMutableArray* all = [NSMutableArray array];
+      for (NSManagedObjectContext* context in [NSManagedObjectContext allContexts]) {
+        [all addObjectsFromArray:[self where:condition inContext:condition]];
+      }
+      return all;
+    }
     return [self where:condition inContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (NSArray *)where:(id)condition order:(id)order {
+    if ([NSManagedObjectContext allContexts].count > 1) {
+      NSMutableArray* all = [NSMutableArray array];
+      for (NSManagedObjectContext* context in [NSManagedObjectContext allContexts]) {
+        [all addObjectsFromArray:[self where:condition inContext:condition]];
+      }
+      NSArray* sortDescriptors = [self sortDescriptorsFromObject:order];
+      [all sortedArrayUsingDescriptors:sortDescriptors];
+      return all;
+    }
     return [self where:condition inContext:[NSManagedObjectContext defaultContext] order:order];
 }
 
 + (NSArray *)where:(id)condition limit:(NSNumber *)limit {
+    if ([NSManagedObjectContext allContexts].count > 1) {
+      NSMutableArray* all = [NSMutableArray array];
+      for (NSManagedObjectContext* context in [NSManagedObjectContext allContexts]) {
+        [all addObjectsFromArray:[self where:condition inContext:condition limit:limit]];
+        if ([limit isEqualToNumber:[NSNumber numberWithInteger:all.count]]) break;
+      }
+      return all;
+    }
     return [self where:condition inContext:[NSManagedObjectContext defaultContext] limit:limit];
 }
 
 + (NSArray *)where:(id)condition order:(id)order limit:(NSNumber *)limit {
+    if ([NSManagedObjectContext allContexts].count > 1) {
+      NSMutableArray* all = [NSMutableArray array];
+      for (NSManagedObjectContext* context in [NSManagedObjectContext allContexts]) {
+        [all addObjectsFromArray:[self where:condition inContext:condition limit:limit]];
+        if ([limit isEqualToNumber:[NSNumber numberWithInteger:all.count]]) break;
+      }
+      NSArray* sortDescriptors = [self sortDescriptorsFromObject:order];
+      [all sortedArrayUsingDescriptors:sortDescriptors];
+      return all;
+    }
     return [self where:condition inContext:[NSManagedObjectContext defaultContext] order:order limit:limit];
 }
 
@@ -106,10 +168,24 @@
 #pragma mark - Aggregation
 
 + (NSUInteger)count {
+    if ([NSManagedObjectContext allContexts].count > 1) {
+      NSUInteger count = 0;
+      for (NSManagedObjectContext* context in [NSManagedObjectContext allContexts]) {
+        count += [self countInContext:context];
+      }
+      return count;
+    }
     return [self countInContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (NSUInteger)countWhere:(id)condition {
+  if ([NSManagedObjectContext allContexts].count > 1) {
+    NSUInteger count = 0;
+    for (NSManagedObjectContext* context in [NSManagedObjectContext allContexts]) {
+      count += [self countWhere:condition inContext:context];
+    }
+    return count;
+  }
     return [self countWhere:condition inContext:[NSManagedObjectContext defaultContext]];
 }
 
@@ -169,6 +245,11 @@
 }
 
 + (void)deleteAll {
+    if ([NSManagedObjectContext allContexts].count > 1) {
+      for (NSManagedObjectContext* context in [NSManagedObjectContext allContexts]) {
+        [self deleteAllInContext:context];
+      }
+    }
     [self deleteAllInContext:[NSManagedObjectContext defaultContext]];
 }
 
@@ -177,6 +258,18 @@
         [object delete];
     }];
 }
+
+- (void)moveToContext:(NSManagedObjectContext*)context
+{
+  [self copyToContext:context];
+  [self delete];
+}
+
+- (void)copyToContext:(NSManagedObjectContext*)context
+{
+  [context insertObject:self];
+}
+
 
 #pragma mark - Naming
 
