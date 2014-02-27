@@ -111,19 +111,27 @@
 
 - (void)save
 {
-  for (NSManagedObjectContext* context in self.managedObjectContexts) {
-    [self saveContext:context];
+  for (NSString* identifier in [self.managedObjectContexts allKeys]) {
+    [self saveContext:identifier];
   }
 }
 
-- (BOOL)saveContext:(NSManagedObjectContext *)context
+- (BOOL)saveContext:(id)context
 {
+  
   if (context == nil) return NO;
-  if (![context hasChanges])return NO;
+  
+  NSManagedObjectContext* objectContext;
+  if ([context isKindOfClass:[NSString class]]) {
+    objectContext = self.managedObjectContexts[context];
+    if (objectContext == nil) return NO;
+  } else if ([context isKindOfClass:[NSManagedObjectContext class]]) objectContext = context;
+  
+  if (![objectContext hasChanges])return NO;
   
   NSError *error = nil;
   
-  if (![context save:&error]) {
+  if (![objectContext save:&error]) {
     NSLog(@"Unresolved error in saving context! %@, %@", error, [error userInfo]);
     return NO;
   }

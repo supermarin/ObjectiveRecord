@@ -27,7 +27,7 @@
 - (void)removeContextWithIdentifier:(NSString *)identifier;
 
 - (BOOL)saveContext DEPRECATED_ATTRIBUTE;
-- (BOOL)saveContext:(NSManagedObjectContext*)context;
+- (BOOL)saveContext:(id)context;
 - (void)save;
 
 - (void)useInMemoryStore DEPRECATED_ATTRIBUTE;
