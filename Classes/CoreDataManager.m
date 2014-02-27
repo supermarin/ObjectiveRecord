@@ -89,24 +89,24 @@
    _defaultPersistentStoreCoordinator = [self persistentStoreCoordinatorWithStoreType:NSInMemoryStoreType storeURL:nil];
 }
 
-- (NSArray *)managedObjectContexts
+- (NSDictionary *)managedObjectContexts
 {
-  if (_managedObjectContexts == nil) [NSArray arrayWithObject:self.defaultManagedObjectContext];
+  if (_managedObjectContexts == nil) _managedObjectContexts = [NSDictionary dictionaryWithObject:self.defaultManagedObjectContext forKey:@"default"];
   return _managedObjectContexts;
 }
 
-- (BOOL)addContext:(NSManagedObjectContext *)context
+- (void)addContext:(NSManagedObjectContext *)context identifier:(NSString *)identifier
 {
-  _managedObjectContexts = [self.managedObjectContexts arrayByAddingObject:context];
-  return NO;
+  NSMutableDictionary* contexts = [NSMutableDictionary dictionaryWithDictionary:self.managedObjectContexts];
+  [contexts setObject:context forKey:identifier];
+  _managedObjectContexts = contexts;
 }
 
-- (BOOL)removeContext:(NSManagedObjectContext *)context
+- (void)removeContextWithIdentifier:(NSString *)identifier
 {
-  NSMutableArray* managedObjectContexts = [NSMutableArray arrayWithArray:self.managedObjectContexts];
-  [managedObjectContexts removeObject:context];
-  _managedObjectContexts = managedObjectContexts;
-  return NO;
+  NSMutableDictionary* contexts = [NSMutableDictionary dictionaryWithDictionary:self.managedObjectContexts];
+  [contexts setObject:nil forKey:identifier];
+  _managedObjectContexts = contexts;
 }
 
 - (void)save

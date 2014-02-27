@@ -11,7 +11,7 @@
 
 @interface CoreDataManager : NSObject
 
-@property (readonly, nonatomic) NSArray*  managedObjectContexts;
+@property (readonly, nonatomic) NSDictionary*  managedObjectContexts;
 
 @property (readonly, nonatomic) NSManagedObjectContext *defaultManagedObjectContext;
 @property (readonly, nonatomic) NSManagedObjectModel *defaultManagedObjectModel;
@@ -23,8 +23,8 @@
 + (id)instance DEPRECATED_ATTRIBUTE;
 + (instancetype)sharedManager;
 
-- (BOOL)addContext:(NSManagedObjectContext*)context;
-- (BOOL)removeContext:(NSManagedObjectContext*)context;
+- (void)addContext:(NSManagedObjectContext *)context identifier:(NSString *)identifier;
+- (void)removeContextWithIdentifier:(NSString *)identifier;
 
 - (BOOL)saveContext DEPRECATED_ATTRIBUTE;
 - (BOOL)saveContext:(NSManagedObjectContext*)context;
