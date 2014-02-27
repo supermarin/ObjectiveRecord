@@ -12,6 +12,7 @@
 
 @interface NSManagedObjectContext (ActiveRecord)
 + (NSManagedObjectContext *)defaultContext;
++ (NSDictionary *)allContexts;
 @end
 
 @interface NSManagedObject (ActiveRecord)
@@ -41,21 +42,24 @@
 
 #pragma mark - Custom Context
 
-+ (id)createInContext:(NSManagedObjectContext *)context;
-+ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
++ (id)createInContext:(id)context;
++ (id)create:(NSDictionary *)attributes inContext:(id)context;
 
-+ (void)deleteAllInContext:(NSManagedObjectContext *)context;
++ (void)deleteAllInContext:(id)context;
 
-+ (NSArray *)allInContext:(NSManagedObjectContext *)context;
-+ (NSArray *)allInContext:(NSManagedObjectContext *)context order:(id)order;
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context;
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order;
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit;
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit;
-+ (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context;
-+ (instancetype)find:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
-+ (NSUInteger)countInContext:(NSManagedObjectContext *)context;
-+ (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context;
++ (NSArray *)allInContext:(id)context;
++ (NSArray *)allInContext:(id)context order:(id)order;
++ (NSArray *)where:(id)condition inContext:(id)context;
++ (NSArray *)where:(id)condition inContext:(id)context order:(id)order;
++ (NSArray *)where:(id)condition inContext:(id)context limit:(NSNumber *)limit;
++ (NSArray *)where:(id)condition inContext:(id)context order:(id)order limit:(NSNumber *)limit;
++ (instancetype)findOrCreate:(NSDictionary *)properties inContext:(id)context;
++ (instancetype)find:(NSDictionary *)attributes inContext:(id)context;
++ (NSUInteger)countInContext:(id)context;
++ (NSUInteger)countWhere:(id)condition inContext:(id)context;
+
+- (void)moveToContext:(id)context;
+- (void)copyToContext:(id)context;
 
 #pragma mark - Naming
 

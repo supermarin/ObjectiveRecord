@@ -9,9 +9,10 @@
 #import "CoreDataManager.h"
 
 @implementation CoreDataManager
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize managedObjectContexts = _managedObjectContexts;
+@synthesize defaultManagedObjectContext = _defaultManagedObjectContext;
+@synthesize defaultManagedObjectModel = _defaultManagedObjectModel;
+@synthesize defaultPersistentStoreCoordinator = _defaultPersistentStoreCoordinator;
 @synthesize databaseName = _databaseName;
 @synthesize modelName = _modelName;
 
@@ -53,43 +54,98 @@
 
 #pragma mark - Public
 
-- (NSManagedObjectContext *)managedObjectContext {
-    if (_managedObjectContext) return _managedObjectContext;
+- (NSManagedObjectContext *)defaultManagedObjectContext {
+    if (_defaultManagedObjectContext) return _defaultManagedObjectContext;
     
-    if (self.persistentStoreCoordinator) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        [_managedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+    if (self.defaultPersistentStoreCoordinator) {
+        _defaultManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [_defaultManagedObjectContext setPersistentStoreCoordinator:self.defaultPersistentStoreCoordinator];
     }
-    return _managedObjectContext;
+    return _defaultManagedObjectContext;
 }
 
-- (NSManagedObjectModel *)managedObjectModel {
-    if (_managedObjectModel) return _managedObjectModel;
+- (NSManagedObjectModel *)defaultManagedObjectModel {
+    if (_defaultManagedObjectModel) return _defaultManagedObjectModel;
     
     NSURL *modelURL = [[NSBundle bundleForClass:[self class]] URLForResource:[self modelName] withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return _managedObjectModel;
+    _defaultManagedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return _defaultManagedObjectModel;
 }
 
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    if (_persistentStoreCoordinator) return _persistentStoreCoordinator;
+- (NSPersistentStoreCoordinator *)defaultPersistentStoreCoordinator {
+    if (_defaultPersistentStoreCoordinator) return _defaultPersistentStoreCoordinator;
     
-    _persistentStoreCoordinator = [self persistentStoreCoordinatorWithStoreType:NSSQLiteStoreType
-                                                                       storeURL:[self sqliteStoreURL]];
-    return _persistentStoreCoordinator;
+    _defaultPersistentStoreCoordinator = [self persistentStoreCoordinatorWithStoreType:NSSQLiteStoreType
+                                                                              storeURL:[self sqliteStoreURL]];
+    return _defaultPersistentStoreCoordinator;
 }
 
 - (void)useInMemoryStore {
-    _persistentStoreCoordinator = [self persistentStoreCoordinatorWithStoreType:NSInMemoryStoreType storeURL:nil];
+  [self setInMemoryStoreAsDefault];
+}
+
+- (void)setInMemoryStoreAsDefault
+{
+   _defaultPersistentStoreCoordinator = [self persistentStoreCoordinatorWithStoreType:NSInMemoryStoreType storeURL:nil];
+}
+
+- (NSDictionary *)managedObjectContexts
+{
+  if (_managedObjectContexts == nil) _managedObjectContexts = [NSDictionary dictionaryWithObject:self.defaultManagedObjectContext forKey:@"default"];
+  return _managedObjectContexts;
+}
+
+- (void)addContext:(NSManagedObjectContext *)context identifier:(NSString *)identifier
+{
+  NSMutableDictionary* contexts = [NSMutableDictionary dictionaryWithDictionary:self.managedObjectContexts];
+  [contexts setObject:context forKey:identifier];
+  _managedObjectContexts = contexts;
+}
+
+- (void)removeContextWithIdentifier:(NSString *)identifier
+{
+  NSMutableDictionary* contexts = [NSMutableDictionary dictionaryWithDictionary:self.managedObjectContexts];
+  [contexts setObject:nil forKey:identifier];
+  _managedObjectContexts = contexts;
+}
+
+- (void)save
+{
+  for (NSString* identifier in [self.managedObjectContexts allKeys]) {
+    [self saveContext:identifier];
+  }
+}
+
+- (BOOL)saveContext:(id)context
+{
+  
+  if (context == nil) return NO;
+  
+  NSManagedObjectContext* objectContext;
+  if ([context isKindOfClass:[NSString class]]) {
+    objectContext = self.managedObjectContexts[context];
+    if (objectContext == nil) return NO;
+  } else if ([context isKindOfClass:[NSManagedObjectContext class]]) objectContext = context;
+  
+  if (![objectContext hasChanges])return NO;
+  
+  NSError *error = nil;
+  
+  if (![objectContext save:&error]) {
+    NSLog(@"Unresolved error in saving context! %@, %@", error, [error userInfo]);
+    return NO;
+  }
+  
+  return YES;
 }
 
 - (BOOL)saveContext {
-    if (self.managedObjectContext == nil) return NO;
-    if (![self.managedObjectContext hasChanges])return NO;
+    if (self.defaultManagedObjectContext == nil) return NO;
+    if (![self.defaultManagedObjectContext hasChanges])return NO;
     
     NSError *error = nil;
     
-    if (![self.managedObjectContext save:&error]) {
+    if (![self.defaultManagedObjectContext save:&error]) {
         NSLog(@"Unresolved error in saving context! %@, %@", error, [error userInfo]);
         return NO;
     }
@@ -117,7 +173,7 @@
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinatorWithStoreType:(NSString *const)storeType
                                                                  storeURL:(NSURL *)storeURL {
     
-    NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self defaultManagedObjectModel]];
     
     NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption: @YES,
                                NSInferMappingModelAutomaticallyOption: @YES };
