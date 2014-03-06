@@ -63,12 +63,12 @@
     return existing ?: [self create:properties inContext:context];
 }
 
-+ (instancetype)find:(NSDictionary *)attributes {
-    return [self find:attributes inContext:[NSManagedObjectContext defaultContext]];
++ (instancetype)find:(id)condition {
+    return [self find:condition inContext:[NSManagedObjectContext defaultContext]];
 }
 
-+ (instancetype)find:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
-    return [self where:attributes inContext:context limit:@1].first;
++ (instancetype)find:(id)condition inContext:(NSManagedObjectContext *)context {
+    return [self where:condition inContext:context limit:@1].first;
 }
 
 + (NSArray *)where:(id)condition {
