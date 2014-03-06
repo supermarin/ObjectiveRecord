@@ -45,15 +45,6 @@
     return [self fetchWithCondition:nil inContext:context withOrder:order fetchLimit:nil];
 }
 
-+ (NSArray *)whereFormat:(NSString *)format, ... {
-    va_list va_arguments;
-    va_start(va_arguments, format);
-    NSPredicate *condition = [NSPredicate predicateWithFormat:format arguments:va_arguments];
-    va_end(va_arguments);
-
-    return [self where:condition];
-}
-
 + (instancetype)findOrCreate:(NSDictionary *)properties {
     return [self findOrCreate:properties inContext:[NSManagedObjectContext defaultContext]];
 }
@@ -63,25 +54,26 @@
     return existing ?: [self create:properties inContext:context];
 }
 
-+ (instancetype)findWithFormat:(NSString *)format, ... {
++ (instancetype)find:(id)condition, ... {
     va_list va_arguments;
-    va_start(va_arguments, format);
-    NSPredicate *condition = [NSPredicate predicateWithFormat:format arguments:va_arguments];
+    va_start(va_arguments, condition);
+    NSPredicate *predicate = [self predicateFromObject:condition arguments:va_arguments];
     va_end(va_arguments);
 
-    return [self find:condition];
-}
-
-+ (instancetype)find:(id)condition {
-    return [self find:condition inContext:[NSManagedObjectContext defaultContext]];
+    return [self find:predicate inContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (instancetype)find:(id)condition inContext:(NSManagedObjectContext *)context {
     return [self where:condition inContext:context limit:@1].first;
 }
 
-+ (NSArray *)where:(id)condition {
-    return [self where:condition inContext:[NSManagedObjectContext defaultContext]];
++ (NSArray *)where:(id)condition, ... {
+    va_list va_arguments;
+    va_start(va_arguments, condition);
+    NSPredicate *predicate = [self predicateFromObject:condition arguments:va_arguments];
+    va_end(va_arguments);
+
+    return [self where:predicate inContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (NSArray *)where:(id)condition order:(id)order {
@@ -118,8 +110,13 @@
     return [self countInContext:[NSManagedObjectContext defaultContext]];
 }
 
-+ (NSUInteger)countWhere:(id)condition {
-    return [self countWhere:condition inContext:[NSManagedObjectContext defaultContext]];
++ (NSUInteger)countWhere:(id)condition, ... {
+    va_list va_arguments;
+    va_start(va_arguments, condition);
+    NSPredicate *predicate = [self predicateFromObject:condition arguments:va_arguments];
+    va_end(va_arguments);
+
+    return [self countWhere:predicate inContext:[NSManagedObjectContext defaultContext]];
 }
 
 + (NSUInteger)countInContext:(NSManagedObjectContext *)context {
@@ -204,13 +201,18 @@
     return [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
 }
 
-+ (NSPredicate *)predicateFromObject:(id)condition {
++ (NSPredicate *)predicateFromObject:(id)condition
+{
+    return [self predicateFromObject:condition arguments:NULL];
+}
 
++ (NSPredicate *)predicateFromObject:(id)condition arguments:(va_list)arguments
+{
     if ([condition isKindOfClass:[NSPredicate class]])
         return condition;
 
-    else if ([condition isKindOfClass:[NSString class]])
-        return [NSPredicate predicateWithFormat:condition];
+    if ([condition isKindOfClass:[NSString class]])
+        return [NSPredicate predicateWithFormat:condition arguments:arguments];
 
     else if ([condition isKindOfClass:[NSDictionary class]])
         return [self predicateFromDictionary:condition];

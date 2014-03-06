@@ -29,16 +29,14 @@
 
 + (NSArray *)all;
 + (NSArray *)allWithOrder:(id)order;
-+ (NSArray *)where:(id)condition;
++ (NSArray *)where:(id)condition, ...;
 + (NSArray *)where:(id)condition order:(id)order;
 + (NSArray *)where:(id)condition limit:(NSNumber *)limit;
 + (NSArray *)where:(id)condition order:(id)order limit:(NSNumber *)limit;
-+ (NSArray *)whereFormat:(NSString *)format, ...;
 + (instancetype)findOrCreate:(NSDictionary *)attributes;
-+ (instancetype)find:(id)condition;
-+ (instancetype)findWithFormat:(NSString *)format, ...;
++ (instancetype)find:(id)condition, ...;
 + (NSUInteger)count;
-+ (NSUInteger)countWhere:(id)condition;
++ (NSUInteger)countWhere:(id)condition, ...;
 
 #pragma mark - Custom Context
 
