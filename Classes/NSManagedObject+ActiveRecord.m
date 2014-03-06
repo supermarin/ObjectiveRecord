@@ -48,7 +48,7 @@
 + (NSArray *)whereFormat:(NSString *)format, ... {
     va_list va_arguments;
     va_start(va_arguments, format);
-    NSString *condition = [[NSString alloc] initWithFormat:format arguments:va_arguments];
+    NSPredicate *condition = [NSPredicate predicateWithFormat:format arguments:va_arguments];
     va_end(va_arguments);
 
     return [self where:condition];
@@ -63,12 +63,21 @@
     return existing ?: [self create:properties inContext:context];
 }
 
-+ (instancetype)find:(NSDictionary *)attributes {
-    return [self find:attributes inContext:[NSManagedObjectContext defaultContext]];
++ (instancetype)findWithFormat:(NSString *)format, ... {
+    va_list va_arguments;
+    va_start(va_arguments, format);
+    NSPredicate *condition = [NSPredicate predicateWithFormat:format arguments:va_arguments];
+    va_end(va_arguments);
+
+    return [self find:condition];
 }
 
-+ (instancetype)find:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
-    return [self where:attributes inContext:context limit:@1].first;
++ (instancetype)find:(id)condition {
+    return [self find:condition inContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (instancetype)find:(id)condition inContext:(NSManagedObjectContext *)context {
+    return [self where:condition inContext:context limit:@1].first;
 }
 
 + (NSArray *)where:(id)condition {

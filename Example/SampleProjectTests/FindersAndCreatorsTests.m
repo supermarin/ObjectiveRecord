@@ -63,14 +63,14 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
         it(@"Finds using [Entity where: STRING]", ^{
 
-            Person *unique = [Person where:[NSString stringWithFormat:@"firstName == '%@'",UNIQUE_NAME]].first;
+            Person *unique = [Person where:[NSPredicate predicateWithFormat:@"firstName == %@",UNIQUE_NAME]].first;
             [[unique.lastName should] equal:UNIQUE_SURNAME];
 
         });
 
         it(@"Finds using [Entity where: STRING and ARGUMENTS]", ^{
 
-            Person *unique = [Person whereFormat:@"firstName == '%@'", UNIQUE_NAME].first;
+            Person *unique = [Person whereFormat:@"firstName == %@", UNIQUE_NAME].first;
             [[unique.lastName should] equal:UNIQUE_SURNAME];
 
         });
@@ -108,6 +108,16 @@ describe(@"Find / Create / Save / Delete specs", ^{
         it(@"Finds the first match", ^{
             Person *johnDoe = [Person find:@{ @"firstName": @"John",
                                               @"lastName": @"Doe" }];
+            [[johnDoe.firstName should] equal:@"John"];
+        });
+
+        it(@"Finds the first match using [Entity find: STRING]", ^{
+            Person *johnDoe = [Person find:@"firstName = 'John' AND lastName = 'Doe'"];
+            [[johnDoe.firstName should] equal:@"John"];
+        });
+
+        it(@"Finds the first match using [Entity find: STRING and ARGUMENTS]", ^{
+            Person *johnDoe = [Person findWithFormat:@"firstName = %@ AND lastName = %@", @"John", @"Doe"];
             [[johnDoe.firstName should] equal:@"John"];
         });
 
