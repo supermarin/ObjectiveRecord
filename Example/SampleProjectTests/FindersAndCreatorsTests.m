@@ -116,6 +116,11 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[johnDoe.firstName should] equal:@"John"];
         });
 
+        it(@"Finds the first match using [Entity find: STRING and ARGUMENTS]", ^{
+            Person *johnDoe = [Person findWithFormat:@"firstName = '%@' AND lastName = '%@'", @"John", @"Doe"];
+            [[johnDoe.firstName should] equal:@"John"];
+        });
+
         it(@"doesn't create an object on find", ^{
             Person *cat = [Person find:@{ @"firstName": @"Cat" }];
             [cat shouldBeNil];

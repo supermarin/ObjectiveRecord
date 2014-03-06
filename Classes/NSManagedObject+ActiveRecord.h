@@ -36,6 +36,7 @@
 + (NSArray *)whereFormat:(NSString *)format, ...;
 + (instancetype)findOrCreate:(NSDictionary *)attributes;
 + (instancetype)find:(id)condition;
++ (instancetype)findWithFormat:(NSString *)format, ...;
 + (NSUInteger)count;
 + (NSUInteger)countWhere:(id)condition;
 

@@ -63,6 +63,15 @@
     return existing ?: [self create:properties inContext:context];
 }
 
++ (instancetype)findWithFormat:(NSString *)format, ... {
+    va_list va_arguments;
+    va_start(va_arguments, format);
+    NSString *condition = [[NSString alloc] initWithFormat:format arguments:va_arguments];
+    va_end(va_arguments);
+
+    return [self find:condition];
+}
+
 + (instancetype)find:(id)condition {
     return [self find:condition inContext:[NSManagedObjectContext defaultContext]];
 }
