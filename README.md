@@ -35,7 +35,7 @@ NSArray *people = [Person all];
 NSArray *johns = [Person where:@"name == 'John'"];
 
 // And of course, John Doe!
-Person *johnDoe = [Person find:@"name == 'John' AND surname == 'Doe'"];
+Person *johnDoe = [Person find:@"name == %@ AND surname == %@", @"John", @"Doe"];
 
 // Members over 18 from NY
 NSArray *people = [Person where:@{ 
