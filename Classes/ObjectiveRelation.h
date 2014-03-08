@@ -1,4 +1,4 @@
-// NSManagedObject+ActiveRecord.h
+// ObjectiveRelation.h
 //
 // Copyright (c) 2014 Marin Usalj <http://supermar.in>
 //
@@ -20,50 +20,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <CoreData/CoreData.h>
-#import "NSManagedObject+Mappings.h"
-#import "CoreDataManager.h"
+#import <Foundation/Foundation.h>
 
-@interface NSManagedObjectContext (ActiveRecord)
+@interface ObjectiveRelation : NSObject <NSFastEnumeration>
 
-/**
- The default context (as defined on the @c CoreDataManager singleton).
+@property (readonly) NSArray *fetchedObjects;
 
- @see -[CoreDataManager managedObjectContext]
++ (instancetype)relationWithEntity:(Class)entity;
 
- @return A managed object context.
- */
-+ (NSManagedObjectContext *)defaultContext;
+- (void)deleteAll;
 
-@end
+- (id)create;
+- (id)create:(NSDictionary *)attributes;
 
-@interface NSManagedObject (ActiveRecord)
+- (id)all;
+- (id)where:(id)condition, ...;
+- (id)where:(id)condition arguments:(va_list)arguments;
+- (id)order:(id)condition;
+- (id)reverseOrder;
+- (id)limit:(NSUInteger)limit;
+- (id)offset:(NSUInteger)offset;
+- (id)inContext:(NSManagedObjectContext *)context;
 
-- (BOOL)save;
-- (void)delete;
-+ (void)deleteAll;
+- (id)findOrCreate:(NSDictionary *)properties;
+- (id)find:(id)condition, ...;
 
-+ (id)create;
-+ (id)create:(NSDictionary *)attributes;
-- (void)update:(NSDictionary *)attributes;
-
-+ (instancetype)findOrCreate:(NSDictionary *)attributes;
-+ (instancetype)find:(id)condition, ...;
-
-+ (id)all;
-+ (id)where:(id)condition, ...;
-+ (id)order:(id)condition;
-+ (id)reverseOrder;
-+ (id)limit:(NSUInteger)limit;
-+ (id)offset:(NSUInteger)offset;
-+ (id)inContext:(NSManagedObjectContext *)context;
-
-+ (instancetype)first;
-+ (instancetype)last;
-+ (NSUInteger)count;
-
-#pragma mark - Naming
-
-+ (NSString *)entityName;
+- (id)first;
+- (id)last;
+- (NSUInteger)count;
 
 @end

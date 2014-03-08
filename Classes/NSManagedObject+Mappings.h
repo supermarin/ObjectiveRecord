@@ -54,6 +54,8 @@
  */
 + (id)transformValue:(id)value forRemoteKey:(NSString *)remoteKey inContext:(NSManagedObjectContext *)context;
 
++ (NSDictionary *)transformProperties:(NSDictionary *)properties withContext:(NSManagedObjectContext *)context;
+
 /**
  The keypath uniquely identifying your entity. Usually an ID, e.g., @c @@"remoteID".
 

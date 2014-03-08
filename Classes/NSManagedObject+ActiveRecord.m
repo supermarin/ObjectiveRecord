@@ -22,6 +22,7 @@
 
 #import "NSManagedObject+ActiveRecord.h"
 #import "ObjectiveSugar.h"
+#import "ObjectiveRelation.h"
 
 @implementation NSManagedObjectContext (ActiveRecord)
 
@@ -31,146 +32,80 @@
 
 @end
 
-@implementation NSObject(null)
-
-- (BOOL)exists {
-    return self && self != [NSNull null];
-}
-
-@end
-
 @implementation NSManagedObject (ActiveRecord)
 
 #pragma mark - Finders
 
-+ (NSArray *)all {
-    return [self allInContext:[NSManagedObjectContext defaultContext]];
-}
-
-+ (NSArray *)allWithOrder:(id)order {
-    return [self allInContext:[NSManagedObjectContext defaultContext] order:order];
-}
-
-+ (NSArray *)allInContext:(NSManagedObjectContext *)context {
-    return [self allInContext:context order:nil];
-}
-
-+ (NSArray *)allInContext:(NSManagedObjectContext *)context order:(id)order {
-    return [self fetchWithCondition:nil inContext:context withOrder:order fetchLimit:nil];
-}
-
 + (instancetype)findOrCreate:(NSDictionary *)properties {
-    return [self findOrCreate:properties inContext:[NSManagedObjectContext defaultContext]];
-}
-
-+ (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context {
-    NSDictionary *transformed = [[self class] transformProperties:properties withContext:context];
-
-    NSManagedObject *existing = [self where:transformed inContext:context].first;
-    return existing ?: [self create:transformed inContext:context];
+    return [[self all] findOrCreate:properties];
 }
 
 + (instancetype)find:(id)condition, ... {
     va_list va_arguments;
     va_start(va_arguments, condition);
-    NSPredicate *predicate = [self predicateFromObject:condition arguments:va_arguments];
+    ObjectiveRelation *relation = [[self all] where:condition arguments:va_arguments];
     va_end(va_arguments);
 
-    return [self find:predicate inContext:[NSManagedObjectContext defaultContext]];
+    return [relation first];
 }
 
-+ (instancetype)find:(id)condition inContext:(NSManagedObjectContext *)context {
-    return [self where:condition inContext:context limit:@1].first;
-}
-
-+ (NSArray *)where:(id)condition, ... {
++ (id)where:(id)condition, ... {
     va_list va_arguments;
     va_start(va_arguments, condition);
-    NSPredicate *predicate = [self predicateFromObject:condition arguments:va_arguments];
+    ObjectiveRelation *relation = [[self all] where:condition arguments:va_arguments];
     va_end(va_arguments);
 
-    return [self where:predicate inContext:[NSManagedObjectContext defaultContext]];
+    return relation;
 }
 
-+ (NSArray *)where:(id)condition order:(id)order {
-    return [self where:condition inContext:[NSManagedObjectContext defaultContext] order:order];
++ (id)order:(id)order {
+    return [[self all] order:order];
 }
 
-+ (NSArray *)where:(id)condition limit:(NSNumber *)limit {
-    return [self where:condition inContext:[NSManagedObjectContext defaultContext] limit:limit];
++ (id)reverseOrder {
+    return [[self all] reverseOrder];
 }
 
-+ (NSArray *)where:(id)condition order:(id)order limit:(NSNumber *)limit {
-    return [self where:condition inContext:[NSManagedObjectContext defaultContext] order:order limit:limit];
++ (id)limit:(NSUInteger)limit {
+    return [[self all] limit:limit];
 }
 
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
-    return [self where:condition inContext:context order:nil limit:nil];
++ (id)offset:(NSUInteger)offset {
+    return [[self all] offset:offset];
 }
 
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order {
-    return [self where:condition inContext:context order:order limit:nil];
++ (id)inContext:(NSManagedObjectContext *)context {
+    return [[self all] inContext:context];
 }
 
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit {
-    return [self where:condition inContext:context order:nil limit:limit];
++ (id)all {
+    return [ObjectiveRelation relationWithEntity:self];
 }
 
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit {
-    return [self fetchWithCondition:condition inContext:context withOrder:order fetchLimit:limit];
++ (instancetype)first {
+    return [[self all] first];
 }
 
-#pragma mark - Aggregation
++ (instancetype)last {
+    return [[self all] last];
+}
 
 + (NSUInteger)count {
-    return [self countInContext:[NSManagedObjectContext defaultContext]];
-}
-
-+ (NSUInteger)countWhere:(id)condition, ... {
-    va_list va_arguments;
-    va_start(va_arguments, condition);
-    NSPredicate *predicate = [self predicateFromObject:condition arguments:va_arguments];
-    va_end(va_arguments);
-
-    return [self countWhere:predicate inContext:[NSManagedObjectContext defaultContext]];
-}
-
-+ (NSUInteger)countInContext:(NSManagedObjectContext *)context {
-    return [self countForFetchWithPredicate:nil inContext:context];
-}
-
-+ (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context {
-    NSPredicate *predicate = [self predicateFromObject:condition];
-
-    return [self countForFetchWithPredicate:predicate inContext:context];
+    return [[self all] count];
 }
 
 #pragma mark - Creation / Deletion
 
 + (id)create {
-    return [self createInContext:[NSManagedObjectContext defaultContext]];
+    return [[self all] create];
 }
 
 + (id)create:(NSDictionary *)attributes {
-    return [self create:attributes inContext:[NSManagedObjectContext defaultContext]];
-}
-
-+ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
-    unless([attributes exists]) return nil;
-
-    NSManagedObject *newEntity = [self createInContext:context];
-    [newEntity update:attributes];
-
-    return newEntity;
-}
-
-+ (id)createInContext:(NSManagedObjectContext *)context {
-    return [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
-                                         inManagedObjectContext:context];
+    return [[self all] create:attributes];
 }
 
 - (void)update:(NSDictionary *)attributes {
-    unless([attributes exists]) return;
+    if (attributes == nil || (id)attributes == [NSNull null]) return;
 
     NSDictionary *transformed = [[self class] transformProperties:attributes withContext:self.managedObjectContext];
 
@@ -185,18 +120,12 @@
     return [self saveTheContext];
 }
 
++ (void)deleteAll {
+    [[self all] deleteAll];
+}
+
 - (void)delete {
     [self.managedObjectContext deleteObject:self];
-}
-
-+ (void)deleteAll {
-    [self deleteAllInContext:[NSManagedObjectContext defaultContext]];
-}
-
-+ (void)deleteAllInContext:(NSManagedObjectContext *)context {
-    [[self allInContext:context] each:^(id object) {
-        [object delete];
-    }];
 }
 
 #pragma mark - Naming
@@ -206,130 +135,6 @@
 }
 
 #pragma mark - Private
-
-+ (NSDictionary *)transformProperties:(NSDictionary *)properties withContext:(NSManagedObjectContext *)context {
-    NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:context];
-
-    NSDictionary *attributes = [entity attributesByName];
-    NSDictionary *relationships = [entity relationshipsByName];
-
-    NSMutableDictionary *transformed = [NSMutableDictionary dictionaryWithCapacity:[properties count]];
-
-    for (NSString *key in properties) {
-        NSString *localKey = [self keyForRemoteKey:key inContext:context];
-        if (attributes[localKey] || relationships[localKey]) {
-            transformed[localKey] = [[self class] transformValue:properties[key] forRemoteKey:key inContext:context];
-        } else {
-#if DEBUG
-            NSLog(@"Discarding key ('%@') from properties on class ('%@'): no attribute or relationship found",
-                  key, [self class]);
-#endif
-        }
-    }
-
-    return transformed;
-}
-
-+ (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict {
-    NSArray *subpredicates = [dict map:^(NSString *key, id value) {
-        return [NSPredicate predicateWithFormat:@"%K = %@", key, value];
-    }];
-
-    return [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
-}
-
-+ (NSPredicate *)predicateFromObject:(id)condition {
-    return [self predicateFromObject:condition arguments:NULL];
-}
-
-+ (NSPredicate *)predicateFromObject:(id)condition arguments:(va_list)arguments {
-    if ([condition isKindOfClass:[NSPredicate class]])
-        return condition;
-
-    if ([condition isKindOfClass:[NSString class]])
-        return [NSPredicate predicateWithFormat:condition arguments:arguments];
-
-    if ([condition isKindOfClass:[NSDictionary class]])
-        return [self predicateFromDictionary:condition];
-
-    return nil;
-}
-
-+ (NSSortDescriptor *)sortDescriptorFromDictionary:(NSDictionary *)dict {
-    BOOL isAscending = ![[dict.allValues.first uppercaseString] isEqualToString:@"DESC"];
-    return [NSSortDescriptor sortDescriptorWithKey:dict.allKeys.first
-                                         ascending:isAscending];
-}
-
-+ (NSSortDescriptor *)sortDescriptorFromString:(NSString *)order {
-    NSArray *components = [order split];
-
-    NSString *key = [components firstObject];
-    NSString *value = [components count] > 1 ? components[1] : @"ASC";
-
-    return [self sortDescriptorFromDictionary:@{key: value}];
-
-}
-
-+ (NSSortDescriptor *)sortDescriptorFromObject:(id)order {
-    if ([order isKindOfClass:[NSSortDescriptor class]])
-        return order;
-
-    if ([order isKindOfClass:[NSString class]])
-        return [self sortDescriptorFromString:order];
-
-    if ([order isKindOfClass:[NSDictionary class]])
-        return [self sortDescriptorFromDictionary:order];
-
-    return nil;
-}
-
-+ (NSArray *)sortDescriptorsFromObject:(id)order {
-    if ([order isKindOfClass:[NSString class]])
-        order = [order componentsSeparatedByString:@","];
-
-    if ([order isKindOfClass:[NSArray class]])
-        return [order map:^id (id object) {
-            return [self sortDescriptorFromObject:object];
-        }];
-
-    return @[[self sortDescriptorFromObject:order]];
-}
-
-+ (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {
-    NSFetchRequest *request = [NSFetchRequest new];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName]
-                                              inManagedObjectContext:context];
-    [request setEntity:entity];
-    return request;
-}
-
-+ (NSArray *)fetchWithCondition:(id)condition
-                      inContext:(NSManagedObjectContext *)context
-                      withOrder:(id)order
-                     fetchLimit:(NSNumber *)fetchLimit {
-
-    NSFetchRequest *request = [self createFetchRequestInContext:context];
-
-    if (condition)
-        [request setPredicate:[self predicateFromObject:condition]];
-
-    if (order)
-        [request setSortDescriptors:[self sortDescriptorsFromObject:order]];
-
-    if (fetchLimit)
-        [request setFetchLimit:[fetchLimit integerValue]];
-
-    return [context executeFetchRequest:request error:nil];
-}
-
-+ (NSUInteger)countForFetchWithPredicate:(NSPredicate *)predicate
-                               inContext:(NSManagedObjectContext *)context {
-    NSFetchRequest *request = [self createFetchRequestInContext:context];
-    [request setPredicate:predicate];
-
-    return [context countForFetchRequest:request error:nil];
-}
 
 - (BOOL)saveTheContext {
     if (self.managedObjectContext == nil ||

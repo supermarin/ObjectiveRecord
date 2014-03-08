@@ -21,8 +21,11 @@
 // THE SOFTWARE.
 
 #import "NSManagedObject+Mappings.h"
-#import "NSManagedObject+ActiveRecord.h"
+
 #import "ObjectiveSugar.h"
+
+#import "NSManagedObject+ActiveRecord.h"
+#import "ObjectiveRelation.h"
 
 @implementation NSManagedObject (Mappings)
 
@@ -53,6 +56,29 @@
     return value;
 }
 
++ (NSDictionary *)transformProperties:(NSDictionary *)properties withContext:(NSManagedObjectContext *)context {
+    NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:context];
+
+    NSDictionary *attributes = [entity attributesByName];
+    NSDictionary *relationships = [entity relationshipsByName];
+
+    NSMutableDictionary *transformed = [NSMutableDictionary dictionaryWithCapacity:[properties count]];
+
+    for (NSString *key in properties) {
+        NSString *localKey = [self keyForRemoteKey:key inContext:context];
+        if (attributes[localKey] || relationships[localKey]) {
+            transformed[localKey] = [[self class] transformValue:properties[key] forRemoteKey:key inContext:context];
+        } else {
+#if DEBUG
+            NSLog(@"Discarding key ('%@') from properties on class ('%@'): no attribute or relationship found",
+                  key, [self class]);
+#endif
+        }
+    }
+
+    return transformed;
+}
+
 #pragma mark - Private
 
 + (id)objectOrSetOfObjectsFromValue:(id)value ofClass:class inContext:(NSManagedObjectContext *)context {
@@ -60,14 +86,14 @@
         return value;
 
     if ([value isKindOfClass:[NSDictionary class]])
-        return [class findOrCreate:value inContext:context];
+        return [[class inContext:context] findOrCreate:value];
 
     if ([value isKindOfClass:[NSArray class]])
         return [NSSet setWithArray:[value map:^id(id object) {
             return [self objectOrSetOfObjectsFromValue:object ofClass:class inContext:context];
         }]];
 
-    return [class findOrCreate:@{ [class primaryKey]: value } inContext:context];
+    return [[class inContext:context] findOrCreate:@{[class primaryKey]: value}];
 }
 
 + (NSMutableDictionary *)cachedMappings {

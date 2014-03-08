@@ -3,6 +3,7 @@
 #import "Person+Mappings.h"
 #import "OBRPerson.h"
 #import "Car+Mappings.h"
+#import "ObjectiveRelation.h"
 
 static NSString *UNIQUE_NAME = @"ldkhbfaewlfbaewljfhb";
 static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
@@ -11,9 +12,7 @@ static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
 #pragma mark - Helpers
 
 Person *fetchUniquePerson() {
-    Person *person = [Person where:[NSString stringWithFormat:@"firstName = '%@' AND lastName = '%@'",
-                                    UNIQUE_NAME, UNIQUE_SURNAME]].first;
-    return person;
+    return [Person find:@"firstName = %@ AND lastName = %@", UNIQUE_NAME, UNIQUE_SURNAME];
 }
 
 NSManagedObjectContext *createNewContext() {
@@ -24,7 +23,7 @@ NSManagedObjectContext *createNewContext() {
 
 void createSomePeople(NSArray *names, NSArray *surnames, NSManagedObjectContext *context) {
     for (int i = 0; i < names.count; i++) {
-        Person *person = [Person createInContext:context];
+        Person *person = [[Person inContext:context] create];
         person.firstName = names[i];
         person.lastName = surnames[i];
         person.age = @(i);
@@ -55,32 +54,45 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
         it(@"Finds using [Entity where: STRING]", ^{
 
-            Person *unique = [Person where:[NSPredicate predicateWithFormat:@"firstName == %@",UNIQUE_NAME]].first;
+            Person *unique = [[Person where:[NSString stringWithFormat:@"firstName == '%@'",UNIQUE_NAME]] first];
             [[unique.lastName should] equal:UNIQUE_SURNAME];
 
         });
 
         it(@"Finds using [Entity where: STRING and ARGUMENTS]", ^{
 
-            Person *unique = [Person where:@"firstName == %@", UNIQUE_NAME].first;
+            Person *unique = [[Person where:@"firstName == %@", UNIQUE_NAME] first];
             [[unique.lastName should] equal:UNIQUE_SURNAME];
 
         });
 
         it(@"Finds using [Entity where: DICTIONARY]", ^{
-            Person *person = [Person where:@{
+            Person *person = [[Person where:@{
                 @"firstName": @"John",
                 @"lastName": @"Doe",
                 @"age": @0,
                 @"isMember": @1,
                 @"anniversary": [NSDate dateWithTimeIntervalSince1970:0]
-            }].first;
+            }] first];
 
             [[person.firstName should] equal:@"John"];
             [[person.lastName should] equal:@"Doe"];
             [[person.age should] equal:@0];
             [[person.isMember should] equal:@(YES)];
             [[person.anniversary should] equal:[NSDate dateWithTimeIntervalSince1970:0]];
+        });
+
+        it(@"Finds using chained wheres", ^{
+            id query = [[[[[[Person where:@{@"firstName": @"John"}] where:@{@"lastName": @"Doe"}] where:@{@"lastName": @"Doe"}] where:@{@"age": @0}] where:@{@"isMember": @YES}] where:@{@"anniversary": [NSDate dateWithTimeIntervalSince1970:0] }];
+
+            Person *person = [query first];
+            [[person.firstName should] equal:@"John"];
+            [[person.lastName should] equal:@"Doe"];
+            [[person.age should] equal:@0];
+            [[person.isMember should] equal:theValue(YES)];
+            [[person.anniversary should] equal:[NSDate dateWithTimeIntervalSince1970:0]];
+
+            [[@([[query where:@"firstName = 'Stephen'"]count]) should] equal:@0];
         });
 
         it(@"Finds and creates if there was no object", ^{
@@ -124,11 +136,11 @@ describe(@"Find / Create / Save / Delete specs", ^{
                 newPerson.firstName = @"John";
                 [newPerson save];
             }];
-            [[[Person where:@{ @"firstName": @"John" } limit:@2] should] haveCountOf:2];
+            [[[[Person where:@{ @"firstName": @"John" }] limit:2] should] haveCountOf:2];
         });
     });
 
-    context(@"Ordering", ^{
+    context(@"Ordering and offseting", ^{
 
         id (^firstNameMapper)(Person *) = ^id (Person *p) { return p.firstName; };
         id (^lastNameMapper)(Person *) = ^id (Person *p) { return p.lastName; };
@@ -140,69 +152,86 @@ describe(@"Find / Create / Save / Delete specs", ^{
                              [NSManagedObjectContext defaultContext]);
         });
 
-        it(@"orders results by a single string property", ^{
-            NSArray *resultLastNames = [[Person allWithOrder:@"lastName"]
+        it(@"orders results by a single property", ^{
+            NSArray *resultLastNames = [[Person order:@"lastName"]
                                         map:lastNameMapper];
             [[resultLastNames should] equal:@[@"Gaz", @"Mol", @"Mol", @"Zed"]];
         });
 
         it(@"orders results by a single string property descending", ^{
-            NSArray *resultFirstNames = [[Person allWithOrder:@"firstName DESC"]
+            NSArray *resultFirstNames = [[Person order:@"firstName DESC"]
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Don", @"Cal", @"Bob", @"Abe"]];
         });
 
         it(@"orders results by multiple string properties descending", ^{
-            NSArray *resultFirstNames = [[Person allWithOrder:@"lastName, firstName DESC"]
+            NSArray *resultFirstNames = [[Person order:@"lastName, firstName DESC"]
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Cal", @"Don", @"Bob", @"Abe"]];
         });
 
         it(@"orders results by multiple properties", ^{
-            NSArray *resultFirstNames = [[Person allWithOrder:@[@"lastName", @"firstName"]]
+            NSArray *resultFirstNames = [[Person order:@[@"lastName", @"firstName"]]
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Cal", @"Bob", @"Don", @"Abe"]];
+        });
+
+        it(@"orders results by chained properties", ^{
+            NSArray *resultFirstNames = [[[Person order:@"lastName"] order:@"firstName"]
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Cal", @"Bob", @"Don", @"Abe"]];
         });
 
         it(@"orders results by property ascending", ^{
-            NSArray *resultFirstNames = [[Person allWithOrder:@{@"firstName" : @"ASC"}]
+            NSArray *resultFirstNames = [[Person order:@{@"firstName" : @"ASC"}]
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Abe", @"Bob", @"Cal", @"Don"]];
         });
 
         it(@"orders results by property descending", ^{
-            NSArray *resultFirstNames = [[Person allWithOrder:@[@{@"firstName" : @"DESC"}]]
+            NSArray *resultFirstNames = [[Person order:@[@{@"firstName" : @"DESC"}]]
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Don", @"Cal", @"Bob", @"Abe"]];
         });
 
         it(@"orders results by sort descriptors", ^{
-            NSArray *resultFirstNames = [[Person allWithOrder:@[[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
-                                                                [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:NO]]]
+            NSArray *resultFirstNames = [[Person order:@[[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
+                                                         [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:NO]]]
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Cal", @"Don", @"Bob", @"Abe"]];
         });
 
         it(@"orders found results", ^{
-            NSArray *resultFirstNames = [[Person where:@{@"lastName" : @"Mol"} order:@"firstName"]
+            NSArray *resultFirstNames = [[[Person where:@{@"lastName" : @"Mol"}] order:@"firstName"]
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Bob", @"Don"]];
         });
 
         it(@"orders limited results", ^{
-            NSArray *resultLastNames = [[Person where:nil order:@"lastName" limit:@(2)]
+            NSArray *resultLastNames = [[[Person order:@"lastName"] limit:2]
                                         map:lastNameMapper];
             [[resultLastNames should] equal:@[@"Gaz", @"Mol"]];
         });
 
         it(@"orders found and limited results", ^{
-            NSArray *resultFirstNames = [[Person where:@{@"lastName" : @"Mol"}
-                                             inContext:[NSManagedObjectContext defaultContext]
+            NSArray *resultFirstNames = [[[[Person where:@{@"lastName" : @"Mol"}]
                                                  order:@[@{@"lastName" : @"ASC"},
-                                                         @{@"firstName" : @"DESC"}]
-                                                 limit:@(1)]
+                                                         @{@"firstName" : @"DESC"}]]
+                                                 limit:1]
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Don"]];
+        });
+
+        it(@"reverses order", ^{
+            NSArray *resultLastNames = [[[Person order:@"lastName"] reverseOrder]
+                                        map:lastNameMapper];
+            [[resultLastNames should] equal:@[@"Zed", @"Mol", @"Mol", @"Gaz"]];
+        });
+
+        it(@"offsets found results", ^{
+            NSArray *resultLastNames = [[[Person order:@"lastName"] offset:1]
+                                        map:lastNameMapper];
+            [[resultLastNames should] equal:@[@"Mol", @"Mol", @"Zed"]];
         });
     });
 
@@ -213,18 +242,13 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
 
         it(@"counts found entities", ^{
-            NSUInteger count = [Person countWhere:@{@"firstName" : @"Neo"}];
+            NSUInteger count = [[Person where:@{@"firstName" : @"Neo"}] count];
             [[@(count) should] equal:@(1)];
         });
 
         it(@"counts zero when none found", ^{
-            NSUInteger count = [Person countWhere:@{@"firstName" : @"Nobody"}];
+            NSUInteger count = [[Person where:@{@"firstName" : @"Nobody"}] count];
             [[@(count) should] equal:@(0)];
-        });
-
-        it(@"counts with variable arguments", ^{
-            NSUInteger count = [Person countWhere:@"firstName = %@", @"Neo"];
-            [[@(count) should] equal:@(1)];
         });
     });
 
@@ -234,7 +258,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
             Person *person = [Person create];
             person.firstName = @"marin";
             person.lastName = UNIQUE_SURNAME;
-            [[[[Person where:@"firstName == 'marin'"].first lastName] should] equal:UNIQUE_SURNAME];
+            [[[[[Person where:@"firstName == 'marin'"] first] lastName] should] equal:UNIQUE_SURNAME];
         });
 
 
@@ -374,7 +398,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
             newContext = createNewContext();
 
             [newContext performBlockAndWait:^{
-                Person *newPerson = [Person createInContext:newContext];
+                Person *newPerson = [[Person inContext:newContext] create];
                 newPerson.firstName = @"Joshua";
                 newPerson.lastName = @"Jobs";
                 newPerson.age = [NSNumber numberWithInt:100];
@@ -387,19 +411,19 @@ describe(@"Find / Create / Save / Delete specs", ^{
                                         andReturn:nil
                                     withArguments:@"Person", newContext];
 
-            [Person createInContext:newContext];
+            [[Person inContext:newContext] create];
         });
 
         it(@"Creates with dictionary in a separate context", ^{
             [[NSEntityDescription should] receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:)
                                     withArguments:@"Person", newContext];
 
-            [Person create:[NSDictionary dictionary] inContext:newContext];
+            [[Person inContext:newContext] create:[NSDictionary dictionary]];
         });
 
         it(@"Finds in a separate context", ^{
             [newContext performBlockAndWait:^{
-                Person *found = [Person where:@{ @"firstName": @"Joshua" } inContext:newContext].first;
+                Person *found = [[[Person where:@{ @"firstName": @"Joshua" }] inContext:newContext] first];
                 [[found.lastName should] equal:@"Jobs"];
             }];
         });
@@ -413,7 +437,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
                 [NSManagedObjectContext.defaultContext save:nil];
 
                 createSomePeople(names, surnames, anotherContext);
-                newPeople = [Person allInContext:anotherContext];
+                newPeople = [Person inContext:anotherContext];
             }];
 
             [[newPeople should] haveCountOf:names.count];
@@ -422,36 +446,36 @@ describe(@"Find / Create / Save / Delete specs", ^{
         it(@"Finds the first match in a separate context", ^{
             NSDictionary *attributes = @{ @"firstName": @"Joshua",
                                           @"lastName": @"Jobs" };
-            Person *joshua = [Person find:attributes inContext:newContext];
+            Person *joshua = [(ObjectiveRelation *)[Person inContext:newContext] find:attributes];
             [[joshua.firstName should] equal:@"Joshua"];
         });
 
         it(@"Finds a limited number of results in a separate context", ^{
             [@4 times:^{
                 [newContext performBlockAndWait:^{
-                    Person *newPerson = [Person createInContext:newContext];
+                    Person *newPerson = [[Person inContext:newContext] create];
                     newPerson.firstName = @"Joshua";
                     [newPerson save];
                 }];
             }];
-            NSArray *people = [Person where:@{ @"firstName": @"Joshua"}
-                                  inContext:newContext
-                                      limit:@2];
+            NSArray *people = [[[Person where:@{ @"firstName": @"Joshua"}]
+                                  inContext:newContext]
+                                      limit:2];
             [[people should] haveCountOf:2];
         });
 
 
         it(@"Find or create in a separate context", ^{
             [newContext performBlockAndWait:^{
-                Person *luis = [Person findOrCreate:@{ @"firstName": @"Luis" } inContext:newContext];
+                Person *luis = [[Person inContext:newContext] findOrCreate:@{ @"firstName": @"Luis" }];
                 [[luis.firstName should] equal:@"Luis"];
             }];
         });
 
         it(@"Deletes all from context", ^{
             [newContext performBlockAndWait:^{
-                [Person deleteAllInContext:newContext];
-                [[[Person allInContext:newContext] should] beEmpty];
+                [[Person inContext:newContext] deleteAll];
+                [[[Person inContext:newContext] should] beEmpty];
             }];
         });
 
@@ -471,14 +495,14 @@ describe(@"Find / Create / Save / Delete specs", ^{
                                         andReturn:[NSEntityDescription entityForName:@"OtherPerson" inManagedObjectContext:newContext]
                                     withArguments:@"OtherPerson", newContext];
 
-            [OBRPerson allInContext:newContext];
+            [[OBRPerson inContext:newContext] fetchedObjects];
         });
 
         it(@"Creates the correct entity", ^{
             [[NSEntityDescription should] receive:@selector(insertNewObjectForEntityForName:inManagedObjectContext:)
                                     withArguments:@"OtherPerson", newContext];
 
-            [OBRPerson createInContext:newContext];
+            [[OBRPerson inContext:newContext] create];
         });
 
     });
