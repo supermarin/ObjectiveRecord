@@ -127,6 +127,12 @@
     return [[self where:properties] first] ?: [self create:properties];
 }
 
+- (void)updateAll:(NSDictionary *)attributes {
+    for (NSManagedObject *entity in self) {
+        [entity update:attributes];
+    }
+}
+
 - (void)deleteAll {
     for (NSManagedObject *entity in self) {
         [entity delete];

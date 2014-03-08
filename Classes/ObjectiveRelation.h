@@ -7,6 +7,7 @@
 + (instancetype)relationWithEntity:(Class)entity;
 
 - (void)deleteAll;
+- (void)updateAll:(NSDictionary *)attributes;
 
 - (id)create;
 - (id)create:(NSDictionary *)attributes;
