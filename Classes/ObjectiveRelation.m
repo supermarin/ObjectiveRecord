@@ -152,6 +152,12 @@
     return [[self where:transformed] first] ?: [self create:transformed];
 }
 
+- (void)updateAll:(NSDictionary *)attributes {
+    for (NSManagedObject *entity in self) {
+        [entity update:attributes];
+    }
+}
+
 - (void)deleteAll {
     for (NSManagedObject *entity in self) {
         [entity delete];

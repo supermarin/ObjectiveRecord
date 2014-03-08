@@ -336,6 +336,26 @@ describe(@"Find / Create / Save / Delete specs", ^{
             }];
             [[[Person where:@{ @"firstName": @"asetnset" }] should] haveCountOf:1];
         });
+
+        it(@"updates multiple records", ^{
+            [Person deleteAll];
+            createSomePeople(@[@"Abe", @"Bob", @"Cal", @"Don"],
+                             @[@"Zed", @"Mol", @"Gaz", @"Mol"],
+                             [NSManagedObjectContext defaultContext]);
+            NSDictionary *query = @{ @"lastName" : @"Lee" };
+            [Person updateAll:query];
+            [[[Person where:query] should] haveCountOf:4];
+        });
+
+        it(@"updates multiple records through a query", ^{
+            [Person deleteAll];
+            createSomePeople(@[@"Abe", @"Bob", @"Cal", @"Don"],
+                             @[@"Zed", @"Mol", @"Gaz", @"Mol"],
+                             [NSManagedObjectContext defaultContext]);
+            NSDictionary *query = @{ @"lastName" : @"Lee" };
+            [[Person where:@"lastName = 'Mol'"] updateAll:query];
+            [[[Person where:query] should] haveCountOf:2];
+        });
     });
 
     context(@"Saving", ^{

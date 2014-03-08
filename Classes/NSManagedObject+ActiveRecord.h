@@ -46,6 +46,7 @@
 + (id)create;
 + (id)create:(NSDictionary *)attributes;
 - (void)update:(NSDictionary *)attributes;
++ (void)updateAll:(NSDictionary *)attributes;
 
 + (instancetype)findOrCreate:(NSDictionary *)attributes;
 + (instancetype)find:(id)condition, ...;

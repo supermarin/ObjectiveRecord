@@ -104,6 +104,10 @@
     return [[self all] create:attributes];
 }
 
++ (void)updateAll:(NSDictionary *)attributes {
+    [[self all] updateAll:attributes];
+}
+
 - (void)update:(NSDictionary *)attributes {
     if (attributes == nil || (id)attributes == [NSNull null]) return;
 
