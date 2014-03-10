@@ -1,7 +1,7 @@
 ## Intro
 This is a lightweight ActiveRecord way of managing Core Data objects.
-The syntax is borrowed from Ruby on Rails.<br>
-And yeah, no AppDelegate code.
+If you've done Rails before, it might sound familiar.<br>
+No AppDelegate code required.
 It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
 
 [![Build Status](https://travis-ci.org/supermarin/ObjectiveRecord.png?branch=master)](https://travis-ci.org/supermarin/ObjectiveRecord)
