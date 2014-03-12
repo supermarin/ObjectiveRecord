@@ -35,10 +35,16 @@
     return self;
 }
 
+#pragma mark - Fetch request building
+
+- (id)all {
+    return [self copy];
+}
+
 - (id)where:(id)condition, ... {
     va_list arguments;
     va_start(arguments, condition);
-    ObjectiveRelation *relation = [self where:condition arguments:arguments];
+    id relation = [self where:condition arguments:arguments];
     va_end(arguments);
 
     return relation;
@@ -85,29 +91,35 @@
     return relation;
 }
 
+#pragma mark Counting
+
 - (NSUInteger)count {
     return [self.managedObjectContext countForFetchRequest:[self prepareFetchRequest] error:nil];
 }
 
-- (instancetype)all {
-    return [self copy];
+#pragma mark Plucking
+
+- (id)firstObject {
+    return [[[self limit:1] fetchedObjects] firstObject];
 }
 
-- (id)first {
-    return [[self limit:1] firstObject];
-}
-
-- (id)last {
-    return [[self reverseOrder] first];
+- (id)lastObject {
+    return [[self reverseOrder] firstObject];
 }
 
 - (id)find:(id)condition, ... {
     va_list arguments;
     va_start(arguments, condition);
-    ObjectiveRelation *relation = [self where:condition arguments:arguments];
+    id relation = [self where:condition arguments:arguments];
     va_end(arguments);
 
-    return [relation first];
+    return [relation firstObject];
+}
+
+#pragma mark - Manipulating entities
+
+- (id)findOrCreate:(NSDictionary *)properties {
+    return [[self where:properties] firstObject] ?: [self create:properties];
 }
 
 - (id)create {
@@ -123,10 +135,6 @@
     return newEntity;
 }
 
-- (id)findOrCreate:(NSDictionary *)properties {
-    return [[self where:properties] first] ?: [self create:properties];
-}
-
 - (void)updateAll:(NSDictionary *)attributes {
     for (NSManagedObject *entity in self) {
         [entity update:attributes];
@@ -137,13 +145,6 @@
     for (NSManagedObject *entity in self) {
         [entity delete];
     }
-}
-
-- (NSArray *)fetchedObjects {
-    if (_fetchedObjects == nil) {
-        _fetchedObjects = [self.managedObjectContext executeFetchRequest:[self prepareFetchRequest] error:nil];
-    }
-    return _fetchedObjects;
 }
 
 #pragma mark - NSObject
@@ -181,6 +182,13 @@
 }
 
 #pragma mark - Private
+
+- (NSArray *)fetchedObjects {
+    if (_fetchedObjects == nil) {
+        _fetchedObjects = [self.managedObjectContext executeFetchRequest:[self prepareFetchRequest] error:nil];
+    }
+    return _fetchedObjects;
+}
 
 - (NSFetchRequest *)prepareFetchRequest {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[self.entity entityName]];
