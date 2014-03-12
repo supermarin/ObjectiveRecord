@@ -34,7 +34,9 @@
 - (id)order:(id)condition;
 - (id)reverseOrder;
 - (id)limit:(NSUInteger)limit;
+@property (readonly, nonatomic) NSUInteger limit;
 - (id)offset:(NSUInteger)offset;
+@property (readonly, nonatomic) NSUInteger offset;
 - (id)inContext:(NSManagedObjectContext *)context;
 
 #pragma mark Counting
