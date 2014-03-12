@@ -55,23 +55,23 @@ NSArray *members = [Person where:membersPredicate];
 
 ``` objc
 // People by their last name ascending
-NSArray *sortedPeople = [Person allWithOrder:@"surname"];
+NSArray *sortedPeople = [Person order:@"surname"];
 
 // People named John by their last name Z to A
-NSArray *reversedPeople = [Person where:@{@"name" : @"John"} 
-                                  order:@{@"surname" : @"DESC"}];
+NSArray *reversedPeople = [[Person where:@{@"name" : @"John"}]
+                                   order:@{@"surname" : @"DESC"}];
 
 // You can use NSSortDescriptor too
-NSArray *people = [Person allWithOrder:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+NSArray *people = [Person order:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
 
 // And multiple orderings with any of the above
-NSArray *morePeople = [Person allWithOrder:@[@{@"surname" : @"ASC"},
-                                             @{@"name" : @"DESC"}]];
+NSArray *morePeople = [Person order:@[@{@"surname" : @"ASC"},
+                                      @{@"name" : @"DESC"}]];
 
 // Just the first 5 people named John sorted by last name
-NSArray *fivePeople = [Person where:@"name == 'John'"
-                              order:@{@"surname" : @"ASC"}
-                              limit:@(5)];
+NSArray *fivePeople = [[[Person where:@"name == 'John'"]
+                                order:@"surname"]
+                                limit:5];
 ```
 
 #### Aggregation
@@ -81,7 +81,7 @@ NSArray *fivePeople = [Person where:@"name == 'John'"
 NSUInteger personCount = [Person count];
 
 // count people named John
-NSUInteger johnCount = [Person countWhere:@"name == 'John'"];
+NSUInteger johnCount = [[Person where:@"name == 'John'"] count];
 ```
 
 #### Custom ManagedObjectContext
@@ -90,9 +90,9 @@ NSUInteger johnCount = [Person countWhere:@"name == 'John'"];
 NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
 newContext.persistentStoreCoordinator = [[CoreDataManager instance] persistentStoreCoordinator];
 
-Person *john = [Person createInContext:newContext];
-Person *john = [Person find:@"name == 'John'" inContext:newContext];
-NSArray *people = [Person allInContext:newContext];
+Person *john = [[Person inContext:newContext] create];
+Person *john = [[Person inContext:newContext] find:@"name == 'John'"];
+id people = [Person inContext:newContext];
 ```
 
 #### Custom CoreData model or .sqlite database
@@ -106,13 +106,11 @@ If you've added the Core Data manually, you can change the custom model and data
 
 ``` objc
 // find
-[[Person all] each:^(Person *person) {
+for (Person *person in [Person all]) {
     person.member = @NO;
-}];
+};
 
-for(Person *person in [Person all]) {
-    person.member = @YES;
-}
+[[Person all] setValue:@YES forKey:@"member"];
 
 // create / save
 Person *john = [Person create];
@@ -121,9 +119,7 @@ john.surname = @"Wayne";
 [john save];
 
 // find / delete
-[[Person where: @{ "member" : @NO }] each:^(Person *person) {
-    [person delete];
-}];
+[[Person where:@{ "member" : @NO }] deleteAll];
 ```
 #### Mapping
 

@@ -16,45 +16,40 @@
 
 @interface NSManagedObject (ActiveRecord)
 
+#pragma mark - Fetch request building
 
-#pragma mark - Default Context
++ (id)all;
++ (id)where:(id)condition, ...;
++ (id)order:(id)condition;
++ (id)reverseOrder;
++ (id)limit:(NSUInteger)limit;
++ (id)offset:(NSUInteger)offset;
++ (id)inContext:(NSManagedObjectContext *)context;
 
-- (BOOL)save;
-- (void)delete;
-+ (void)deleteAll;
+#pragma mark Counting
 
-+ (id)create;
-+ (id)create:(NSDictionary *)attributes;
++ (NSUInteger)count;
+
+#pragma mark Plucking
+
++ (instancetype)firstObject;
++ (instancetype)lastObject;
+
++ (instancetype)find:(id)condition, ...;
+
+#pragma mark - Manipulating entities
+
++ (instancetype)findOrCreate:(NSDictionary *)properties;
+
++ (instancetype)create;
++ (instancetype)create:(NSDictionary *)attributes;
+
++ (void)updateAll:(NSDictionary *)attributes;
 - (void)update:(NSDictionary *)attributes;
 
-+ (NSArray *)all;
-+ (NSArray *)allWithOrder:(id)order;
-+ (NSArray *)where:(id)condition, ...;
-+ (NSArray *)where:(id)condition order:(id)order;
-+ (NSArray *)where:(id)condition limit:(NSNumber *)limit;
-+ (NSArray *)where:(id)condition order:(id)order limit:(NSNumber *)limit;
-+ (instancetype)findOrCreate:(NSDictionary *)attributes;
-+ (instancetype)find:(id)condition, ...;
-+ (NSUInteger)count;
-+ (NSUInteger)countWhere:(id)condition, ...;
-
-#pragma mark - Custom Context
-
-+ (id)createInContext:(NSManagedObjectContext *)context;
-+ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
-
-+ (void)deleteAllInContext:(NSManagedObjectContext *)context;
-
-+ (NSArray *)allInContext:(NSManagedObjectContext *)context;
-+ (NSArray *)allInContext:(NSManagedObjectContext *)context order:(id)order;
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context;
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order;
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit;
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit;
-+ (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context;
-+ (instancetype)find:(id)condition inContext:(NSManagedObjectContext *)context;
-+ (NSUInteger)countInContext:(NSManagedObjectContext *)context;
-+ (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context;
+- (BOOL)save;
++ (void)deleteAll;
+- (void)delete;
 
 #pragma mark - Naming
 

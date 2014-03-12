@@ -10,6 +10,7 @@
 #import "Person+Mappings.h"
 #import "Car+Mappings.h"
 #import "InsuranceCompany.h"
+#import "ObjectiveRelation.h"
 
 SPEC_BEGIN(MappingsTests)
 
@@ -43,11 +44,11 @@ describe(@"Mappings", ^{
     newContext.persistentStoreCoordinator = [[CoreDataManager sharedManager] persistentStoreCoordinator];
     
     beforeEach(^{
-        person = [Person create:JSON inContext:newContext];
+        person = [[Person inContext:newContext] create:JSON];
     });
     
     it(@"caches mappings", ^{
-        Car *car = [Car createInContext:newContext];
+        Car *car = [[Car inContext:newContext] create];
         [[Car should] receive:@selector(mappings) withCountAtMost:1];
         
         [car update:@{ @"hp": @150 }];
