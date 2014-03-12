@@ -24,15 +24,9 @@
 
 @interface ObjectiveRelation : NSObject <NSFastEnumeration>
 
-@property (readonly) NSArray *fetchedObjects;
-
 + (instancetype)relationWithEntity:(Class)entity;
 
-- (void)deleteAll;
-- (void)updateAll:(NSDictionary *)attributes;
-
-- (id)create;
-- (id)create:(NSDictionary *)attributes;
+#pragma mark - Fetch request building
 
 - (id)all;
 - (id)where:(id)condition, ...;
@@ -43,11 +37,25 @@
 - (id)offset:(NSUInteger)offset;
 - (id)inContext:(NSManagedObjectContext *)context;
 
-- (id)findOrCreate:(NSDictionary *)properties;
+#pragma mark Counting
+
+- (NSUInteger)count;
+
+#pragma mark Plucking
+
+- (id)firstObject;
+- (id)lastObject;
 - (id)find:(id)condition, ...;
 
-- (id)first;
-- (id)last;
-- (NSUInteger)count;
+#pragma mark - Manipulating entities
+
+- (id)findOrCreate:(NSDictionary *)properties;
+
+- (id)create;
+- (id)create:(NSDictionary *)attributes;
+
+- (void)updateAll:(NSDictionary *)attributes;
+
+- (void)deleteAll;
 
 @end

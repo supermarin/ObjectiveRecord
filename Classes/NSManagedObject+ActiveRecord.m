@@ -34,25 +34,16 @@
 
 @implementation NSManagedObject (ActiveRecord)
 
-#pragma mark - Finders
+#pragma mark - Fetch request building
 
-+ (instancetype)findOrCreate:(NSDictionary *)properties {
-    return [[self all] findOrCreate:properties];
-}
-
-+ (instancetype)find:(id)condition, ... {
-    va_list va_arguments;
-    va_start(va_arguments, condition);
-    ObjectiveRelation *relation = [[self all] where:condition arguments:va_arguments];
-    va_end(va_arguments);
-
-    return [relation first];
++ (id)all {
+    return [ObjectiveRelation relationWithEntity:self];
 }
 
 + (id)where:(id)condition, ... {
     va_list va_arguments;
     va_start(va_arguments, condition);
-    ObjectiveRelation *relation = [[self all] where:condition arguments:va_arguments];
+    id relation = [[self all] where:condition arguments:va_arguments];
     va_end(va_arguments);
 
     return relation;
@@ -78,29 +69,42 @@
     return [[self all] inContext:context];
 }
 
-+ (id)all {
-    return [ObjectiveRelation relationWithEntity:self];
-}
-
-+ (instancetype)first {
-    return [[self all] first];
-}
-
-+ (instancetype)last {
-    return [[self all] last];
-}
+#pragma mark Counting
 
 + (NSUInteger)count {
     return [[self all] count];
 }
 
-#pragma mark - Creation / Deletion
+#pragma mark Plucking
 
-+ (id)create {
++ (instancetype)firstObject {
+    return [[self all] firstObject];
+}
+
++ (instancetype)lastObject {
+    return [[self all] lastObject];
+}
+
++ (instancetype)find:(id)condition, ... {
+    va_list va_arguments;
+    va_start(va_arguments, condition);
+    id relation = [[self all] where:condition arguments:va_arguments];
+    va_end(va_arguments);
+
+    return [relation firstObject];
+}
+
+#pragma mark - Manipulating entities
+
++ (instancetype)findOrCreate:(NSDictionary *)properties {
+    return [[self all] findOrCreate:properties];
+}
+
++ (instancetype)create {
     return [[self all] create];
 }
 
-+ (id)create:(NSDictionary *)attributes {
++ (instancetype)create:(NSDictionary *)attributes {
     return [[self all] create:attributes];
 }
 

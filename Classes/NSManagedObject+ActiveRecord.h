@@ -39,17 +39,7 @@
 
 @interface NSManagedObject (ActiveRecord)
 
-- (BOOL)save;
-- (void)delete;
-+ (void)deleteAll;
-
-+ (id)create;
-+ (id)create:(NSDictionary *)attributes;
-- (void)update:(NSDictionary *)attributes;
-+ (void)updateAll:(NSDictionary *)attributes;
-
-+ (instancetype)findOrCreate:(NSDictionary *)attributes;
-+ (instancetype)find:(id)condition, ...;
+#pragma mark - Fetch request building
 
 + (id)all;
 + (id)where:(id)condition, ...;
@@ -59,9 +49,30 @@
 + (id)offset:(NSUInteger)offset;
 + (id)inContext:(NSManagedObjectContext *)context;
 
-+ (instancetype)first;
-+ (instancetype)last;
+#pragma mark Counting
+
 + (NSUInteger)count;
+
+#pragma mark Plucking
+
++ (instancetype)firstObject;
++ (instancetype)lastObject;
+
++ (instancetype)find:(id)condition, ...;
+
+#pragma mark - Manipulating entities
+
++ (instancetype)findOrCreate:(NSDictionary *)properties;
+
++ (instancetype)create;
++ (instancetype)create:(NSDictionary *)attributes;
+
++ (void)updateAll:(NSDictionary *)attributes;
+- (void)update:(NSDictionary *)attributes;
+
+- (BOOL)save;
++ (void)deleteAll;
+- (void)delete;
 
 #pragma mark - Naming
 
