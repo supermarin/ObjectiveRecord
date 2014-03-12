@@ -127,7 +127,7 @@
     if ([NSManagedObjectContext allContexts].count > 1) {
       NSMutableArray* all = [NSMutableArray array];
       for (NSString* identifier in [[NSManagedObjectContext allContexts]allKeys]) {
-        [all addObjectsFromArray:[self where:condition inContext:condition limit:limit]];
+        [all addObjectsFromArray:[self where:condition inContext:identifier limit:limit]];
         if ([limit isEqualToNumber:[NSNumber numberWithInteger:all.count]]) break;
       }
       return all;
@@ -139,7 +139,7 @@
     if ([NSManagedObjectContext allContexts].count > 1) {
       NSMutableArray* all = [NSMutableArray array];
       for (NSString* identifier in [[NSManagedObjectContext allContexts]allKeys]) {
-        [all addObjectsFromArray:[self where:condition inContext:condition limit:limit]];
+        [all addObjectsFromArray:[self where:condition inContext:identifier limit:limit]];
         if ([limit isEqualToNumber:[NSNumber numberWithInteger:all.count]]) break;
       }
       NSArray* sortDescriptors = [self sortDescriptorsFromObject:order];
@@ -220,7 +220,7 @@
 
 + (id)createInContext:(id)context {
     return [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
-                                         inManagedObjectContext:context];
+                                         inManagedObjectContext:[self managedObjectContextFromObject:context]];
 }
 
 - (void)update:(NSDictionary *)attributes {
@@ -339,21 +339,25 @@
     return request;
 }
 
++ (NSManagedObjectContext*)managedObjectContextFromObject:(id)context {
+  NSManagedObjectContext* objectContext;
+  if ([context isKindOfClass:[NSString class]]) {
+    objectContext = [NSManagedObjectContext allContexts][context];
+  } else if ([context isKindOfClass:[NSManagedObjectContext class]]) {
+    objectContext = context;
+  } else {
+    NSLog(@"Context is neither NSManagedObjectContext nor NSString.");
+  }
+  return objectContext;
+}
+
 + (NSArray *)fetchWithCondition:(id)condition
                       inContext:(id)context
                       withOrder:(id)order
                      fetchLimit:(NSNumber *)fetchLimit {
-  
-    NSManagedObjectContext* objectContext;
-    if ([context isKindOfClass:[NSString class]]) {
-      objectContext = [NSManagedObjectContext allContexts][context];
-    } else if ([context isKindOfClass:[NSManagedObjectContext class]]) {
-      objectContext = context;
-    } else {
-      NSLog(@"THE CONTEXT IS NEITHER NSMANAGEDOBJECTCONTEXT OR NSSTRING.");
-    }
+
     
-    NSFetchRequest *request = [self createFetchRequestInContext:objectContext];
+    NSFetchRequest *request = [self createFetchRequestInContext:[self managedObjectContextFromObject:context]];
 
     if (condition)
         [request setPredicate:[self predicateFromObject:condition]];
