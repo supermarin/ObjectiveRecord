@@ -9,7 +9,6 @@
 #import "NSManagedObject+Mappings.h"
 #import "NSManagedObject+ActiveRecord.h"
 #import "ObjectiveSugar.h"
-#import <objc/runtime.h>
 
 
 @implementation NSManagedObject (Mappings)
