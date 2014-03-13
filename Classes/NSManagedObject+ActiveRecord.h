@@ -11,7 +11,16 @@
 #import "CoreDataManager.h"
 
 @interface NSManagedObjectContext (ActiveRecord)
+
+/**
+ The default context (as defined on the @c CoreDataManager singleton).
+
+ @see -[CoreDataManager managedObjectContext]
+
+ @return A managed object context.
+ */
 + (NSManagedObjectContext *)defaultContext;
+
 @end
 
 @interface NSManagedObject (ActiveRecord)
