@@ -166,3 +166,8 @@ ObjectiveRecord supports CoreData's in-memory store. In any place, before your t
 #### Roadmap
 
 - NSIncrementalStore support
+
+## License
+
+ObjectiveRecord is available under the MIT license. See the LICENSE file
+for more information.

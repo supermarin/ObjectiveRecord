@@ -1,11 +1,3 @@
-//
-//  FindersAndCreatorsTests.m
-//  SampleProject
-//
-//  Created by Marin Usalj on 7/13/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "Kiwi.h"
 #import "ObjectiveSugar.h"
 #import "Person+Mappings.h"
