@@ -156,6 +156,7 @@
 - (void)update:(NSDictionary *)attributes {
     unless([attributes exists]) return;
 
+    for (id key in attributes) [self willChangeValueForKey:key];
     [attributes each:^(id key, id value) {
         id remoteKey = [self.class keyForRemoteKey:key];
 
@@ -164,6 +165,7 @@
         else
             [self hydrateObject:value ofClass:remoteKey[@"class"] forKey:remoteKey[@"key"] ?: key];
     }];
+    for (id key in attributes) [self didChangeValueForKey:key];
 }
 
 - (BOOL)save {
@@ -319,7 +321,7 @@
 - (void)setSafeValue:(id)value forKey:(id)key {
 
     if (value == nil || value == [NSNull null]) {
-        [self setValue:nil forKey:key];
+        [self setPrimitiveValue:nil forKey:key];
         return;
     }
 
@@ -344,7 +346,7 @@
             value = [self.defaultFormatter dateFromString:value];
     }
 
-    [self setValue:value forKey:key];
+    [self setPrimitiveValue:value forKey:key];
 }
 
 - (BOOL)isIntegerAttributeType:(NSAttributeType)attributeType {
