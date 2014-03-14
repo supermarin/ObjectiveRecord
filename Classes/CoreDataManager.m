@@ -23,12 +23,12 @@
 #import "CoreDataManager.h"
 
 @implementation CoreDataManager
+
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize databaseName = _databaseName;
 @synthesize modelName = _modelName;
-
 
 + (id)instance {
     return [self sharedManager];
@@ -63,7 +63,6 @@
     _modelName = [[self appName] copy];
     return _modelName;
 }
-
 
 #pragma mark - Public
 
