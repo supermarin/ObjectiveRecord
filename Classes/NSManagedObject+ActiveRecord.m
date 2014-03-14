@@ -37,7 +37,7 @@
 #pragma mark - Fetch request building
 
 + (id)all {
-    return [ObjectiveRelation relationWithEntity:self];
+    return [ObjectiveRelation relationWithManagedObjectClass:self];
 }
 
 + (id)where:(id)condition, ... {

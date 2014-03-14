@@ -24,7 +24,7 @@
 
 @interface ObjectiveRelation : NSObject <NSFastEnumeration>
 
-+ (instancetype)relationWithEntity:(Class)entity;
++ (instancetype)relationWithManagedObjectClass:(Class)class;
 
 #pragma mark - Fetch request building
 
