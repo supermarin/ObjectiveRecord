@@ -20,7 +20,7 @@
 #pragma mark - Default Context
 
 - (BOOL)save;
-- (BOOL)saveInContext;
+- (BOOL)saveInContext:(NSManagedObjectContext *)moc;
 - (void)delete;
 + (void)deleteAll;
 
