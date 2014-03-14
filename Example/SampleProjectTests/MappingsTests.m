@@ -86,6 +86,12 @@ describe(@"Mappings", ^{
         Car *car = [Car create:@{ @"hp": @150, @"insurance_id": @1234 }];
         [[car.insuranceCompany should] equal:[InsuranceCompany find:@{ @"remoteID": @1234 }]];
     });
+
+    it(@"supports creating nested objects directly", ^{
+        Person *employee = [Person create];
+        Person *manager = [Person create:@{@"employees": @[employee]}];
+        [[[manager should] have:1] employees];
+    });
     
 });
 
