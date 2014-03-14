@@ -20,6 +20,7 @@
 #pragma mark - Default Context
 
 - (BOOL)save;
+- (BOOL)saveInContext;
 - (void)delete;
 + (void)deleteAll;
 

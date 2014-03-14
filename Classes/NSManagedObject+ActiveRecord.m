@@ -170,6 +170,10 @@
     return [self saveTheContext];
 }
 
+- (BOOL)saveInContext:(NSManagedObjectContext *)moc {
+    return [self saveTheContextInContext:moc];
+}
+
 - (void)delete {
     [self.managedObjectContext deleteObject:self];
 }
@@ -296,6 +300,19 @@
         return NO;
     }
 
+    return YES;
+}
+
+- (BOOL)saveTheContextInContext:(NSManagedObjectContext *)moc {
+    
+    NSError *error = nil;
+    BOOL save = [moc save:&error];
+    
+    if (!save || error) {
+        NSLog(@"Unresolved error in saving context for entity:\n%@!\nError: %@", self, error);
+        return NO;
+    }
+    
     return YES;
 }
 
