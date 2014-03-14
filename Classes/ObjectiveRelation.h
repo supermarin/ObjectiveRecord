@@ -40,6 +40,9 @@
 @property (readonly, nonatomic) NSUInteger limit;
 - (id)offset:(NSUInteger)offset;
 @property (readonly, nonatomic) NSUInteger offset;
+
+@property (readonly, nonatomic) NSArray *fetchedObjects;
+
 - (id)inContext:(NSManagedObjectContext *)context;
 
 #pragma mark Counting
