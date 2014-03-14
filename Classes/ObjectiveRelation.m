@@ -31,16 +31,16 @@
     NSArray *_fetchedObjects;
 }
 
-@property (nonatomic, copy) NSArray *where;
-@property (nonatomic, copy) NSArray *order;
+@property (copy, nonatomic) NSArray *where;
+@property (copy, nonatomic) NSArray *order;
 @property (nonatomic) NSUInteger limit;
 @property (nonatomic) NSUInteger offset;
 
-@property (nonatomic, strong) Class managedObjectClass;
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (weak, nonatomic) Class managedObjectClass;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property (nonatomic, strong) NSManagedObject *managedObject;
-@property (nonatomic, copy) NSString *relationshipName;
+@property (strong, nonatomic) NSManagedObject *managedObject;
+@property (copy, nonatomic) NSString *relationshipName;
 
 @end
 
