@@ -33,7 +33,7 @@
 #pragma mark - Private
 
 - (NSString *)appName {
-    return [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleName"];
+    return [[NSBundle bundleForClass:[self class]] infoDictionary][@"CFBundleName"];
 }
 
 - (NSString *)databaseName {
