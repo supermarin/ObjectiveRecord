@@ -74,6 +74,10 @@
 + (void)deleteAll;
 - (void)delete;
 
+#pragma mark - Relations
+
+- (id)relationWithName:(NSString *)name;
+
 #pragma mark - Naming
 
 + (NSString *)entityName;

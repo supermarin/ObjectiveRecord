@@ -39,6 +39,9 @@
 @property (nonatomic, strong) Class managedObjectClass;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
+@property (nonatomic, strong) NSManagedObject *managedObject;
+@property (nonatomic, copy) NSString *relationshipName;
+
 @end
 
 @implementation ObjectiveRelation
@@ -46,6 +49,22 @@
 + (instancetype)relationWithManagedObjectClass:(Class)class {
     ObjectiveRelation *relation = [self new];
     relation.managedObjectClass = class;
+    return relation;
+}
+
++ (instancetype)relationWithManagedObject:(NSManagedObject *)record relationship:(NSString *)relationshipName {
+    NSRelationshipDescription *relationship = [[record entity] relationshipsByName][relationshipName];
+    if (!relationship.isToMany) return nil;
+
+    NSRelationshipDescription *inverseRelationship = [relationship inverseRelationship];
+    if (inverseRelationship == nil) return nil;
+
+    Class managedObjectClass = NSClassFromString([[relationship destinationEntity] managedObjectClassName]);
+    ObjectiveRelation *relation = [self relationWithManagedObjectClass:managedObjectClass];
+    relation = [relation where:@"%K = %@", [inverseRelationship name], record];
+    relation.managedObjectContext = record.managedObjectContext;
+    relation.managedObject = record;
+    relation.relationshipName = relationshipName;
     return relation;
 }
 
@@ -157,6 +176,11 @@
 
     NSManagedObject *record = [self create];
     [record update:attributes];
+
+    if (self.managedObject && self.relationshipName) {
+        [[self.managedObject mutableSetValueForKey:self.relationshipName] addObject:record];
+    }
+
     return record;
 }
 
@@ -179,7 +203,11 @@
 }
 
 - (id)forwardingTargetForSelector:(SEL)aSelector {
-    if ([NSArray instancesRespondToSelector:aSelector] && ![self respondsToSelector:aSelector]) {
+    if ([self respondsToSelector:aSelector]) return self;
+    if (self.managedObject && self.relationshipName && [NSMutableSet instanceMethodForSelector:aSelector]) {
+        return [self.managedObject mutableSetValueForKey:self.relationshipName];
+    }
+    if ([NSArray instancesRespondToSelector:aSelector]) {
         return self.fetchedObjects;
     }
     return self;
@@ -195,7 +223,10 @@
         copy.order = [self.order copyWithZone:zone];
         copy.limit = self.limit;
         copy.offset = self.offset;
+
         copy.managedObjectContext = self.managedObjectContext;
+        copy.managedObject = self.managedObject;
+        copy.relationshipName = self.relationshipName;
     }
     return copy;
 }

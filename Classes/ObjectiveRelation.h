@@ -22,9 +22,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import <CoreData/CoreData.h>
+
 @interface ObjectiveRelation : NSObject <NSFastEnumeration>
 
 + (instancetype)relationWithManagedObjectClass:(Class)class;
++ (instancetype)relationWithManagedObject:(NSManagedObject *)record relationship:(NSString *)relationshipName;
 
 #pragma mark - Fetch request building
 

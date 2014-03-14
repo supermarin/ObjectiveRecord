@@ -527,6 +527,46 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
     });
 
+    context(@"Relations", ^{
+
+        __block Person *subordinate;
+        __block Person *manager;
+
+        beforeEach(^{
+            subordinate = [Person create:@{@"firstName": @"Stanley"}];
+            manager = [Person create:@{@"firstName": @"Narrator",
+                                       @"employees": @[subordinate]}];
+        });
+
+        it(@"Returns existent relationships", ^{
+            ObjectiveRelation *employees = [manager relationWithName:@"employees"];
+            [[[employees firstObject] should] equal:subordinate];
+            [[employees find:@"firstName = %@", @"Stephen"] shouldBeNil];
+        });
+
+        it(@"Doesn't return non-existent relationships", ^{
+            [[manager relationWithName:@"trucks"] shouldBeNil];
+        });
+
+        it(@"Builds relations from id properties", ^{
+            [[manager.employees should] beKindOfClass:[ObjectiveRelation class]];
+        });
+
+        it(@"Doesn't build relations from NSSet properties", ^{
+            [[manager.cars should] beKindOfClass:[NSSet class]];
+        });
+
+        it(@"Proxies mutators to the relationship", ^{
+            [manager.employees addObject:[Person create:@{@"firstName": @"Stephen"}]];
+            [[manager.employees find:@"firstName = %@", @"Stephen"] shouldNotBeNil];
+        });
+
+        it(@"Creates through relationships", ^{
+            [manager.employees create:@{@"firstName": @"Stephen"}];
+            [[manager.employees find:@"firstName = %@", @"Stephen"] shouldNotBeNil];
+        });
+
+    });
 
 });
 

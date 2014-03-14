@@ -24,6 +24,8 @@
 #import "ObjectiveSugar.h"
 #import "ObjectiveRelation.h"
 
+#import <objc/runtime.h>
+
 @implementation NSManagedObjectContext (ActiveRecord)
 
 + (NSManagedObjectContext *)defaultContext {
@@ -136,6 +138,12 @@
     [self.managedObjectContext deleteObject:self];
 }
 
+#pragma mark - Relations
+
+- (id)relationWithName:(NSString *)name {
+    return [ObjectiveRelation relationWithManagedObject:self relationship:name];
+}
+
 #pragma mark - Naming
 
 + (NSString *)entityName {
@@ -206,6 +214,45 @@
     });
 
     return sharedFormatter;
+}
+
+#pragma mark - Dynamic relationships
+
+/**
+ CoreData generates its dynamic properties using +resolveInstanceMethod. We swizzle it in order to return ObjectiveRelation instances, instead, for id-type, to-many relationships (default properties that are declared NSSet will not be affected).
+ */
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = object_getClass((id)self);
+
+        Method originalMethod = class_getInstanceMethod(class, @selector(resolveInstanceMethod:));
+        Method swizzledMethod = class_getInstanceMethod(class, @selector(or_resolveInstanceMethod:));
+
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    });
+}
+
++ (BOOL)or_resolveInstanceMethod:(SEL)sel {
+    BOOL resolved = [self or_resolveInstanceMethod:sel];
+
+    objc_property_t property = class_getProperty(self, sel_getName(sel));
+    char * dynamic = property_copyAttributeValue(property, "D");
+    char * type = property_copyAttributeValue(property, "T");
+
+    if (resolved && dynamic && strcmp(type, "@") == 0) {
+        Method originalMethod = class_getInstanceMethod(self, sel);
+
+        IMP originalIMP = method_getImplementation(originalMethod);
+        IMP dynamicIMP = imp_implementationWithBlock(^(id self) {
+            return [self relationWithName:NSStringFromSelector(sel)] ?: originalIMP(self, sel);
+        });
+
+        method_setImplementation(originalMethod, dynamicIMP);
+        return YES;
+    }
+
+    return resolved;
 }
 
 @end
