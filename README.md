@@ -121,7 +121,7 @@ john.surname = @"Wayne";
 [john save];
 
 // find / delete
-[[Person where: @{ "member" : @NO }] each:^(Person *person) {
+[[Person where: @{ @"member" : @NO }] each:^(Person *person) {
     [person delete];
 }];
 ```
