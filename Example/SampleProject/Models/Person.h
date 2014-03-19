@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSNumber * remoteID;
 @property (nonatomic, retain) NSNumber * savings;
 @property (nonatomic, retain) NSSet *cars;
-@property (nonatomic, retain) id employees;
+@property (nonatomic, retain) ObjectiveRelation *employees;
 @property (nonatomic, retain) Person *manager;
 @property (nonatomic, retain) InsuranceCompany *insuranceCompany;
 @end

@@ -31,17 +31,17 @@
 
 #pragma mark - Fetch request building
 
-- (id)all;
-- (id)where:(id)condition, ...;
-- (id)where:(id)condition arguments:(va_list)arguments;
-- (id)order:(id)condition;
-- (id)reverseOrder;
-- (id)limit:(NSUInteger)limit;
+- (instancetype)all;
+- (instancetype)where:(id)condition, ...;
+- (instancetype)where:(id)condition arguments:(va_list)arguments;
+- (instancetype)order:(id)condition;
+- (instancetype)reverseOrder;
+- (instancetype)limit:(NSUInteger)limit;
 @property (readonly, nonatomic) NSUInteger limit;
-- (id)offset:(NSUInteger)offset;
+- (instancetype)offset:(NSUInteger)offset;
 @property (readonly, nonatomic) NSUInteger offset;
 
-- (id)inContext:(NSManagedObjectContext *)context;
+- (instancetype)inContext:(NSManagedObjectContext *)context;
 
 @property (readonly, nonatomic) NSArray *fetchedObjects;
 - (NSFetchRequest *)fetchRequest;

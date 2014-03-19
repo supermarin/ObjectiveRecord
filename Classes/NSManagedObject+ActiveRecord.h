@@ -24,6 +24,8 @@
 #import "NSManagedObject+Mappings.h"
 #import "CoreDataManager.h"
 
+@class ObjectiveRelation;
+
 @interface NSManagedObjectContext (ActiveRecord)
 
 /**
@@ -41,13 +43,13 @@
 
 #pragma mark - Fetch request building
 
-+ (id)all;
-+ (id)where:(id)condition, ...;
-+ (id)order:(id)condition;
-+ (id)reverseOrder;
-+ (id)limit:(NSUInteger)limit;
-+ (id)offset:(NSUInteger)offset;
-+ (id)inContext:(NSManagedObjectContext *)context;
++ (ObjectiveRelation *)all;
++ (ObjectiveRelation *)where:(id)condition, ...;
++ (ObjectiveRelation *)order:(id)condition;
++ (ObjectiveRelation *)reverseOrder;
++ (ObjectiveRelation *)limit:(NSUInteger)limit;
++ (ObjectiveRelation *)offset:(NSUInteger)offset;
++ (ObjectiveRelation *)inContext:(NSManagedObjectContext *)context;
 
 #pragma mark Counting
 

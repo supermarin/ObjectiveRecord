@@ -79,11 +79,11 @@
 
 #pragma mark - Fetch request building
 
-- (id)all {
+- (instancetype)all {
     return [self copy];
 }
 
-- (id)where:(id)condition, ... {
+- (instancetype)where:(id)condition, ... {
     va_list arguments;
     va_start(arguments, condition);
     ObjectiveRelation *relation = [self where:condition arguments:arguments];
@@ -92,20 +92,20 @@
     return relation;
 }
 
-- (id)where:(id)condition arguments:(va_list)arguments {
+- (instancetype)where:(id)condition arguments:(va_list)arguments {
     NSPredicate *predicate = [self predicateFromObject:condition arguments:arguments];
     ObjectiveRelation *relation = [self copy];
     relation.where = [relation.where arrayByAddingObject:predicate];
     return relation;
 }
 
-- (id)order:(id)order {
+- (instancetype)order:(id)order {
     ObjectiveRelation *relation = [self copy];
     relation.order = [relation.order arrayByAddingObjectsFromArray:[self sortDescriptorsFromObject:order]];
     return relation;
 }
 
-- (id)reverseOrder {
+- (instancetype)reverseOrder {
     if ([self.order count] == 0) {
         return [self order:@{[self.managedObjectClass primaryKey]: @"DESC"}];
     }
@@ -115,19 +115,19 @@
     return relation;
 }
 
-- (id)limit:(NSUInteger)limit {
+- (instancetype)limit:(NSUInteger)limit {
     ObjectiveRelation *relation = [self copy];
     relation.limit = limit;
     return relation;
 }
 
-- (id)offset:(NSUInteger)offset {
+- (instancetype)offset:(NSUInteger)offset {
     ObjectiveRelation *relation = [self copy];
     relation.offset = offset;
     return relation;
 }
 
-- (id)inContext:(NSManagedObjectContext *)context {
+- (instancetype)inContext:(NSManagedObjectContext *)context {
     ObjectiveRelation *relation = [self copy];
     relation.managedObjectContext = context;
     return relation;
@@ -225,18 +225,8 @@
 #pragma mark - NSObject
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<ObjectiveRelation where:%@ order:%@ limit:%lu offset:%lu context:%@>", self.where, self.order, (unsigned long)self.limit, (unsigned long)self.offset, self.managedObjectContext];
-}
-
-- (id)forwardingTargetForSelector:(SEL)aSelector {
-    if ([self respondsToSelector:aSelector]) return self;
-    if (self.managedObject && self.relationshipName && [NSMutableSet instanceMethodForSelector:aSelector]) {
-        return [self.managedObject mutableSetValueForKey:self.relationshipName];
-    }
-    if ([NSArray instancesRespondToSelector:aSelector]) {
-        return self.fetchedObjects;
-    }
-    return self;
+    NSString *format = @"<%@ where:%@ order:%@ limit:%d offset:%d context:%@ object:%@ relationship:%@>";
+    return [NSString stringWithFormat:format, self.where, self.order, (unsigned long)self.limit, (unsigned long)self.offset, self.managedObjectContext, self.managedObject, self.relationshipName];
 }
 
 #pragma mark - NSCopying

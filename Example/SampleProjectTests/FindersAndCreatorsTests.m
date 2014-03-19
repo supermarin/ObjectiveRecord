@@ -54,14 +54,14 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
         it(@"Finds using [Entity where: STRING]", ^{
 
-            Person *unique = [[Person where:[NSString stringWithFormat:@"firstName == '%@'",UNIQUE_NAME]] first];
+            Person *unique = [[Person where:[NSString stringWithFormat:@"firstName == '%@'",UNIQUE_NAME]] firstObject];
             [[unique.lastName should] equal:UNIQUE_SURNAME];
 
         });
 
         it(@"Finds using [Entity where: STRING and ARGUMENTS]", ^{
 
-            Person *unique = [[Person where:@"firstName == %@", UNIQUE_NAME] first];
+            Person *unique = [[Person where:@"firstName == %@", UNIQUE_NAME] firstObject];
             [[unique.lastName should] equal:UNIQUE_SURNAME];
 
         });
@@ -73,7 +73,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
                 @"age": @0,
                 @"isMember": @1,
                 @"anniversary": [NSDate dateWithTimeIntervalSince1970:0]
-            }] first];
+            }] firstObject];
 
             [[person.firstName should] equal:@"John"];
             [[person.lastName should] equal:@"Doe"];
@@ -83,9 +83,9 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
 
         it(@"Finds using chained wheres", ^{
-            id query = [[[[[[Person where:@{@"firstName": @"John"}] where:@{@"lastName": @"Doe"}] where:@{@"lastName": @"Doe"}] where:@{@"age": @0}] where:@{@"isMember": @YES}] where:@{@"anniversary": [NSDate dateWithTimeIntervalSince1970:0] }];
+            ObjectiveRelation *query = [[[[[[Person where:@{@"firstName": @"John"}] where:@{@"lastName": @"Doe"}] where:@{@"lastName": @"Doe"}] where:@{@"age": @0}] where:@{@"isMember": @YES}] where:@{@"anniversary": [NSDate dateWithTimeIntervalSince1970:0] }];
 
-            Person *person = [query first];
+            Person *person = [query firstObject];
             [[person.firstName should] equal:@"John"];
             [[person.lastName should] equal:@"Doe"];
             [[person.age should] equal:@0];
@@ -153,62 +153,62 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
 
         it(@"orders results by a single property", ^{
-            NSArray *resultLastNames = [[Person order:@"lastName"]
+            NSArray *resultLastNames = [[Person order:@"lastName"].fetchedObjects
                                         map:lastNameMapper];
             [[resultLastNames should] equal:@[@"Gaz", @"Mol", @"Mol", @"Zed"]];
         });
 
         it(@"orders results by a single string property descending", ^{
-            NSArray *resultFirstNames = [[Person order:@"firstName DESC"]
+            NSArray *resultFirstNames = [[Person order:@"firstName DESC"].fetchedObjects
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Don", @"Cal", @"Bob", @"Abe"]];
         });
 
         it(@"orders results by multiple string properties descending", ^{
-            NSArray *resultFirstNames = [[Person order:@"lastName, firstName DESC"]
+            NSArray *resultFirstNames = [[Person order:@"lastName, firstName DESC"].fetchedObjects
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Cal", @"Don", @"Bob", @"Abe"]];
         });
 
         it(@"orders results by multiple properties", ^{
-            NSArray *resultFirstNames = [[Person order:@[@"lastName", @"firstName"]]
+            NSArray *resultFirstNames = [[Person order:@[@"lastName", @"firstName"]].fetchedObjects
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Cal", @"Bob", @"Don", @"Abe"]];
         });
 
         it(@"orders results by chained properties", ^{
-            NSArray *resultFirstNames = [[[Person order:@"lastName"] order:@"firstName"]
+            NSArray *resultFirstNames = [[[Person order:@"lastName"] order:@"firstName"].fetchedObjects
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Cal", @"Bob", @"Don", @"Abe"]];
         });
 
         it(@"orders results by property ascending", ^{
-            NSArray *resultFirstNames = [[Person order:@{@"firstName" : @"ASC"}]
+            NSArray *resultFirstNames = [[Person order:@{@"firstName" : @"ASC"}].fetchedObjects
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Abe", @"Bob", @"Cal", @"Don"]];
         });
 
         it(@"orders results by property descending", ^{
-            NSArray *resultFirstNames = [[Person order:@[@{@"firstName" : @"DESC"}]]
+            NSArray *resultFirstNames = [[Person order:@[@{@"firstName" : @"DESC"}]].fetchedObjects
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Don", @"Cal", @"Bob", @"Abe"]];
         });
 
         it(@"orders results by sort descriptors", ^{
             NSArray *resultFirstNames = [[Person order:@[[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
-                                                         [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:NO]]]
+                                                         [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:NO]]].fetchedObjects
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Cal", @"Don", @"Bob", @"Abe"]];
         });
 
         it(@"orders found results", ^{
-            NSArray *resultFirstNames = [[[Person where:@{@"lastName" : @"Mol"}] order:@"firstName"]
+            NSArray *resultFirstNames = [[[Person where:@{@"lastName" : @"Mol"}] order:@"firstName"].fetchedObjects
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Bob", @"Don"]];
         });
 
         it(@"orders limited results", ^{
-            NSArray *resultLastNames = [[[Person order:@"lastName"] limit:2]
+            NSArray *resultLastNames = [[[Person order:@"lastName"] limit:2].fetchedObjects
                                         map:lastNameMapper];
             [[resultLastNames should] equal:@[@"Gaz", @"Mol"]];
         });
@@ -217,19 +217,19 @@ describe(@"Find / Create / Save / Delete specs", ^{
             NSArray *resultFirstNames = [[[[Person where:@{@"lastName" : @"Mol"}]
                                                  order:@[@{@"lastName" : @"ASC"},
                                                          @{@"firstName" : @"DESC"}]]
-                                                 limit:1]
+                                                 limit:1].fetchedObjects
                                          map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Don"]];
         });
 
         it(@"reverses order", ^{
-            NSArray *resultLastNames = [[[Person order:@"lastName"] reverseOrder]
+            NSArray *resultLastNames = [[[Person order:@"lastName"] reverseOrder].fetchedObjects
                                         map:lastNameMapper];
             [[resultLastNames should] equal:@[@"Zed", @"Mol", @"Mol", @"Gaz"]];
         });
 
         it(@"offsets found results", ^{
-            NSArray *resultLastNames = [[[Person order:@"lastName"] offset:1]
+            NSArray *resultLastNames = [[[Person order:@"lastName"] offset:1].fetchedObjects
                                         map:lastNameMapper];
             [[resultLastNames should] equal:@[@"Mol", @"Mol", @"Zed"]];
         });
@@ -258,7 +258,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
             Person *person = [Person create];
             person.firstName = @"marin";
             person.lastName = UNIQUE_SURNAME;
-            [[[[[Person where:@"firstName == 'marin'"] first] lastName] should] equal:UNIQUE_SURNAME];
+            [[[[[Person where:@"firstName == 'marin'"] firstObject] lastName] should] equal:UNIQUE_SURNAME];
         });
 
 
@@ -443,14 +443,14 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
         it(@"Finds in a separate context", ^{
             [newContext performBlockAndWait:^{
-                Person *found = [[[Person where:@{ @"firstName": @"Joshua" }] inContext:newContext] first];
+                Person *found = [[[Person where:@{ @"firstName": @"Joshua" }] inContext:newContext] firstObject];
                 [[found.lastName should] equal:@"Jobs"];
             }];
         });
 
         it(@"Finds all in a separate context", ^{
             __block NSManagedObjectContext *anotherContext = createNewContext();
-            __block NSArray *newPeople;
+            __block ObjectiveRelation *newPeople;
 
             [anotherContext performBlockAndWait:^{
                 [Person deleteAll];
@@ -466,7 +466,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         it(@"Finds the first match in a separate context", ^{
             NSDictionary *attributes = @{ @"firstName": @"Joshua",
                                           @"lastName": @"Jobs" };
-            Person *joshua = [(ObjectiveRelation *)[Person inContext:newContext] find:attributes];
+            Person *joshua = [[Person inContext:newContext] find:attributes];
             [[joshua.firstName should] equal:@"Joshua"];
         });
 
@@ -478,7 +478,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
                     [newPerson save];
                 }];
             }];
-            NSArray *people = [[[Person where:@{ @"firstName": @"Joshua"}]
+            ObjectiveRelation *people = [[[Person where:@{ @"firstName": @"Joshua"}]
                                   inContext:newContext]
                                       limit:2];
             [[people should] haveCountOf:2];
@@ -548,17 +548,12 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[manager relationWithName:@"trucks"] shouldBeNil];
         });
 
-        it(@"Builds relations from id properties", ^{
+        it(@"Builds relations from ObjectiveRelation properties", ^{
             [[manager.employees should] beKindOfClass:[ObjectiveRelation class]];
         });
 
         it(@"Doesn't build relations from NSSet properties", ^{
             [[manager.cars should] beKindOfClass:[NSSet class]];
-        });
-
-        it(@"Proxies mutators to the relationship", ^{
-            [manager.employees addObject:[Person create:@{@"firstName": @"Stephen"}]];
-            [[manager.employees find:@"firstName = %@", @"Stephen"] shouldNotBeNil];
         });
 
         it(@"Creates through relationships", ^{

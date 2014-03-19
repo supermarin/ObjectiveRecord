@@ -38,11 +38,11 @@
 
 #pragma mark - Fetch request building
 
-+ (id)all {
++ (ObjectiveRelation *)all {
     return [ObjectiveRelation relationWithManagedObjectClass:self];
 }
 
-+ (id)where:(id)condition, ... {
++ (ObjectiveRelation *)where:(id)condition, ... {
     va_list va_arguments;
     va_start(va_arguments, condition);
     id relation = [[self all] where:condition arguments:va_arguments];
@@ -51,23 +51,23 @@
     return relation;
 }
 
-+ (id)order:(id)order {
++ (ObjectiveRelation *)order:(id)order {
     return [[self all] order:order];
 }
 
-+ (id)reverseOrder {
++ (ObjectiveRelation *)reverseOrder {
     return [[self all] reverseOrder];
 }
 
-+ (id)limit:(NSUInteger)limit {
++ (ObjectiveRelation *)limit:(NSUInteger)limit {
     return [[self all] limit:limit];
 }
 
-+ (id)offset:(NSUInteger)offset {
++ (ObjectiveRelation *)offset:(NSUInteger)offset {
     return [[self all] offset:offset];
 }
 
-+ (id)inContext:(NSManagedObjectContext *)context {
++ (ObjectiveRelation *)inContext:(NSManagedObjectContext *)context {
     return [[self all] inContext:context];
 }
 
@@ -240,7 +240,7 @@
     char * dynamic = property_copyAttributeValue(property, "D");
     char * type = property_copyAttributeValue(property, "T");
 
-    if (resolved && dynamic && strcmp(type, "@") == 0) {
+    if (resolved && dynamic && strcmp(type, "@\"ObjectiveRelation\"") == 0) {
         Method originalMethod = class_getInstanceMethod(self, sel);
 
         IMP originalIMP = method_getImplementation(originalMethod);
