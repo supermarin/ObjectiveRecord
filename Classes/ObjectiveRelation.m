@@ -136,7 +136,7 @@
 #pragma mark Counting
 
 - (NSUInteger)count {
-    return [self.managedObjectContext countForFetchRequest:[self prepareFetchRequest] error:nil];
+    return [self.managedObjectContext countForFetchRequest:[self fetchRequest] error:nil];
 }
 
 #pragma mark Plucking
@@ -156,6 +156,32 @@
     va_end(arguments);
 
     return [relation firstObject];
+}
+
+#pragma mark -
+
+- (NSArray *)fetchedObjects {
+    if (_fetchedObjects == nil) {
+        _fetchedObjects = [self.managedObjectContext executeFetchRequest:[self fetchRequest] error:nil];
+    }
+    return _fetchedObjects;
+}
+
+- (NSFetchRequest *)fetchRequest {
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:[self.managedObjectClass entityName] inManagedObjectContext:self.managedObjectContext]];
+    [fetchRequest setFetchLimit:self.limit];
+    [fetchRequest setFetchOffset:self.offset];
+    [fetchRequest setPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:self.where]];
+    [fetchRequest setSortDescriptors:self.order];
+    return fetchRequest;
+}
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:[self fetchRequest]
+                                               managedObjectContext:self.managedObjectContext
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
 }
 
 #pragma mark - Manipulating entities
@@ -238,23 +264,6 @@
 }
 
 #pragma mark - Private
-
-- (NSArray *)fetchedObjects {
-    if (_fetchedObjects == nil) {
-        _fetchedObjects = [self.managedObjectContext executeFetchRequest:[self prepareFetchRequest] error:nil];
-    }
-    return _fetchedObjects;
-}
-
-- (NSFetchRequest *)prepareFetchRequest {
-    NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:[self.managedObjectClass entityName] inManagedObjectContext:self.managedObjectContext]];
-    [fetchRequest setFetchLimit:self.limit];
-    [fetchRequest setFetchOffset:self.offset];
-    [fetchRequest setPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:self.where]];
-    [fetchRequest setSortDescriptors:self.order];
-    return fetchRequest;
-}
 
 - (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict {
     NSArray *subpredicates = [dict map:^(id key, id value) {
