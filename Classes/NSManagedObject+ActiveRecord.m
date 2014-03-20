@@ -216,7 +216,7 @@
     if ([condition isKindOfClass:[NSString class]])
         return [NSPredicate predicateWithFormat:condition arguments:arguments];
 
-    else if ([condition isKindOfClass:[NSDictionary class]])
+    if ([condition isKindOfClass:[NSDictionary class]])
         return [self predicateFromDictionary:condition];
 
     return nil;
@@ -232,10 +232,10 @@
     if ([order isKindOfClass:[NSSortDescriptor class]])
         return order;
 
-    else if ([order isKindOfClass:[NSString class]])
+    if ([order isKindOfClass:[NSString class]])
         return [NSSortDescriptor sortDescriptorWithKey:order ascending:YES];
 
-    else if ([order isKindOfClass:[NSDictionary class]])
+    if ([order isKindOfClass:[NSDictionary class]])
         return [self sortDescriptorFromDictionary:order];
 
     return nil;
@@ -247,8 +247,7 @@
             return [self sortDescriptorFromObject:object];
         }];
 
-    else
-        return @[[self sortDescriptorFromObject:order]];
+    return @[[self sortDescriptorFromObject:order]];
 }
 
 + (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {
