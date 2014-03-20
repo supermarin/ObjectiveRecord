@@ -1,6 +1,6 @@
 // NSManagedObject+Mappings.m
 //
-// Copyright (c) 2014 Marin Usalj <http://mneorr.com>
+// Copyright (c) 2014 Marin Usalj <http://supermar.in>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,15 +28,15 @@
 @implementation NSManagedObject (Mappings)
 
 + (id)keyForRemoteKey:(NSString *)remoteKey {
-    
+
     if (self.cachedMappings[remoteKey])
         return self.cachedMappings[remoteKey];
-    
+
     NSString *camelCasedProperty = [remoteKey.camelCase stringByReplacingCharactersInRange:NSMakeRange(0, 1)
                                                                                 withString:[[remoteKey substringWithRange:NSMakeRange(0, 1)] lowercaseString]];
 
     NSEntityDescription *desc = [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:[NSManagedObjectContext defaultContext]];
-    
+
     if ([desc propertiesByName][camelCasedProperty]) {
         self.cachedMappings[remoteKey] = camelCasedProperty;
         return camelCasedProperty;
@@ -55,7 +55,7 @@
         mappingsForClass = [self mappings].mutableCopy ?: @{}.mutableCopy;
         [NSManagedObject sharedMappings][(id<NSCopying>)self.class] = mappingsForClass;
     }
-    
+
     return mappingsForClass;
 }
 
