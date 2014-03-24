@@ -43,6 +43,7 @@
 #pragma mark - Default Context
 
 - (BOOL)save;
+- (BOOL)saveInContext:(NSManagedObjectContext *)moc;
 - (void)delete;
 + (void)deleteAll;
 
