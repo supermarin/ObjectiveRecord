@@ -1,13 +1,6 @@
-//
-//  InsuranceCompany+Mappings.m
-//  SampleProject
-//
-//  Created by Marin Usalj on 12/3/13.
-//
-//
-
 #import "InsuranceCompany+Mappings.h"
-#import "Person.h"
+
+#import "Person+Mappings.h"
 
 @implementation InsuranceCompany (Mappings)
 

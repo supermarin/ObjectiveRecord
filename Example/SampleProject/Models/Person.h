@@ -1,15 +1,7 @@
-//
-//  Person.h
-//  SampleProject
-//
-//  Created by Delisa Mason on 12/27/13.
-//
-//
-
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Car, InsuranceCompany, Person;
+@class Car, InsuranceCompany;
 
 @interface Person : NSManagedObject
 
@@ -21,21 +13,8 @@
 @property (nonatomic, retain) NSNumber * remoteID;
 @property (nonatomic, retain) NSNumber * savings;
 @property (nonatomic, retain) NSSet *cars;
+@property (nonatomic, retain) InsuranceCompany *insuranceCompany;
 @property (nonatomic, retain) ObjectiveRelation *employees;
 @property (nonatomic, retain) Person *manager;
-@property (nonatomic, retain) InsuranceCompany *insuranceCompany;
-@end
-
-@interface Person (CoreDataGeneratedAccessors)
-
-- (void)addCarsObject:(Car *)value;
-- (void)removeCarsObject:(Car *)value;
-- (void)addCars:(NSSet *)values;
-- (void)removeCars:(NSSet *)values;
-
-- (void)addEmployeesObject:(Person *)value;
-- (void)removeEmployeesObject:(Person *)value;
-- (void)addEmployees:(NSSet *)values;
-- (void)removeEmployees:(NSSet *)values;
 
 @end
