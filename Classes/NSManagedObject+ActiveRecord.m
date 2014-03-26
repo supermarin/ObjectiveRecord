@@ -335,14 +335,21 @@
 }
 
 - (void)setSafeValue:(id)value forKey:(id)key {
+    NSAttributeDescription *attribute = [[self entity] attributesByName][key];
 
-    if (value == nil || value == [NSNull null]) {
-        [self setPrimitiveValue:nil forKey:key];
+    if (attribute == nil && [[self entity] relationshipsByName][key] == nil) {
+#if DEBUG
+        NSLog(@"Could not set value ('%@') for key ('%@') on class ('%@'): No attribute or relationship found", value, key, NSStringFromClass([self class]));
+#endif
         return;
     }
 
-    NSDictionary *attributes = [[self entity] attributesByName];
-    NSAttributeType attributeType = [attributes[key] attributeType];
+    if (value == nil || value == [NSNull null]) {
+        [self setNilValueForKey:key];
+        return;
+    }
+
+    NSAttributeType attributeType = [attribute attributeType];
 
     if ((attributeType == NSStringAttributeType) && ([value isKindOfClass:[NSNumber class]]))
         value = [value stringValue];
