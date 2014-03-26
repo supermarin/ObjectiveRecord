@@ -173,6 +173,7 @@
     unless([attributes exists]) return;
 
     NSDictionary *transformed = [[self class] transformProperties:attributes withContext:self.managedObjectContext];
+
     for (NSString *key in transformed) [self willChangeValueForKey:key];
     [transformed each:^(NSString *key, id value) {
         [self setSafeValue:value forKey:key];
