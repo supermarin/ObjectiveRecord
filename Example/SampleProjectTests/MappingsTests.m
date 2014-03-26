@@ -90,6 +90,11 @@ describe(@"Mappings", ^{
         [[car shouldNot] receive:@selector(setPrimitiveValue:forKey:)];
         [car update:@{ @"chocolate": @"waffles" }];
     });
+
+    it(@"ignores unknown keys in relationships", ^{
+        Car *car = [Car create];
+        [car update:@{ @"owner": @{@"coolness" : @(100)} }];
+    });
 });
 
 SPEC_END
