@@ -209,7 +209,32 @@
 
 #pragma mark - Private
 
++ (NSDictionary *)filteredPredicatesDictionary:(NSDictionary *)dict
+{
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:[self entityName]
+                                                         inManagedObjectContext:[NSManagedObjectContext defaultContext]];
+
+    NSMutableDictionary *filteredDict = [NSMutableDictionary dictionary];
+    [dict eachKey:^(id key) {
+        id localKey = [self keyForRemoteKey:key];
+        NSAttributeDescription *attribute = [entityDescription attributesByName][localKey];
+        if ((attribute == nil && [entityDescription relationshipsByName][localKey] == nil)) {
+#if DEBUG
+            NSLog(@"Removed key ('%@') from where conditions on class ('%@'): No attribute or relationship found",
+                    key, NSStringFromClass([self class]));
+#endif
+        } else {
+            filteredDict[key] = dict[key];
+        }
+    }];
+
+    return [NSDictionary dictionaryWithDictionary:filteredDict];
+}
+
 + (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict {
+
+    dict = [self filteredPredicatesDictionary:dict];
+
     NSArray *subpredicates = [dict map:^(id key, id value) {
         return [NSPredicate predicateWithFormat:@"%K == %@", [self keyForRemoteKey:key], value];
     }];
