@@ -84,7 +84,12 @@ describe(@"Mappings", ^{
         Person *manager = [Person create:@{@"employees": @[employee]}];
         [[[manager should] have:1] employees];
     });
-    
+
+    it(@"ignores unknown keys", ^{
+        Car *car = [Car create];
+        [[car shouldNot] receive:@selector(setPrimitiveValue:forKey:)];
+        [car update:@{ @"chocolate": @"waffles" }];
+    });
 });
 
 SPEC_END
