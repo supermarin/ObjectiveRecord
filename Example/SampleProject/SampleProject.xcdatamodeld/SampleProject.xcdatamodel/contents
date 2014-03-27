@@ -10,6 +10,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="insuranceCompany" inverseEntity="Car" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="insuranceCompany" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="OtherPerson" syncable="YES"/>
     <entity name="Person" representedClassName="Person" syncable="YES">
@@ -22,12 +23,13 @@
         <attribute name="savings" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="owner" inverseEntity="Car" syncable="YES"/>
         <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="manager" inverseEntity="Person" syncable="YES"/>
+        <relationship name="insuranceCompany" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InsuranceCompany" inverseName="owner" inverseEntity="InsuranceCompany" syncable="YES"/>
         <relationship name="manager" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="employees" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
         <element name="Car" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="InsuranceCompany" positionX="0" positionY="0" width="0" height="0"/>
         <element name="OtherPerson" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Person" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="InsuranceCompany" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -2,14 +2,14 @@
 //  Person.h
 //  SampleProject
 //
-//  Created by Marin Usalj on 12/2/13.
+//  Created by Delisa Mason on 12/27/13.
 //
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Car, Person;
+@class Car, InsuranceCompany, Person;
 
 @interface Person : NSManagedObject
 
@@ -18,11 +18,12 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSNumber * isMember;
 @property (nonatomic, retain) NSString * lastName;
-@property (nonatomic, retain) NSNumber * savings;
 @property (nonatomic, retain) NSNumber * remoteID;
+@property (nonatomic, retain) NSNumber * savings;
 @property (nonatomic, retain) NSSet *cars;
 @property (nonatomic, retain) NSSet *employees;
 @property (nonatomic, retain) Person *manager;
+@property (nonatomic, retain) InsuranceCompany *insuranceCompany;
 @end
 
 @interface Person (CoreDataGeneratedAccessors)

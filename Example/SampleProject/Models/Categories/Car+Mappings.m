@@ -21,7 +21,12 @@
         @"insurance_id": @{
             @"key": @"insuranceCompany",
             @"class": [InsuranceCompany class]
-        }
+        },
+        @"insurance_company": @{
+                @"key": @"insuranceCompany",
+                @"class": [InsuranceCompany class]
+                }
+
     };
 }
 
