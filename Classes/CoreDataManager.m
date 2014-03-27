@@ -39,11 +39,10 @@
     return singleton;
 }
 
-
 #pragma mark - Private
 
 - (NSString *)appName {
-    return [[NSBundle bundleForClass:[self class]] infoDictionary][@"CFBundleName"];
+    return [[NSBundle bundleForClass:[self class]] infoDictionary][(__bridge NSString *)kCFBundleNameKey];
 }
 
 - (NSString *)databaseName {
