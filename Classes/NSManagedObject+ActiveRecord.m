@@ -261,12 +261,22 @@
                                          ascending:isAscending];
 }
 
++ (NSSortDescriptor *)sortDescriptorFromString:(NSString *)order {
+    NSArray *components = [order split];
+
+    NSString *key = [components firstObject];
+    NSString *value = [components count] > 1 ? components[1] : @"ASC";
+
+    return [self sortDescriptorFromDictionary:@{key: value}];
+
+}
+
 + (NSSortDescriptor *)sortDescriptorFromObject:(id)order {
     if ([order isKindOfClass:[NSSortDescriptor class]])
         return order;
 
     if ([order isKindOfClass:[NSString class]])
-        return [NSSortDescriptor sortDescriptorWithKey:order ascending:YES];
+        return [self sortDescriptorFromString:order];
 
     if ([order isKindOfClass:[NSDictionary class]])
         return [self sortDescriptorFromDictionary:order];
@@ -275,6 +285,9 @@
 }
 
 + (NSArray *)sortDescriptorsFromObject:(id)order {
+    if ([order isKindOfClass:[NSString class]])
+        order = [order componentsSeparatedByString:@","];
+
     if ([order isKindOfClass:[NSArray class]])
         return [order map:^id (id object) {
             return [self sortDescriptorFromObject:object];
