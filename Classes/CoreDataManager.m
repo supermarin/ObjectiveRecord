@@ -30,10 +30,6 @@
 @synthesize databaseName = _databaseName;
 @synthesize modelName = _modelName;
 
-+ (id)instance {
-    return [self sharedManager];
-}
-
 + (instancetype)sharedManager {
     static CoreDataManager *singleton;
     static dispatch_once_t singletonToken;

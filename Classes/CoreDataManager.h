@@ -32,7 +32,6 @@
 @property (copy, nonatomic) NSString *databaseName;
 @property (copy, nonatomic) NSString *modelName;
 
-+ (id)instance DEPRECATED_ATTRIBUTE;
 + (instancetype)sharedManager;
 
 - (BOOL)saveContext;
