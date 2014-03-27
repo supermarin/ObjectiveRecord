@@ -23,10 +23,13 @@
             @"class": [InsuranceCompany class]
         },
         @"insurance_company": @{
-                @"key": @"insuranceCompany",
-                @"class": [InsuranceCompany class]
-                }
-
+            @"key": @"insuranceCompany",
+            @"transform": ^id(NSDictionary *value, NSManagedObjectContext *context) {
+                InsuranceCompany * company = [InsuranceCompany findOrCreate:@{@"remoteID": value[@"id"] ?: value[@"remoteID"]} inContext:context];
+                [company update:value];
+                return company;
+            }
+        }
     };
 }
 

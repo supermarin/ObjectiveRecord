@@ -73,6 +73,11 @@ describe(@"Mappings", ^{
         Person *bob = [Person findOrCreate:@{ @"first_name": @"Bob" }];
         [[bob.firstName should] equal:@"Bob"];
     });
+
+    it(@"uses mappings to transform values", ^{
+        Car *car = [Car create:@{ @"hp": @150, @"insurance_company": @{ @"name" : @"Farmers", @"remoteID" : @4567 } }];
+        [[car.insuranceCompany.name should] equal:@"Farmers"];
+    });
     
     it(@"supports creating a parent object using just ID from the server", ^{
         Car *car = [Car create:@{ @"hp": @150, @"insurance_id": @1234 }];
