@@ -26,7 +26,6 @@
 		89F1EEB615A4C73B00AE4FB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1EEB515A4C73B00AE4FB4 /* main.m */; };
 		89F1EEBA15A4C73B00AE4FB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1EEB915A4C73B00AE4FB4 /* AppDelegate.m */; };
 		89F1EEBD15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89F1EEBB15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld */; };
-		89F1EEC515A4C73B00AE4FB4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEC415A4C73B00AE4FB4 /* SenTestingKit.framework */; };
 		89F1EEC615A4C73B00AE4FB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA715A4C73B00AE4FB4 /* UIKit.framework */; };
 		89F1EEC715A4C73B00AE4FB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEA915A4C73B00AE4FB4 /* Foundation.framework */; };
 		89F1EEC815A4C73B00AE4FB4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F1EEAD15A4C73B00AE4FB4 /* CoreData.framework */; };
@@ -76,8 +75,7 @@
 		89F1EEB815A4C73B00AE4FB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		89F1EEB915A4C73B00AE4FB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		89F1EEBC15A4C73B00AE4FB4 /* SampleProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SampleProject.xcdatamodel; sourceTree = "<group>"; };
-		89F1EEC315A4C73B00AE4FB4 /* SampleProjectTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleProjectTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		89F1EEC415A4C73B00AE4FB4 /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		89F1EEC315A4C73B00AE4FB4 /* SampleProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F1EECD15A4C73B00AE4FB4 /* SampleProjectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleProjectTests-Info.plist"; sourceTree = "<group>"; };
 		89F1EECF15A4C73B00AE4FB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5F4AE16E7FA4739830EBD2A /* Pods-SampleProjectTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProjectTests.xcconfig"; path = "Pods/Pods-SampleProjectTests.xcconfig"; sourceTree = SOURCE_ROOT; };
@@ -104,7 +102,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89F1EEC515A4C73B00AE4FB4 /* SenTestingKit.framework in Frameworks */,
 				89F1EEC615A4C73B00AE4FB4 /* UIKit.framework in Frameworks */,
 				89F1EEC715A4C73B00AE4FB4 /* Foundation.framework in Frameworks */,
 				89F1EEC815A4C73B00AE4FB4 /* CoreData.framework in Frameworks */,
@@ -155,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				89F1EEA315A4C73B00AE4FB4 /* SampleProject.app */,
-				89F1EEC315A4C73B00AE4FB4 /* SampleProjectTests.octest */,
+				89F1EEC315A4C73B00AE4FB4 /* SampleProjectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,7 +164,6 @@
 				89F1EEA915A4C73B00AE4FB4 /* Foundation.framework */,
 				89F1EEAB15A4C73B00AE4FB4 /* CoreGraphics.framework */,
 				89F1EEAD15A4C73B00AE4FB4 /* CoreData.framework */,
-				89F1EEC415A4C73B00AE4FB4 /* SenTestingKit.framework */,
 				0EE71E2B92554B48A0914E08 /* libPods.a */,
 				C3D6081CC9E14BB688C96629 /* libPods-SampleProjectTests.a */,
 			);
@@ -257,8 +253,8 @@
 			);
 			name = SampleProjectTests;
 			productName = SampleProjectTests;
-			productReference = 89F1EEC315A4C73B00AE4FB4 /* SampleProjectTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 89F1EEC315A4C73B00AE4FB4 /* SampleProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -266,6 +262,7 @@
 		89F1EE9A15A4C73B00AE4FB4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 89F1EE9D15A4C73B00AE4FB4 /* Build configuration list for PBXProject "SampleProject" */;
@@ -534,14 +531,13 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SampleProject.app/SampleProject";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SampleProject/SampleProject-Prefix.pch";
 				INFOPLIST_FILE = "SampleProjectTests/SampleProjectTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -552,14 +548,13 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SampleProject.app/SampleProject";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SampleProject/SampleProject-Prefix.pch";
 				INFOPLIST_FILE = "SampleProjectTests/SampleProjectTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

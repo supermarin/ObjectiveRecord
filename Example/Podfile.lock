@@ -1,11 +1,15 @@
 PODS:
-  - Kiwi (2.1)
+  - Kiwi/ARC (2.2.4)
+  - Kiwi/NonARC (2.2.4)
+  - Kiwi/XCTest (2.2.4):
+    - Kiwi/ARC
+    - Kiwi/NonARC
   - ObjectiveRecord (1.4.0):
     - ObjectiveSugar
   - ObjectiveSugar (1.1.0)
 
 DEPENDENCIES:
-  - Kiwi (= 2.1)
+  - Kiwi/XCTest (= 2.2.4)
   - ObjectiveRecord (from `../`)
   - ObjectiveSugar
 
@@ -14,7 +18,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Kiwi: 054ef97d0e50c279b21113a0880a906fa153a7fd
+  Kiwi: d60d7498b640a16f58b01925fc3c8d7c4d809f66
   ObjectiveRecord: 109a6c583284c2c9af1dc0d6ccc1dfc84e826c45
   ObjectiveSugar: fed588577bcf9733546aeaa089de444e4bab9a52
 
