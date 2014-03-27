@@ -24,50 +24,84 @@
 #import "NSManagedObject+ActiveRecord.h"
 #import "ObjectiveSugar.h"
 
-
 @implementation NSManagedObject (Mappings)
 
-+ (id)keyForRemoteKey:(NSString *)remoteKey {
++ (NSString *)keyForRemoteKey:(NSString *)remoteKey inContext:(NSManagedObjectContext *)context {
+    if ([self cachedMappings][remoteKey])
+        return [self cachedMappings][remoteKey][@"key"];
 
-    if (self.cachedMappings[remoteKey])
-        return self.cachedMappings[remoteKey];
+    NSString *camelCasedProperty = [[remoteKey camelCase] stringByReplacingCharactersInRange:NSMakeRange(0, 1)
+                                                                                  withString:[[remoteKey substringWithRange:NSMakeRange(0, 1)] lowercaseString]];
 
-    NSString *camelCasedProperty = [remoteKey.camelCase stringByReplacingCharactersInRange:NSMakeRange(0, 1)
-                                                                                withString:[[remoteKey substringWithRange:NSMakeRange(0, 1)] lowercaseString]];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName]
+                                              inManagedObjectContext:context];
 
-    NSEntityDescription *desc = [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:[NSManagedObjectContext defaultContext]];
-
-    if ([desc propertiesByName][camelCasedProperty]) {
-        self.cachedMappings[remoteKey] = camelCasedProperty;
+    if ([entity propertiesByName][camelCasedProperty]) {
+        [self cacheKey:camelCasedProperty forRemoteKey:camelCasedProperty];
         return camelCasedProperty;
     }
 
-    [self cachedMappings][remoteKey] = remoteKey;
+    [self cacheKey:remoteKey forRemoteKey:remoteKey];
     return remoteKey;
+}
+
++ (id)transformValue:(id)value forRemoteKey:(NSString *)remoteKey inContext:(NSManagedObjectContext *)context {
+    Class class = [self cachedMappings][remoteKey][@"class"];
+    if (class)
+        return [self objectOrSetOfObjectsFromValue:value ofClass:class inContext:context];
+
+    return value;
 }
 
 #pragma mark - Private
 
++ (id)objectOrSetOfObjectsFromValue:(id)value ofClass:class inContext:(NSManagedObjectContext *)context {
+    if ([value isKindOfClass:class])
+        return value;
+
+    if ([value isKindOfClass:[NSDictionary class]])
+        return [class findOrCreate:value inContext:context];
+
+    if ([value isKindOfClass:[NSArray class]])
+        return [NSSet setWithArray:[value map:^id(id object) {
+            return [self objectOrSetOfObjectsFromValue:object ofClass:class inContext:context];
+        }]];
+
+    return [class findOrCreate:@{ [class primaryKey]: value } inContext:context];
+}
+
 + (NSMutableDictionary *)cachedMappings {
-    NSMutableDictionary *mappingsForClass = [NSManagedObject sharedMappings][self.class];
+    NSMutableDictionary *cachedMappings = [self sharedMappings][[self class]];
+    if (!cachedMappings) {
+        cachedMappings = [self sharedMappings][(id<NSCopying>)[self class]] = [NSMutableDictionary new];
 
-    if (!mappingsForClass) {
-        mappingsForClass = [self mappings].mutableCopy ?: @{}.mutableCopy;
-        [NSManagedObject sharedMappings][(id<NSCopying>)self.class] = mappingsForClass;
+        [[self mappings] each:^(id key, id value) {
+            if ([value isKindOfClass:[NSString class]])
+                [self cacheKey:value forRemoteKey:key];
+
+            else {
+                cachedMappings[key] = value;
+                [self cacheKey:key forRemoteKey:key];
+            }
+        }];
     }
-
-    return mappingsForClass;
+    return cachedMappings;
 }
 
 + (NSMutableDictionary *)sharedMappings {
-    static NSMutableDictionary *singleton;
+    static NSMutableDictionary *sharedMappings;
     static dispatch_once_t singletonToken;
     dispatch_once(&singletonToken, ^{
-        singleton = @{}.mutableCopy;
+        sharedMappings = [NSMutableDictionary new];
     });
-    return singleton;
+    return sharedMappings;
 }
 
++ (void)cacheKey:(NSString *)key forRemoteKey:(NSString *)remoteKey {
+    NSMutableDictionary *mapping = [[self cachedMappings][remoteKey] mutableCopy] ?: [NSMutableDictionary new];
+    if (mapping[@"key"] == nil) mapping[@"key"] = key;
+    [self cachedMappings][remoteKey] = mapping;
+}
 
 #pragma mark - Abstract
 
@@ -77,7 +111,8 @@
 
 + (id)primaryKey {
     @throw [NSException exceptionWithName:NSStringWithFormat(@"Primary key undefined in %@", self.class)
-                                   reason:NSStringWithFormat(@"You need to override %@ +primaryKey if you want to support automatic creation with only object ID", self.class)
+                                   reason:NSStringWithFormat(@"You need to override %@ +primaryKey if you want to support automatic creation with only object ID",
+                                                             self.class)
                                  userInfo:nil];
 }
 

@@ -90,6 +90,13 @@ describe(@"Mappings", ^{
         [[car shouldNot] receive:@selector(setPrimitiveValue:forKey:)];
         [car update:@{ @"chocolate": @"waffles" }];
     });
+
+    it(@"ignores embedded unknown keys", ^{
+        [[theBlock(^{
+            Car *car = [Car create];
+            [car update:@{ @"owner": @{ @"coolness": @(100) } }];
+        }) shouldNot] raise];
+    });
 });
 
 SPEC_END

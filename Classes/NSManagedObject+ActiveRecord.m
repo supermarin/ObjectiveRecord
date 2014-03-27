@@ -64,8 +64,10 @@
 }
 
 + (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context {
-    NSManagedObject *existing = [self where:properties inContext:context].first;
-    return existing ?: [self create:properties inContext:context];
+    NSDictionary *transformed = [[self class] transformProperties:properties withContext:context];
+
+    NSManagedObject *existing = [self where:transformed inContext:context].first;
+    return existing ?: [self create:transformed inContext:context];
 }
 
 + (instancetype)find:(id)condition, ... {
@@ -170,16 +172,13 @@
 - (void)update:(NSDictionary *)attributes {
     unless([attributes exists]) return;
 
-    for (id key in attributes) [self willChangeValueForKey:key];
-    [attributes each:^(id key, id value) {
-        id remoteKey = [self.class keyForRemoteKey:key];
+    NSDictionary *transformed = [[self class] transformProperties:attributes withContext:self.managedObjectContext];
 
-        if ([remoteKey isKindOfClass:[NSString class]])
-            [self setSafeValue:value forKey:remoteKey];
-        else
-            [self hydrateObject:value ofClass:remoteKey[@"class"] forKey:remoteKey[@"key"] ?: key];
+    for (NSString *key in transformed) [self willChangeValueForKey:key];
+    [transformed each:^(NSString *key, id value) {
+        [self setSafeValue:value forKey:key];
     }];
-    for (id key in attributes) [self didChangeValueForKey:key];
+    for (NSString *key in transformed) [self didChangeValueForKey:key];
 }
 
 - (BOOL)save {
@@ -203,27 +202,47 @@
 #pragma mark - Naming
 
 + (NSString *)entityName {
-
     return NSStringFromClass(self);
 }
 
 #pragma mark - Private
 
++ (NSDictionary *)transformProperties:(NSDictionary *)properties withContext:(NSManagedObjectContext *)context {
+    NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:context];
+
+    NSDictionary *attributes = [entity attributesByName];
+    NSDictionary *relationships = [entity relationshipsByName];
+
+    NSMutableDictionary *transformed = [NSMutableDictionary dictionaryWithCapacity:[properties count]];
+
+    for (NSString *key in properties) {
+        NSString *localKey = [self keyForRemoteKey:key inContext:context];
+        if (attributes[localKey] || relationships[localKey]) {
+            transformed[localKey] = [[self class] transformValue:properties[key] forRemoteKey:key inContext:context];
+        } else {
+#if DEBUG
+            NSLog(@"Discarding key ('%@') from properties on class ('%@'): no attribute or relationship found",
+                  key, [self class]);
+#endif
+        }
+    }
+
+    return transformed;
+}
+
 + (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict {
-    NSArray *subpredicates = [dict map:^(id key, id value) {
-        return [NSPredicate predicateWithFormat:@"%K == %@", [self keyForRemoteKey:key], value];
+    NSArray *subpredicates = [dict map:^(NSString *key, id value) {
+        return [NSPredicate predicateWithFormat:@"%K = %@", key, value];
     }];
 
     return [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
 }
 
-+ (NSPredicate *)predicateFromObject:(id)condition
-{
++ (NSPredicate *)predicateFromObject:(id)condition {
     return [self predicateFromObject:condition arguments:NULL];
 }
 
-+ (NSPredicate *)predicateFromObject:(id)condition arguments:(va_list)arguments
-{
++ (NSPredicate *)predicateFromObject:(id)condition arguments:(va_list)arguments {
     if ([condition isKindOfClass:[NSPredicate class]])
         return condition;
 
@@ -314,41 +333,13 @@
     return YES;
 }
 
-- (void)hydrateObject:(id)properties ofClass:(Class)class forKey:(NSString *)key {
-    [self setSafeValue:[self objectOrSetOfObjectsFromValue:properties ofClass:class]
-                forKey:key];
-}
-
-- (id)objectOrSetOfObjectsFromValue:(id)value ofClass:(Class)class {
-    if ([value isKindOfClass:class])
-        return value;
-
-    if ([value isKindOfClass:[NSDictionary class]])
-        return [class findOrCreate:value inContext:self.managedObjectContext];
-
-    if ([value isKindOfClass:[NSArray class]])
-        return [NSSet setWithArray:[value map:^id(id object) {
-            return [self objectOrSetOfObjectsFromValue:object ofClass:class];
-        }]];
-
-    return [class findOrCreate:@{ [class primaryKey]: value } inContext:self.managedObjectContext];
-}
-
-- (void)setSafeValue:(id)value forKey:(id)key {
-    NSAttributeDescription *attribute = [[self entity] attributesByName][key];
-
-    if (attribute == nil && [[self entity] relationshipsByName][key] == nil) {
-#if DEBUG
-        NSLog(@"Could not set value ('%@') for key ('%@') on class ('%@'): No attribute or relationship found", value, key, NSStringFromClass([self class]));
-#endif
-        return;
-    }
-
+- (void)setSafeValue:(id)value forKey:(NSString *)key {
     if (value == nil || value == [NSNull null]) {
         [self setNilValueForKey:key];
         return;
     }
 
+    NSAttributeDescription *attribute = [[self entity] attributesByName][key];
     NSAttributeType attributeType = [attribute attributeType];
 
     if ((attributeType == NSStringAttributeType) && ([value isKindOfClass:[NSNumber class]]))
