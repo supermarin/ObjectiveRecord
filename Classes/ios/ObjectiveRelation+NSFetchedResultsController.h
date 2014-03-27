@@ -1,4 +1,4 @@
-// ObjectiveRecord.h
+// ObjectiveRelation+NSFetchedResultsController.h
 //
 // Copyright (c) 2014 Marin Usalj <http://supermar.in>
 //
@@ -20,9 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "NSManagedObject+ActiveRecord.h"
-#import "NSManagedObject+Mappings.h"
 #import "ObjectiveRelation.h"
-#if TARGET_OS_IPHONE
-#import "ObjectiveRelation+NSFetchedResultsController.h"
-#endif
+
+@interface ObjectiveRelation (NSFetchedResultsController)
+
+- (NSFetchedResultsController *)fetchedResultsController;
+
+@end

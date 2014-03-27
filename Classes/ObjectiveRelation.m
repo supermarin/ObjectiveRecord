@@ -177,13 +177,6 @@
     return fetchRequest;
 }
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:[self fetchRequest]
-                                               managedObjectContext:self.managedObjectContext
-                                                 sectionNameKeyPath:nil
-                                                          cacheName:nil];
-}
-
 #pragma mark - Manipulating entities
 
 - (id)findOrCreate:(NSDictionary *)properties {

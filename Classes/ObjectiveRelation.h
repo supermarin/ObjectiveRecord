@@ -42,10 +42,10 @@
 @property (readonly, nonatomic) NSUInteger offset;
 
 - (instancetype)inContext:(NSManagedObjectContext *)context;
+@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (readonly, nonatomic) NSArray *fetchedObjects;
 - (NSFetchRequest *)fetchRequest;
-- (NSFetchedResultsController *)fetchedResultsController;
 
 #pragma mark Counting
 
