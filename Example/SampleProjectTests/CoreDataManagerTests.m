@@ -10,39 +10,31 @@ void resetCoreDataStack(CoreDataManager *manager) {
 SPEC_BEGIN(CoreDataManagerTests)
 
 describe(@"Core data stack", ^{
-   
+
     CoreDataManager *manager = [CoreDataManager new];
 
     afterEach(^{
         resetCoreDataStack(manager);
     });
-    
+
     it(@"can use in-memory store", ^{
         [manager useInMemoryStore];
         NSPersistentStore *store = [manager.persistentStoreCoordinator persistentStores][0];
         [[store.type should] equal:NSInMemoryStoreType];
     });
-    
-    it(@"uses documents directory on iphone", ^{
-        [manager stub:@selector(isOSX) andReturn:theValue(NO)];
-        NSPersistentStore *store = manager.persistentStoreCoordinator.persistentStores[0];
-        [[store.URL.absoluteString should] containString:[manager applicationDocumentsDirectory].absoluteString];
-    });
-    
-    it(@"uses application support directory on osx", ^{
-        [manager stub:@selector(isOSX) andReturn:theValue(YES)];
-        NSPersistentStore *store = manager.persistentStoreCoordinator.persistentStores[0];
-        [[store.URL.absoluteString should] containString:[manager applicationSupportDirectory].absoluteString];
-    });
-    
-    it(@"creates application support directory on OSX if needed", ^{
-        [manager stub:@selector(isOSX) andReturn:theValue(YES)];
-        [[NSFileManager defaultManager] removeItemAtURL:manager.applicationSupportDirectory error:nil];
 
-        NSPersistentStore *store = [manager.persistentStoreCoordinator persistentStores][0];
-        [[store.URL.absoluteString should] endWithString:@".sqlite"];
+#if TARGET_OS_IPHONE
+    it(@"uses documents directory on iphone", ^{
+        NSPersistentStore *store = manager.persistentStoreCoordinator.persistentStores[0];
+        [[store.URL.absoluteString should] containString:@"/Documents/"];
     });
-    
+#else
+    it(@"uses application support directory on osx", ^{
+        NSPersistentStore *store = manager.persistentStoreCoordinator.persistentStores[0];
+        [[store.URL.absoluteString should] containString:@"/Application Support/"];
+    });
+#endif
+
 });
 
 SPEC_END

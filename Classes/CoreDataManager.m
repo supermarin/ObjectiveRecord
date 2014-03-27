@@ -109,17 +109,17 @@
 
 #pragma mark - SQLite file directory
 
-- (NSURL *)applicationDocumentsDirectory {
+#if TARGET_OS_IPHONE
+- (NSURL *)storeDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
                                                    inDomains:NSUserDomainMask] lastObject];
 }
-
-- (NSURL *)applicationSupportDirectory {
+#else
+- (NSURL *)storeDirectory {
     return [[[[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory
-                                                   inDomains:NSUserDomainMask] lastObject]
-            URLByAppendingPathComponent:[self appName]];
+                                                    inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:[self appName]];
 }
-
+#endif
 
 #pragma mark - Private
 
@@ -139,23 +139,15 @@
 }
 
 - (NSURL *)sqliteStoreURL {
-    NSURL *directory = [self isOSX] ? self.applicationSupportDirectory : self.applicationDocumentsDirectory;
-    NSURL *databaseDir = [directory URLByAppendingPathComponent:[self databaseName]];
+    NSURL *databaseDirectory = [self storeDirectory];
 
-    [self createApplicationSupportDirIfNeeded:directory];
-    return databaseDir;
-}
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[databaseDirectory absoluteString]]) {
+        [[NSFileManager defaultManager] createDirectoryAtURL:databaseDirectory
+                                 withIntermediateDirectories:YES attributes:nil error:nil];
+    }
 
-- (BOOL)isOSX {
-    if (NSClassFromString(@"UIDevice")) return NO;
-    return YES;
-}
-
-- (void)createApplicationSupportDirIfNeeded:(NSURL *)url {
-    if ([[NSFileManager defaultManager] fileExistsAtPath:url.absoluteString]) return;
-
-    [[NSFileManager defaultManager] createDirectoryAtURL:url
-                             withIntermediateDirectories:YES attributes:nil error:nil];
+    NSURL *databaseURL = [[self storeDirectory] URLByAppendingPathComponent:[self databaseName]];
+    return databaseURL;
 }
 
 @end

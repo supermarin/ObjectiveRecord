@@ -37,9 +37,4 @@
 - (BOOL)saveContext;
 - (void)useInMemoryStore;
 
-#pragma mark - Helpers
-
-- (NSURL *)applicationDocumentsDirectory;
-- (NSURL *)applicationSupportDirectory;
-
 @end
