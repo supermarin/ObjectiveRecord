@@ -36,17 +36,29 @@
 
  @see +[NSManagedObject mappings]
 
- @param key A remote (server) attribute name.
+ @param key     A remote (server) attribute name.
+ @param context A local managed object context.
 
  @return A local (Core Data) attribute name.
  */
-+ (id)keyForRemoteKey:(NSString *)key;
++ (NSString *)keyForRemoteKey:(NSString *)remoteKey inContext:(NSManagedObjectContext *)context;
+
+/**
+ Transforms a given object for a remote attribute name.
+
+ @param value     Object to be transformed (e.g., a dictionary may become a managed object)
+ @param remoteKey A remote (server) attribute name.
+ @param context   A local managed object context.
+
+ @return A tranformed object.
+ */
++ (id)transformValue:(id)value forRemoteKey:(NSString *)remoteKey inContext:(NSManagedObjectContext *)context;
 
 /**
  The keypath uniquely identifying your entity. Usually an ID, e.g., @c @@"remoteID".
 
  @return An attribute name.
  */
-+ (id)primaryKey;
++ (NSString *)primaryKey;
 
 @end
