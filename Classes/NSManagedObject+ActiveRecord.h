@@ -45,7 +45,7 @@
 
 + (ObjectiveRelation *)all;
 + (ObjectiveRelation *)where:(id)condition, ...;
-+ (ObjectiveRelation *)order:(id)condition;
++ (ObjectiveRelation *)order:(id)order;
 + (ObjectiveRelation *)reverseOrder;
 + (ObjectiveRelation *)limit:(NSUInteger)limit;
 + (ObjectiveRelation *)offset:(NSUInteger)offset;

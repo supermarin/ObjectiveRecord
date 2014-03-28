@@ -34,7 +34,7 @@
 - (instancetype)all;
 - (instancetype)where:(id)condition, ...;
 - (instancetype)where:(id)condition arguments:(va_list)arguments;
-- (instancetype)order:(id)condition;
+- (instancetype)order:(id)order;
 - (instancetype)reverseOrder;
 - (instancetype)limit:(NSUInteger)limit;
 @property (readonly, nonatomic) NSUInteger limit;
