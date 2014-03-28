@@ -79,7 +79,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[person.firstName should] equal:@"John"];
             [[person.lastName should] equal:@"Doe"];
             [[person.age should] equal:@0];
-            [[person.isMember should] equal:theValue(YES)];
+            [[person.isMember should] equal:@(YES)];
             [[person.anniversary should] equal:[NSDate dateWithTimeIntervalSince1970:0]];
         });
 
@@ -340,7 +340,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
         it(@"returns NO if save hasn't succeeded", ^{
             [[person.managedObjectContext should] receive:@selector(save:) andReturn:theValue(NO)];
-            [[theValue([person save]) should] beFalse];
+            [[@([person save]) should] beFalse];
         });
 
     });
