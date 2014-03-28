@@ -45,7 +45,7 @@
 + (ObjectiveRelation *)where:(id)condition, ... {
     va_list va_arguments;
     va_start(va_arguments, condition);
-    id relation = [[self all] where:condition arguments:va_arguments];
+    ObjectiveRelation *relation = [[self all] where:condition arguments:va_arguments];
     va_end(va_arguments);
 
     return relation;
@@ -90,7 +90,7 @@
 + (instancetype)find:(id)condition, ... {
     va_list va_arguments;
     va_start(va_arguments, condition);
-    id relation = [[self all] where:condition arguments:va_arguments];
+    ObjectiveRelation *relation = [[self all] where:condition arguments:va_arguments];
     va_end(va_arguments);
 
     return [relation firstObject];
