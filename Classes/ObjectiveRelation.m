@@ -274,7 +274,7 @@
     if ([condition isKindOfClass:[NSDictionary class]])
         return [self predicateFromDictionary:condition];
 
-    return nil;
+    return [NSPredicate predicateWithBlock:condition];
 }
 
 - (NSSortDescriptor *)sortDescriptorFromDictionary:(NSDictionary *)dict {
