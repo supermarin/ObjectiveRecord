@@ -250,6 +250,15 @@ describe(@"Find / Create / Save / Delete specs", ^{
             NSUInteger count = [[Person where:@{@"firstName" : @"Nobody"}] count];
             [[@(count) should] equal:@(0)];
         });
+
+        it(@"any returns true when any are found", ^{
+            [[@([Person any]) should] beTrue];
+        });
+
+        it(@"any returns false when none are found", ^{
+            [[@([[Person where:@"firstName = 'Nobody'"] any]) should] beFalse];
+        });
+
     });
 
     context(@"Creating", ^{

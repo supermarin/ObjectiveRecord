@@ -50,6 +50,7 @@
 #pragma mark Counting
 
 - (NSUInteger)count;
+- (BOOL)any;
 
 #pragma mark Plucking
 

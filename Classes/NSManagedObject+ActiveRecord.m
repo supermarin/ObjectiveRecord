@@ -77,6 +77,10 @@
     return [[self all] count];
 }
 
++ (BOOL)any {
+    return [[self all] any];
+}
+
 #pragma mark Plucking
 
 + (instancetype)firstObject {

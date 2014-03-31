@@ -139,6 +139,10 @@
     return [self.managedObjectContext countForFetchRequest:[self fetchRequest] error:nil];
 }
 
+- (BOOL)any {
+    return [[self limit:1] count];
+}
+
 #pragma mark Plucking
 
 - (id)firstObject {
