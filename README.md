@@ -4,7 +4,7 @@ If you've done Rails before, it might sound familiar.<br>
 No AppDelegate code required.
 It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
 
-[![Build Status](https://travis-ci.org/supermarin/ObjectiveRecord.png?branch=master)](https://travis-ci.org/supermarin/ObjectiveRecord)
+[![Build Status](https://travis-ci.org/supermarin/ObjectiveRecord.svg?branch=master)](https://travis-ci.org/supermarin/ObjectiveRecord)
 
 #### Usage
 1. Install with [CocoaPods](http://cocoapods.org) or clone
