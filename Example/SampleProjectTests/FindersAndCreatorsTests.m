@@ -1,13 +1,14 @@
-#import "Kiwi.h"
-#import "ObjectiveSugar.h"
-#import "Person+Mappings.h"
-#import "OBRPerson.h"
+#import <Kiwi/Kiwi.h>
+#import <ObjectiveSugar/ObjectiveSugar.h>
+
+#import <ObjectiveRecord/ObjectiveRecord.h>
+
 #import "Car+Mappings.h"
-#import "ObjectiveRelation.h"
+#import "OBRPerson.h"
+#import "Person+Mappings.h"
 
 static NSString *UNIQUE_NAME = @"ldkhbfaewlfbaewljfhb";
 static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
-
 
 #pragma mark - Helpers
 
@@ -32,7 +33,6 @@ void createSomePeople(NSArray *names, NSArray *surnames, NSManagedObjectContext 
         [person save];
     }
 }
-
 
 SPEC_BEGIN(FindersAndCreators)
 
@@ -83,7 +83,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
 
         it(@"Finds using chained wheres", ^{
-            ObjectiveRelation *query = [[[[[[Person where:@{@"firstName": @"John"}] where:@{@"lastName": @"Doe"}] where:@{@"lastName": @"Doe"}] where:@{@"age": @0}] where:@{@"isMember": @YES}] where:@{@"anniversary": [NSDate dateWithTimeIntervalSince1970:0] }];
+            CoreDataRelation *query = [[[[[[Person where:@{@"firstName": @"John"}] where:@{@"lastName": @"Doe"}] where:@{@"lastName": @"Doe"}] where:@{@"age": @0}] where:@{@"isMember": @YES}] where:@{@"anniversary": [NSDate dateWithTimeIntervalSince1970:0] }];
 
             Person *person = [query firstObject];
             [[person.firstName should] equal:@"John"];
@@ -459,7 +459,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
         it(@"Finds all in a separate context", ^{
             __block NSManagedObjectContext *anotherContext = createNewContext();
-            __block ObjectiveRelation *newPeople;
+            __block CoreDataRelation *newPeople;
 
             [anotherContext performBlockAndWait:^{
                 [Person deleteAll];
@@ -487,9 +487,9 @@ describe(@"Find / Create / Save / Delete specs", ^{
                     [newPerson save];
                 }];
             }];
-            ObjectiveRelation *people = [[[Person where:@{ @"firstName": @"Joshua"}]
-                                  inContext:newContext]
-                                      limit:2];
+            CoreDataRelation *people = [[[Person where:@{ @"firstName": @"Joshua"}]
+                                             inContext:newContext]
+                                                 limit:2];
             [[people should] haveCountOf:2];
         });
 
@@ -548,7 +548,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
 
         it(@"Returns existent relationships", ^{
-            ObjectiveRelation *employees = [manager relationWithName:@"employees"];
+            CoreDataRelation *employees = [manager relationWithName:@"employees"];
             [[[employees firstObject] should] equal:subordinate];
             [[employees find:@"firstName = %@", @"Stephen"] shouldBeNil];
         });
@@ -557,8 +557,8 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[manager relationWithName:@"trucks"] shouldBeNil];
         });
 
-        it(@"Builds relations from ObjectiveRelation properties", ^{
-            [[manager.employees should] beKindOfClass:[ObjectiveRelation class]];
+        it(@"Builds relations from CoreDataRelation properties", ^{
+            [[manager.employees should] beKindOfClass:[CoreDataRelation class]];
         });
 
         it(@"Doesn't build relations from NSSet properties", ^{

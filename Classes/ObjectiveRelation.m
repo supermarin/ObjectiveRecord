@@ -27,52 +27,30 @@
 #import "NSManagedObject+ActiveRecord.h"
 #import "NSManagedObject+Mappings.h"
 
-@interface ObjectiveRelation () <NSCopying>
+@interface ObjectiveRelation ()
+
+@property (copy, nonatomic) NSArray *objects;
 
 @property (copy, nonatomic) NSArray *where;
 @property (copy, nonatomic) NSArray *order;
 @property (nonatomic) NSUInteger limit;
 @property (nonatomic) NSUInteger offset;
 
-@property (weak, nonatomic) Class managedObjectClass;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
-@property (strong, nonatomic) NSManagedObject *managedObject;
-@property (copy, nonatomic) NSString *relationshipName;
-
 @end
 
 @implementation ObjectiveRelation
 
-@synthesize fetchedObjects = _fetchedObjects;
-
-+ (instancetype)relationWithManagedObjectClass:(Class)class {
-    ObjectiveRelation *relation = [self new];
-    relation.managedObjectClass = class;
-    return relation;
-}
-
-+ (instancetype)relationWithManagedObject:(NSManagedObject *)record relationship:(NSString *)relationshipName {
-    NSRelationshipDescription *relationship = [[record entity] relationshipsByName][relationshipName];
-    if (!relationship.isToMany) return nil;
-
-    NSRelationshipDescription *inverseRelationship = [relationship inverseRelationship];
-    if (inverseRelationship == nil) return nil;
-
-    Class managedObjectClass = NSClassFromString([[relationship destinationEntity] managedObjectClassName]);
-    ObjectiveRelation *relation = [self relationWithManagedObjectClass:managedObjectClass];
-    relation = [relation where:@"%K = %@", [inverseRelationship name], record];
-    relation.managedObjectContext = record.managedObjectContext;
-    relation.managedObject = record;
-    relation.relationshipName = relationshipName;
-    return relation;
+- (id)initWithObjects:(NSArray *)objects {
+    if (self = [self init]) {
+        _objects = objects;
+    }
+    return self;
 }
 
 - (id)init {
     if (self = [super init]) {
         _where = @[];
         _order = @[];
-        _managedObjectContext = [NSManagedObjectContext defaultContext];
     }
     return self;
 }
@@ -86,7 +64,7 @@
 - (instancetype)where:(id)condition, ... {
     va_list arguments;
     va_start(arguments, condition);
-    ObjectiveRelation *relation = [self where:condition arguments:arguments];
+    typeof(self) relation = [self where:condition arguments:arguments];
     va_end(arguments);
 
     return relation;
@@ -94,49 +72,39 @@
 
 - (instancetype)where:(id)condition arguments:(va_list)arguments {
     NSPredicate *predicate = [self predicateFromObject:condition arguments:arguments];
-    ObjectiveRelation *relation = [self copy];
+    typeof(self) relation = [self copy];
     relation.where = [relation.where arrayByAddingObject:predicate];
     return relation;
 }
 
 - (instancetype)order:(id)order {
-    ObjectiveRelation *relation = [self copy];
+    typeof(self) relation = [self copy];
     relation.order = [relation.order arrayByAddingObjectsFromArray:[self sortDescriptorsFromObject:order]];
     return relation;
 }
 
 - (instancetype)reverseOrder {
-    if ([self.order count] == 0) {
-        return [self order:@{[self.managedObjectClass primaryKey]: @"DESC"}];
-    }
-
-    ObjectiveRelation *relation = [self copy];
+    typeof(self) relation = [self copy];
     relation.order = [relation.order valueForKey:NSStringFromSelector(@selector(reversedSortDescriptor))];
     return relation;
 }
 
 - (instancetype)limit:(NSUInteger)limit {
-    ObjectiveRelation *relation = [self copy];
+    typeof(self) relation = [self copy];
     relation.limit = limit;
     return relation;
 }
 
 - (instancetype)offset:(NSUInteger)offset {
-    ObjectiveRelation *relation = [self copy];
+    typeof(self) relation = [self copy];
     relation.offset = offset;
-    return relation;
-}
-
-- (instancetype)inContext:(NSManagedObjectContext *)context {
-    ObjectiveRelation *relation = [self copy];
-    relation.managedObjectContext = context;
     return relation;
 }
 
 #pragma mark Counting
 
 - (NSUInteger)count {
-    return [self.managedObjectContext countForFetchRequest:[self fetchRequest] error:nil];
+    return [self.fetchedObjects count];
 }
 
 - (BOOL)any {
@@ -156,7 +124,7 @@
 - (id)find:(id)condition, ... {
     va_list arguments;
     va_start(arguments, condition);
-    ObjectiveRelation *relation = [self where:condition arguments:arguments];
+    typeof(self) relation = [self where:condition arguments:arguments];
     va_end(arguments);
 
     return [relation firstObject];
@@ -164,82 +132,36 @@
 
 #pragma mark -
 
+- (NSPredicate *)predicate {
+    return [NSCompoundPredicate andPredicateWithSubpredicates:self.where];
+}
+
+- (NSArray *)sortDescriptors {
+    return self.order;
+}
+
 - (NSArray *)fetchedObjects {
-    if (_fetchedObjects == nil) {
-        _fetchedObjects = [self.managedObjectContext executeFetchRequest:[self fetchRequest] error:nil];
-    }
-    return _fetchedObjects;
-}
-
-- (NSFetchRequest *)fetchRequest {
-    NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:[self.managedObjectClass entityName] inManagedObjectContext:self.managedObjectContext]];
-    [fetchRequest setFetchLimit:self.limit];
-    [fetchRequest setFetchOffset:self.offset];
-    [fetchRequest setPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:self.where]];
-    [fetchRequest setSortDescriptors:self.order];
-    return fetchRequest;
-}
-
-#pragma mark - Manipulating entities
-
-- (id)findOrCreate:(NSDictionary *)properties {
-    NSDictionary *transformed = [self.managedObjectClass transformProperties:properties withContext:self.managedObjectContext];
-
-    return [[self where:transformed] firstObject] ?: [self create:transformed];
-}
-
-- (id)create {
-    return [NSEntityDescription insertNewObjectForEntityForName:[self.managedObjectClass entityName]
-                                         inManagedObjectContext:self.managedObjectContext];
-}
-
-- (id)create:(NSDictionary *)attributes {
-    if (attributes == nil || (id)attributes == [NSNull null]) return nil;
-
-    NSManagedObject *record = [self create];
-    [record update:attributes];
-
-    if (self.managedObject && self.relationshipName) {
-        [[self.managedObject mutableSetValueForKey:self.relationshipName] addObject:record];
-    }
-
-    return record;
-}
-
-- (void)updateAll:(NSDictionary *)attributes {
-    for (NSManagedObject *record in self) {
-        [record update:attributes];
-    }
-}
-
-- (void)deleteAll {
-    for (NSManagedObject *record in self) {
-        [record delete];
-    }
+    NSArray *objects = [self.objects filteredArrayUsingPredicate:[self predicate]];
+    objects = [objects sortedArrayUsingDescriptors:[self sortDescriptors]];
+    objects = [objects subarrayWithRange:NSMakeRange(self.offset, self.limit)];
+    return objects;
 }
 
 #pragma mark - NSObject
 
 - (NSString *)description {
-    NSString *format = @"<%@ where:%@ order:%@ limit:%d offset:%d context:%@ object:%@ relationship:%@>";
-    return [NSString stringWithFormat:format, self.where, self.order, (unsigned long)self.limit, (unsigned long)self.offset, self.managedObjectContext, self.managedObject, self.relationshipName];
+    return [NSString stringWithFormat:@"<%@: %p; where: %@; order: %@; limit: %lu; offset: %lu>", [self class], self, self.where, self.order, (unsigned long)self.limit, (unsigned long)self.offset];
 }
 
 #pragma mark - NSCopying
 
-- (id)copyWithZone:(NSZone *)zone
-{
-    ObjectiveRelation *copy = [[self class] relationWithManagedObjectClass:self.managedObjectClass];
+- (id)copyWithZone:(NSZone *)zone {
+    typeof(self) copy = [(ObjectiveRelation *)[[self class] alloc] initWithObjects:self.objects];
     if (copy) {
         copy.where = [self.where copyWithZone:zone];
         copy.order = [self.order copyWithZone:zone];
         copy.limit = self.limit;
         copy.offset = self.offset;
-
-        copy.managedObjectContext = self.managedObjectContext;
-        copy.managedObject = self.managedObject;
-        copy.relationshipName = self.relationshipName;
     }
     return copy;
 }

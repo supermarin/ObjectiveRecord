@@ -14,7 +14,7 @@
 @property (nonatomic, retain) NSNumber * savings;
 @property (nonatomic, retain) NSSet *cars;
 @property (nonatomic, retain) InsuranceCompany *insuranceCompany;
-@property (nonatomic, retain) ObjectiveRelation *employees;
+@property (nonatomic, retain) CoreDataRelation *employees;
 @property (nonatomic, retain) Person *manager;
 
 @end

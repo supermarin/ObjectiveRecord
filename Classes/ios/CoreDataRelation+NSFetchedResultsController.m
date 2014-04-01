@@ -1,4 +1,4 @@
-// ObjectiveRelation+NSFetchedResultsController.m
+// CoreDataRelation+NSFetchedResultsController.m
 //
 // Copyright (c) 2014 Marin Usalj <http://supermar.in>
 //
@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "ObjectiveRelation+NSFetchedResultsController.h"
+#import "CoreDataRelation+NSFetchedResultsController.h"
 
-@implementation ObjectiveRelation (NSFetchedResultsController)
+@implementation CoreDataRelation (NSFetchedResultsController)
 
 - (NSFetchedResultsController *)fetchedResultsController {
     return [[NSFetchedResultsController alloc] initWithFetchRequest:[self fetchRequest]

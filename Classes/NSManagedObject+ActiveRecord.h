@@ -21,10 +21,9 @@
 // THE SOFTWARE.
 
 #import <CoreData/CoreData.h>
-#import "NSManagedObject+Mappings.h"
-#import "CoreDataManager.h"
 
-@class ObjectiveRelation;
+#import "CoreDataRelation.h"
+#import "NSManagedObject+Mappings.h"
 
 @interface NSManagedObjectContext (ActiveRecord)
 
@@ -43,13 +42,13 @@
 
 #pragma mark - Fetch request building
 
-+ (ObjectiveRelation *)all;
-+ (ObjectiveRelation *)where:(id)condition, ...;
-+ (ObjectiveRelation *)order:(id)order;
-+ (ObjectiveRelation *)reverseOrder;
-+ (ObjectiveRelation *)limit:(NSUInteger)limit;
-+ (ObjectiveRelation *)offset:(NSUInteger)offset;
-+ (ObjectiveRelation *)inContext:(NSManagedObjectContext *)context;
++ (CoreDataRelation *)all;
++ (CoreDataRelation *)where:(id)condition, ...;
++ (CoreDataRelation *)order:(id)order;
++ (CoreDataRelation *)reverseOrder;
++ (CoreDataRelation *)limit:(NSUInteger)limit;
++ (CoreDataRelation *)offset:(NSUInteger)offset;
++ (CoreDataRelation *)inContext:(NSManagedObjectContext *)context;
 
 #pragma mark Counting
 

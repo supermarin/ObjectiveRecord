@@ -20,11 +20,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "NSManagedObject+ActiveRecord.h"
-#import "ObjectiveSugar.h"
-#import "ObjectiveRelation.h"
-
 #import <objc/runtime.h>
+#import "ObjectiveSugar.h"
+
+#import "NSManagedObject+ActiveRecord.h"
+
+#import "CoreDataManager.h"
+#import "CoreDataRelation.h"
 
 @implementation NSManagedObjectContext (ActiveRecord)
 
@@ -38,36 +40,36 @@
 
 #pragma mark - Fetch request building
 
-+ (ObjectiveRelation *)all {
-    return [ObjectiveRelation relationWithManagedObjectClass:self];
++ (CoreDataRelation *)all {
+    return [CoreDataRelation relationWithManagedObjectClass:self];
 }
 
-+ (ObjectiveRelation *)where:(id)condition, ... {
++ (CoreDataRelation *)where:(id)condition, ... {
     va_list va_arguments;
     va_start(va_arguments, condition);
-    ObjectiveRelation *relation = [[self all] where:condition arguments:va_arguments];
+    CoreDataRelation *relation = [[self all] where:condition arguments:va_arguments];
     va_end(va_arguments);
 
     return relation;
 }
 
-+ (ObjectiveRelation *)order:(id)order {
++ (CoreDataRelation *)order:(id)order {
     return [[self all] order:order];
 }
 
-+ (ObjectiveRelation *)reverseOrder {
++ (CoreDataRelation *)reverseOrder {
     return [[self all] reverseOrder];
 }
 
-+ (ObjectiveRelation *)limit:(NSUInteger)limit {
++ (CoreDataRelation *)limit:(NSUInteger)limit {
     return [[self all] limit:limit];
 }
 
-+ (ObjectiveRelation *)offset:(NSUInteger)offset {
++ (CoreDataRelation *)offset:(NSUInteger)offset {
     return [[self all] offset:offset];
 }
 
-+ (ObjectiveRelation *)inContext:(NSManagedObjectContext *)context {
++ (CoreDataRelation *)inContext:(NSManagedObjectContext *)context {
     return [[self all] inContext:context];
 }
 
@@ -94,7 +96,7 @@
 + (instancetype)find:(id)condition, ... {
     va_list va_arguments;
     va_start(va_arguments, condition);
-    ObjectiveRelation *relation = [[self all] where:condition arguments:va_arguments];
+    CoreDataRelation *relation = [[self all] where:condition arguments:va_arguments];
     va_end(va_arguments);
 
     return [relation firstObject];
@@ -145,7 +147,7 @@
 #pragma mark - Relations
 
 - (id)relationWithName:(NSString *)name {
-    return [ObjectiveRelation relationWithManagedObject:self relationship:name];
+    return [CoreDataRelation relationWithManagedObject:self relationship:name];
 }
 
 #pragma mark - Naming
@@ -223,7 +225,7 @@
 #pragma mark - Dynamic relationships
 
 /**
- CoreData generates its dynamic properties using +resolveInstanceMethod. We swizzle it in order to return ObjectiveRelation instances, instead, for id-type, to-many relationships (default properties that are declared NSSet will not be affected).
+ CoreData generates its dynamic properties using +resolveInstanceMethod. We swizzle it in order to return CoreDataRelation instances, instead, for id-type, to-many relationships (default properties that are declared NSSet will not be affected).
  */
 + (void)load {
     static dispatch_once_t onceToken;
@@ -244,7 +246,7 @@
     char * dynamic = property_copyAttributeValue(property, "D");
     char * type = property_copyAttributeValue(property, "T");
 
-    if (resolved && dynamic && strcmp(type, "@\"ObjectiveRelation\"") == 0) {
+    if (resolved && dynamic && strcmp(type, "@\"CoreDataRelation\"") == 0) {
         Method originalMethod = class_getInstanceMethod(self, sel);
 
         IMP originalIMP = method_getImplementation(originalMethod);

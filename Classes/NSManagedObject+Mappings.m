@@ -20,12 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "NSManagedObject+Mappings.h"
-
 #import "ObjectiveSugar.h"
 
+#import "NSManagedObject+Mappings.h"
+
 #import "NSManagedObject+ActiveRecord.h"
-#import "ObjectiveRelation.h"
 
 @implementation NSManagedObject (Mappings)
 

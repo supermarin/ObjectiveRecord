@@ -1,8 +1,10 @@
-#import "Kiwi.h"
-#import "Person+Mappings.h"
+#import <Kiwi/Kiwi.h>
+
+#import <ObjectiveRecord/ObjectiveRecord.h>
+
 #import "Car+Mappings.h"
 #import "InsuranceCompany.h"
-#import "ObjectiveRelation.h"
+#import "Person+Mappings.h"
 
 SPEC_BEGIN(MappingsTests)
 

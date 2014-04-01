@@ -1,4 +1,4 @@
-// ObjectiveRelation.h
+// CoreDataRelation.h
 //
 // Copyright (c) 2014 Marin Usalj <http://supermar.in>
 //
@@ -20,44 +20,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-
 #import <CoreData/CoreData.h>
 
-@protocol ObjectiveRelation <NSObject, NSCopying, NSFastEnumeration>
+#import "ObjectiveRelation.h"
+
+@interface CoreDataRelation : ObjectiveRelation
+
++ (instancetype)relationWithManagedObjectClass:(Class)class;
++ (instancetype)relationWithManagedObject:(NSManagedObject *)record relationship:(NSString *)relationshipName;
 
 #pragma mark - Fetch request building
 
-- (instancetype)all;
-- (instancetype)where:(id)condition, ...;
-- (instancetype)where:(id)condition arguments:(va_list)arguments;
-- (instancetype)order:(id)order;
-- (instancetype)reverseOrder;
-- (instancetype)limit:(NSUInteger)limit;
-- (instancetype)offset:(NSUInteger)offset;
+- (instancetype)inContext:(NSManagedObjectContext *)context;
+@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-- (NSPredicate *)predicate;
-- (NSArray *)sortDescriptors;
-@property (readonly, nonatomic) NSUInteger limit;
-@property (readonly, nonatomic) NSUInteger offset;
+- (NSFetchRequest *)fetchRequest;
 
-@property (readonly, nonatomic) NSArray *fetchedObjects;
+#pragma mark - Manipulating entities
 
-#pragma mark Counting
+- (id)findOrCreate:(NSDictionary *)properties;
 
-- (NSUInteger)count;
-- (BOOL)any;
+- (id)create;
+- (id)create:(NSDictionary *)attributes;
 
-#pragma mark Plucking
+- (void)updateAll:(NSDictionary *)attributes;
 
-- (id)firstObject;
-- (id)lastObject;
-- (id)find:(id)condition, ...;
-
-@end
-
-@interface ObjectiveRelation : NSObject <ObjectiveRelation>
-
-- (id)initWithObjects:(NSArray *)objects;
+- (void)deleteAll;
 
 @end
