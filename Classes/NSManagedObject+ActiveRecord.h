@@ -62,6 +62,11 @@
 
 + (instancetype)find:(id)condition, ...;
 
+#pragma mark - Accessing entities
+
+- (BOOL)isNewRecord;
+- (BOOL)isPersisted;
+
 #pragma mark - Manipulating entities
 
 + (instancetype)findOrCreate:(NSDictionary *)properties;

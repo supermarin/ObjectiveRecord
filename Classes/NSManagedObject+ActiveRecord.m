@@ -102,6 +102,16 @@
     return [relation firstObject];
 }
 
+#pragma mark - Accessing entities
+
+- (BOOL)isNewRecord {
+    return self.objectID.isTemporaryID;
+}
+
+- (BOOL)isPersisted {
+    return !self.isNewRecord;
+}
+
 #pragma mark - Manipulating entities
 
 + (instancetype)findOrCreate:(NSDictionary *)properties {
