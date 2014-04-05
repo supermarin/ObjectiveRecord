@@ -1,12 +1,19 @@
-## Intro
-This is a lightweight ActiveRecord way of managing Core Data objects.
-If you've done Rails before, it might sound familiar.<br>
-No AppDelegate code required.
-It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
+# ObjectiveRecord [![CocoaPod][pd-bdg]][pd] [![Build Status][ci-bdg]][ci]
 
-[![Build Status](https://travis-ci.org/supermarin/ObjectiveRecord.svg?branch=master)](https://travis-ci.org/supermarin/ObjectiveRecord)
+[pd-bdg]: https://img.shields.io/cocoapods/v/ObjectiveRecord.svg
+[pd]: http://cocoadocs.org/docsets/ObjectiveRecord
+[ci-bdg]: https://travis-ci.org/supermarin/ObjectiveRecord.svg
+[ci]: https://travis-ci.org/supermarin/ObjectiveRecord
+
+Objective Record is a lightweight ActiveRecord way of managing Core Data
+objects. If you've used Ruby on Rails before, it might sound
+familiar.
+
+No AppDelegate code required. It's fully tested with
+[Kiwi](https://github.com/allending/Kiwi).
 
 #### Usage
+
 1. Install with [CocoaPods](http://cocoapods.org) or clone
 2. `#import "ObjectiveRecord.h"` in your model or .pch file.
 
@@ -65,8 +72,7 @@ NSArray *reversedPeople = [Person where:@{@"name" : @"John"}
 NSArray *people = [Person allWithOrder:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
 
 // And multiple orderings with any of the above
-NSArray *morePeople = [Person allWithOrder:@[@{@"surname" : @"ASC"},
-                                             @{@"name" : @"DESC"}]];
+NSArray *morePeople = [Person allWithOrder:@"surname ASC, name DESC"];
 
 // Just the first 5 people named John sorted by last name
 NSArray *fivePeople = [Person where:@"name == 'John'"
