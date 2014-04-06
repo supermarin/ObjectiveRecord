@@ -85,6 +85,9 @@
 #pragma mark Counting
 
 - (NSUInteger)count {
+    if (_fetchedObjects) {
+        return [_fetchedObjects count];
+    }
     return [self.managedObjectContext countForFetchRequest:[self fetchRequest] error:nil];
 }
 
