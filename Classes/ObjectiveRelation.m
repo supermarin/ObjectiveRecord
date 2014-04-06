@@ -89,6 +89,12 @@
     return relation;
 }
 
+- (instancetype)reorder:(id)order {
+    typeof(self) relation = [self copy];
+    relation.order = @[];
+    return [relation order:order];
+}
+
 - (instancetype)limit:(NSUInteger)limit {
     typeof(self) relation = [self copy];
     relation.limit = limit;

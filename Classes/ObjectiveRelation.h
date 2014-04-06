@@ -32,6 +32,7 @@
 - (instancetype)where:(id)condition, ...;
 - (instancetype)where:(id)condition arguments:(va_list)arguments;
 - (instancetype)order:(id)order;
+- (instancetype)reorder:(id)order;
 - (instancetype)reverseOrder;
 - (instancetype)limit:(NSUInteger)limit;
 - (instancetype)offset:(NSUInteger)offset;

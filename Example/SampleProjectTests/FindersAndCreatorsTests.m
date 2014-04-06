@@ -207,6 +207,13 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[resultFirstNames should] equal:@[@"Bob", @"Don"]];
         });
 
+        it(@"reorders results", ^{
+            NSArray *resultFirstNames = [[[Person order:@"firstName ASC"] reorder:@"firstName DESC"].fetchedObjects
+                                         map:firstNameMapper];
+
+            [[resultFirstNames should] equal:@[@"Don", @"Cal", @"Bob", @"Abe"]];
+        });
+
         it(@"orders limited results", ^{
             NSArray *resultLastNames = [[[Person order:@"lastName"] limit:2].fetchedObjects
                                         map:lastNameMapper];
