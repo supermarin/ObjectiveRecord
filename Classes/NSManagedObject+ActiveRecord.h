@@ -50,6 +50,8 @@
 + (CoreDataRelation *)offset:(NSUInteger)offset;
 + (CoreDataRelation *)inContext:(NSManagedObjectContext *)context;
 
++ (id)defaultOrder;
+
 #pragma mark Counting
 
 + (NSUInteger)count;

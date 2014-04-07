@@ -73,6 +73,10 @@
     return [[self all] inContext:context];
 }
 
++ (id)defaultOrder {
+    return nil;
+}
+
 #pragma mark Counting
 
 + (NSUInteger)count {

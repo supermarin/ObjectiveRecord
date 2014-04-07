@@ -71,7 +71,9 @@
 
 - (instancetype)reverseOrder {
     if ([[self sortDescriptors] count] == 0) {
-        return [self order:@{[self.managedObjectClass primaryKey]: @"DESC"}];
+        id defaultOrder = [self.managedObjectClass defaultOrder];
+        if (defaultOrder)
+            return [[self order:defaultOrder] reverseOrder];
     }
     return [super reverseOrder];
 }
@@ -108,6 +110,18 @@
     [fetchRequest setPredicate:[self predicate]];
     [fetchRequest setSortDescriptors:[self sortDescriptors]];
     return fetchRequest;
+}
+
+- (NSArray *)sortDescriptors {
+    NSArray *sortDescriptors = [super sortDescriptors];
+
+    if ([sortDescriptors count] == 0) {
+        id defaultOrder = [self.managedObjectClass defaultOrder];
+        if (defaultOrder)
+            return [[self order:defaultOrder] sortDescriptors];
+    }
+
+    return sortDescriptors;
 }
 
 #pragma mark - Manipulating entities

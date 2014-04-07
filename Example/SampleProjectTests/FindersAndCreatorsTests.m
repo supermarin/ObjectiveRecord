@@ -240,6 +240,19 @@ describe(@"Find / Create / Save / Delete specs", ^{
                                         map:lastNameMapper];
             [[resultLastNames should] equal:@[@"Mol", @"Mol", @"Zed"]];
         });
+
+        it(@"respects default order", ^{
+            [Person stub:@selector(defaultOrder) andReturn:@"lastName ASC, firstName ASC"];
+            NSArray *resultFirstNames = [[Person all].fetchedObjects
+                                         map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Cal", @"Bob", @"Don", @"Abe"]];
+
+            [Person stub:@selector(defaultOrder) andReturn:@"lastName DESC, firstName DESC"];
+            resultFirstNames = [[Person all].fetchedObjects
+                                map:firstNameMapper];
+            [[resultFirstNames should] equal:@[@"Abe", @"Don", @"Bob", @"Cal"]];
+        });
+
     });
 
     context(@"Counting", ^{
