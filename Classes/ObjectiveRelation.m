@@ -138,19 +138,19 @@
 
 #pragma mark -
 
+- (NSArray *)fetchedObjects {
+    NSArray *objects = [self.objects filteredArrayUsingPredicate:[self predicate]];
+    objects = [objects sortedArrayUsingDescriptors:[self sortDescriptors]];
+    objects = [objects subarrayWithRange:NSMakeRange(self.offset, self.limit)];
+    return objects;
+}
+
 - (NSPredicate *)predicate {
     return [NSCompoundPredicate andPredicateWithSubpredicates:self.where];
 }
 
 - (NSArray *)sortDescriptors {
     return self.order;
-}
-
-- (NSArray *)fetchedObjects {
-    NSArray *objects = [self.objects filteredArrayUsingPredicate:[self predicate]];
-    objects = [objects sortedArrayUsingDescriptors:[self sortDescriptors]];
-    objects = [objects subarrayWithRange:NSMakeRange(self.offset, self.limit)];
-    return objects;
 }
 
 #pragma mark - NSObject
