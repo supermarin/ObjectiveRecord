@@ -49,6 +49,7 @@
 + (CoreDataRelation *)limit:(NSUInteger)limit;
 + (CoreDataRelation *)offset:(NSUInteger)offset;
 + (CoreDataRelation *)inContext:(NSManagedObjectContext *)context;
++ (CoreDataRelation *)inBatchesOf:(NSUInteger)batchSize;
 
 + (id)defaultOrder;
 

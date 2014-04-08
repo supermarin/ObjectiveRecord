@@ -32,6 +32,8 @@
 @property (strong, nonatomic) NSManagedObject *managedObject;
 @property (copy, nonatomic) NSString *relationshipName;
 
+@property (nonatomic) NSUInteger batchSize;
+
 @end
 
 @implementation CoreDataRelation
@@ -84,6 +86,12 @@
     return relation;
 }
 
+- (instancetype)inBatchesOf:(NSUInteger)batchSize {
+    typeof(self) relation = [self copy];
+    relation.batchSize = batchSize;
+    return relation;
+}
+
 #pragma mark Counting
 
 - (NSUInteger)count {
@@ -105,6 +113,7 @@
 - (NSFetchRequest *)fetchRequest {
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     [fetchRequest setEntity:[NSEntityDescription entityForName:[self.managedObjectClass entityName] inManagedObjectContext:self.managedObjectContext]];
+    [fetchRequest setFetchBatchSize:self.batchSize];
     [fetchRequest setFetchLimit:self.limit];
     [fetchRequest setFetchOffset:self.offset];
     [fetchRequest setPredicate:[self predicate]];
@@ -167,7 +176,7 @@
 - (NSString *)description {
     NSString *description = [super description];
 
-    NSString *append = [NSString stringWithFormat:@" managedObjectClass: %@; managedObjectContext: %@; managedObject: %@; relationshipName: %@>", self.managedObjectClass, self.managedObjectContext, self.managedObject, self.relationshipName];
+    NSString *append = [NSString stringWithFormat:@" managedObjectClass: %@; managedObjectContext: %@; managedObject: %@; relationshipName: %@; batchSize: %lu>", self.managedObjectClass, self.managedObjectContext, self.managedObject, self.relationshipName, (unsigned long)self.batchSize];
 
     return [description stringByReplacingCharactersInRange:NSMakeRange([description length] - 2, 1) withString:append];
 }
@@ -181,6 +190,7 @@
         copy.managedObjectContext = self.managedObjectContext;
         copy.managedObject = self.managedObject;
         copy.relationshipName = self.relationshipName;
+        copy.batchSize = self.batchSize;
     }
     return copy;
 }

@@ -34,6 +34,8 @@
 - (instancetype)inContext:(NSManagedObjectContext *)context;
 @property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+- (instancetype)inBatchesOf:(NSUInteger)batchSize;
+
 - (NSFetchRequest *)fetchRequest;
 
 #pragma mark - Manipulating entities

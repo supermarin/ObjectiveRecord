@@ -73,6 +73,10 @@
     return [[self all] inContext:context];
 }
 
++ (CoreDataRelation *)inBatchesOf:(NSUInteger)batchSize {
+    return [[self all] inBatchesOf:batchSize];
+}
+
 + (id)defaultOrder {
     return nil;
 }
