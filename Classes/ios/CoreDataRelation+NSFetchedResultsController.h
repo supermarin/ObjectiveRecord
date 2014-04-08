@@ -26,4 +26,6 @@
 
 - (NSFetchedResultsController *)fetchedResultsController;
 
+- (NSFetchedResultsController *)fetchedResultsControllerWithSectionNameKeyPath:(NSString *)sectionNameKeyPath cacheName:(NSString *)cacheName;
+
 @end

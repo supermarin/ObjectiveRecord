@@ -25,10 +25,14 @@
 @implementation CoreDataRelation (NSFetchedResultsController)
 
 - (NSFetchedResultsController *)fetchedResultsController {
+    return [self fetchedResultsControllerWithSectionNameKeyPath:nil cacheName:nil];
+}
+
+- (NSFetchedResultsController *)fetchedResultsControllerWithSectionNameKeyPath:(NSString *)sectionNameKeyPath cacheName:(NSString *)cacheName {
     return [[NSFetchedResultsController alloc] initWithFetchRequest:[self fetchRequest]
                                                managedObjectContext:self.managedObjectContext
-                                                 sectionNameKeyPath:nil
-                                                          cacheName:nil];
+                                                 sectionNameKeyPath:sectionNameKeyPath
+                                                          cacheName:cacheName];
 }
 
 @end
