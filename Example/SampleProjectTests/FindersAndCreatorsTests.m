@@ -592,6 +592,35 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
     });
 
+    context(@"Fetch requests / fetched results controllers", ^{
+
+        it(@"Sets batch size", ^{
+            NSUInteger batchSize = 100;
+            CoreDataRelation *people = [Person inBatchesOf:batchSize];
+
+            [[@([[people fetchRequest] fetchBatchSize]) should] equal:@(batchSize)];
+        });
+
+        it(@"Returns a fetched results controller with the proper fetch request", ^{
+            NSUInteger batchSize = 100;
+            CoreDataRelation *people = [Person inBatchesOf:batchSize];
+            NSFetchedResultsController *fetchedResultsController = [people fetchedResultsController];
+
+            [[fetchedResultsController should] beKindOfClass:[NSFetchedResultsController class]];
+            [[@([fetchedResultsController.fetchRequest fetchBatchSize]) should] equal:@(batchSize)];
+        });
+
+        it(@"Sets section name and cache name", ^{
+            NSString *attribute = NSStringFromSelector(@selector(lastName));
+
+            NSFetchedResultsController *fetchedResultsController = [[Person order:attribute] fetchedResultsControllerWithSectionNameKeyPath:attribute cacheName:attribute];
+
+            [[fetchedResultsController.sectionNameKeyPath should] equal:attribute];
+            [[fetchedResultsController.cacheName should] equal:attribute];
+        });
+
+    });
+
 });
 
 SPEC_END
