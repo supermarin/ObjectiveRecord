@@ -105,29 +105,29 @@
 }
 
 + (NSMutableDictionary *)where:(id)condition order:(id)order page:(NSNumber*)page per:(NSNumber*)per {
-  if (!per || (per && per <= 0))
-      per = 10;
-  NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-  NSArray *allRecords = [[self fetchWithCondition:condition inContext:[NSManagedObjectContext defaultContext] withOrder:order fetchLimit:nil fetchOffet:nil] copy];
-  int count = ceil((float)[allRecords count]/(float)per);
-  if (!page || (page && page <= 0))
-      page = 1;
-  if (page > count)
-      page = count;
-  int offset = (page - 1) * per;
-  if (!offset)
-      offset = 0;
-  NSArray *limitRecords = [[self fetchWithCondition:condition inContext:[NSManagedObjectContext defaultContext] withOrder:order fetchLimit:[NSNumber numberWithInt:per] fetchOffet:[NSNumber numberWithInt:offset]] copy];
-  NSNumber *total = [NSNumber numberWithInt:count];
-  [dictionary setObject:total forKey:@"totalPage"];
-  int current = page > count ? count : page;
-  [dictionary setObject:[NSNumber numberWithInt:current] forKey:@"currentPage"];
-  BOOL isFirst = (page == (offset + 1));
-  BOOL isLast = (page >= [total intValue]);
-  [dictionary setObject:[NSNumber numberWithBool:isFirst] forKey:@"isFirst"];
-  [dictionary setObject:[NSNumber numberWithBool:isLast] forKey:@"isLast"];
-  [dictionary setObject:limitRecords forKey:@"objects"];
-  return [dictionary mutableCopy];
+    if (!per || (per && [per intValue] <= 0))
+        per = [NSNumber numberWithInt:10];
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    NSArray *allRecords = [[self fetchWithCondition:condition inContext:[NSManagedObjectContext defaultContext] withOrder:order fetchLimit:nil fetchOffet:nil] copy];
+    int count = ceil((float)[allRecords count]/[per floatValue]);
+    if (!page || (page && [page intValue] <= 0))
+        page = [NSNumber numberWithInt:1];
+    if ([page intValue] > count)
+        page = [NSNumber numberWithInt:count];
+    int offset = ([page intValue] - 1) * [per intValue];
+    if (!offset)
+        offset = 0;
+    NSArray *limitRecords = [[self fetchWithCondition:condition inContext:[NSManagedObjectContext defaultContext] withOrder:order fetchLimit:per fetchOffet:[NSNumber numberWithInt:offset]] copy];
+    NSNumber *total = [NSNumber numberWithInt:count];
+    [dictionary setObject:total forKey:@"totalPage"];
+    int current = [page intValue] > count ? count : [page intValue];
+    [dictionary setObject:[NSNumber numberWithInt:current] forKey:@"currentPage"];
+    BOOL isFirst = ([page intValue] == (offset + 1));
+    BOOL isLast = ([page intValue] >= [total intValue]);
+    [dictionary setObject:[NSNumber numberWithBool:isFirst] forKey:@"isFirst"];
+    [dictionary setObject:[NSNumber numberWithBool:isLast] forKey:@"isLast"];
+    [dictionary setObject:limitRecords forKey:@"objects"];
+    return [dictionary mutableCopy];
 }
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
@@ -145,26 +145,27 @@
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit {
     return [self fetchWithCondition:condition inContext:context withOrder:order fetchLimit:limit fetchOffet:nil];
 }
-+ (NSMutableDictionary *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order page:(int)page per:(int)per {
-    if (!per || (per && per <= 0))
-        per = 10;
+
++ (NSMutableDictionary *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order page:(NSNumber*)page per:(NSNumber*)per {
+    if (!per || (per && [per intValue] <= 0))
+        per = [NSNumber numberWithInt:10];
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     NSArray *allRecords = [[self fetchWithCondition:condition inContext:context withOrder:order fetchLimit:nil fetchOffet:nil] copy];
-    int count = ceil((float)[allRecords count]/(float)per);
-    if (!page || (page && page <= 0))
-        page = 1;
-    if (page > count)
-        page = count;
-    int offset = (page - 1) * per;
+    int count = ceil((float)[allRecords count]/[per floatValue]);
+    if (!page || (page && [page intValue] <= 0))
+        page = [NSNumber numberWithInt:1];
+    if ([page intValue] > count)
+        page = [NSNumber numberWithInt:count];
+    int offset = ([page intValue] - 1) * [per intValue];
     if (!offset)
         offset = 0;
-    NSArray *limitRecords = [[self fetchWithCondition:condition inContext:context withOrder:order fetchLimit:[NSNumber numberWithInt:per] fetchOffet:[NSNumber numberWithInt:offset]] copy];
+    NSArray *limitRecords = [[self fetchWithCondition:condition inContext:context withOrder:order fetchLimit:per fetchOffet:[NSNumber numberWithInt:offset]] copy];
     NSNumber *total = [NSNumber numberWithInt:count];
     [dictionary setObject:total forKey:@"totalPage"];
-    int current = page > count ? count : page;
+    int current = [page intValue] > count ? count : [page intValue];
     [dictionary setObject:[NSNumber numberWithInt:current] forKey:@"currentPage"];
-    BOOL isFirst = (page == (offset + 1));
-    BOOL isLast = (page >= [total intValue]);
+    BOOL isFirst = ([page intValue] == (offset + 1));
+    BOOL isLast = ([page intValue] >= [total intValue]);
     [dictionary setObject:[NSNumber numberWithBool:isFirst] forKey:@"isFirst"];
     [dictionary setObject:[NSNumber numberWithBool:isLast] forKey:@"isLast"];
     [dictionary setObject:limitRecords forKey:@"objects"];
