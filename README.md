@@ -80,6 +80,20 @@ NSArray *fivePeople = [Person where:@"name == 'John'"
                               limit:@(5)];
 ```
 
+#### Pagination
+
+``` objc
+// Pagination People named John by their last name A to Z at page 1 with 10 people
+NSMutableDictionary *pagination = [Person where:@"name == 'John'"
+                                          order:@{@"surname" : @"ASC"}
+                                          page:@(1) per:@(10)];
+                                  
+// Pagination People by default at page 1 with 10 people
+NSMutableDictionary *pagination = [Person where:nil
+                                          order:nil
+                                          page:nil per:nil];
+```
+
 #### Aggregation
 
 ``` objc
