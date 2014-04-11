@@ -56,6 +56,7 @@
 + (NSArray *)where:(id)condition order:(id)order;
 + (NSArray *)where:(id)condition limit:(NSNumber *)limit;
 + (NSArray *)where:(id)condition order:(id)order limit:(NSNumber *)limit;
++ (NSMutableDictionary *)where:(id)condition order:(id)order page:(int)page per:(int)per;
 + (instancetype)findOrCreate:(NSDictionary *)attributes;
 + (instancetype)find:(id)condition, ...;
 + (NSUInteger)count;
@@ -74,6 +75,7 @@
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order;
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit;
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit;
++ (NSMutableDictionary *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order page:(int)page per:(int)per;
 + (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context;
 + (instancetype)find:(id)condition inContext:(NSManagedObjectContext *)context;
 + (NSUInteger)countInContext:(NSManagedObjectContext *)context;
