@@ -92,6 +92,14 @@ NSMutableDictionary *pagination = [Person where:@"name == 'John'"
 NSMutableDictionary *pagination = [Person where:nil
                                           order:nil
                                           page:nil per:nil];
+                                          
+return {
+  currentPage = 1;
+  isFirst = 1;
+  isLast = 0;
+  objects = [];
+  totalPage = 1;
+}
 ```
 
 #### Aggregation
