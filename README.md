@@ -93,7 +93,7 @@ NSMutableDictionary *pagination = [Person where:nil
                                           order:nil
                                           page:nil per:nil];
                                           
-return {
+return pagination {
   currentPage = 1;
   isFirst = 1;
   isLast = 0;
