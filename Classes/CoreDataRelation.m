@@ -105,7 +105,11 @@
 
 - (NSArray *)fetchedObjects {
     if (_fetchedObjects == nil) {
-        _fetchedObjects = [self.managedObjectContext executeFetchRequest:[self fetchRequest] error:nil];
+        NSArray *objects = [self.managedObjectContext executeFetchRequest:[self fetchRequest] error:nil];
+        if (self.group) {
+            objects = [[self class] groupObjects:objects byKey:self.group];
+        }
+        _fetchedObjects = objects;
     }
     return _fetchedObjects;
 }

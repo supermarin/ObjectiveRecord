@@ -140,7 +140,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
         });
     });
 
-    context(@"Ordering and offseting", ^{
+    describe(@"Ordering, offseting, and grouping", ^{
 
         id (^firstNameMapper)(Person *) = ^id (Person *p) { return p.firstName; };
         id (^lastNameMapper)(Person *) = ^id (Person *p) { return p.lastName; };
@@ -251,6 +251,14 @@ describe(@"Find / Create / Save / Delete specs", ^{
             resultFirstNames = [[Person all].fetchedObjects
                                 map:firstNameMapper];
             [[resultFirstNames should] equal:@[@"Abe", @"Don", @"Bob", @"Cal"]];
+        });
+
+        it(@"groups entities into sections", ^{
+            NSArray *people = [[Person order:@"lastName, firstName"] group:@"lastName"].fetchedObjects;
+            [[[people should] have:3] sections];
+            NSArray *mols = people[1];
+            [[[mols valueForKey:@"lastName"] should] equal:@[@"Mol", @"Mol"]];
+            [[[mols should] have:2] values];
         });
 
     });

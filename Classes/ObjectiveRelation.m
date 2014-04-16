@@ -35,10 +35,33 @@
 @property (copy, nonatomic) NSArray *order;
 @property (nonatomic) NSUInteger limit;
 @property (nonatomic) NSUInteger offset;
+@property (copy, nonatomic) NSString *group;
 
 @end
 
 @implementation ObjectiveRelation
+
++ (NSArray *)groupObjects:(NSArray *)objects byKey:(NSString *)key
+{
+    NSMutableOrderedSet *values = [NSMutableOrderedSet new];
+    NSMutableDictionary *groups = [NSMutableDictionary new];
+    for (id object in objects) {
+        NSString *value = [object valueForKey:key];
+        [values addObject:value];
+
+        if (groups[value] == nil)
+            groups[value] = [NSMutableArray new];
+
+        [groups[value] addObject:object];
+    }
+
+    NSMutableArray *sections = [NSMutableArray arrayWithCapacity:[values count]];
+    for (NSString *value in values) {
+        [sections addObject:groups[value]];
+    }
+
+    return [sections copy];
+}
 
 - (id)initWithObjects:(NSArray *)objects {
     if (self = [self init]) {
@@ -107,6 +130,12 @@
     return relation;
 }
 
+- (instancetype)group:(NSString *)key {
+    typeof(self) relation = [self copy];
+    relation.group = key;
+    return relation;
+}
+
 #pragma mark Counting
 
 - (NSUInteger)count {
@@ -142,6 +171,9 @@
     NSArray *objects = [self.objects filteredArrayUsingPredicate:[self predicate]];
     objects = [objects sortedArrayUsingDescriptors:[self sortDescriptors]];
     objects = [objects subarrayWithRange:NSMakeRange(self.offset, self.limit)];
+    if (self.group) {
+        objects = [[self class] groupObjects:objects byKey:self.group];
+    }
     return objects;
 }
 

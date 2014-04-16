@@ -36,11 +36,13 @@
 - (instancetype)reverseOrder;
 - (instancetype)limit:(NSUInteger)limit;
 - (instancetype)offset:(NSUInteger)offset;
+- (instancetype)group:(NSString *)key;
 
 - (NSPredicate *)predicate;
 - (NSArray *)sortDescriptors;
 @property (readonly, nonatomic) NSUInteger limit;
 @property (readonly, nonatomic) NSUInteger offset;
+@property (readonly, nonatomic) NSString *group;
 
 @property (readonly, nonatomic) NSArray *fetchedObjects;
 
@@ -58,6 +60,8 @@
 @end
 
 @interface ObjectiveRelation : NSObject <ObjectiveRelation>
+
++ (NSArray *)groupObjects:(NSArray *)objects byKey:(NSString *)key;
 
 - (id)initWithObjects:(NSArray *)objects;
 

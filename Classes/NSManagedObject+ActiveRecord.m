@@ -69,6 +69,10 @@
     return [[self all] offset:offset];
 }
 
++ (CoreDataRelation *)group:(NSString *)key {
+    return [[self all] group:key];
+}
+
 + (CoreDataRelation *)inContext:(NSManagedObjectContext *)context {
     return [[self all] inContext:context];
 }

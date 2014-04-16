@@ -25,7 +25,7 @@
 @implementation CoreDataRelation (NSFetchedResultsController)
 
 - (NSFetchedResultsController *)fetchedResultsController {
-    return [self fetchedResultsControllerWithSectionNameKeyPath:nil cacheName:nil];
+    return [self fetchedResultsControllerWithSectionNameKeyPath:self.group cacheName:nil];
 }
 
 - (NSFetchedResultsController *)fetchedResultsControllerWithSectionNameKeyPath:(NSString *)sectionNameKeyPath cacheName:(NSString *)cacheName {
