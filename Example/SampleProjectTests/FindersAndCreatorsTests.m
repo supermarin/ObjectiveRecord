@@ -138,9 +138,14 @@ describe(@"Find / Create / Save / Delete specs", ^{
             }];
             [[[[Person where:@{ @"firstName": @"John" }] limit:2] should] haveCountOf:2];
         });
+
+        it(@"Returns results by indexed subscript", ^{
+            Person *john = [Person where:@"firstName = %@", @"John"][0];
+            [[john shouldNot] beNil];
+        });
     });
 
-    describe(@"Ordering, offseting, and grouping", ^{
+    describe(@"Ordering, offseting, grouping", ^{
 
         id (^firstNameMapper)(Person *) = ^id (Person *p) { return p.firstName; };
         id (^lastNameMapper)(Person *) = ^id (Person *p) { return p.lastName; };
@@ -255,8 +260,10 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
         context(@"grouped queries", ^{
 
-            let(people, ^id{
-                return [[Person order:@"lastName, firstName"] group:@"lastName"];
+            __block CoreDataRelation *people;
+
+            beforeEach(^{
+                people = [[Person order:@"lastName, firstName"] group:@"lastName"];
             });
 
             it(@"groups entities into sections", ^{
@@ -283,6 +290,21 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
                 [[mol.firstName should] equal:@"Don"];
                 [[mol.lastName should] equal:@"Mol"];
+            });
+
+            it(@"returns grouped objects by index path-keyed subscript", ^{
+                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:1 inSection:1];
+                Person *mol = people[indexPath];
+
+                [[mol.firstName should] equal:@"Don"];
+                [[mol.lastName should] equal:@"Mol"];
+            });
+
+            it(@"throws grouped objects by indexed subscript", ^{
+                [[theBlock(^{
+                    Person *person = people[0];
+                    [[person should] beNil];
+                }) should] raise];
             });
 
         });

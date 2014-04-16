@@ -60,6 +60,8 @@
 - (id)lastObject;
 - (id)find:(id)condition, ...;
 
+- (id)objectAtIndexedSubscript:(NSUInteger)idx;
+- (id)objectForKeyedSubscript:(id<NSCopying>)key;
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

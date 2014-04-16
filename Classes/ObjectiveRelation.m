@@ -179,6 +179,18 @@
     return [relation firstObject];
 }
 
+- (id)objectAtIndexedSubscript:(NSUInteger)idx
+{
+    NSAssert(self.group == nil, @"Can't access grouped objects by index");
+    return self.fetchedObjects[idx];
+}
+
+- (id)objectForKeyedSubscript:(id<NSCopying>)key
+{
+    NSAssert(self.group != nil, @"Can't access ungrouped objects by index path");
+    return [self objectAtIndexPath:(NSIndexPath *)key];
+}
+
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
     if (self.group)
         return self.fetchedObjects[indexPath.section][indexPath.item];
