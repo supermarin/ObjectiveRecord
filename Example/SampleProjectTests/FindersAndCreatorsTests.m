@@ -253,12 +253,38 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[resultFirstNames should] equal:@[@"Abe", @"Don", @"Bob", @"Cal"]];
         });
 
-        it(@"groups entities into sections", ^{
-            NSArray *people = [[Person order:@"lastName, firstName"] group:@"lastName"].fetchedObjects;
-            [[[people should] have:3] sections];
-            NSArray *mols = people[1];
-            [[[mols valueForKey:@"lastName"] should] equal:@[@"Mol", @"Mol"]];
-            [[[mols should] have:2] values];
+        context(@"grouped queries", ^{
+
+            let(people, ^id{
+                return [[Person order:@"lastName, firstName"] group:@"lastName"];
+            });
+
+            it(@"groups entities into sections", ^{
+                NSArray *groups = [people fetchedObjects];
+                [[[groups should] have:3] sections];
+                NSArray *mols = groups[1];
+                [[[mols valueForKey:@"lastName"] should] equal:@[@"Mol", @"Mol"]];
+                [[[mols should] have:2] values];
+            });
+
+            it(@"counts grouped sections", ^{
+                [[@([people numberOfSections]) should] equal:@(3)];
+            });
+
+            it(@"counts items per group", ^{
+                [[@([people numberOfObjectsInSection:0]) should] equal:@(1)];
+                [[@([people numberOfObjectsInSection:1]) should] equal:@(2)];
+                [[@([people numberOfObjectsInSection:2]) should] equal:@(1)];
+            });
+
+            it(@"returns grouped objects by index path", ^{
+                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:1 inSection:1];
+                Person *mol = [people objectAtIndexPath:indexPath];
+
+                [[mol.firstName should] equal:@"Don"];
+                [[mol.lastName should] equal:@"Mol"];
+            });
+
         });
 
     });

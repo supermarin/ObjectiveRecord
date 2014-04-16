@@ -146,6 +146,20 @@
     return [[self limit:1] count];
 }
 
+- (NSUInteger)numberOfSections {
+    if (self.group) {
+        return [self.fetchedObjects count];
+    }
+    return 1;
+}
+
+- (NSUInteger)numberOfObjectsInSection:(NSUInteger)section {
+    if (self.group) {
+        return [self.fetchedObjects[section] count];
+    }
+    return [self.fetchedObjects count];
+}
+
 #pragma mark Plucking
 
 - (id)firstObject {
@@ -163,6 +177,17 @@
     va_end(arguments);
 
     return [relation firstObject];
+}
+
+- (id)objectAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.group)
+        return self.fetchedObjects[indexPath.section][indexPath.item];
+
+    NSAssert(indexPath.section == 0,
+             @"Relation is not grouped into sections. Can't access object in section %ld.",
+             (long)indexPath.section);
+
+    return self.fetchedObjects[indexPath.item];
 }
 
 #pragma mark -

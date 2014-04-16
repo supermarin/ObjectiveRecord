@@ -51,11 +51,16 @@
 - (NSUInteger)count;
 - (BOOL)any;
 
+- (NSUInteger)numberOfSections;
+- (NSUInteger)numberOfObjectsInSection:(NSUInteger)section;
+
 #pragma mark Plucking
 
 - (id)firstObject;
 - (id)lastObject;
 - (id)find:(id)condition, ...;
+
+- (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
