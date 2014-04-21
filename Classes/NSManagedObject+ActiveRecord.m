@@ -118,6 +118,7 @@
     if (!offset)
         offset = 0;
     NSArray *limitRecords = [[self fetchWithCondition:condition inContext:[NSManagedObjectContext defaultContext] withOrder:order fetchLimit:per fetchOffet:[NSNumber numberWithInt:offset]] copy];
+    if (limitRecords == nil) limitRecords = @[];
     NSNumber *total = [NSNumber numberWithInt:count];
     [dictionary setObject:total forKey:@"totalPage"];
     int current = [page intValue] > count ? count : [page intValue];
@@ -160,6 +161,7 @@
     if (!offset)
         offset = 0;
     NSArray *limitRecords = [[self fetchWithCondition:condition inContext:context withOrder:order fetchLimit:per fetchOffet:[NSNumber numberWithInt:offset]] copy];
+    if (limitRecords == nil) limitRecords = @[];
     NSNumber *total = [NSNumber numberWithInt:count];
     [dictionary setObject:total forKey:@"totalPage"];
     int current = [page intValue] > count ? count : [page intValue];
