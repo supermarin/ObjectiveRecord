@@ -101,6 +101,49 @@
     return [self.managedObjectContext countForFetchRequest:[self fetchRequest] error:nil];
 }
 
+- (CGFloat)sum:(NSString *)attribute {
+    return [self calculate:@"sum" forAttribute:attribute];
+}
+
+- (CGFloat)minimum:(NSString *)attribute {
+    return [self calculate:@"min" forAttribute:attribute];
+}
+
+- (CGFloat)maximum:(NSString *)attribute {
+    return [self calculate:@"max" forAttribute:attribute];
+}
+
+- (CGFloat)average:(NSString *)attribute {
+    return [self calculate:@"average" operator:@"@avg" forAttribute:attribute];
+}
+
+- (CGFloat)calculate:(NSString *)function forAttribute:(NSString *)attribute {
+    return [self calculate:function operator:nil forAttribute:attribute];
+}
+
+- (CGFloat)calculate:(NSString *)function operator:(NSString *)operator forAttribute:(NSString *)attribute {
+    if (_fetchedObjects) {
+        NSString *keyPathOperator = operator ?: [NSString stringWithFormat:@"@%@", function];
+        return [[_fetchedObjects valueForKeyPath:[NSString stringWithFormat:@"%@.%@", keyPathOperator, attribute]] doubleValue];
+    }
+
+    NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:attribute];
+    NSExpression *functionExpression = [NSExpression expressionForFunction:[NSString stringWithFormat:@"%@:", function]
+                                                                 arguments:@[keyPathExpression]];
+
+    NSExpressionDescription *description = [NSExpressionDescription new];
+    [description setName:function];
+    [description setExpression:functionExpression];
+    [description setExpressionResultType:NSDoubleAttributeType];
+
+    NSFetchRequest *fetchRequest = [self fetchRequest];
+    [fetchRequest setPropertiesToFetch:@[description]];
+    [fetchRequest setResultType:NSDictionaryResultType];
+
+    NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    return [[results firstObject][function] doubleValue];
+}
+
 #pragma mark -
 
 - (NSArray *)fetchedObjects {

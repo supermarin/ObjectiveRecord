@@ -337,6 +337,58 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
     });
 
+    describe(@"Calculations", ^{
+
+        beforeEach(^{
+            [Person deleteAll];
+            [Person create:@{@"age": @18}];
+            [[Person create:@{@"age": @30}] save];
+        });
+
+        it(@"sums", ^{
+            [[@([Person sum:@"age"]) should] equal:@48];
+        });
+
+        it(@"calculates the maximum", ^{
+            [[@([Person maximum:@"age"]) should] equal:@30];
+        });
+
+        it(@"calculates the minimum", ^{
+            [[@([Person minimum:@"age"]) should] equal:@18];
+        });
+
+        it(@"averages", ^{
+            [[@([Person average:@"age"]) should] equal:@24];
+        });
+
+        context(@"with prefetched objects", ^{
+
+            let(people, ^id{
+                CoreDataRelation *people = [Person all];
+                NSArray *prefetch = people.fetchedObjects;
+                return people;
+            });
+
+            it(@"sums", ^{
+                [[@([people sum:@"age"]) should] equal:@48];
+            });
+
+            it(@"calculates the maximum", ^{
+                [[@([people maximum:@"age"]) should] equal:@30];
+            });
+
+            it(@"calculates the minimum", ^{
+                [[@([people minimum:@"age"]) should] equal:@18];
+            });
+
+            it(@"averages", ^{
+                [[@([people average:@"age"]) should] equal:@24];
+            });
+
+        });
+
+    });
+
     context(@"Creating", ^{
 
         it(@"creates without arguments", ^{

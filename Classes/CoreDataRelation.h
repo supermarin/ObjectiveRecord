@@ -38,6 +38,13 @@
 
 - (NSFetchRequest *)fetchRequest;
 
+#pragma mark Counting
+
+- (CGFloat)sum:(NSString *)attribute;
+- (CGFloat)minimum:(NSString *)attribute;
+- (CGFloat)maximum:(NSString *)attribute;
+- (CGFloat)average:(NSString *)attribute;
+
 #pragma mark - Manipulating entities
 
 - (id)findOrCreate:(NSDictionary *)properties;

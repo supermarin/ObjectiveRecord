@@ -95,6 +95,22 @@
     return [[self all] any];
 }
 
++ (CGFloat)sum:(NSString *)attribute {
+    return [[self all] sum:attribute];
+}
+
++ (CGFloat)minimum:(NSString *)attribute {
+    return [[self all] minimum:attribute];
+}
+
++ (CGFloat)maximum:(NSString *)attribute {
+    return [[self all] maximum:attribute];
+}
+
++ (CGFloat)average:(NSString *)attribute {
+    return [[self all] average:attribute];
+}
+
 #pragma mark Plucking
 
 + (instancetype)firstObject {
