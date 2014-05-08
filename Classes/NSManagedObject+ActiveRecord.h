@@ -43,6 +43,7 @@
 #pragma mark - Fetch request building
 
 + (CoreDataRelation *)all;
++ (CoreDataRelation *)select:(NSArray *)properties;
 + (CoreDataRelation *)where:(id)condition, ...;
 + (CoreDataRelation *)order:(id)order;
 + (CoreDataRelation *)reverseOrder;

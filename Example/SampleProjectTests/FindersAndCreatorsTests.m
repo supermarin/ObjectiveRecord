@@ -52,6 +52,11 @@ describe(@"Find / Create / Save / Delete specs", ^{
             [[[Person all] should] haveCountOf:[names count]];
         });
 
+        it(@"Selects entity properties", ^{
+            NSArray *people = [Person select:@[@"firstName"]].fetchedObjects;
+            [[people should] equal:@[@{@"firstName": @"John"}, @{@"firstName": @"Steve"}, @{@"firstName": @"Neo"}, @{@"firstName": @"ldkhbfaewlfbaewljfhb"}]];
+        });
+
         it(@"Finds using [Entity where: STRING]", ^{
 
             Person *unique = [[Person where:[NSString stringWithFormat:@"firstName == '%@'",UNIQUE_NAME]] firstObject];

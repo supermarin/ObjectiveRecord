@@ -26,6 +26,8 @@
 
 @interface CoreDataRelation ()
 
+@property (copy, nonatomic) NSArray *propertiesToFetch;
+
 @property (weak, nonatomic) Class managedObjectClass;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
@@ -78,6 +80,12 @@
             return [[self order:defaultOrder] reverseOrder];
     }
     return [super reverseOrder];
+}
+
+- (instancetype)select:(NSArray *)properties {
+    typeof(self) relation = [self copy];
+    relation.propertiesToFetch = properties;
+    return relation;
 }
 
 - (instancetype)inContext:(NSManagedObjectContext *)context {
@@ -159,12 +167,27 @@
 
 - (NSFetchRequest *)fetchRequest {
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    [fetchRequest setEntity:[NSEntityDescription entityForName:[self.managedObjectClass entityName] inManagedObjectContext:self.managedObjectContext]];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:[self.managedObjectClass entityName]
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:self.batchSize];
     [fetchRequest setFetchLimit:self.limit];
     [fetchRequest setFetchOffset:self.offset];
     [fetchRequest setPredicate:[self predicate]];
     [fetchRequest setSortDescriptors:[self sortDescriptors]];
+
+    if (self.propertiesToFetch) {
+        NSMutableArray *properties = [NSMutableArray new];
+        NSDictionary *attributesByName = [entity attributesByName];
+        NSDictionary *relationshipsByName = [entity relationshipsByName];
+
+        for (NSString *property in self.propertiesToFetch)
+            [properties addObject:attributesByName[property] ?: relationshipsByName[property]];
+
+        [fetchRequest setPropertiesToFetch:properties];
+        [fetchRequest setResultType:NSDictionaryResultType];
+    }
+
     return fetchRequest;
 }
 

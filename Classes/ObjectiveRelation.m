@@ -31,6 +31,7 @@
 
 @property (copy, nonatomic) NSArray *objects;
 
+@property (copy, nonatomic) NSArray *select;
 @property (copy, nonatomic) NSArray *where;
 @property (copy, nonatomic) NSArray *order;
 @property (nonatomic) NSUInteger limit;
@@ -82,6 +83,12 @@
 
 - (instancetype)all {
     return [self copy];
+}
+
+- (instancetype)select:(NSArray *)keyPaths {
+    typeof(self) relation = [self copy];
+    self.select = keyPaths;
+    return relation;
 }
 
 - (instancetype)where:(id)condition, ... {
@@ -208,6 +215,15 @@
     NSArray *objects = [self.objects filteredArrayUsingPredicate:[self predicate]];
     objects = [objects sortedArrayUsingDescriptors:[self sortDescriptors]];
     objects = [objects subarrayWithRange:NSMakeRange(self.offset, self.limit)];
+    if (self.select) {
+        objects = [objects map:^id(id obj) {
+            NSMutableDictionary *properties = [NSMutableDictionary new];
+            for (NSString *keyPath in self.select) {
+                properties[keyPath] = [obj valueForKeyPath:keyPath];
+            }
+            return [properties copy];
+        }];
+    }
     if (self.group) {
         objects = [[self class] groupObjects:objects byKey:self.group];
     }

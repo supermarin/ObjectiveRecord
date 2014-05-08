@@ -44,6 +44,10 @@
     return [CoreDataRelation relationWithManagedObjectClass:self];
 }
 
++ (CoreDataRelation *)select:(NSArray *)properties {
+    return [[self all] select:properties];
+}
+
 + (CoreDataRelation *)where:(id)condition, ... {
     va_list va_arguments;
     va_start(va_arguments, condition);

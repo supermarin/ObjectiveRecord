@@ -29,6 +29,7 @@
 #pragma mark - Fetch request building
 
 - (instancetype)all;
+- (instancetype)select:(NSArray *)keyPaths;
 - (instancetype)where:(id)condition, ...;
 - (instancetype)where:(id)condition arguments:(va_list)arguments;
 - (instancetype)order:(id)order;
