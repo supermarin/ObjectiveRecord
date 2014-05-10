@@ -178,11 +178,10 @@
 
     if (self.propertiesToFetch) {
         NSMutableArray *properties = [NSMutableArray new];
-        NSDictionary *attributesByName = [entity attributesByName];
-        NSDictionary *relationshipsByName = [entity relationshipsByName];
+        NSDictionary *propertiesByName = [entity propertiesByName];
 
         for (NSString *property in self.propertiesToFetch)
-            [properties addObject:attributesByName[property] ?: relationshipsByName[property]];
+            [properties addObject:propertiesByName[property]];
 
         [fetchRequest setPropertiesToFetch:properties];
         [fetchRequest setResultType:NSDictionaryResultType];

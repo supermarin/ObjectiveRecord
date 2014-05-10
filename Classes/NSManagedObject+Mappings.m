@@ -58,14 +58,13 @@
 + (NSDictionary *)transformProperties:(NSDictionary *)properties withContext:(NSManagedObjectContext *)context {
     NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:context];
 
-    NSDictionary *attributes = [entity attributesByName];
-    NSDictionary *relationships = [entity relationshipsByName];
+    NSDictionary *propertiesByName = [entity propertiesByName];
 
     NSMutableDictionary *transformed = [NSMutableDictionary dictionaryWithCapacity:[properties count]];
 
     for (NSString *key in properties) {
         NSString *localKey = [self keyForRemoteKey:key inContext:context];
-        if (attributes[localKey] || relationships[localKey]) {
+        if (propertiesByName[localKey]) {
             transformed[localKey] = [[self class] transformValue:properties[key] forRemoteKey:key inContext:context];
         } else {
 #if DEBUG
