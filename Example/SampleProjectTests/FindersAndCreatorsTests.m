@@ -268,7 +268,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
             __block CoreDataRelation *people;
 
             beforeEach(^{
-                people = [[Person order:@"lastName, firstName"] group:@"lastName"];
+                people = [[Person order:@"lastName, firstName"] section:@"lastName"];
             });
 
             it(@"groups entities into sections", ^{

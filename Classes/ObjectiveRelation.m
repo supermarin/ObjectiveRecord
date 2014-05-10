@@ -37,17 +37,18 @@
 @property (nonatomic) NSUInteger limit;
 @property (nonatomic) NSUInteger offset;
 @property (copy, nonatomic) NSString *group;
+@property (copy, nonatomic) NSString *sectionNameKeyPath;
 
 @end
 
 @implementation ObjectiveRelation
 
-+ (NSArray *)groupObjects:(NSArray *)objects byKey:(NSString *)key
++ (NSArray *)sectionObjects:(NSArray *)objects byKeyPath:(NSString *)keyPath
 {
     NSMutableOrderedSet *values = [NSMutableOrderedSet new];
     NSMutableDictionary *groups = [NSMutableDictionary new];
     for (id object in objects) {
-        NSString *value = [object valueForKey:key];
+        NSString *value = [object valueForKeyPath:keyPath];
         [values addObject:value];
 
         if (groups[value] == nil)
@@ -137,9 +138,9 @@
     return relation;
 }
 
-- (instancetype)group:(NSString *)key {
+- (instancetype)section:(NSString *)keyPath {
     typeof(self) relation = [self copy];
-    relation.group = key;
+    relation.sectionNameKeyPath = keyPath;
     return relation;
 }
 
@@ -154,14 +155,14 @@
 }
 
 - (NSUInteger)numberOfSections {
-    if (self.group) {
+    if (self.sectionNameKeyPath) {
         return [self.fetchedObjects count];
     }
     return 1;
 }
 
 - (NSUInteger)numberOfObjectsInSection:(NSUInteger)section {
-    if (self.group) {
+    if (self.sectionNameKeyPath) {
         return [self.fetchedObjects[section] count];
     }
     return [self.fetchedObjects count];
@@ -188,18 +189,18 @@
 
 - (id)objectAtIndexedSubscript:(NSUInteger)idx
 {
-    NSAssert(self.group == nil, @"Can't access grouped objects by index");
+    NSAssert(self.sectionNameKeyPath == nil, @"Can't access grouped objects by index");
     return self.fetchedObjects[idx];
 }
 
 - (id)objectForKeyedSubscript:(id<NSCopying>)key
 {
-    NSAssert(self.group != nil, @"Can't access ungrouped objects by index path");
+    NSAssert(self.sectionNameKeyPath != nil, @"Can't access ungrouped objects by index path");
     return [self objectAtIndexPath:(NSIndexPath *)key];
 }
 
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.group)
+    if (self.sectionNameKeyPath)
         return self.fetchedObjects[indexPath.section][indexPath.item];
 
     NSAssert(indexPath.section == 0,
@@ -224,8 +225,8 @@
             return [properties copy];
         }];
     }
-    if (self.group) {
-        objects = [[self class] groupObjects:objects byKey:self.group];
+    if (self.sectionNameKeyPath) {
+        objects = [[self class] sectionObjects:objects byKeyPath:self.sectionNameKeyPath];
     }
     return objects;
 }

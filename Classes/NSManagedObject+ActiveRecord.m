@@ -73,8 +73,8 @@
     return [[self all] offset:offset];
 }
 
-+ (CoreDataRelation *)group:(NSString *)key {
-    return [[self all] group:key];
++ (CoreDataRelation *)section:(NSString *)key {
+    return [[self all] section:key];
 }
 
 + (CoreDataRelation *)inContext:(NSManagedObjectContext *)context {

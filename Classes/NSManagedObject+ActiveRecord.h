@@ -49,7 +49,7 @@
 + (CoreDataRelation *)reverseOrder;
 + (CoreDataRelation *)limit:(NSUInteger)limit;
 + (CoreDataRelation *)offset:(NSUInteger)offset;
-+ (CoreDataRelation *)group:(NSString *)key;
++ (CoreDataRelation *)section:(NSString *)keyPath;
 + (CoreDataRelation *)inContext:(NSManagedObjectContext *)context;
 + (CoreDataRelation *)inBatchesOf:(NSUInteger)batchSize;
 

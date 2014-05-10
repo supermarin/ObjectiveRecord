@@ -157,8 +157,8 @@
 - (NSArray *)fetchedObjects {
     if (_fetchedObjects == nil) {
         NSArray *objects = [self.managedObjectContext executeFetchRequest:[self fetchRequest] error:nil];
-        if (self.group) {
-            objects = [[self class] groupObjects:objects byKey:self.group];
+        if (self.sectionNameKeyPath) {
+            objects = [[self class] sectionObjects:objects byKeyPath:self.sectionNameKeyPath];
         }
         _fetchedObjects = objects;
     }
