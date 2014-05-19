@@ -312,6 +312,12 @@ describe(@"Find / Create / Save / Delete specs", ^{
             }];
             [[[Person where:@{ @"firstName": @"asetnset" }] should] haveCountOf:1];
         });
+
+        it(@"doesn't mark records as having changes when values are the same", ^{
+            Person *person = fetchUniquePerson();
+            [person update:@{@"firstName": person.firstName}];
+            [[@([person hasChanges]) should] beNo];
+        });
     });
 
     context(@"Saving", ^{
