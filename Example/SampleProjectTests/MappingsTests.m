@@ -51,6 +51,15 @@ describe(@"Mappings", ^{
         [car update:@{ @"hp": @150 }];
     });
     
+    it(@"supports keypath nested property mappings", ^{
+        Person *person = [Person createInContext:newContext];
+        [[Person should] receive:@selector(mappings) withCountAtMost:1];
+        [[Person should] receive:@selector(keyPathForRemoteKey:) withCountAtMost:1];
+        
+        [person update:@{ @"first_name": @"Marin", @"last_name": @"Usalj" }];
+        [person update:@{ @"profile": @{ @"role": @"CEO", @"life_savings": @1500.12 } }];
+    });
+    
     it(@"uses mapped values when creating", ^{
         [[person.firstName should] equal:@"Marin"];
         [[person.lastName should] equal:@"Usalj"];
@@ -110,15 +119,6 @@ describe(@"Mappings", ^{
     it(@"supports creating full nested parent objects", ^{
         Car *car = [Car create:@{ @"insurance_company": @{ @"id" : @1234, @"owner" : @{ @"id" : @4567, @"first_name" : @"Stan" } }}];
         [[car.insuranceCompany.owner should] equal:[Person find:@{ @"remoteID": @4567, @"firstName": @"Stan" }]];
-    });
-    
-    it(@"supports keypath nested property mappings", ^{
-        Car *car = [Car createInContext:newContext];
-        [[Car should] receive:@selector(mappings) withCountAtMost:1];
-        [[Car should] receive:@selector(keyPathForRemoteKey:) withCountAtMost:1];
-        
-        [car update:@{ @"first_name": @"Marin", @"last_name": @"Usalj" }];
-        [car update:@{ @"profile": @{ @"role": @"CEO", @"life_savings": @1500.12 } }];
     });
 });
 
