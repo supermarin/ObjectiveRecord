@@ -232,6 +232,18 @@
 #endif
         }
     }
+    
+    for (NSString *attribute in [attributes allKeys]) {
+        NSString *keypath = [self keyPathForRemoteKey:attribute];
+        
+        if (keypath) {
+            id value = [properties valueForKeyPath:keypath];
+            NSString *localKey = [self keyForRemoteKey:attribute inContext:context];
+            if (!value || !localKey)
+                continue;
+            transformed[localKey] = value;
+        }
+    }
 
     return transformed;
 }
