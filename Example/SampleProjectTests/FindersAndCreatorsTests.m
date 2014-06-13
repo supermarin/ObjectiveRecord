@@ -285,7 +285,7 @@ describe(@"Find / Create / Save / Delete specs", ^{
 
         it(@"converts strings to floats", ^{
             Person *person = [Person create:@{ @"savings": @"1500.12" }];
-            [[person.savings should] equal:@(1500.12f)];
+            [[person.lifeSavings should] equal:@(1500.12f)];
         });
 
         it(@"converts strings to dates", ^{
