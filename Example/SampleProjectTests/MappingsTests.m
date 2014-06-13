@@ -12,6 +12,10 @@ describe(@"Mappings", ^{
         @"last_name": @"Usalj",
         @"age": @25,
         @"is_member": @"true",
+        @"profile": @{
+                @"role": @"CEO",
+                @"life_savings": @203040.25,
+                },
         @"cars": @[
                @{ @"hp": @220, @"make": @"Trabant" },
                @{ @"hp": @90, @"make": @"Volkswagen" }
