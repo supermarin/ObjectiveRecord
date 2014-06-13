@@ -2,13 +2,14 @@
 //  Person.m
 //  SampleProject
 //
-//  Created by Delisa Mason on 12/27/13.
+//  Created by Ignacio Romero Z. on 6/13/14.
 //
 //
 
 #import "Person.h"
 #import "Car.h"
 #import "InsuranceCompany.h"
+#import "Person.h"
 
 
 @implementation Person
@@ -19,10 +20,11 @@
 @dynamic isMember;
 @dynamic lastName;
 @dynamic remoteID;
-@dynamic savings;
+@dynamic lifeSavings;
+@dynamic role;
 @dynamic cars;
 @dynamic employees;
-@dynamic manager;
 @dynamic insuranceCompany;
+@dynamic manager;
 
 @end

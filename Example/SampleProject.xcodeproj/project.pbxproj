@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 496F953C174CCCBA00220FD1 /* OBRPerson.m */; };
-		6433E5B9184D89EC008EF278 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5B8184D89EC008EF278 /* Person.m */; };
+		4F5744B5194ABB0C0099A49E /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5744B4194ABB0C0099A49E /* Person.m */; };
 		6433E5C2184E83C2008EF278 /* InsuranceCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5C1184E83C2008EF278 /* InsuranceCompany.m */; };
 		6433E5C5184E83D6008EF278 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5C4184E83D6008EF278 /* Car.m */; };
 		892C1E91165D54160077F2CB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 892C1E90165D54160077F2CB /* Default-568h@2x.png */; };
@@ -49,8 +49,8 @@
 		0EE71E2B92554B48A0914E08 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		496F953B174CCCBA00220FD1 /* OBRPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRPerson.h; sourceTree = "<group>"; };
 		496F953C174CCCBA00220FD1 /* OBRPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRPerson.m; sourceTree = "<group>"; };
-		6433E5B7184D89EC008EF278 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		6433E5B8184D89EC008EF278 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		4F5744B3194ABB0C0099A49E /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		4F5744B4194ABB0C0099A49E /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		6433E5C0184E83C2008EF278 /* InsuranceCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceCompany.h; sourceTree = "<group>"; };
 		6433E5C1184E83C2008EF278 /* InsuranceCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceCompany.m; sourceTree = "<group>"; };
 		6433E5C3184E83D6008EF278 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
@@ -119,8 +119,6 @@
 				6433E5C4184E83D6008EF278 /* Car.m */,
 				6433E5C0184E83C2008EF278 /* InsuranceCompany.h */,
 				6433E5C1184E83C2008EF278 /* InsuranceCompany.m */,
-				6433E5B7184D89EC008EF278 /* Person.h */,
-				6433E5B8184D89EC008EF278 /* Person.m */,
 				496F953B174CCCBA00220FD1 /* OBRPerson.h */,
 				496F953C174CCCBA00220FD1 /* OBRPerson.m */,
 				897AD0C51758D99A006869BA /* Person+Mappings.h */,
@@ -129,6 +127,8 @@
 				897AD0C91758D9A6006869BA /* Car+Mappings.m */,
 				FA91A5E71875B9FD00BE74DD /* InsuranceCompany+Mappings.h */,
 				FA91A5E81875B9FD00BE74DD /* InsuranceCompany+Mappings.m */,
+				4F5744B3194ABB0C0099A49E /* Person.h */,
+				4F5744B4194ABB0C0099A49E /* Person.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -382,9 +382,9 @@
 			files = (
 				6433E5C5184E83D6008EF278 /* Car.m in Sources */,
 				89F1EEB615A4C73B00AE4FB4 /* main.m in Sources */,
+				4F5744B5194ABB0C0099A49E /* Person.m in Sources */,
 				89F1EEBA15A4C73B00AE4FB4 /* AppDelegate.m in Sources */,
 				FA91A5E91875B9FE00BE74DD /* InsuranceCompany+Mappings.m in Sources */,
-				6433E5B9184D89EC008EF278 /* Person.m in Sources */,
 				6433E5C2184E83C2008EF278 /* InsuranceCompany.m in Sources */,
 				89F1EEBD15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld in Sources */,
 				496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */,
