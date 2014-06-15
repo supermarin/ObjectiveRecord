@@ -68,6 +68,7 @@
 + (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
 + (instancetype)updateOrCreate:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
 
+- (BOOL)saveInContext:(NSManagedObjectContext *)context;
 + (void)deleteAllInContext:(NSManagedObjectContext *)context;
 
 + (NSArray *)allInContext:(NSManagedObjectContext *)context;
