@@ -178,15 +178,14 @@
     NSString *localKey = [[self mappings] allKeysForObject:[self primaryKey]].first;
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", [self primaryKey], attributes[localKey]];
     
-    NSDictionary *transformed = [[self class] transformProperties:attributes withObject:nil context:context];
     NSManagedObject *existing = [self where:predicate inContext:context].first;
     
-    if (existing) {
-        [existing update:transformed];
-        return existing;
+    if (!existing) {
+        return [self create:attributes inContext:context];
     }
     
-    return [self create:transformed inContext:context];
+    [existing update:attributes];
+    return existing;
 }
 
 - (void)update:(NSDictionary *)attributes {
