@@ -169,6 +169,26 @@
                                          inManagedObjectContext:context];
 }
 
++ (instancetype)updateOrCreate:(NSDictionary *)attributes {
+    return [self updateOrCreate:attributes inContext:[NSManagedObjectContext defaultContext]];
+}
+
++ (instancetype)updateOrCreate:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context {
+    
+    NSString *localKey = [[self mappings] allKeysForObject:[self primaryKey]].first;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K = %@", [self primaryKey], attributes[localKey]];
+    
+    NSDictionary *transformed = [[self class] transformProperties:attributes withObject:nil context:context];
+    NSManagedObject *existing = [self where:predicate inContext:context].first;
+    
+    if (existing) {
+        [existing update:transformed];
+        return existing;
+    }
+    
+    return [self create:transformed inContext:context];
+}
+
 - (void)update:(NSDictionary *)attributes {
     unless([attributes exists]) return;
 

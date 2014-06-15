@@ -48,6 +48,7 @@
 
 + (id)create;
 + (id)create:(NSDictionary *)attributes;
++ (instancetype)updateOrCreate:(NSDictionary *)attributes;
 - (void)update:(NSDictionary *)attributes;
 
 + (NSArray *)all;
@@ -65,6 +66,7 @@
 
 + (id)createInContext:(NSManagedObjectContext *)context;
 + (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
++ (instancetype)updateOrCreate:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
 
 + (void)deleteAllInContext:(NSManagedObjectContext *)context;
 
