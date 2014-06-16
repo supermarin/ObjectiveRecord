@@ -79,8 +79,13 @@
 
 - (NSManagedObjectModel *)managedObjectModel {
     if (_managedObjectModel) return _managedObjectModel;
-
+    
     NSURL *modelURL = [[NSBundle bundleForClass:[self class]] URLForResource:[self modelName] withExtension:@"momd"];
+    
+    if ([self modelVersion]) {
+        modelURL = [modelURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.mom", [self modelVersion]]];
+    }
+    
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
