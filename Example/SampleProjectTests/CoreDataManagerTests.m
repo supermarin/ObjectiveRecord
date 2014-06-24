@@ -42,7 +42,13 @@ describe(@"Core data stack", ^{
         NSPersistentStore *store = [manager.persistentStoreCoordinator persistentStores][0];
         [[store.URL.absoluteString should] endWithString:@".sqlite"];
     });
-    
+
+    it(@"permits to set custom ManagedObjectContext", ^{
+        NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        manager.managedObjectContext = newContext;
+        [[manager.managedObjectContext should] equal:newContext];
+    });
+
 });
 
 SPEC_END
