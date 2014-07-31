@@ -22,6 +22,11 @@
 
 #import "CoreDataManager.h"
 
+@interface CoreDataManager ()
+@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, nonatomic) NSManagedObjectModel *managedObjectModel;
+@end
+
 @implementation CoreDataManager
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -41,6 +46,11 @@
         singleton = [[self alloc] init];
     });
     return singleton;
+}
+
++ (NSManagedObjectContext *)context
+{
+    return [CoreDataManager sharedManager].managedObjectContext;
 }
 
 
