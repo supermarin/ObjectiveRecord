@@ -25,7 +25,8 @@
 
 @implementation NSObject(null)
 
-- (BOOL)exists {
+- (BOOL)exists
+{
     return self && self != [NSNull null];
 }
 
@@ -45,7 +46,8 @@
     return [self fetchWithCondition:nil inContext:context withOrder:order fetchLimit:nil];
 }
 
-+ (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context {
++ (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context
+{
     NSDictionary *transformed = [[self class] transformProperties:properties withObject:nil context:context];
 
     NSManagedObject *existing = [self where:transformed inContext:context].first;
@@ -57,19 +59,23 @@
     return [self where:condition inContext:context limit:@1].first;
 }
 
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
++ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context
+{
     return [self where:condition inContext:context order:nil limit:nil];
 }
 
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order {
++ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order
+{
     return [self where:condition inContext:context order:order limit:nil];
 }
 
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit {
++ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit
+{
     return [self where:condition inContext:context order:nil limit:limit];
 }
 
-+ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit {
++ (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit
+{
     return [self fetchWithCondition:condition inContext:context withOrder:order fetchLimit:limit];
 }
 
@@ -87,21 +93,21 @@
     return [self countForFetchWithPredicate:predicate inContext:context];
 }
 
-#pragma mark - Creation / Deletion
-
-+ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context
-{
-    unless([attributes exists]) return nil;
-
-    NSManagedObject *newEntity = [self createInContext:context];
-    [newEntity update:attributes inContext:context];
-
-    return newEntity;
-}
+#pragma mark - Creation
 
 + (id)createInContext:(NSManagedObjectContext *)context
 {
     return [NSEntityDescription insertNewObjectForEntityForName:[self entityName] inManagedObjectContext:context];
+}
+
++ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context
+{
+    unless([attributes exists]) return nil;
+    
+    NSManagedObject *newEntity = [self createInContext:context];
+    [newEntity update:attributes inContext:context];
+    
+    return newEntity;
 }
 
 + (instancetype)updateOrCreate:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context
@@ -139,6 +145,8 @@
     }
 }
 
+#pragma mark - Deletion
+
 - (void)deleteInContext:(NSManagedObjectContext *)context
 {
     [context deleteObject:self];
@@ -149,6 +157,24 @@
     [[self allInContext:context] each:^(id object) {
         [object deleteInContext:context];
     }];
+}
+
+#pragma mark - Saving
+
+- (BOOL)saveInContext:(NSManagedObjectContext *)context
+{
+    if (context == nil ||
+        ![context hasChanges]) return YES;
+    
+    NSError *error = nil;
+    BOOL save = [context save:&error];
+    
+    if (!save || error) {
+        NSLog(@"Unresolved error in saving context for entity:\n%@!\nError: %@", self, error);
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - Naming
@@ -211,7 +237,8 @@
     return [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
 }
 
-+ (NSPredicate *)predicateFromObject:(id)condition {
++ (NSPredicate *)predicateFromObject:(id)condition
+{
     return [self predicateFromObject:condition arguments:NULL];
 }
 
@@ -304,28 +331,8 @@
     return [context countForFetchRequest:request error:nil];
 }
 
-- (BOOL)saveTheContext
+- (void)setSafeValue:(id)value forKey:(NSString *)key
 {
-    return [self saveInContext:self.managedObjectContext];
-}
-
-- (BOOL)saveInContext:(NSManagedObjectContext *)context
-{
-    if (context == nil ||
-        ![context hasChanges]) return YES;
-    
-    NSError *error = nil;
-    BOOL save = [context save:&error];
-    
-    if (!save || error) {
-        NSLog(@"Unresolved error in saving context for entity:\n%@!\nError: %@", self, error);
-        return NO;
-    }
-    
-    return YES;
-}
-
-- (void)setSafeValue:(id)value forKey:(NSString *)key {
     if (value == nil || value == [NSNull null]) {
         [self setNilValueForKey:key];
         return;
@@ -355,15 +362,18 @@
     [self setPrimitiveValue:value forKey:key];
 }
 
-- (BOOL)isIntegerAttributeType:(NSAttributeType)attributeType {
+- (BOOL)isIntegerAttributeType:(NSAttributeType)attributeType
+{
     return (attributeType == NSInteger16AttributeType) ||
            (attributeType == NSInteger32AttributeType) ||
            (attributeType == NSInteger64AttributeType);
 }
 
+
 #pragma mark - Date Formatting
 
-- (NSDateFormatter *)defaultFormatter {
+- (NSDateFormatter *)defaultFormatter
+{
     static NSDateFormatter *sharedFormatter;
     static dispatch_once_t singletonToken;
     dispatch_once(&singletonToken, ^{

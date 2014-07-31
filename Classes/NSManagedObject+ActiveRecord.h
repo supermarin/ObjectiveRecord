@@ -25,14 +25,7 @@
 
 @interface NSManagedObject (ActiveRecord)
 
-+ (id)createInContext:(NSManagedObjectContext *)context;
-+ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
-+ (instancetype)updateOrCreate:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
-- (void)update:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
-
-- (BOOL)saveInContext:(NSManagedObjectContext *)context;
-- (void)deleteInContext:(NSManagedObjectContext *)contex;
-+ (void)deleteAllInContext:(NSManagedObjectContext *)context;
+#pragma mark - Finders
 
 + (NSArray *)allInContext:(NSManagedObjectContext *)context;
 + (NSArray *)allInContext:(NSManagedObjectContext *)context order:(id)order;
@@ -42,8 +35,27 @@
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit;
 + (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context;
 + (instancetype)find:(id)condition inContext:(NSManagedObjectContext *)context;
+
+#pragma mark - Aggregation
+
 + (NSUInteger)countInContext:(NSManagedObjectContext *)context;
 + (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context;
+
+#pragma mark - Creation / Deletion
+
++ (id)createInContext:(NSManagedObjectContext *)context;
++ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
++ (instancetype)updateOrCreate:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
+- (void)update:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
+
+#pragma mark - Deletion
+
+- (void)deleteInContext:(NSManagedObjectContext *)contex;
++ (void)deleteAllInContext:(NSManagedObjectContext *)context;
+
+#pragma mark - Saving
+
+- (BOOL)saveInContext:(NSManagedObjectContext *)context;
 
 #pragma mark - Naming
 
