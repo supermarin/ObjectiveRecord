@@ -44,6 +44,10 @@
     static dispatch_once_t singletonToken;
     dispatch_once(&singletonToken, ^{
         singleton = [[self alloc] init];
+        
+        NSLog(@"appName : %@", [singleton appName]);
+        NSLog(@"applicationSupportDirectory : %@", [singleton applicationSupportDirectory]);
+        NSLog(@"applicationDocumentsDirectory : %@", [singleton applicationDocumentsDirectory]);
     });
     return singleton;
 }
@@ -57,7 +61,7 @@
 #pragma mark - Private
 
 - (NSString *)appName {
-    return [[NSBundle bundleForClass:[self class]] infoDictionary][@"CFBundleName"];
+    return [[NSBundle mainBundle] infoDictionary][@"CFBundleName"];
 }
 
 - (NSString *)databaseName {

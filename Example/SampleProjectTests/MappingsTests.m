@@ -1,7 +1,9 @@
+
 #import "Kiwi.h"
 #import "Person+Mappings.h"
 #import "Car+Mappings.h"
 #import "InsuranceCompany.h"
+#import "CoreDataManager.h"
 
 SPEC_BEGIN(MappingsTests)
 

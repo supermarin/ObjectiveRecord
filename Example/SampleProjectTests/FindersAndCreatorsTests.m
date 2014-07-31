@@ -1,8 +1,10 @@
+
 #import "Kiwi.h"
 #import "ObjectiveSugar.h"
 #import "Person+Mappings.h"
 #import "OBRPerson.h"
 #import "Car+Mappings.h"
+#import "CoreDataManager.h"
 
 static NSString *UNIQUE_NAME = @"ldkhbfaewlfbaewljfhb";
 static NSString *UNIQUE_SURNAME = @"laewfbaweljfbawlieufbawef";
