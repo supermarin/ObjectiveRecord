@@ -2,7 +2,7 @@
 //  InsuranceCompany.h
 //  SampleProject
 //
-//  Created by Delisa Mason on 12/27/13.
+//  Created by Ignacio Romero Z. on 8/5/14.
 //
 //
 

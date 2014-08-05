@@ -12,8 +12,13 @@
 
 @implementation Car (Mappings)
 
++ (NSString *)primaryKey {
+    return @"remoteID";
+}
+
 + (NSDictionary *)mappings {
     return @{
+        @"id": [self primaryKey],
         @"hp": @"horsePower",
         @"owner": @{
             @"class": [Person class]

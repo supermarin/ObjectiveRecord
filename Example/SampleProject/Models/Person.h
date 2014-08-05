@@ -2,7 +2,7 @@
 //  Person.h
 //  SampleProject
 //
-//  Created by Ignacio Romero Z. on 6/13/14.
+//  Created by Ignacio Romero Z. on 8/5/14.
 //
 //
 
@@ -18,8 +18,8 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSNumber * isMember;
 @property (nonatomic, retain) NSString * lastName;
-@property (nonatomic, retain) NSNumber * remoteID;
 @property (nonatomic, retain) NSNumber * lifeSavings;
+@property (nonatomic, retain) NSNumber * remoteID;
 @property (nonatomic, retain) NSString * role;
 @property (nonatomic, retain) NSSet *cars;
 @property (nonatomic, retain) NSSet *employees;

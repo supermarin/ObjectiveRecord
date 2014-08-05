@@ -2,7 +2,7 @@
 //  Person.m
 //  SampleProject
 //
-//  Created by Ignacio Romero Z. on 6/13/14.
+//  Created by Ignacio Romero Z. on 8/5/14.
 //
 //
 
@@ -19,8 +19,8 @@
 @dynamic firstName;
 @dynamic isMember;
 @dynamic lastName;
-@dynamic remoteID;
 @dynamic lifeSavings;
+@dynamic remoteID;
 @dynamic role;
 @dynamic cars;
 @dynamic employees;

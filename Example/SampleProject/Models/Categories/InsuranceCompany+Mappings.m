@@ -17,7 +17,7 @@
 
 + (NSDictionary *)mappings {
     return @{
-             @"id" : [self primaryKey],
+             @"id"       : [self primaryKey],
              @"owner_id" : @{
                      @"key"   : @"owner",
                      @"class" : [Person class] },

@@ -10,6 +10,7 @@ SPEC_BEGIN(MappingsTests)
 describe(@"Mappings", ^{
     
     NSDictionary *JSON = @{
+       @"id": @1,
        @"first_name": @"Marin",
        @"last_name": @"Usalj",
        @"age": @25,
@@ -23,20 +24,22 @@ describe(@"Mappings", ^{
                @{ @"id": @6, @"hp": @90, @"make": @"Volkswagen" }
                ],
        @"manager": @{
+               @"id": @2,
                @"first_name": @"Delisa",
                @"last_name": @"Mason",
                @"age": @25,
                @"is_member": @NO,
                // TODO: A 3-level-deep relationship will cause a crash, due to an invalid predicate
+               // Know issue: https://github.com/supermarin/ObjectiveRecord/issues/60
 //               @"cars": @[
 //                       @{ @"id": @3, @"hp": @330, @"make": @"Lamborgini" },
 //                       @{ @"id": @4, @"hp": @240, @"make": @"BMW" }
 //                       ]
                },
        @"employees": @[
-               @{ @"first_name": @"Luca" },
-               @{ @"first_name": @"Tony" },
-               @{ @"first_name": @"Jim" }
+               @{ @"id": @12, @"first_name": @"Luca" },
+               @{ @"id": @32, @"first_name": @"Tony" },
+               @{ @"id": @15, @"first_name": @"Jim" }
                ]
        };
     
@@ -90,7 +93,7 @@ describe(@"Mappings", ^{
     });
     
     it(@"uses mappings in findOrCreate", ^{
-        Person *bob = [Person findOrCreate:@{ @"first_name": @"Bob" } inContext:newContext];
+        Person *bob = [Person updateOrCreate:@{ @"first_name": @"Bob" } inContext:newContext];
         [[bob.firstName should] equal:@"Bob"];
     });
     

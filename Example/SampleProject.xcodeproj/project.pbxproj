@@ -125,21 +125,29 @@
 			name = Utility;
 			sourceTree = "<group>";
 		};
-		897D09F715B093F200722A8F /* Models */ = {
+		4F9A5CF119914DAA002727E2 /* Mappings */ = {
 			isa = PBXGroup;
 			children = (
-				6433E5C3184E83D6008EF278 /* Car.h */,
-				6433E5C4184E83D6008EF278 /* Car.m */,
-				6433E5C0184E83C2008EF278 /* InsuranceCompany.h */,
-				6433E5C1184E83C2008EF278 /* InsuranceCompany.m */,
-				496F953B174CCCBA00220FD1 /* OBRPerson.h */,
-				496F953C174CCCBA00220FD1 /* OBRPerson.m */,
 				897AD0C51758D99A006869BA /* Person+Mappings.h */,
 				897AD0C61758D99A006869BA /* Person+Mappings.m */,
 				897AD0C81758D9A6006869BA /* Car+Mappings.h */,
 				897AD0C91758D9A6006869BA /* Car+Mappings.m */,
 				FA91A5E71875B9FD00BE74DD /* InsuranceCompany+Mappings.h */,
 				FA91A5E81875B9FD00BE74DD /* InsuranceCompany+Mappings.m */,
+			);
+			name = Mappings;
+			sourceTree = "<group>";
+		};
+		897D09F715B093F200722A8F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F9A5CF119914DAA002727E2 /* Mappings */,
+				6433E5C3184E83D6008EF278 /* Car.h */,
+				6433E5C4184E83D6008EF278 /* Car.m */,
+				6433E5C0184E83C2008EF278 /* InsuranceCompany.h */,
+				6433E5C1184E83C2008EF278 /* InsuranceCompany.m */,
+				496F953B174CCCBA00220FD1 /* OBRPerson.h */,
+				496F953C174CCCBA00220FD1 /* OBRPerson.m */,
 				4F5744B3194ABB0C0099A49E /* Person.h */,
 				4F5744B4194ABB0C0099A49E /* Person.m */,
 			);
