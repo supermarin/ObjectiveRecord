@@ -10,30 +10,35 @@ SPEC_BEGIN(MappingsTests)
 describe(@"Mappings", ^{
     
     NSDictionary *JSON = @{
-        @"first_name": @"Marin",
-        @"last_name": @"Usalj",
-        @"age": @25,
-        @"is_member": @"true",
-        @"profile": @{
-                @"role": @"CEO",
-                @"life_savings": @1500.12,
-                },
-        @"cars": @[
-               @{ @"hp": @220, @"make": @"Trabant" },
-               @{ @"hp": @90, @"make": @"Volkswagen" }
-        ],
-        @"manager": @{
-               @"firstName": @"Delisa",
-               @"lastName": @"Mason",
+       @"first_name": @"Marin",
+       @"last_name": @"Usalj",
+       @"age": @25,
+       @"is_member": @"true",
+       @"profile": @{
+               @"role": @"CEO",
+               @"life_savings": @1500.12,
+               },
+       @"cars": @[
+               @{ @"id": @5, @"hp": @220, @"make": @"Trabant" },
+               @{ @"id": @6, @"hp": @90, @"make": @"Volkswagen" }
+               ],
+       @"manager": @{
+               @"first_name": @"Delisa",
+               @"last_name": @"Mason",
                @"age": @25,
-               @"isMember": @NO
-        },
-        @"employees": @[
+               @"is_member": @NO,
+               // TODO: A 3-level-deep relationship will cause a crash, due to an invalid predicate
+//               @"cars": @[
+//                       @{ @"id": @3, @"hp": @330, @"make": @"Lamborgini" },
+//                       @{ @"id": @4, @"hp": @240, @"make": @"BMW" }
+//                       ]
+               },
+       @"employees": @[
                @{ @"first_name": @"Luca" },
                @{ @"first_name": @"Tony" },
                @{ @"first_name": @"Jim" }
-        ]
-    };
+               ]
+       };
     
     __block Person *person;
     
