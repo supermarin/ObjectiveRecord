@@ -231,9 +231,14 @@
 + (NSPredicate *)predicateFromDictionary:(NSDictionary *)dict
 {
     NSArray *subpredicates = [dict map:^(NSString *key, id value) {
-        return [NSPredicate predicateWithFormat:@"%K = %@", key, value];
+        if ([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSSet class]]) {
+            return (id)nil;
+        }
+        else {
+            return (id)[NSPredicate predicateWithFormat:@"%K = %@", key, value];
+        }
     }];
-
+    
     return [NSCompoundPredicate andPredicateWithSubpredicates:subpredicates];
 }
 
