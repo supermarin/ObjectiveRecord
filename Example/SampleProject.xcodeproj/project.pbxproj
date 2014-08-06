@@ -14,8 +14,6 @@
 		4F17D8C31992A2C8009A0D47 /* JSONUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F17D8BF1992A2C8009A0D47 /* JSONUtility.m */; };
 		4F17D8CA1992A321009A0D47 /* people.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F17D8C91992A321009A0D47 /* people.json */; };
 		4F17D8CB1992A321009A0D47 /* people.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F17D8C91992A321009A0D47 /* people.json */; };
-		4F17D8CD1992A5A7009A0D47 /* people_fail.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F17D8CC1992A5A7009A0D47 /* people_fail.json */; };
-		4F17D8CE1992A5A7009A0D47 /* people_fail.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F17D8CC1992A5A7009A0D47 /* people_fail.json */; };
 		4F5744B5194ABB0C0099A49E /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5744B4194ABB0C0099A49E /* Person.m */; };
 		6433E5C2184E83C2008EF278 /* InsuranceCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5C1184E83C2008EF278 /* InsuranceCompany.m */; };
 		6433E5C5184E83D6008EF278 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5C4184E83D6008EF278 /* Car.m */; };
@@ -62,7 +60,6 @@
 		4F17D8BE1992A2C8009A0D47 /* JSONUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONUtility.h; sourceTree = "<group>"; };
 		4F17D8BF1992A2C8009A0D47 /* JSONUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONUtility.m; sourceTree = "<group>"; };
 		4F17D8C91992A321009A0D47 /* people.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people.json; sourceTree = "<group>"; };
-		4F17D8CC1992A5A7009A0D47 /* people_fail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people_fail.json; sourceTree = "<group>"; };
 		4F5744B3194ABB0C0099A49E /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		4F5744B4194ABB0C0099A49E /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		6433E5C0184E83C2008EF278 /* InsuranceCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceCompany.h; sourceTree = "<group>"; };
@@ -141,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				4F17D8C91992A321009A0D47 /* people.json */,
-				4F17D8CC1992A5A7009A0D47 /* people_fail.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -332,7 +328,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F17D8CD1992A5A7009A0D47 /* people_fail.json in Resources */,
 				89F1EEB415A4C73B00AE4FB4 /* InfoPlist.strings in Resources */,
 				892C1E91165D54160077F2CB /* Default-568h@2x.png in Resources */,
 				4F17D8CA1992A321009A0D47 /* people.json in Resources */,
@@ -344,7 +339,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F17D8CB1992A321009A0D47 /* people.json in Resources */,
-				4F17D8CE1992A5A7009A0D47 /* people_fail.json in Resources */,
 				89F1EED015A4C73B00AE4FB4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

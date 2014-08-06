@@ -17,10 +17,6 @@ describe(@"Mappings", ^{
     
     NSDictionary *payload = JSON(@"people");
     
-    // TODO: A 3-level-deep relationship will cause a crash, due to an invalid predicate
-    // Known issue: https://github.com/supermarin/ObjectiveRecord/issues/60
-    //NSDictionary *payload = JSON(@"people_fail");
-
     beforeEach(^{
         person = [Person create:payload inContext:newContext];
     });

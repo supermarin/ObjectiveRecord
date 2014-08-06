@@ -25,7 +25,19 @@
         "first_name": "Delisa",
         "last_name": "Mason",
         "age": 35,
-        "is_member": true
+        "is_member": true,
+        "cars": [
+                 {
+                 "id": 3,
+                 "hp": 330,
+                 "make": "Lamborgini"
+                 },
+                 {
+                 "id": 4,
+                 "hp": 240,
+                 "make": "BMW"
+                 }
+                 ]
     },
     "employees": [
         {

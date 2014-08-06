@@ -1,2 +1,3 @@
 *.log
 Podfile.lock
+.DS_Store
