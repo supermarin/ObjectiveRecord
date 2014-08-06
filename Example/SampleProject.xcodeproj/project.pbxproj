@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 496F953C174CCCBA00220FD1 /* OBRPerson.m */; };
-		4F33C5C1198B097800EB64D1 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F33C5C0198B097800EB64D1 /* CoreDataManager.m */; };
-		4F33C5C2198B097800EB64D1 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F33C5C0198B097800EB64D1 /* CoreDataManager.m */; };
+		4F17D8C01992A2C8009A0D47 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F17D8BD1992A2C8009A0D47 /* CoreDataManager.m */; };
+		4F17D8C11992A2C8009A0D47 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F17D8BD1992A2C8009A0D47 /* CoreDataManager.m */; };
+		4F17D8C21992A2C8009A0D47 /* JSONUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F17D8BF1992A2C8009A0D47 /* JSONUtility.m */; };
+		4F17D8C31992A2C8009A0D47 /* JSONUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F17D8BF1992A2C8009A0D47 /* JSONUtility.m */; };
+		4F17D8CA1992A321009A0D47 /* people.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F17D8C91992A321009A0D47 /* people.json */; };
+		4F17D8CB1992A321009A0D47 /* people.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F17D8C91992A321009A0D47 /* people.json */; };
+		4F17D8CD1992A5A7009A0D47 /* people_fail.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F17D8CC1992A5A7009A0D47 /* people_fail.json */; };
+		4F17D8CE1992A5A7009A0D47 /* people_fail.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F17D8CC1992A5A7009A0D47 /* people_fail.json */; };
 		4F5744B5194ABB0C0099A49E /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5744B4194ABB0C0099A49E /* Person.m */; };
 		6433E5C2184E83C2008EF278 /* InsuranceCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5C1184E83C2008EF278 /* InsuranceCompany.m */; };
 		6433E5C5184E83D6008EF278 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433E5C4184E83D6008EF278 /* Car.m */; };
@@ -51,8 +57,12 @@
 		0EE71E2B92554B48A0914E08 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		496F953B174CCCBA00220FD1 /* OBRPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRPerson.h; sourceTree = "<group>"; };
 		496F953C174CCCBA00220FD1 /* OBRPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRPerson.m; sourceTree = "<group>"; };
-		4F33C5BF198B097800EB64D1 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
-		4F33C5C0198B097800EB64D1 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		4F17D8BC1992A2C8009A0D47 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		4F17D8BD1992A2C8009A0D47 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		4F17D8BE1992A2C8009A0D47 /* JSONUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONUtility.h; sourceTree = "<group>"; };
+		4F17D8BF1992A2C8009A0D47 /* JSONUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONUtility.m; sourceTree = "<group>"; };
+		4F17D8C91992A321009A0D47 /* people.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people.json; sourceTree = "<group>"; };
+		4F17D8CC1992A5A7009A0D47 /* people_fail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people_fail.json; sourceTree = "<group>"; };
 		4F5744B3194ABB0C0099A49E /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		4F5744B4194ABB0C0099A49E /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		6433E5C0184E83C2008EF278 /* InsuranceCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceCompany.h; sourceTree = "<group>"; };
@@ -116,13 +126,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F33C5BE198B096C00EB64D1 /* Utility */ = {
+		4F17D8BB1992A2C8009A0D47 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				4F33C5BF198B097800EB64D1 /* CoreDataManager.h */,
-				4F33C5C0198B097800EB64D1 /* CoreDataManager.m */,
+				4F17D8BC1992A2C8009A0D47 /* CoreDataManager.h */,
+				4F17D8BD1992A2C8009A0D47 /* CoreDataManager.m */,
+				4F17D8BE1992A2C8009A0D47 /* JSONUtility.h */,
+				4F17D8BF1992A2C8009A0D47 /* JSONUtility.m */,
 			);
-			name = Utility;
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4F17D8C81992A321009A0D47 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				4F17D8C91992A321009A0D47 /* people.json */,
+				4F17D8CC1992A5A7009A0D47 /* people_fail.json */,
+			);
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		4F9A5CF119914DAA002727E2 /* Mappings */ = {
@@ -217,11 +238,12 @@
 		89F1EECB15A4C73B00AE4FB4 /* SampleProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				4F33C5BE198B096C00EB64D1 /* Utility */,
-				89F1EECC15A4C73B00AE4FB4 /* Supporting Files */,
 				897D09FD15B0945400722A8F /* FindersAndCreatorsTests.m */,
 				8956CE631754EE6A00BD551C /* MappingsTests.m */,
 				8990C3151785C2F500212182 /* CoreDataManagerTests.m */,
+				4F17D8C81992A321009A0D47 /* Fixtures */,
+				4F17D8BB1992A2C8009A0D47 /* Utilities */,
+				89F1EECC15A4C73B00AE4FB4 /* Supporting Files */,
 			);
 			path = SampleProjectTests;
 			sourceTree = "<group>";
@@ -310,8 +332,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F17D8CD1992A5A7009A0D47 /* people_fail.json in Resources */,
 				89F1EEB415A4C73B00AE4FB4 /* InfoPlist.strings in Resources */,
 				892C1E91165D54160077F2CB /* Default-568h@2x.png in Resources */,
+				4F17D8CA1992A321009A0D47 /* people.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +343,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F17D8CB1992A321009A0D47 /* people.json in Resources */,
+				4F17D8CE1992A5A7009A0D47 /* people_fail.json in Resources */,
 				89F1EED015A4C73B00AE4FB4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,11 +429,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6433E5C5184E83D6008EF278 /* Car.m in Sources */,
+				4F17D8C01992A2C8009A0D47 /* CoreDataManager.m in Sources */,
 				89F1EEB615A4C73B00AE4FB4 /* main.m in Sources */,
 				4F5744B5194ABB0C0099A49E /* Person.m in Sources */,
 				89F1EEBA15A4C73B00AE4FB4 /* AppDelegate.m in Sources */,
 				FA91A5E91875B9FE00BE74DD /* InsuranceCompany+Mappings.m in Sources */,
-				4F33C5C1198B097800EB64D1 /* CoreDataManager.m in Sources */,
+				4F17D8C21992A2C8009A0D47 /* JSONUtility.m in Sources */,
 				6433E5C2184E83C2008EF278 /* InsuranceCompany.m in Sources */,
 				89F1EEBD15A4C73B00AE4FB4 /* SampleProject.xcdatamodeld in Sources */,
 				496F953D174CCCBA00220FD1 /* OBRPerson.m in Sources */,
@@ -420,10 +447,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F17D8C11992A2C8009A0D47 /* CoreDataManager.m in Sources */,
 				897D09FE15B0945400722A8F /* FindersAndCreatorsTests.m in Sources */,
 				89702F25173E57AA00149BD5 /* SampleProject.xcdatamodeld in Sources */,
-				4F33C5C2198B097800EB64D1 /* CoreDataManager.m in Sources */,
 				8956CE641754EE6A00BD551C /* MappingsTests.m in Sources */,
+				4F17D8C31992A2C8009A0D47 /* JSONUtility.m in Sources */,
 				8990C3161785C2F500212182 /* CoreDataManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

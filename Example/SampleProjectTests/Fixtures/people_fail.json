@@ -1,0 +1,65 @@
+{
+    "id": 1,
+    "first_name": "Marin",
+    "last_name": "Usalj",
+    "age": 30,
+    "is_member": true,
+    "profile": {
+        "role": "CEO",
+        "life_savings": 1500.12
+    },
+    "cars": [
+        {
+            "id": 5,
+            "hp": 220,
+            "make": "Trabant"
+        },
+        {
+            "id": 6,
+            "hp": 90,
+            "make": "Volkswagen"
+        }
+    ],
+    "manager": {
+        "id": 2,
+        "first_name": "Delisa",
+        "last_name": "Mason",
+        "age": 35,
+        "is_member": true,
+        "cars": [
+                 {
+                 "id": 3,
+                 "hp": 330,
+                 "make": "Lamborgini"
+                 },
+                 {
+                 "id": 4,
+                 "hp": 240,
+                 "make": "BMW"
+                 }
+                 ]
+    },
+    "employees": [
+        {
+            "id": 12,
+            "first_name": "Luca",
+            "last_name": "Madison",
+            "age": 31,
+            "is_member": false
+        },
+        {
+            "id": 32,
+            "first_name": "Tony",
+            "last_name": "Stark",
+            "age": 33,
+            "is_member": false
+        },
+        {
+            "id": 15,
+            "first_name": "Jim",
+            "last_name": "Carey",
+            "age": 47,
+            "is_member": true
+        }
+    ]
+}

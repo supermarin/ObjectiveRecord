@@ -4,52 +4,21 @@
 #import "Car+Mappings.h"
 #import "InsuranceCompany.h"
 #import "CoreDataManager.h"
+#import "JSONUtility.h"
 
 SPEC_BEGIN(MappingsTests)
 
 describe(@"Mappings", ^{
     
-    NSDictionary *JSON = @{
-       @"id": @1,
-       @"first_name": @"Marin",
-       @"last_name": @"Usalj",
-       @"age": @25,
-       @"is_member": @"true",
-       @"profile": @{
-               @"role": @"CEO",
-               @"life_savings": @1500.12,
-               },
-       @"cars": @[
-               @{ @"id": @5, @"hp": @220, @"make": @"Trabant" },
-               @{ @"id": @6, @"hp": @90, @"make": @"Volkswagen" }
-               ],
-       @"manager": @{
-               @"id": @2,
-               @"first_name": @"Delisa",
-               @"last_name": @"Mason",
-               @"age": @25,
-               @"is_member": @NO,
-               // TODO: A 3-level-deep relationship will cause a crash, due to an invalid predicate
-               // Know issue: https://github.com/supermarin/ObjectiveRecord/issues/60
-//               @"cars": @[
-//                       @{ @"id": @3, @"hp": @330, @"make": @"Lamborgini" },
-//                       @{ @"id": @4, @"hp": @240, @"make": @"BMW" }
-//                       ]
-               },
-       @"employees": @[
-               @{ @"id": @12, @"first_name": @"Luca" },
-               @{ @"id": @32, @"first_name": @"Tony" },
-               @{ @"id": @15, @"first_name": @"Jim" }
-               ]
-       };
-    
+    NSDictionary *payload = JSON(@"people");
+
     __block Person *person;
     
     NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     newContext.persistentStoreCoordinator = [[CoreDataManager sharedManager] persistentStoreCoordinator];
     
     beforeEach(^{
-        person = [Person create:JSON inContext:newContext];
+        person = [Person create:payload inContext:newContext];
     });
     
     it(@"caches mappings", ^{
@@ -73,7 +42,7 @@ describe(@"Mappings", ^{
     it(@"uses mapped values when creating", ^{
         [[person.firstName should] equal:@"Marin"];
         [[person.lastName should] equal:@"Usalj"];
-        [[person.age should] equal:@25];
+        [[person.age should] equal:@30];
     });
     
     it(@"can support snake_case even without mappings", ^{

@@ -62,7 +62,7 @@
     if ([value isKindOfClass:[NSDictionary class]])
         return [class findOrCreate:value inContext:context];
 
-    if ([value isKindOfClass:[NSArray class]])
+    if ([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSSet class]])
         return [NSSet setWithArray:[value map:^id(id object) {
             return [self objectOrSetOfObjectsFromValue:object ofClass:class inContext:context];
         }]];
