@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "CoreDataManager.h"
+#import "JSONUtility.h"
+#import "Person+Mappings.h"
 
 @implementation AppDelegate
 
@@ -21,6 +23,21 @@
     [self.window makeKeyAndVisible];
     
     [CoreDataManager sharedManager];
+    
+    __block Person *person;
+    
+    NSManagedObjectContext *newContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    newContext.persistentStoreCoordinator = [[CoreDataManager sharedManager] persistentStoreCoordinator];
+    
+    //NSDictionary *payload = JSON(@"people");
+    
+    // TODO: A 3-level-deep relationship will cause a crash, due to an invalid predicate
+    // Known issue: https://github.com/supermarin/ObjectiveRecord/issues/60
+    NSDictionary *payload = JSON(@"people_fail");
+    
+    person = [Person create:payload inContext:newContext];
+
+    NSLog(@"%@", [person description]);
     
     return YES;
 }
