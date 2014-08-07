@@ -232,7 +232,7 @@
 {
     NSArray *subpredicates = [dict map:^(NSString *key, id value) {
         if ([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSSet class]]) {
-            return (id)nil;
+            return (id)[NSPredicate predicateWithFormat:@"%@ IN %K", value, key];
         }
         else {
             return (id)[NSPredicate predicateWithFormat:@"%K = %@", key, value];
