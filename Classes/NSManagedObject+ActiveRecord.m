@@ -297,6 +297,8 @@
 }
 
 + (NSFetchRequest *)createFetchRequestInContext:(NSManagedObjectContext *)context {
+    if (!context) return nil;
+
     NSFetchRequest *request = [NSFetchRequest new];
     NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName]
                                               inManagedObjectContext:context];

@@ -150,6 +150,7 @@
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinatorWithStoreType:(NSString *const)storeType
                                                                  storeURL:(NSURL *)storeURL {
+    if (!self.managedObjectModel) return nil;
 
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
 
