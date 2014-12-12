@@ -52,10 +52,10 @@ NSArray *people = [Person where:@{
                   }];
 
 // You can even write your own NSPredicate
-NSPredicate *membersPredicate = [NSPredicate  predicateWithBlock:^BOOL(Person *person, NSDictionary *bindings) {
-    return person.isMember == YES;
-}];
-NSArray *members = [Person where:membersPredicate];
+NSPredicate *predicate = [NSPredicate
+    predicateWithFormat:@"(name like[cd] %@) AND (birthday > %@)",
+            name, birthday];
+NSArray *results = [Person where:predicate];
 ```
 
 #### Order and Limit
