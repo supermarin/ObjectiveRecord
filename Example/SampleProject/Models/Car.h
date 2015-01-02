@@ -2,7 +2,7 @@
 //  Car.h
 //  SampleProject
 //
-//  Created by Marin Usalj on 12/3/13.
+//  Created by Ignacio Romero Z. on 8/5/14.
 //
 //
 
@@ -15,7 +15,8 @@
 
 @property (nonatomic, retain) NSNumber * horsePower;
 @property (nonatomic, retain) NSString * make;
-@property (nonatomic, retain) Person *owner;
+@property (nonatomic, retain) NSNumber * remoteID;
 @property (nonatomic, retain) InsuranceCompany *insuranceCompany;
+@property (nonatomic, retain) Person *owner;
 
 @end

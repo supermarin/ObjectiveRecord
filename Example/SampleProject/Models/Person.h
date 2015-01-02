@@ -2,7 +2,7 @@
 //  Person.h
 //  SampleProject
 //
-//  Created by Delisa Mason on 12/27/13.
+//  Created by Ignacio Romero Z. on 8/5/14.
 //
 //
 
@@ -18,12 +18,13 @@
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSNumber * isMember;
 @property (nonatomic, retain) NSString * lastName;
+@property (nonatomic, retain) NSNumber * lifeSavings;
 @property (nonatomic, retain) NSNumber * remoteID;
-@property (nonatomic, retain) NSNumber * savings;
+@property (nonatomic, retain) NSString * role;
 @property (nonatomic, retain) NSSet *cars;
 @property (nonatomic, retain) NSSet *employees;
-@property (nonatomic, retain) Person *manager;
 @property (nonatomic, retain) InsuranceCompany *insuranceCompany;
+@property (nonatomic, retain) Person *manager;
 @end
 
 @interface Person (CoreDataGeneratedAccessors)

@@ -32,11 +32,19 @@
 + (NSDictionary *)mappings;
 
 /**
+ A keypath used for accessing some property value.
+ 
+ @param remoteKey A remote (server) attribute name.
+ @return A keypath.
+ */
++ (NSString *)keyPathForRemoteKey:(NSString *)key;
+
+/**
  Returns a Core Data attribute name for a remote attribute name. Returns values defined in @c +mappings or, by default, converts snake case to camel case (e.g., @c @@"first_name" becomes @c @@"firstName").
 
  @see +[NSManagedObject mappings]
 
- @param key     A remote (server) attribute name.
+ @param remoteKey A remote (server) attribute name.
  @param context A local managed object context.
 
  @return A local (Core Data) attribute name.

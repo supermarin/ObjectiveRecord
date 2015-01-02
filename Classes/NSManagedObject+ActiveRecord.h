@@ -22,51 +22,10 @@
 
 #import <CoreData/CoreData.h>
 #import "NSManagedObject+Mappings.h"
-#import "CoreDataManager.h"
-
-@interface NSManagedObjectContext (ActiveRecord)
-
-/**
- The default context (as defined on the @c CoreDataManager singleton).
-
- @see -[CoreDataManager managedObjectContext]
-
- @return A managed object context.
- */
-+ (NSManagedObjectContext *)defaultContext;
-
-@end
 
 @interface NSManagedObject (ActiveRecord)
 
-
-#pragma mark - Default Context
-
-- (BOOL)save;
-- (void)delete;
-+ (void)deleteAll;
-
-+ (id)create;
-+ (id)create:(NSDictionary *)attributes;
-- (void)update:(NSDictionary *)attributes;
-
-+ (NSArray *)all;
-+ (NSArray *)allWithOrder:(id)order;
-+ (NSArray *)where:(id)condition, ...;
-+ (NSArray *)where:(id)condition order:(id)order;
-+ (NSArray *)where:(id)condition limit:(NSNumber *)limit;
-+ (NSArray *)where:(id)condition order:(id)order limit:(NSNumber *)limit;
-+ (instancetype)findOrCreate:(NSDictionary *)attributes;
-+ (instancetype)find:(id)condition, ...;
-+ (NSUInteger)count;
-+ (NSUInteger)countWhere:(id)condition, ...;
-
-#pragma mark - Custom Context
-
-+ (id)createInContext:(NSManagedObjectContext *)context;
-+ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
-
-+ (void)deleteAllInContext:(NSManagedObjectContext *)context;
+#pragma mark - Finders
 
 + (NSArray *)allInContext:(NSManagedObjectContext *)context;
 + (NSArray *)allInContext:(NSManagedObjectContext *)context order:(id)order;
@@ -76,8 +35,27 @@
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit;
 + (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context;
 + (instancetype)find:(id)condition inContext:(NSManagedObjectContext *)context;
+
+#pragma mark - Aggregation
+
 + (NSUInteger)countInContext:(NSManagedObjectContext *)context;
 + (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context;
+
+#pragma mark - Creation / Deletion
+
++ (id)createInContext:(NSManagedObjectContext *)context;
++ (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
++ (instancetype)updateOrCreate:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
+- (void)update:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
+
+#pragma mark - Deletion
+
+- (void)deleteInContext:(NSManagedObjectContext *)contex;
++ (void)deleteAllInContext:(NSManagedObjectContext *)context;
+
+#pragma mark - Saving
+
+- (BOOL)saveInContext:(NSManagedObjectContext *)context;
 
 #pragma mark - Naming
 

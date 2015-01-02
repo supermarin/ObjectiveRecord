@@ -2,7 +2,7 @@
 //  Car.m
 //  SampleProject
 //
-//  Created by Marin Usalj on 12/3/13.
+//  Created by Ignacio Romero Z. on 8/5/14.
 //
 //
 
@@ -15,7 +15,8 @@
 
 @dynamic horsePower;
 @dynamic make;
-@dynamic owner;
+@dynamic remoteID;
 @dynamic insuranceCompany;
+@dynamic owner;
 
 @end

@@ -1,5 +1,6 @@
+
 #import "Kiwi.h"
-#import <ObjectiveRecord/CoreDataManager.h>
+#import "CoreDataManager.h"
 
 void resetCoreDataStack(CoreDataManager *manager) {
     [manager setValue:nil forKey:@"persistentStoreCoordinator"];

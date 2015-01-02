@@ -1,4 +1,4 @@
-@version = "1.5.0"
+@version = "1.7"
 
 Pod::Spec.new do |s|
   s.name         = "ObjectiveRecord"
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
 
   s.author       = { "Marin Usalj" => "mneorr@gmail.com" }
-  s.source       = { :git => "https://github.com/supermarin/ObjectiveRecord.git", :tag => @version }
+  s.source       = { :git => "https://github.com/tinyspeck/ObjectiveRecord.git", :tag => @version }
 
   s.source_files = 'Classes/**/*.{h,m}'
   s.framework  = 'CoreData'

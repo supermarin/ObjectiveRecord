@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="14A298i" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Car" representedClassName="Car" syncable="YES">
         <attribute name="horsePower" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="make" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="insuranceCompany" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InsuranceCompany" inverseName="cars" inverseEntity="InsuranceCompany" syncable="YES"/>
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="cars" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="InsuranceCompany" representedClassName="InsuranceCompany" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="remoteID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="insuranceCompany" inverseEntity="Car" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="insuranceCompany" inverseEntity="Person" syncable="YES"/>
     </entity>
@@ -19,17 +20,18 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isMember" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lifeSavings" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="savings" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="owner" inverseEntity="Car" syncable="YES"/>
         <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="manager" inverseEntity="Person" syncable="YES"/>
         <relationship name="insuranceCompany" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InsuranceCompany" inverseName="owner" inverseEntity="InsuranceCompany" syncable="YES"/>
         <relationship name="manager" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="employees" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Car" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="InsuranceCompany" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="OtherPerson" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Person" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Car" positionX="54" positionY="3" width="128" height="120"/>
+        <element name="InsuranceCompany" positionX="90" positionY="189" width="128" height="105"/>
+        <element name="OtherPerson" positionX="79" positionY="-70" width="128" height="45"/>
+        <element name="Person" positionX="-144" positionY="0" width="128" height="223"/>
     </elements>
 </model>

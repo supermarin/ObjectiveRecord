@@ -22,6 +22,11 @@
 
 #import "CoreDataManager.h"
 
+@interface CoreDataManager ()
+@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, nonatomic) NSManagedObjectModel *managedObjectModel;
+@end
+
 @implementation CoreDataManager
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -39,15 +44,24 @@
     static dispatch_once_t singletonToken;
     dispatch_once(&singletonToken, ^{
         singleton = [[self alloc] init];
+        
+        NSLog(@"appName : %@", [singleton appName]);
+        NSLog(@"applicationSupportDirectory : %@", [singleton applicationSupportDirectory]);
+        NSLog(@"applicationDocumentsDirectory : %@", [singleton applicationDocumentsDirectory]);
     });
     return singleton;
+}
+
++ (NSManagedObjectContext *)context
+{
+    return [CoreDataManager sharedManager].managedObjectContext;
 }
 
 
 #pragma mark - Private
 
 - (NSString *)appName {
-    return [[NSBundle bundleForClass:[self class]] infoDictionary][@"CFBundleName"];
+    return [[NSBundle mainBundle] infoDictionary][@"CFBundleName"];
 }
 
 - (NSString *)databaseName {
@@ -79,8 +93,13 @@
 
 - (NSManagedObjectModel *)managedObjectModel {
     if (_managedObjectModel) return _managedObjectModel;
-
+    
     NSURL *modelURL = [[NSBundle bundleForClass:[self class]] URLForResource:[self modelName] withExtension:@"momd"];
+    
+    if ([self modelVersion]) {
+        modelURL = [modelURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.mom", [self modelVersion]]];
+    }
+    
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
