@@ -366,23 +366,23 @@
 
     else if ([value isKindOfClass:[NSString class]]) {
 
-      if (attributeType == NSInteger16AttributeType)
-        value = [NSNumber numberWithInt:[value intValue]];
-      
-      else if (attributeType == NSInteger32AttributeType)
-        value = [NSNumber numberWithInteger:[value integerValue]];
-      
-      else if (attributeType == NSInteger64AttributeType)
-        value = [NSNumber numberWithLongLong:[value longLongValue]];
-      
-      else if (attributeType == NSBooleanAttributeType)
-        value = [NSNumber numberWithBool:[value boolValue]];
-      
-      else if (attributeType == NSFloatAttributeType)
-        value = [NSNumber numberWithDouble:[value doubleValue]];
-      
-      else if (attributeType == NSDateAttributeType)
-        value = [self.defaultFormatter dateFromString:value];
+        if (attributeType == NSInteger16AttributeType)
+            value = [NSNumber numberWithInt:[value intValue]];
+
+        else if (attributeType == NSInteger32AttributeType)
+            value = [NSNumber numberWithInteger:[value integerValue]];
+
+        else if (attributeType == NSInteger64AttributeType)
+            value = [NSNumber numberWithLongLong:[value longLongValue]];
+
+        else if (attributeType == NSBooleanAttributeType)
+            value = [NSNumber numberWithBool:[value boolValue]];
+
+        else if (attributeType == NSFloatAttributeType)
+            value = [NSNumber numberWithDouble:[value doubleValue]];
+
+        else if (attributeType == NSDateAttributeType)
+            value = [self.defaultFormatter dateFromString:value];
     }
 
     [self setPrimitiveValue:value forKey:key];
