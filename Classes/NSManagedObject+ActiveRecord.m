@@ -372,7 +372,7 @@
         else if (attributeType == NSBooleanAttributeType)
             value = [NSNumber numberWithBool:[value boolValue]];
 
-        else if (attributeType == NSFloatAttributeType)
+        else if ([self isFloatAttributeType:attributeType])
             value = [NSNumber numberWithDouble:[value doubleValue]];
 
         else if (attributeType == NSDateAttributeType)
@@ -386,6 +386,11 @@
     return (attributeType == NSInteger16AttributeType) ||
            (attributeType == NSInteger32AttributeType) ||
            (attributeType == NSInteger64AttributeType);
+}
+
+- (BOOL)isFloatAttributeType:(NSAttributeType)attributeType {
+    return (attributeType == NSFloatAttributeType) ||
+           (attributeType == NSDoubleAttributeType);
 }
 
 #pragma mark - Date Formatting
