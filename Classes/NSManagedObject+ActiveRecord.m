@@ -366,13 +366,7 @@
 
     else if ([value isKindOfClass:[NSString class]]) {
 
-        if (attributeType == NSInteger16AttributeType)
-            value = [NSNumber numberWithInt:[value intValue]];
-
-        else if (attributeType == NSInteger32AttributeType)
-            value = [NSNumber numberWithInteger:[value integerValue]];
-
-        else if (attributeType == NSInteger64AttributeType)
+        if ([self isIntegerAttributeType:attributeType])
             value = [NSNumber numberWithLongLong:[value longLongValue]];
 
         else if (attributeType == NSBooleanAttributeType)
