@@ -306,6 +306,9 @@
     NSFetchRequest *request = [NSFetchRequest new];
     NSEntityDescription *entity = [NSEntityDescription entityForName:[self entityName]
                                               inManagedObjectContext:context];
+
+    if (entity == nil) NSLog(@"There's no entity named \"%@\" in your CoreData model. Please confirm the %@ class's name is as same as the related entity in your model. Or you can set the entity name by using \"+ (NSString *)entityName\" in your subclass.",[self entityName],[self entityName]);
+    
     [request setEntity:entity];
     return request;
 }
