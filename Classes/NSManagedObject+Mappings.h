@@ -61,4 +61,11 @@
  */
 + (NSString *)primaryKey;
 
+/**
+ Remote key for primaryKey. E.g., @c @@"remote_id".
+ 
+ @return A remote key name or primaryKey if not overriden
+ */
++ (NSString *)remotePrimaryKey;
+
 @end
