@@ -37,6 +37,7 @@
 
 - (BOOL)saveContext;
 - (void)useInMemoryStore;
+- (void)setDefaultModelFromClass:(Class)klass;
 
 #pragma mark - Helpers
 

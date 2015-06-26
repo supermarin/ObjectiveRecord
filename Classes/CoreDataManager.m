@@ -111,6 +111,11 @@
     return YES;
 }
 
+- (void)setDefaultModelFromClass:(Class)klass {
+    NSBundle *bundle = [NSBundle bundleForClass:klass];
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:[NSArray arrayWithObject:bundle]];
+}
+
 
 #pragma mark - SQLite file directory
 
