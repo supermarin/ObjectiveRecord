@@ -26,7 +26,9 @@
 @implementation NSManagedObjectContext (ActiveRecord)
 
 + (NSManagedObjectContext *)defaultContext {
-    return [[CoreDataManager sharedManager] managedObjectContext];
+    if (CoreDataManager.sharedManager.defaultObjectContext)
+        return CoreDataManager.sharedManager.defaultObjectContext;
+    return CoreDataManager.sharedManager.managedObjectContext;
 }
 
 @end
