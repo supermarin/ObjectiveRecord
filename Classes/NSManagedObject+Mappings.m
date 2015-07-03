@@ -59,8 +59,17 @@
     if ([value isKindOfClass:class])
         return value;
 
-    if ([value isKindOfClass:[NSDictionary class]])
-        return [class findOrCreate:value inContext:context];
+	if ([value isKindOfClass:[NSDictionary class]]) {
+		NSString *primaryValue = value[ [class remotePrimaryKey] ];
+		
+		if (primaryValue) {
+			NSManagedObject *object = [class findOrCreate:@{ [class primaryKey]: primaryValue } inContext:context];
+			[object update:value];
+			return object;
+		}
+		
+		return [class findOrCreate:value inContext:context];
+	}
 
     if ([value isKindOfClass:[NSArray class]])
         return [NSSet setWithArray:[value map:^id(id object) {
@@ -114,6 +123,10 @@
                                    reason:NSStringWithFormat(@"You need to override %@ +primaryKey if you want to support automatic creation with only object ID",
                                                              self.class)
                                  userInfo:nil];
+}
+
++ (NSString *)remotePrimaryKey {
+	return [self primaryKey];
 }
 
 @end
