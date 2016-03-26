@@ -31,6 +31,7 @@
 
 @property (copy, nonatomic) NSString *databaseName;
 @property (copy, nonatomic) NSString *modelName;
+@property (strong, nonatomic) NSBundle *bundle;
 
 + (id)instance DEPRECATED_ATTRIBUTE;
 + (instancetype)sharedManager;
