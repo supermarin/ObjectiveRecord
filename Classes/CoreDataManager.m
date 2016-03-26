@@ -47,7 +47,7 @@
 #pragma mark - Private
 
 - (NSString *)appName {
-    return [[NSBundle bundleForClass:[self class]] infoDictionary][@"CFBundleName"];
+    return [self.bundle infoDictionary][@"CFBundleName"];
 }
 
 - (NSString *)databaseName {
@@ -80,7 +80,7 @@
 - (NSManagedObjectModel *)managedObjectModel {
     if (_managedObjectModel) return _managedObjectModel;
 
-    NSURL *modelURL = [[NSBundle bundleForClass:[self class]] URLForResource:[self modelName] withExtension:@"momd"];
+    NSURL *modelURL = [self.bundle URLForResource:[self modelName] withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -111,6 +111,13 @@
     return YES;
 }
 
+- (NSBundle *)bundle {
+    if (_bundle) return _bundle;
+    
+    _bundle = [NSBundle bundleForClass:self.class];
+    
+    return _bundle;
+}
 
 #pragma mark - SQLite file directory
 
