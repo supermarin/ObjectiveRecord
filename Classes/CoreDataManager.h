@@ -37,6 +37,9 @@
 
 - (BOOL)saveContext;
 - (void)useInMemoryStore;
+- (void)createAndAddPersistentStore:(NSPersistentStoreCoordinator *)coordinator
+                           storeURL:(NSURL *)storeURL
+                          storeType:(NSString *const)storeType;
 
 #pragma mark - Helpers
 

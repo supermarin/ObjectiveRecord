@@ -111,6 +111,17 @@
     return YES;
 }
 
+- (void)createAndAddPersistentStore:(NSPersistentStoreCoordinator *)coordinator
+                           storeURL:(NSURL *)storeURL
+                          storeType:(NSString *const)storeType {
+    NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption: @YES,
+                               NSInferMappingModelAutomaticallyOption: @YES };
+    
+    NSError *error = nil;
+    if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:storeURL options:options error:&error])
+        NSLog(@"ERROR WHILE CREATING PERSISTENT STORE COORDINATOR! %@, %@", error, [error userInfo]);
+}
+
 
 #pragma mark - SQLite file directory
 
@@ -130,16 +141,10 @@
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinatorWithStoreType:(NSString *const)storeType
                                                                  storeURL:(NSURL *)storeURL {
-
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-
-    NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption: @YES,
-                               NSInferMappingModelAutomaticallyOption: @YES };
-
-    NSError *error = nil;
-    if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:storeURL options:options error:&error])
-        NSLog(@"ERROR WHILE CREATING PERSISTENT STORE COORDINATOR! %@, %@", error, [error userInfo]);
-
+    
+    [self createAndAddPersistentStore:coordinator storeURL:storeURL storeType:storeType];
+    
     return coordinator;
 }
 
