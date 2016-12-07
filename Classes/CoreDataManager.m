@@ -114,12 +114,14 @@
 - (void)createAndAddPersistentStore:(NSPersistentStoreCoordinator *)coordinator
                            storeURL:(NSURL *)storeURL
                           storeType:(NSString *const)storeType {
-    NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption: @YES,
-                               NSInferMappingModelAutomaticallyOption: @YES };
-    
-    NSError *error = nil;
-    if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:storeURL options:options error:&error])
-        NSLog(@"ERROR WHILE CREATING PERSISTENT STORE COORDINATOR! %@, %@", error, [error userInfo]);
+    @synchronized(self) {
+        NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption: @YES,
+                                   NSInferMappingModelAutomaticallyOption: @YES };
+        
+        NSError *error = nil;
+        if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:storeURL options:options error:&error])
+            NSLog(@"ERROR WHILE CREATING PERSISTENT STORE COORDINATOR! %@, %@", error, [error userInfo]);
+    }
 }
 
 
