@@ -136,6 +136,14 @@
     NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption: @YES,
                                NSInferMappingModelAutomaticallyOption: @YES };
 
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:[storeURL path]]) {
+        NSURL *defaultStoreURL = [[NSBundle mainBundle] URLForResource:[self databaseName] withExtension:nil];
+        if (defaultStoreURL) {
+            [fileManager copyItemAtURL:defaultStoreURL toURL:storeURL error:NULL];
+        }
+    }
+
     NSError *error = nil;
     if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:storeURL options:options error:&error])
         NSLog(@"ERROR WHILE CREATING PERSISTENT STORE COORDINATOR! %@, %@", error, [error userInfo]);
