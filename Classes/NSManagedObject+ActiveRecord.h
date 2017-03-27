@@ -49,6 +49,7 @@
 + (id)create;
 + (id)create:(NSDictionary *)attributes;
 - (void)update:(NSDictionary *)attributes;
++ (NSUInteger)updateBatch:(NSDictionary *)attributes byPredicate:(NSPredicate *)predicate;
 
 + (NSArray *)all;
 + (NSArray *)allWithOrder:(id)order;
