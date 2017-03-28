@@ -205,7 +205,14 @@
     updateRequest.propertiesToUpdate = attributes;
     updateRequest.resultType = NSUpdatedObjectIDsResultType;
     
-    NSBatchUpdateResult *updateResult = [[NSManagedObjectContext defaultContext] executeRequest:updateRequest error:nil];
+    NSError *error = nil;
+    
+    NSBatchUpdateResult *updateResult = [[NSManagedObjectContext defaultContext] executeRequest:updateRequest error:&error];
+    if (error) {
+        NSLog(@"Error updating batch for entity:\n%@\nError: %@", self, error);
+        return 0;
+    }
+    
     NSArray *objectIDs = updateResult.result;
     
     for (NSManagedObjectID *objectId in objectIDs) {
