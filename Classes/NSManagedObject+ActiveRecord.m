@@ -199,6 +199,33 @@
     }];
 }
 
++ (NSUInteger)updateBatch:(NSDictionary *)attributes byPredicate:(NSPredicate *)predicate {
+    NSBatchUpdateRequest *updateRequest = [[NSBatchUpdateRequest alloc] initWithEntityName:[self entityName]];
+    updateRequest.predicate = predicate;
+    updateRequest.propertiesToUpdate = attributes;
+    updateRequest.resultType = NSUpdatedObjectIDsResultType;
+    
+    NSError *error = nil;
+    
+    NSBatchUpdateResult *updateResult = [[NSManagedObjectContext defaultContext] executeRequest:updateRequest error:&error];
+    if (error) {
+        NSLog(@"Error updating batch for entity:\n%@\nError: %@", self, error);
+        return 0;
+    }
+    
+    NSArray *objectIDs = updateResult.result;
+    
+    for (NSManagedObjectID *objectId in objectIDs) {
+        NSManagedObject *managedObject = [[NSManagedObjectContext defaultContext] objectWithID:objectId];
+        
+        if (managedObject) {
+            [[NSManagedObjectContext defaultContext] refreshObject:managedObject mergeChanges:NO];
+        }
+    }
+    
+    return [objectIDs count];
+}
+
 #pragma mark - Naming
 
 + (NSString *)entityName {
