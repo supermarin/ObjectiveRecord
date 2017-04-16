@@ -25,6 +25,8 @@
 
 @interface CoreDataManager : NSObject
 
+@property (readonly, nonatomic) NSManagedObjectContext *privateManagedObjectContext;
+@property (readonly, nonatomic) NSManagedObjectContext *mainManagedObjectContext;
 @property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;

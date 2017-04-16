@@ -23,7 +23,8 @@
 #import "CoreDataManager.h"
 
 @implementation CoreDataManager
-@synthesize managedObjectContext = _managedObjectContext;
+@synthesize privateManagedObjectContext = _privateManagedObjectContext;
+@synthesize mainManagedObjectContext = _mainManagedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize databaseName = _databaseName;
@@ -64,17 +65,36 @@
     return _modelName;
 }
 
+- (NSManagedObjectContext *)mainManagedObjectContext {
+    if (_mainManagedObjectContext) return _mainManagedObjectContext;
+    
+    if (self.privateManagedObjectContext) {
+        _mainManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [_mainManagedObjectContext setParentContext:self.privateManagedObjectContext];
+    }
+    
+    return _mainManagedObjectContext;
+}
+
+- (NSManagedObjectContext *)privateManagedObjectContext {
+    if (_privateManagedObjectContext) return _privateManagedObjectContext;
+    
+    if (self.persistentStoreCoordinator) {
+        _privateManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [_privateManagedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+    }
+    
+    return _privateManagedObjectContext;
+}
 
 #pragma mark - Public
 
 - (NSManagedObjectContext *)managedObjectContext {
-    if (_managedObjectContext) return _managedObjectContext;
-
-    if (self.persistentStoreCoordinator) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-        [_managedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+    if ([NSThread isMainThread]) {
+        return [self mainManagedObjectContext];
+    } else {
+        return [self privateManagedObjectContext];
     }
-    return _managedObjectContext;
 }
 
 - (NSManagedObjectModel *)managedObjectModel {
