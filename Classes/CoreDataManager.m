@@ -68,9 +68,9 @@
 - (NSManagedObjectContext *)mainManagedObjectContext {
     if (_mainManagedObjectContext) return _mainManagedObjectContext;
     
-    if (self.privateManagedObjectContext) {
+    if (self.persistentStoreCoordinator) {
         _mainManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        [_mainManagedObjectContext setParentContext:self.privateManagedObjectContext];
+        [_mainManagedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
     }
     
     return _mainManagedObjectContext;
@@ -79,9 +79,9 @@
 - (NSManagedObjectContext *)privateManagedObjectContext {
     if (_privateManagedObjectContext) return _privateManagedObjectContext;
     
-    if (self.persistentStoreCoordinator) {
+    if (self.mainManagedObjectContext) {
         _privateManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-        [_privateManagedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+        [_privateManagedObjectContext setParentContext:self.mainManagedObjectContext];
     }
     
     return _privateManagedObjectContext;
