@@ -42,14 +42,12 @@
 
 #pragma mark - Default Context
 
-- (BOOL)save;
 - (void)delete;
-+ (void)deleteAll;
 
 + (id)create;
 + (id)create:(NSDictionary *)attributes;
 - (void)update:(NSDictionary *)attributes;
-+ (NSUInteger)updateBatch:(NSDictionary *)attributes byPredicate:(NSPredicate *)predicate;
++ (NSUInteger)updateBatch:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context byPredicate:(NSPredicate *)predicate;
 
 + (NSArray *)all;
 + (NSArray *)allWithOrder:(id)order;
