@@ -37,7 +37,7 @@
 + (id)instance DEPRECATED_ATTRIBUTE;
 + (instancetype)sharedManager;
 
-- (BOOL)saveContext;
+- (BOOL)save:(NSManagedObjectContext *)context;
 - (void)useInMemoryStore;
 - (void)createAndAddPersistentStore:(NSPersistentStoreCoordinator *)coordinator
                            storeURL:(NSURL *)storeURL

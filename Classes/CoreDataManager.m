@@ -77,14 +77,10 @@
 }
 
 - (NSManagedObjectContext *)privateManagedObjectContext {
-    if (_privateManagedObjectContext) return _privateManagedObjectContext;
+    NSManagedObjectContext *tempContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [tempContext setParentContext:self.mainManagedObjectContext];
     
-    if (self.mainManagedObjectContext) {
-        _privateManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-        [_privateManagedObjectContext setParentContext:self.mainManagedObjectContext];
-    }
-    
-    return _privateManagedObjectContext;
+    return tempContext;
 }
 
 #pragma mark - Public
@@ -117,13 +113,26 @@
     _persistentStoreCoordinator = [self persistentStoreCoordinatorWithStoreType:NSInMemoryStoreType storeURL:nil];
 }
 
-- (BOOL)saveContext {
-    if (self.managedObjectContext == nil) return NO;
-    if (![self.managedObjectContext hasChanges])return NO;
+- (BOOL)save:(NSManagedObjectContext *)context {
+    if (context.concurrencyType == NSPrivateQueueConcurrencyType) {
+        BOOL privateSaveResult = [self saveContext:context];
+        if (privateSaveResult) {
+            return [self saveContext:[self mainManagedObjectContext]];
+        } else {
+            return NO;
+        }
+    } else {
+        return [self saveContext:[self mainManagedObjectContext]];
+    }
+}
 
+- (BOOL)saveContext:(NSManagedObjectContext *)context {
+    if (context == nil) return NO;
+    if (![context hasChanges])return NO;
+    
     NSError *error = nil;
 
-    if (![self.managedObjectContext save:&error]) {
+    if (![context save:&error]) {
         NSLog(@"Unresolved error in saving context! %@, %@", error, [error userInfo]);
         return NO;
     }
