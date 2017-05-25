@@ -117,7 +117,12 @@
     if (context.concurrencyType == NSPrivateQueueConcurrencyType) {
         BOOL privateSaveResult = [self saveContext:context];
         if (privateSaveResult) {
-            return [self saveContext:[self mainManagedObjectContext]];
+            __block BOOL mainSaveResult;
+            NSManagedObjectContext *mainContext = [self mainManagedObjectContext];
+            [mainContext performBlockAndWait:^{
+                mainSaveResult = [self save:mainContext];
+            }];
+            return mainSaveResult;
         } else {
             return NO;
         }
