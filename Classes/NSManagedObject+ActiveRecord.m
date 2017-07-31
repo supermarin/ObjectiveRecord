@@ -239,8 +239,8 @@
 + (void)deleteAllInContext:(NSManagedObjectContext *)context {
     [[self allInContext:context] each:^(id object) {
         [context deleteObject:object];
+        [[CoreDataManager sharedManager] save:context];
     }];
-    [[CoreDataManager sharedManager] save:context];
 }
 
 + (NSUInteger)updateBatch:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context byPredicate:(NSPredicate *)predicate {
