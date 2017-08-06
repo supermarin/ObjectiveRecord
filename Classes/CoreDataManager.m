@@ -48,7 +48,7 @@
 #pragma mark - Private
 
 - (NSString *)appName {
-    return [[NSBundle bundleForClass:[self class]] infoDictionary][@"CFBundleName"];
+    return @"Skycure";
 }
 
 - (NSString *)databaseName {
