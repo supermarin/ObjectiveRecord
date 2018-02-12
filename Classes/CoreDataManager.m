@@ -78,7 +78,8 @@
 
 - (NSManagedObjectContext *)privateManagedObjectContext {
     NSManagedObjectContext *tempContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    [tempContext setParentContext:self.mainManagedObjectContext];
+    [tempContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+    [tempContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
     
     return tempContext;
 }
@@ -117,12 +118,11 @@
     if (context.concurrencyType == NSPrivateQueueConcurrencyType) {
         BOOL privateSaveResult = [self saveContext:context];
         if (privateSaveResult) {
-            __block BOOL mainSaveResult;
             NSManagedObjectContext *mainContext = [self mainManagedObjectContext];
             [mainContext performBlockAndWait:^{
-                mainSaveResult = [self save:mainContext];
+                [self saveContext:mainContext];
             }];
-            return mainSaveResult;
+            return privateSaveResult; // the whole thing is async, no point to return anything for the main context save
         } else {
             return NO;
         }
