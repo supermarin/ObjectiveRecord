@@ -71,6 +71,7 @@
     if (self.persistentStoreCoordinator) {
         _mainManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_mainManagedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+        [_mainManagedObjectContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
     }
     
     return _mainManagedObjectContext;
