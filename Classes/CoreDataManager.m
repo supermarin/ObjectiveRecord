@@ -116,20 +116,7 @@
 }
 
 - (BOOL)save:(NSManagedObjectContext *)context {
-    if (context.concurrencyType == NSPrivateQueueConcurrencyType) {
-        BOOL privateSaveResult = [self saveContext:context];
-        if (privateSaveResult) {
-            NSManagedObjectContext *mainContext = [self mainManagedObjectContext];
-            [mainContext performBlockAndWait:^{
-                [self saveContext:mainContext];
-            }];
-            return privateSaveResult; // the whole thing is async, no point to return anything for the main context save
-        } else {
-            return NO;
-        }
-    } else {
-        return [self saveContext:[self mainManagedObjectContext]];
-    }
+    return [self saveContext:context];
 }
 
 - (BOOL)saveContext:(NSManagedObjectContext *)context {
