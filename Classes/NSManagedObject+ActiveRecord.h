@@ -43,6 +43,8 @@
 #pragma mark - Default Context
 
 - (void)delete;
++ (void)deleteAllInContext:(NSManagedObjectContext *)context;
+- (void)deleteInContext:(NSManagedObjectContext *)context;
 
 + (id)create;
 + (id)create:(NSDictionary *)attributes;
@@ -64,8 +66,6 @@
 
 + (id)createInContext:(NSManagedObjectContext *)context;
 + (id)create:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
-
-+ (void)deleteAllInContext:(NSManagedObjectContext *)context;
 
 + (NSArray *)allInContext:(NSManagedObjectContext *)context;
 + (NSArray *)allInContext:(NSManagedObjectContext *)context order:(id)order;

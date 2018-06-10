@@ -228,6 +228,11 @@
     for (NSString *key in transformed) [self didChangeValueForKey:key];
 }
 
+- (void)deleteInContext:(NSManagedObjectContext *)context {
+    [context deleteObject:self];
+    [[CoreDataManager sharedManager] save:context];
+}
+
 - (void)delete {
     NSManagedObjectContext* context = [[CoreDataManager sharedManager] managedObjectContext];
     [context performBlockAndWait:^{
