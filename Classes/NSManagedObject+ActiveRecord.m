@@ -44,11 +44,21 @@
 #pragma mark - Finders
 
 + (NSArray *)all {
-    return [self allInContext:[NSManagedObjectContext defaultContext]];
+    __block NSArray* result;
+    NSManagedObjectContext *context = [[CoreDataManager sharedManager] managedObjectContext];
+    [context performBlockAndWait:^{
+        result = [self allInContext:context];
+    }];
+    return result;
 }
 
 + (NSArray *)allWithOrder:(id)order {
-    return [self allInContext:[NSManagedObjectContext defaultContext] order:order];
+    __block NSArray* result;
+    NSManagedObjectContext *context = [[CoreDataManager sharedManager] managedObjectContext];
+    [context performBlockAndWait:^{
+        result = [self allInContext:context order:order];
+    }];
+    return result;
 }
 
 + (NSArray *)allInContext:(NSManagedObjectContext *)context {
@@ -75,8 +85,13 @@
     va_start(va_arguments, condition);
     NSPredicate *predicate = [self predicateFromObject:condition arguments:va_arguments];
     va_end(va_arguments);
-
-    return [self find:predicate inContext:[NSManagedObjectContext defaultContext]];
+    
+    __block NSManagedObject* result;
+    NSManagedObjectContext* context = [[CoreDataManager sharedManager] managedObjectContext];
+    [context performBlockAndWait:^{
+        result = [self find:predicate inContext:context];
+    }];
+    return result;
 }
 
 + (instancetype)find:(id)condition inContext:(NSManagedObjectContext *)context {
@@ -88,20 +103,41 @@
     va_start(va_arguments, condition);
     NSPredicate *predicate = [self predicateFromObject:condition arguments:va_arguments];
     va_end(va_arguments);
-
-    return [self where:predicate inContext:[NSManagedObjectContext defaultContext]];
+    
+    __block NSArray* result;
+    NSManagedObjectContext *context = [[CoreDataManager sharedManager] managedObjectContext];
+    [context performBlockAndWait:^{
+        result = [self where:predicate inContext:context];
+    }];
+    
+    return result;
 }
 
 + (NSArray *)where:(id)condition order:(id)order {
-    return [self where:condition inContext:[NSManagedObjectContext defaultContext] order:order];
+    __block NSArray* result;
+    NSManagedObjectContext *context = [[CoreDataManager sharedManager] managedObjectContext];
+    [context performBlockAndWait:^{
+        result = [self where:condition inContext:context order:order];
+    }];
+    return result;
 }
 
 + (NSArray *)where:(id)condition limit:(NSNumber *)limit {
-    return [self where:condition inContext:[NSManagedObjectContext defaultContext] limit:limit];
+    __block NSArray* result;
+    NSManagedObjectContext *context = [[CoreDataManager sharedManager] managedObjectContext];
+    [context performBlockAndWait:^{
+        result = [self where:condition inContext:context limit:limit];
+    }];
+    return result;
 }
 
 + (NSArray *)where:(id)condition order:(id)order limit:(NSNumber *)limit {
-    return [self where:condition inContext:[NSManagedObjectContext defaultContext] order:order limit:limit];
+    __block NSArray* result;
+    NSManagedObjectContext *context = [[CoreDataManager sharedManager] managedObjectContext];
+    [context performBlockAndWait:^{
+        result = [self where:condition inContext:context order:order limit:limit];
+    }];
+    return result;
 }
 
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context {
@@ -123,7 +159,13 @@
 #pragma mark - Aggregation
 
 + (NSUInteger)count {
-    return [self countInContext:[NSManagedObjectContext defaultContext]];
+    __block NSUInteger count;
+    
+    NSManagedObjectContext *context = [[CoreDataManager sharedManager] managedObjectContext];
+    [context performBlockAndWait:^{
+        count = [self countInContext:context];
+    }];
+    return count;
 }
 
 + (NSUInteger)countWhere:(id)condition, ... {
@@ -131,8 +173,13 @@
     va_start(va_arguments, condition);
     NSPredicate *predicate = [self predicateFromObject:condition arguments:va_arguments];
     va_end(va_arguments);
-
-    return [self countWhere:predicate inContext:[NSManagedObjectContext defaultContext]];
+    
+    __block NSUInteger count;
+    NSManagedObjectContext *context = [[CoreDataManager sharedManager] managedObjectContext];
+    [context performBlockAndWait:^{
+        count = [self countWhere:predicate inContext:context];
+    }];
+    return count;
 }
 
 + (NSUInteger)countInContext:(NSManagedObjectContext *)context {
@@ -181,22 +228,51 @@
     for (NSString *key in transformed) [self didChangeValueForKey:key];
 }
 
-- (BOOL)save {
-    return [self saveTheContext];
+- (void)deleteInContext:(NSManagedObjectContext *)context {
+    [context deleteObject:self];
+    [[CoreDataManager sharedManager] save:context];
 }
 
 - (void)delete {
-    [self.managedObjectContext deleteObject:self];
-}
-
-+ (void)deleteAll {
-    [self deleteAllInContext:[NSManagedObjectContext defaultContext]];
+    NSManagedObjectContext* context = [[CoreDataManager sharedManager] managedObjectContext];
+    [context performBlockAndWait:^{
+        [context deleteObject:self];
+        [[CoreDataManager sharedManager] save:context];
+    }];
 }
 
 + (void)deleteAllInContext:(NSManagedObjectContext *)context {
     [[self allInContext:context] each:^(id object) {
-        [object delete];
+        [context deleteObject:object];
+        [[CoreDataManager sharedManager] save:context];
     }];
+}
+
++ (NSUInteger)updateBatch:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context byPredicate:(NSPredicate *)predicate {
+    NSBatchUpdateRequest *updateRequest = [[NSBatchUpdateRequest alloc] initWithEntityName:[self entityName]];
+    updateRequest.predicate = predicate;
+    updateRequest.propertiesToUpdate = attributes;
+    updateRequest.resultType = NSUpdatedObjectIDsResultType;
+    
+    NSError *error = nil;
+    
+    NSBatchUpdateResult *updateResult = [context executeRequest:updateRequest error:&error];
+    if (error) {
+        NSLog(@"Error updating batch for entity:\n%@\nError: %@", self, error);
+        return 0;
+    }
+    
+    NSArray *objectIDs = updateResult.result;
+    
+    for (NSManagedObjectID *objectId in objectIDs) {
+        NSManagedObject *managedObject = [context objectWithID:objectId];
+        
+        if (managedObject) {
+            [context refreshObject:managedObject mergeChanges:NO];
+        }
+    }
+    
+    return [objectIDs count];
 }
 
 #pragma mark - Naming
@@ -274,7 +350,6 @@
     NSString *value = [components count] > 1 ? components[1] : @"ASC";
 
     return [self sortDescriptorFromDictionary:@{key: value}];
-
 }
 
 + (NSSortDescriptor *)sortDescriptorFromObject:(id)order {
@@ -314,7 +389,6 @@
                       inContext:(NSManagedObjectContext *)context
                       withOrder:(id)order
                      fetchLimit:(NSNumber *)fetchLimit {
-
     NSFetchRequest *request = [self createFetchRequestInContext:context];
 
     if (condition)
@@ -335,21 +409,6 @@
     [request setPredicate:predicate];
 
     return [context countForFetchRequest:request error:nil];
-}
-
-- (BOOL)saveTheContext {
-    if (self.managedObjectContext == nil ||
-        ![self.managedObjectContext hasChanges]) return YES;
-
-    NSError *error = nil;
-    BOOL save = [self.managedObjectContext save:&error];
-
-    if (!save || error) {
-        NSLog(@"Unresolved error in saving context for entity:\n%@!\nError: %@", self, error);
-        return NO;
-    }
-
-    return YES;
 }
 
 - (void)setSafeValue:(id)value forKey:(NSString *)key {

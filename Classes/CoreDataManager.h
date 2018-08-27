@@ -25,6 +25,8 @@
 
 @interface CoreDataManager : NSObject
 
+@property (readonly, nonatomic) NSManagedObjectContext *privateManagedObjectContext;
+@property (readonly, nonatomic) NSManagedObjectContext *mainManagedObjectContext;
 @property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
@@ -35,8 +37,11 @@
 + (id)instance DEPRECATED_ATTRIBUTE;
 + (instancetype)sharedManager;
 
-- (BOOL)saveContext;
+- (BOOL)save:(NSManagedObjectContext *)context;
 - (void)useInMemoryStore;
+- (void)createAndAddPersistentStore:(NSPersistentStoreCoordinator *)coordinator
+                           storeURL:(NSURL *)storeURL
+                          storeType:(NSString *const)storeType;
 
 #pragma mark - Helpers
 

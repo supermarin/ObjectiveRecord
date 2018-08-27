@@ -23,7 +23,8 @@
 #import "CoreDataManager.h"
 
 @implementation CoreDataManager
-@synthesize managedObjectContext = _managedObjectContext;
+@synthesize privateManagedObjectContext = _privateManagedObjectContext;
+@synthesize mainManagedObjectContext = _mainManagedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize databaseName = _databaseName;
@@ -47,7 +48,7 @@
 #pragma mark - Private
 
 - (NSString *)appName {
-    return [[NSBundle bundleForClass:[self class]] infoDictionary][@"CFBundleName"];
+    return @"Skycure";
 }
 
 - (NSString *)databaseName {
@@ -64,17 +65,34 @@
     return _modelName;
 }
 
+- (NSManagedObjectContext *)mainManagedObjectContext {
+    if (_mainManagedObjectContext) return _mainManagedObjectContext;
+    
+    if (self.persistentStoreCoordinator) {
+        _mainManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [_mainManagedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+        [_mainManagedObjectContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
+    }
+    
+    return _mainManagedObjectContext;
+}
+
+- (NSManagedObjectContext *)privateManagedObjectContext {
+    NSManagedObjectContext *tempContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [tempContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+    [tempContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
+    
+    return tempContext;
+}
 
 #pragma mark - Public
 
 - (NSManagedObjectContext *)managedObjectContext {
-    if (_managedObjectContext) return _managedObjectContext;
-
-    if (self.persistentStoreCoordinator) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        [_managedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
+    if ([NSThread isMainThread]) {
+        return [self mainManagedObjectContext];
+    } else {
+        return [self privateManagedObjectContext];
     }
-    return _managedObjectContext;
 }
 
 - (NSManagedObjectModel *)managedObjectModel {
@@ -97,18 +115,37 @@
     _persistentStoreCoordinator = [self persistentStoreCoordinatorWithStoreType:NSInMemoryStoreType storeURL:nil];
 }
 
-- (BOOL)saveContext {
-    if (self.managedObjectContext == nil) return NO;
-    if (![self.managedObjectContext hasChanges])return NO;
+- (BOOL)save:(NSManagedObjectContext *)context {
+    return [self saveContext:context];
+}
 
-    NSError *error = nil;
+- (BOOL)saveContext:(NSManagedObjectContext *)context {
+    @synchronized (this) {
+        if (context == nil) return NO;
+        if (![context hasChanges])return NO;
 
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Unresolved error in saving context! %@, %@", error, [error userInfo]);
-        return NO;
+        NSError *error = nil;
+
+        if (![context save:&error]) {
+            NSLog(@"Unresolved error in saving context! %@, %@", error, [error userInfo]);
+            return NO;
+        }
+
+        return YES;
     }
+}
 
-    return YES;
+- (void)createAndAddPersistentStore:(NSPersistentStoreCoordinator *)coordinator
+                           storeURL:(NSURL *)storeURL
+                          storeType:(NSString *const)storeType {
+    @synchronized(self) {
+        NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption: @YES,
+                                   NSInferMappingModelAutomaticallyOption: @YES };
+        
+        NSError *error = nil;
+        if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:storeURL options:options error:&error])
+            NSLog(@"ERROR WHILE CREATING PERSISTENT STORE COORDINATOR! %@, %@", error, [error userInfo]);
+    }
 }
 
 
@@ -130,16 +167,10 @@
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinatorWithStoreType:(NSString *const)storeType
                                                                  storeURL:(NSURL *)storeURL {
-
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-
-    NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption: @YES,
-                               NSInferMappingModelAutomaticallyOption: @YES };
-
-    NSError *error = nil;
-    if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:storeURL options:options error:&error])
-        NSLog(@"ERROR WHILE CREATING PERSISTENT STORE COORDINATOR! %@, %@", error, [error userInfo]);
-
+    
+    [self createAndAddPersistentStore:coordinator storeURL:storeURL storeType:storeType];
+    
     return coordinator;
 }
 
