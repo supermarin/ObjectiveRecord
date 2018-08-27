@@ -120,17 +120,19 @@
 }
 
 - (BOOL)saveContext:(NSManagedObjectContext *)context {
-    if (context == nil) return NO;
-    if (![context hasChanges])return NO;
-    
-    NSError *error = nil;
+    @synchronized (this) {
+        if (context == nil) return NO;
+        if (![context hasChanges])return NO;
 
-    if (![context save:&error]) {
-        NSLog(@"Unresolved error in saving context! %@, %@", error, [error userInfo]);
-        return NO;
+        NSError *error = nil;
+
+        if (![context save:&error]) {
+            NSLog(@"Unresolved error in saving context! %@, %@", error, [error userInfo]);
+            return NO;
+        }
+
+        return YES;
     }
-
-    return YES;
 }
 
 - (void)createAndAddPersistentStore:(NSPersistentStoreCoordinator *)coordinator
